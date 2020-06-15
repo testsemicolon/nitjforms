@@ -35,7 +35,7 @@ export class Login extends Component {
           <h2 className="text-center">Login</h2>
           <form onSubmit={this.onSubmit}>
             <div className="form-group">
-              <label>Usernam</label>
+              <label>Username</label>
               <input
                 type="text"
                 className="form-control"
