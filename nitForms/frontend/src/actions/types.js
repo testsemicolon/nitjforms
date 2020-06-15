@@ -1,0 +1,16 @@
+export const GET_FIELD = "GET_FIELD";
+export const DELETE_FIELD = "DELETE_FIELD";
+export const ADD_FIELD = "ADD_FIELD";
+export const ADD_NAME = "ADD_NAME";
+export const GET_NAME = "GET_NAME";
+export const GET_ERRORS = "GET_ERRORS";
+export const CREATE_MESSAGE = "CREATE_MESSAGE";
+export const USER_LOADING = "USER_LOADING";
+export const USER_LOADED = "USER_LOADED";
+export const AUTH_ERROR = "AUTH_ERROR";
+export const GET_FORM = "GET_FORM";
+export const POST_FORM = "POST_FORM";
+export const LOGIN_SUCCESS = "LOGIN_SUCCESS";
+export const LOGIN_FAIL = "LOGIN_FAIL";
+export const LOGOUT_SUCCESS = "LOGOUT_SUCCESS";
+export const LOGOUT_FAIL = "LOGOUT_FAIL";
