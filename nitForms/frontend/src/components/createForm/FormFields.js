@@ -1,5 +1,7 @@
 import React, { Component, Fragment } from "react";
 import { connect } from "react-redux";
+import { withRouter } from "react-router-dom";
+import { hashHistory } from "react-router";
 
 import { getField, deleteField, submitForm } from "../../actions/CreateForm";
 import PropTypes from "prop-types";
@@ -18,6 +20,7 @@ export class FormItems extends Component {
   onSubmit = (e) => {
     e.preventDefault();
     this.props.submitForm();
+    this.props.history.push("/publish");
   };
 
   render() {
@@ -74,5 +77,5 @@ const mapStateToProps = (state) => ({
 });
 
 export default connect(mapStateToProps, { getField, deleteField, submitForm })(
-  FormItems
+  withRouter(FormItems)
 );

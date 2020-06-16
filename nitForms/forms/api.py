@@ -4,28 +4,33 @@ from . models import *
 
 
 class CreateFormsViewSet(viewsets.ModelViewSet):
-    queryset = CreateForms.objects.all()
     permission_class = [
-        permissions.AllowAny
+        permissions.IsAuthenticated
     ]
     serializer_class = CreateFormsSerializer
 
+    def get_queryset(self):
+        return self.request.user.createForm.all()
+
+    def perform_create(self, serializer):
+        serializer.save(owner=self.request.user)
+
 
 class FormNameViewSet(viewsets.ModelViewSet):
-    queryset = FormName.objects.all()
     permission_class = [
-        permissions.AllowAny
+        permissions.IsAuthenticated
     ]
     serializer_class = FormNameSerializer
 
+    def get_queryset(self):
+        return self.request.user.formName.all()
 
-class FounderViewSet(viewsets.ModelViewSet):
-    queryset = Founder.objects.all()
+    def perform_create(self, serializer):
+        serializer.save(owner=self.request.user)
+
+
+
+class cxzCzxViewSet(viewsets.ModelViewSet):
+    queryset = cxzCzx.objects.all()
     permission_class = [permissions.AllowAny]
-    serializer_class = FounderSerializer
-
-
-class jobViewSet(viewsets.ModelViewSet):
-    queryset = job.objects.all()
-    permission_class = [permissions.AllowAny]
-    serializer_class = jobSerializer
+    serializer_class = cxzCzxSerializer

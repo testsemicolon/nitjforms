@@ -14,10 +14,14 @@ export class Alerts extends Component {
     if (error !== prevProps.error) {
       if (error.msg.question)
         alert.error(`Question: ${error.msg.question.join()}`);
+      if (error.msg.non_field_errors)
+        alert.error(error.msg.non_field_errors.join());
+      if (error.msg.username) alert.error(error.msg.username.join());
     }
     if (message !== prevProps.message) {
       if (message.fieldDelete) alert.success(message.fieldDelete);
       if (message.fieldAdd) alert.success(message.fieldAdd);
+      if (message.passwordsNotMatch) alert.error(message.passwordsNotMatch);
     }
   }
 

@@ -11,8 +11,13 @@ export class Buttons extends Component {
   };
 
   render() {
+    const { isAuthenticated, user } = this.props.auth;
+
     const authLinks = (
       <div style={{ float: "right" }}>
+        <span className="navbar-nav ml-auto mt-2 mt-lg-0">
+          <strong>{user ? `Welcome ${user.username}` : " "}</strong>
+        </span>
         <button onClick={this.props.logout} className="nav-link btn btn-info">
           Logout
         </button>
@@ -25,7 +30,7 @@ export class Buttons extends Component {
     );
     return (
       <div className="container">
-        {this.props.auth.isAuthenticated ? authLinks : guestLinks}
+        {isAuthenticated ? authLinks : guestLinks}
       </div>
     );
   }

@@ -1,6 +1,5 @@
 import React, { Component, Fragment } from "react";
 import ReactDOM from "react-dom";
-
 import {
   HashRouter as Router,
   Route,
@@ -21,9 +20,12 @@ import Header from "./layout/Header";
 import Alerts from "./layout/Alerts";
 import Login from "./accounts/Login";
 import Register from "./accounts/Register";
+import PublishForm from "./createForm/PublishForm";
+import CardForm from "../components/createForm/CardForm";
+
 import { loadUser } from "../actions/Auth";
 import PrivateRoute from "./common/PrivateRoutes";
-import CardForm from "./createForm/CardForm";
+import { OldForms } from "./createForm/OldForms";
 
 const alertOptions = {
   timeout: 3000,
@@ -50,11 +52,14 @@ class App extends Component {
                   <Alerts />
                 </div>
                 <Switch>
-                  <Route exact path="/" component={CardForm} />
-                  <Route path="/formname" component={FormName} />
+                  <PrivateRoute exact path="/" component={Album} />
+                  <PrivateRoute path="/formname" component={FormName} />
                   <Route path="/register" component={Register} />
                   <Route path="/login" component={Login} />
-                  <Route path="/formfield" component={Dashboard} />
+                  <PrivateRoute path="/formfield" component={Dashboard} />
+                  <PrivateRoute path="/publish" component={PublishForm} />
+                  <PrivateRoute path="/card" component={CardForm} />
+                  <Route path="/old" component={OldForms} />
                 </Switch>
               </div>
             </Fragment>

@@ -4,30 +4,30 @@ from django.views.decorators.csrf import csrf_exempt
 from . models import FormName, CreateForms
 
 import os
-from django.core.management import call_command
+import subprocess
 
 
 @csrf_exempt
 def post_views(request):
     if(request.method == "POST"):
-        # Migrate Database
-        print('1')
+
         path = os.getcwd()
-        migratePath = path+"\\Server\\migrate.bat"
-        os.system(migratePath)
 
         # Setting up paths
-        path = os.getcwd()
         modelPath = path+"\\forms\\models.py"
         adminPath = path+"\\forms\\admin.py"
         serializerPath = path+"\\forms\\serializers.py"
         apiPath = path+"\\forms\\api.py"
         urlPath = path+"\\forms\\urls.py"
-        migratePath = path+"\\Server\\migrate.bat"
+        migratePath = path+"\\Server\\"
+
+        # Migrate Database
+
+        os.chdir(migratePath)
+        os.startfile("migrate.bat")
 
         # Accessing Database
         title = FormName.objects.all().order_by('-created_at')[0].title
-        print(title)
 
         # Writing Models.py
         f = open(modelPath, 'a')
@@ -37,7 +37,6 @@ def post_views(request):
         for i in data:
             question = str(i.question)
             question = question.replace(" ", "_")
-            print(question)
             modelFunc(modelPath, question, i.inputType)
 
         # Writing Admin.py
@@ -67,9 +66,10 @@ def post_views(request):
                 "', "+title+"ViewSet, '"+title+"')\n")
         f.write("urlpatterns = router.urls\n")
         f.close()
-        print('1')
+
         # Calling Migrations to database
-        os.system(migratePath)
+        os.chdir(migratePath)
+        os.startfile("migrate.bat")
 
 
 def modelFunc(modelPath, question, inputType):

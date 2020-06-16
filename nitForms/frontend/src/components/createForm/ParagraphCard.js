@@ -3,7 +3,7 @@ import TextareaAutosize from "react-textarea-autosize";
 // import "./style.css";
 import { Card } from "react-bootstrap";
 
-const CardForm = ({ question }) => (
+const ParagraphCard = ({ question }) => (
   <Fragment>
     <div className="card">
       <Card.Header
@@ -12,16 +12,16 @@ const CardForm = ({ question }) => (
           borderRadius: ".75rem .75rem 0 0 ",
         }}
       >
-        QUESTION
+        Question
       </Card.Header>
       <Card.Body>
         <Card.Title>{question}</Card.Title>
         <Card.Text>
-          <TextareaAutosize placeholder="Write your answer here..."></TextareaAutosize>
+          <input type="text" placeholder="Write your answer here..." />
         </Card.Text>
       </Card.Body>
     </div>
   </Fragment>
 );
 
-export default CardForm;
+export default ParagraphCard;

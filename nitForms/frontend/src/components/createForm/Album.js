@@ -15,6 +15,7 @@ import Container from "@material-ui/core/Container";
 import Link from "@material-ui/core/Link";
 import Header from "../layout/Header";
 import { Link as Link1 } from "react-router-dom";
+import OldForms from "./OldForms";
 
 function Copyright() {
   return (
@@ -110,41 +111,9 @@ export default function Album() {
             </div>
           </Container>
         </div>
-
-        <Container className={classes.cardGrid} maxWidth="md">
-          {/* End hero unit */}
-          <Grid container spacing={4}>
-            {cards.map((card) => (
-              <Grid item key={card} xs={12} sm={6} md={4}>
-                <Card className={classes.card}>
-                  <CardMedia
-                    className={classes.cardMedia}
-                    image="https://source.unsplash.com/random"
-                    title="Image title"
-                  />
-                  <CardContent className={classes.cardContent}>
-                    <Typography gutterBottom variant="h5" component="h2">
-                      OLD FORM
-                    </Typography>
-                    <Typography>
-                      THIS area is used to describe the content of the previous
-                      forms.{" "}
-                    </Typography>
-                  </CardContent>
-                  <CardActions>
-                    <Button size="small" color="primary">
-                      View
-                    </Button>
-                    <Button size="small" color="primary">
-                      Edit
-                    </Button>
-                  </CardActions>
-                </Card>
-              </Grid>
-            ))}
-          </Grid>
-        </Container>
       </main>
+      <OldForms />
+
       {/* Footer */}
       <footer className={classes.footer}>
         <Typography variant="h6" align="center" gutterBottom>

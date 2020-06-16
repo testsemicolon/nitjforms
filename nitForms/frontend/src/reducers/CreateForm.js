@@ -1,4 +1,9 @@
-import { GET_FIELD, DELETE_FIELD, ADD_FIELD } from "../actions/types";
+import {
+  GET_FIELD,
+  DELETE_FIELD,
+  ADD_FIELD,
+  GET_FORM_FIELD,
+} from "../actions/types";
 
 const initialState = {
   Forms: [],
@@ -20,6 +25,11 @@ export default function (state = initialState, action) {
       return {
         ...state,
         Forms: [...state.Forms, action.payload],
+      };
+    case GET_FORM_FIELD:
+      return {
+        ...state,
+        Forms: action.payload,
       };
     default:
       return state;

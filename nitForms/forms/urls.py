@@ -11,9 +11,5 @@ router.register('name', FormNameViewSet, 'name')
 urlpatterns = router.urls
 
 
-router.register('Founder', FounderViewSet, 'Founder')
-urlpatterns = router.urls
-
-
-router.register('job', jobViewSet, 'job')
+router.register('cxzCzx', cxzCzxViewSet, 'cxzCzx')
 urlpatterns = router.urls

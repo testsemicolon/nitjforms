@@ -14,13 +14,8 @@ class FormNameSerializer(serializers.ModelSerializer):
         fields = '__all__'
 
 
-class FounderSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = Founder
-        fields = '__all__'
 
-
-class jobSerializer(serializers.ModelSerializer):
+class cxzCzxSerializer(serializers.ModelSerializer):
     class Meta:
-        model = job
+        model = cxzCzx
         fields = '__all__'
