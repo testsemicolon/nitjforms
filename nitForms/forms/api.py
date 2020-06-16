@@ -34,3 +34,33 @@ class cxzCzxViewSet(viewsets.ModelViewSet):
     queryset = cxzCzx.objects.all()
     permission_class = [permissions.AllowAny]
     serializer_class = cxzCzxSerializer
+
+
+class test1ViewSet(viewsets.ModelViewSet):
+    queryset = test1.objects.all()
+    permission_class = [permissions.AllowAny]
+    serializer_class = test1Serializer
+
+
+class jatinViewSet(viewsets.ModelViewSet):
+    queryset = jatin.objects.all()
+    permission_class = [permissions.AllowAny]
+    serializer_class = jatinSerializer
+
+
+class chahahatttViewSet(viewsets.ModelViewSet):
+    queryset = chahahattt.objects.all()
+    permission_class = [permissions.AllowAny]
+    serializer_class = chahahatttSerializer
+
+
+class asasaViewSet(viewsets.ModelViewSet):
+    queryset = asasa.objects.all()
+    permission_class = [permissions.AllowAny]
+    serializer_class = asasaSerializer
+
+
+class asasaViewSet(viewsets.ModelViewSet):
+    queryset = asasa.objects.all()
+    permission_class = [permissions.AllowAny]
+    serializer_class = asasaSerializer

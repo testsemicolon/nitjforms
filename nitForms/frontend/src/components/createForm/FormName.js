@@ -25,7 +25,24 @@ export class FormName extends Component {
     const { title, description } = this.state;
     return (
       <Fragment>
-        <div className="card card-body mt-4 mb-4">
+        <div
+          style={{
+            wordWrap: "break-word",
+            alignContent: "center",
+            alignItems: "center",
+            alignSelf: "center",
+            fontSize: "2.3rem",
+            fontColor: "#3f51b5",
+            marginRight: "5rem",
+          }}
+        >
+          TITLE:
+          {title}
+        </div>
+        <div
+          className="card card-body mt-4 mb-4"
+          style={{ borderWidth: "0.1rem" }}
+        >
           <form onSubmit={this.onSubmit}>
             <div className="form-group">
               <input
@@ -58,11 +75,14 @@ export class FormName extends Component {
 }
 
 const btnStyle = {
-  float: "centre",
-  background: "#2191db",
+  marginLeft: "30rem",
+  background: "#3f51b5",
   color: "#fff",
   flex: "1",
   padding: "5px",
+  borderRadius: ".3rem",
+  borderColor: "black",
+  borderWidth: "0rem",
 };
 
 // const mapStateToProps = (state) => ({

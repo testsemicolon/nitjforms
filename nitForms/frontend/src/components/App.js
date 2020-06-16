@@ -59,7 +59,7 @@ class App extends Component {
                   <PrivateRoute path="/formfield" component={Dashboard} />
                   <PrivateRoute path="/publish" component={PublishForm} />
                   <PrivateRoute path="/card" component={CardForm} />
-                  <Route path="/old" component={OldForms} />
+                  <PrivateRoute path="/old" component={OldForms} />
                 </Switch>
               </div>
             </Fragment>

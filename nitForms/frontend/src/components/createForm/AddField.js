@@ -65,7 +65,7 @@ export class AddItem extends Component {
 
 const btnStyle = {
   float: "right",
-  background: "#2191db",
+  background: "#3f51b5",
   color: "#fff",
   flex: "1",
   padding: "5px",

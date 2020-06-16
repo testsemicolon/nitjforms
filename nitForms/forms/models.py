@@ -28,3 +28,28 @@ class cxzCzx(models.Model):
     Enter_Your_Age = models.TextField()
     aasd = models.TextField()
     cxzc = models.CharField(max_length=100)
+
+
+class test1(models.Model):
+    what_is_your_name = models.CharField(max_length=100)
+
+
+class jatin(models.Model):
+    what_is_your_name = models.CharField(max_length=100)
+    what_is_your_name = models.CharField(max_length=100)
+
+
+class chahahattt(models.Model):
+    what_is_your_name = models.CharField(max_length=100)
+    what_is_your_name = models.CharField(max_length=100)
+
+
+class asasa(models.Model):
+    what_is_your_name = models.CharField(max_length=100)
+    what_is_your_name = models.CharField(max_length=100)
+
+
+
+class asasa(models.Model):
+    what_is_your_name = models.CharField(max_length=100)
+    what_is_your_name = models.CharField(max_length=100)
