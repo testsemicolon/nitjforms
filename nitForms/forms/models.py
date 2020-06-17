@@ -13,4 +13,15 @@ class CreateForms(models.Model):
         return self.question
 
 
+class FormName(models.Model):
+    title = models.CharField(max_length=100, unique=True)
+    description = models.CharField(max_length=100)
+    owner = models.ForeignKey(
+        User, related_name="formName", on_delete=models.CASCADE, null=True
+    )
+    created_at = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return self.title
+
 

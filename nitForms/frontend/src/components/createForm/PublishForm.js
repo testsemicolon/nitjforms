@@ -8,13 +8,10 @@ import ParagraphCard from "./ParagraphCard";
 import FieldsProp from "./FieldsProp";
 
 export class PublishForm extends Component {
-  submit = (values) => {
-    console.log(values);
-  };
   render() {
     return (
       <Fragment>
-        <FieldsProp onSubmit={this.submit} />
+        <FieldsProp />
       </Fragment>
     );
   }
