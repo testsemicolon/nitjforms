@@ -55,7 +55,6 @@ export class OldForms extends Component {
     return (
       <div>
         <Fragment>
-          {console.log(this.props.FormName)}
           <Container
             style={{
               paddingTop: "8rem",
