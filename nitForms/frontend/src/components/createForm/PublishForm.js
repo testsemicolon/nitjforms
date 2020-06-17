@@ -6,12 +6,17 @@ import PropTypes from "prop-types";
 import CardForm from "./CardForm";
 import ParagraphCard from "./ParagraphCard";
 import FieldsProp from "./FieldsProp";
+import ContactForm from "./ContactForm";
+import axios from "axios";
 
 export class PublishForm extends Component {
+  submit = (values) => {
+    axios.post("forms/", values);
+  };
   render() {
     return (
       <Fragment>
-        <FieldsProp />
+        <ContactForm onSubmit={this.submit} />
       </Fragment>
     );
   }

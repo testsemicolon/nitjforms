@@ -1,18 +1,49 @@
-import React from "react";
-import { Field, reduxForm } from "redux-form";
+import React, { Component, Fragment } from "react";
+import { reduxForm, Field } from "redux-form";
+import { getFormField } from "../../actions/CreateForm";
+import { connect } from "react-redux";
+import PropTypes from "prop-types";
 
-let ContactForm = (props) => {
-  const { handleSubmit } = props;
-  return (
-    <form onSubmit={handleSubmit}>
-      <div key="01">
-        <label>Hello</label>
-        <Field name="hello" component="input" type="text" key="11" />
-      </div>
-      <button type="submit">Submit</button>
-    </form>
-  );
-};
+export class ContactForm extends Component {
+  // static propTypes = {
+  //   Forms: PropTypes.array.isRequired,
+  // };
+
+  // componentDidMount() {
+  //   this.props.getFormField();
+  // }
+
+  // onSubmit = (e) => {
+  //   e.preventDefault();
+  //   console.log(values);
+  // };
+
+  render() {
+    const handleSubmit = this.props;
+    return (
+      <Fragment>
+        <form onSubmit={handleSubmit}>
+          <div>
+            <label>First Name</label>
+            <Field name="firstName" component="input" type="text" />
+          </div>
+          <div>
+            <label>Last Name</label>
+            <Field name="lastName" component="input" type="text" />
+          </div>
+          <div>
+            <label>Email</label>
+            <Field name="email" component="input" type="email" />
+          </div>
+          <button type="submit">Submit</button>
+        </form>
+      </Fragment>
+    );
+  }
+}
+// const mapStateToProps = (state) => ({
+//   Forms: state.Forms.Forms,
+// });
 
 ContactForm = reduxForm({
   form: "contact",

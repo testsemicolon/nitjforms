@@ -26,6 +26,7 @@ import CardForm from "../components/createForm/CardForm";
 import { loadUser } from "../actions/Auth";
 import PrivateRoute from "./common/PrivateRoutes";
 import { OldForms } from "./createForm/OldForms";
+import { ContactForm } from "./createForm/ContactForm";
 
 const alertOptions = {
   timeout: 3000,
