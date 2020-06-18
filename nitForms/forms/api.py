@@ -25,3 +25,17 @@ class FormNameViewSet(viewsets.ModelViewSet):
         serializer.save(owner=self.request.user)
 
 
+
+
+
+
+class dsdsViewSet(viewsets.ModelViewSet):
+    queryset = dsds.objects.all()
+    permission_class = [permissions.AllowAny]
+    serializer_class = dsdsSerializer
+
+
+class jatinViewSet(viewsets.ModelViewSet):
+    queryset = jatin.objects.all()
+    permission_class = [permissions.AllowAny]
+    serializer_class = jatinSerializer

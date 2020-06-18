@@ -13,3 +13,15 @@ class FormNameSerializer(serializers.ModelSerializer):
         model = FormName
         fields = "__all__"
 
+
+
+class dsdsSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = dsds
+        fields = '__all__'
+
+
+class jatinSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = jatin
+        fields = '__all__'
