@@ -23,18 +23,3 @@ class FormName(models.Model):
 
     def __str__(self):
         return self.title
-
-
-class dsds(models.Model):
-    fdafad = models.CharField(max_length=100)
-    what_is_your_mother_name = models.CharField(max_length=100)
-    dsds = models.TextField()
-    dsd = models.CharField(max_length=100)
-
-
-class jatin(models.Model):
-    fdafad = models.CharField(max_length=100)
-    what_is_your_mother_name = models.CharField(max_length=100)
-    dsds = models.TextField()
-    dsd = models.CharField(max_length=100)
-    what_is_your_mother_name = models.TextField()

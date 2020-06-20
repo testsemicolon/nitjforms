@@ -29,7 +29,7 @@ export default function (state = initialState, action) {
     case GET_FORM_FIELD:
       return {
         ...state,
-        Forms: action.payload,
+        Forms: [action.payload],
       };
     default:
       return state;

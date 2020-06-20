@@ -1,25 +1,49 @@
 import React, { Component, Fragment } from "react";
 import { connect } from "react-redux";
-import { getFormTitle } from "../../actions/FormName";
-import { getFormField } from "../../actions/CreateForm";
+import { getField } from "../../actions/CreateForm";
 import PropTypes from "prop-types";
-import CardForm from "./CardForm";
-import ParagraphCard from "./ParagraphCard";
-import FieldsProp from "./FieldsProp";
-import ContactForm from "./ContactForm";
-import axios from "axios";
 
 export class PublishForm extends Component {
-  submit = (values) => {
-    axios.post("forms/", values);
+  state = {};
+  constructor(props) {
+    super(props);
+    this.props.getField();
+  }
+
+  static propsTypes = {
+    Forms: PropTypes.array.isRequired,
+    getField: PropTypes.func.isRequired,
   };
+
+  onChange = (e) => {
+    this.setState({ [e.target.name]: e.target.value });
+  };
+
+  onSubmit = (e) => {
+    e.preventDefault();
+    const quest = this.state;
+    console.log(quest);
+  };
+
   render() {
     return (
       <Fragment>
-        <ContactForm onSubmit={this.submit} />
+        <form onSubmit={this.onSubmit}>
+          {this.props.Forms.map((form) => (
+            <div key={form.id}>
+              <label>{form.question}</label>
+              <input name={form.question} onChange={this.onChange} />
+            </div>
+          ))}
+          <button type="submit">Submit</button>
+        </form>
       </Fragment>
     );
   }
 }
 
-export default PublishForm;
+const mapStateToProps = (state) => ({
+  Forms: state.Forms.Forms,
+});
+
+export default connect(mapStateToProps, { getField })(PublishForm);
