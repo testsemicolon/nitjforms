@@ -13,3 +13,21 @@ class FormNameSerializer(serializers.ModelSerializer):
         model = FormName
         fields = "__all__"
 
+
+
+class HelloSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Hello
+        fields = '__all__'
+
+
+class SAFePOPMSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = SAFePOPM
+        fields = '__all__'
+
+
+class dasdasdadSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = dasdasdad
+        fields = '__all__'

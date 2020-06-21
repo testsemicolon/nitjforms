@@ -7,7 +7,7 @@ import {
   Redirect,
 } from "react-router-dom";
 
-import { Provider } from "react-redux";
+import { Provider, connect } from "react-redux";
 import store from "../store";
 
 import AlertTemplate from "react-alert-template-basic";
@@ -22,6 +22,7 @@ import Login from "./accounts/Login";
 import Register from "./accounts/Register";
 import PublishForm from "./createForm/PublishForm";
 import CardForm from "../components/createForm/CardForm";
+import { getName } from "../actions/FormName";
 
 import { loadUser } from "../actions/Auth";
 import PrivateRoute from "./common/PrivateRoutes";
@@ -36,6 +37,10 @@ const alertOptions = {
 };
 
 class App extends Component {
+  constructor(props) {
+    super(props);
+    this.props.getName();
+  }
   componentDidMount() {
     store.dispatch(loadUser());
   }
@@ -60,6 +65,12 @@ class App extends Component {
                   <PrivateRoute path="/publish" component={PublishForm} />
                   <PrivateRoute path="/card" component={CardForm} />
                   <PrivateRoute path="/old" component={OldForms} />
+                  {this.props.FormName.map((formname) => (
+                    <PrivateRoute
+                      path={`/${formname.title}`}
+                      component={PublishForm}
+                    />
+                  ))}
                 </Switch>
               </div>
             </Fragment>
@@ -69,5 +80,11 @@ class App extends Component {
     );
   }
 }
+
+const mapStateToProps = (state) => ({
+  FormName: state.FormName.FormName,
+});
+
+connect(mapStateToProps, { getName })(App);
 
 ReactDOM.render(<App />, document.getElementById("app"));

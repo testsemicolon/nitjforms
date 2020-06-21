@@ -24,3 +24,21 @@ class FormName(models.Model):
     def __str__(self):
         return self.title
 
+
+
+class Hello(models.Model):
+    ascxda = models.CharField(max_length=100)
+    vzcxcxzvccxv = models.CharField(max_length=100)
+    cvzxcvzxv = models.TextField()
+
+
+class SAFePOPM(models.Model):
+    ascxda = models.CharField(max_length=100)
+    vzcxcxzvccxv = models.CharField(max_length=100)
+    cvzxcvzxv = models.TextField()
+    Enter_Your_Age = models.CharField(max_length=100)
+
+
+class dasdasdad(models.Model):
+    Enter_Your_Age = models.CharField(max_length=100)
+    enter_your_date_of_birth = models.CharField(max_length=100)

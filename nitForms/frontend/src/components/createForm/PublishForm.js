@@ -34,12 +34,6 @@ export class PublishForm extends Component {
     e.preventDefault();
     const quest = this.state;
     this.props.formSubmit(quest, this.ftitle);
-    // {
-    //   Object.keys(quest).map((q) => (q = q.replace(" ", "_")));
-    // }
-    // {
-    //   Object.keys(quest).map((q) => console.log(q.replace(" ", "_")));
-    // }
   };
 
   render() {

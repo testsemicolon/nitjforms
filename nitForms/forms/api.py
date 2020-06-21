@@ -24,3 +24,21 @@ class FormNameViewSet(viewsets.ModelViewSet):
     def perform_create(self, serializer):
         serializer.save(owner=self.request.user)
 
+
+
+class HelloViewSet(viewsets.ModelViewSet):
+    queryset = Hello.objects.all()
+    permission_class = [permissions.AllowAny]
+    serializer_class = HelloSerializer
+
+
+class SAFePOPMViewSet(viewsets.ModelViewSet):
+    queryset = SAFePOPM.objects.all()
+    permission_class = [permissions.AllowAny]
+    serializer_class = SAFePOPMSerializer
+
+
+class dasdasdadViewSet(viewsets.ModelViewSet):
+    queryset = dasdasdad.objects.all()
+    permission_class = [permissions.AllowAny]
+    serializer_class = dasdasdadSerializer
