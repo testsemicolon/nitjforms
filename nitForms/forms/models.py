@@ -24,8 +24,3 @@ class FormName(models.Model):
     def __str__(self):
         return self.title
 
-
-
-class SAFdsePOPM(models.Model):
-    acacac = models.CharField(max_length=100)
-    cxzc = models.CharField(max_length=100)
