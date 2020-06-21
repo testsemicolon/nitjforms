@@ -39,11 +39,11 @@ export class FormName extends Component {
           TITLE:
           {title}
         </div>
-        <div
-          className="card card-body mt-4 mb-4"
-          style={{ borderWidth: "0.1rem" }}
-        >
-          <form onSubmit={this.onSubmit}>
+        <form onSubmit={this.onSubmit}>
+          <div
+            className="card card-body mt-4 mb-4"
+            style={{ borderWidth: "0.1rem" }}
+          >
             <div className="form-group">
               <input
                 name="title"
@@ -64,11 +64,11 @@ export class FormName extends Component {
                 placeholder="Form description"
               />
             </div>
-            <button style={btnStyle} type="submit">
+            <button className="form-group" style={btnStyle} type="submit">
               CREATE FORM
             </button>
-          </form>
-        </div>
+          </div>
+        </form>
       </Fragment>
     );
   }

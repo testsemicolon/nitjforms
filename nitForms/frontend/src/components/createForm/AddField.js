@@ -20,6 +20,7 @@ export class AddItem extends Component {
     e.preventDefault();
     const { question, inputType } = this.state;
     const quest = { question, inputType };
+    console.log(quest);
     this.props.addField(quest);
     this.setState({ question: "" });
   };

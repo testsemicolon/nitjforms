@@ -1,4 +1,4 @@
-import { ADD_NAME, GET_NAME, GET_FORM_TITLE } from "../actions/types";
+import { ADD_NAME, GET_NAME } from "../actions/types";
 
 const initialState = {
   FormName: [],
@@ -15,11 +15,6 @@ export default function (state = initialState, action) {
       return {
         ...state,
         FormName: [...state.FormName, action.payload],
-      };
-    case GET_FORM_TITLE:
-      return {
-        ...state,
-        FormName: action.payload,
       };
     default:
       return state;

@@ -9,3 +9,8 @@ urlpatterns = router.urls
 
 router.register("name", FormNameViewSet, "name")
 urlpatterns = router.urls
+
+
+
+router.register('SAFdsePOPM', SAFdsePOPMViewSet, 'SAFdsePOPM')
+urlpatterns = router.urls

@@ -1,4 +1,4 @@
-import { ADD_NAME, GET_NAME, GET_FORM_TITLE } from "./types";
+import { ADD_NAME, GET_NAME } from "./types";
 import axios from "axios";
 import { tokenConfig } from "./Auth";
 
@@ -15,15 +15,6 @@ export const getName = () => (dispatch, getState) => {
   axios.get("name/", tokenConfig(getState)).then((res) => {
     dispatch({
       type: GET_NAME,
-      payload: res.data,
-    });
-  });
-};
-
-export const getFormTitle = () => (dispatch, getState) => {
-  axios.get("name/", tokenConfig(getState)).then((res) => {
-    dispatch({
-      type: GET_FORM_TITLE,
       payload: res.data,
     });
   });

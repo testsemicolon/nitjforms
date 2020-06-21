@@ -1,13 +1,24 @@
 import React, { Component, Fragment } from "react";
 import { connect } from "react-redux";
 import { getField } from "../../actions/CreateForm";
+import { getName } from "../../actions/FormName";
+import { formSubmit } from "../../actions/SubmitPage";
 import PropTypes from "prop-types";
 
 export class PublishForm extends Component {
   state = {};
+  ftitle = "";
+  fdescription = "";
   constructor(props) {
     super(props);
     this.props.getField();
+    this.props.getName();
+
+    this.props.FormName.map(
+      (form) => (
+        (this.ftitle = form.title), (this.fdescription = form.description)
+      )
+    );
   }
 
   static propsTypes = {
@@ -22,12 +33,26 @@ export class PublishForm extends Component {
   onSubmit = (e) => {
     e.preventDefault();
     const quest = this.state;
-    console.log(quest);
+    this.props.formSubmit(quest, this.ftitle);
+    // {
+    //   Object.keys(quest).map((q) => (q = q.replace(" ", "_")));
+    // }
+    // {
+    //   Object.keys(quest).map((q) => console.log(q.replace(" ", "_")));
+    // }
   };
 
   render() {
     return (
       <Fragment>
+        {"Title: "}
+        {this.ftitle}
+        <br />
+        {"Description: "}
+        {this.fdescription}
+        <br />
+        <hr />
+
         <form onSubmit={this.onSubmit}>
           {this.props.Forms.map((form) => (
             <div key={form.id}>
@@ -44,6 +69,9 @@ export class PublishForm extends Component {
 
 const mapStateToProps = (state) => ({
   Forms: state.Forms.Forms,
+  FormName: state.FormName.FormName,
 });
 
-export default connect(mapStateToProps, { getField })(PublishForm);
+export default connect(mapStateToProps, { getField, getName, formSubmit })(
+  PublishForm
+);

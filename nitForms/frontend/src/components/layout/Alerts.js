@@ -22,6 +22,7 @@ export class Alerts extends Component {
       if (message.fieldDelete) alert.success(message.fieldDelete);
       if (message.fieldAdd) alert.success(message.fieldAdd);
       if (message.passwordsNotMatch) alert.error(message.passwordsNotMatch);
+      if (message.submitForm) alert.success(message.submitForm);
     }
   }
 
