@@ -4,3 +4,4 @@ migrate.bat
 Start nitForms django server.bat
 stop nitForms.bat
 Start nitForms react server.bat
+nitForms/db.sqlite3
