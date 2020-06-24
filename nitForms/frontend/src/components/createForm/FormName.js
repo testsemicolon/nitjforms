@@ -28,17 +28,18 @@ export class FormName extends Component {
         <div
           style={{
             wordWrap: "break-word",
-            alignContent: "center",
-            alignItems: "center",
-            alignSelf: "center",
+            marginLeft: "auto",
             fontSize: "2.3rem",
-            fontColor: "#3f51b5",
+            textAlign: "center",
             marginRight: "5rem",
           }}
         >
-          TITLE:
-          {title}
+          TITLE: {title.toUpperCase()}
+          <p style={{ fontSize: "1rem", color: "grey", textAlign: "center" }}>
+            Please fill in the Title and the Description of your form!!
+          </p>
         </div>
+
         <form onSubmit={this.onSubmit}>
           <div
             className="card card-body mt-4 mb-4"
@@ -52,6 +53,7 @@ export class FormName extends Component {
                 onChange={this.onChange}
                 className="form-control"
                 placeholder="Untitled Form"
+                style={{ color: "black" }}
               />
             </div>
             <div className="form-group">
@@ -62,6 +64,7 @@ export class FormName extends Component {
                 onChange={this.onChange}
                 className="form-control"
                 placeholder="Form description"
+                style={{ color: "black" }}
               />
             </div>
             <button className="form-group" style={btnStyle} type="submit">
@@ -75,14 +78,17 @@ export class FormName extends Component {
 }
 
 const btnStyle = {
-  marginLeft: "30rem",
   background: "#3f51b5",
   color: "#fff",
-  flex: "1",
-  padding: "5px",
+  padding: ".4rem",
   borderRadius: ".3rem",
   borderColor: "black",
   borderWidth: "0rem",
+  width: "12rem",
+  position: "relative",
+  display: "flex",
+  justifyContent: "center",
+  marginLeft: "auto",
 };
 
 // const mapStateToProps = (state) => ({

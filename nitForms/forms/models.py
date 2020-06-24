@@ -52,8 +52,16 @@ class test4(models.Model):
     fdafad = models.CharField(max_length=100)
 
 
+
+
+
+
 class test8(models.Model):
     what_is_your_mother_name = models.CharField(max_length=100)
     what_is_your_father_name = models.CharField(max_length=100)
     dsd = models.CharField(max_length=100)
     fdafad = models.CharField(max_length=100)
+<<<<<<< HEAD
+=======
+    sasasa = models.CharField(max_length=100)
+>>>>>>> 2c6931c9a0bd0bef29168255af73273dc66f0076

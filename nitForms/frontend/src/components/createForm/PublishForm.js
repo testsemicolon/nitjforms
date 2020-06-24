@@ -4,7 +4,15 @@ import { getField } from "../../actions/CreateForm";
 import { getName } from "../../actions/FormName";
 import { formSubmit } from "../../actions/SubmitPage";
 import PropTypes from "prop-types";
+<<<<<<< HEAD
 
+=======
+import TextareaAutosize from "react-textarea-autosize";
+// import "./style.css";
+import { Card } from "react-bootstrap";
+
+import cloneDeep from "lodash/cloneDeep";
+>>>>>>> 2c6931c9a0bd0bef29168255af73273dc66f0076
 export class PublishForm extends Component {
   state = {};
   ftitle = "";
@@ -62,23 +70,90 @@ export class PublishForm extends Component {
   render() {
     return (
       <Fragment>
-        {"Title: "}
-        {this.ftitle}
-        <br />
-        {"Description: "}
-        {this.fdescription}
-        <br />
-        <hr />
-
-        <form onSubmit={this.onSubmit}>
-          {this.props.Forms.map((form) => (
-            <div key={form.id}>
-              <label>{form.question}</label>
-              <input name={form.question} onChange={this.onChange} />
-            </div>
-          ))}
-          <button type="submit">Submit</button>
-        </form>
+        <div
+          style={{
+            fontSize: "2rem",
+            justifyContent: "center",
+          }}
+        >
+          Title: {this.ftitle}
+          <div
+            style={{
+              fontSize: "1rem",
+              justifyContent: "center",
+              color: "grey",
+            }}
+          >
+            <hr />
+            Description: {this.fdescription}
+          </div>
+          <hr />
+        </div>
+        <div
+          style={{
+            display: "flex",
+            justifyContent: "center",
+            marginTop: "2rem",
+            marginBottom: "2rem",
+          }}
+        >
+          <form onSubmit={this.onSubmit}>
+            {this.props.Forms.map((form) => (
+              <div
+                key={form.id}
+                style={{
+                  borderRadius: "5rem",
+                  borderWidth: ".5rem",
+                  borderColor: "grey",
+                  marginTop: "2rem",
+                }}
+              >
+                <Card
+                  style={{
+                    borderRadius: ".95rem",
+                    borderWidth: ".2rem",
+                    borderColor: "lightgrey",
+                    marginTop: "2rem",
+                  }}
+                >
+                  <div>
+                    <Card.Header
+                      style={{
+                        backgroundColor: "#A2B8FB ",
+                        borderRadius: ".75rem .75rem 0 0",
+                        width: "40rem",
+                      }}
+                    >
+                      QUESTION
+                    </Card.Header>
+                    <Card.Body
+                      style={{
+                        backgroundColor: "#EEF0F7 ",
+                        borderRadius: " 0 0 .75rem .75rem",
+                      }}
+                    >
+                      <Card.Title>{form.question}</Card.Title>
+                      <Card.Text>
+                        <TextareaAutosize
+                          name={form.question}
+                          style={{ width: "37rem", borderColor: "white" }}
+                          onChange={this.onChange}
+                          placeholder="Write your answer here..."
+                        ></TextareaAutosize>
+                      </Card.Text>
+                    </Card.Body>
+                  </div>
+                </Card>
+              </div>
+            ))}
+            <button
+              type="submit"
+              style={{ marginTop: "1.5rem", justifyContent: "center" }}
+            >
+              Submit
+            </button>
+          </form>
+        </div>
       </Fragment>
     );
   }
