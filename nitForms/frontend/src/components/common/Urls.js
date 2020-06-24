@@ -29,7 +29,7 @@ export class Urls extends Component {
         <Route path="/register" component={Register} />
         <Route path="/login" component={Login} />
         <PrivateRoute path="/formfield" component={Dashboard} />
-        {/* <PrivateRoute path="/publish" component={PublishForm} /> */}
+        <PrivateRoute path="/publish" component={PublishForm} />
         <PrivateRoute path="/card" component={CardForm} />
         <PrivateRoute path="/old" component={OldForms} />
         {this.props.FormName.map((formname) => (

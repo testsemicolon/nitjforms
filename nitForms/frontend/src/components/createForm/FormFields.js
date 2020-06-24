@@ -65,13 +65,14 @@ export class FormItems extends Component {
 }
 
 const btnStyle = {
-  marginLeft: "50rem",
   background: "#3f51b5",
   color: "#fff",
   flex: "1",
   padding: "5px",
   borderRadius: ".3rem",
   borderWidth: "0rem",
+  display: "flex",
+  marginLeft: "auto",
 };
 
 const mapStateToProps = (state) => ({

@@ -15,12 +15,22 @@ export class Buttons extends Component {
     const { isAuthenticated, user } = this.props.auth;
 
     const authLinks = (
-      <div>
+      <div
+        style={{
+          marginRight: 0,
+          paddingRight: 0,
+        }}
+      >
         <DropdownButton
+          variant="light"
           style={{
             float: "right",
-            marginRight: "-6rem",
+            marginRight: 0,
+            paddingRight: 0,
             Color: "#3f51b5",
+            position: "relative",
+            size: "2vw",
+            fontSize: "1vw",
           }}
           id="dropdown-basic-button"
           title={user ? `Welcome ${user.username}` : " "}
