@@ -3,7 +3,7 @@ import { tokenConfig } from "./Auth";
 import { createMessage, returnErrors } from "./Messages";
 
 export const formSubmit = (quest, url) => (dispatch, getState) => {
-  Object.keys(quest).map((q) => q.split(" ").join("_"));
+ 
   console.log(quest);
   axios
     .post(`${url}/`, quest, tokenConfig(getState))

@@ -22,11 +22,12 @@ import Login from "./accounts/Login";
 import Register from "./accounts/Register";
 import PublishForm from "./createForm/PublishForm";
 import CardForm from "../components/createForm/CardForm";
-import { getName } from "../actions/FormName";
 
 import { loadUser } from "../actions/Auth";
 import PrivateRoute from "./common/PrivateRoutes";
 import { OldForms } from "./createForm/OldForms";
+import Urls from "./common/Urls";
+
 
 const alertOptions = {
   timeout: 3000,
@@ -39,13 +40,14 @@ const alertOptions = {
 class App extends Component {
   constructor(props) {
     super(props);
-    this.props.getName();
   }
+
   componentDidMount() {
     store.dispatch(loadUser());
   }
 
   render() {
+    // this.props.getName();
     return (
       <Provider store={store}>
         <AlertProvider template={AlertTemplate} {...alertOptions}>
@@ -57,20 +59,7 @@ class App extends Component {
                   <Alerts />
                 </div>
                 <Switch>
-                  <PrivateRoute exact path="/" component={Album} />
-                  <PrivateRoute path="/formname" component={FormName} />
-                  <Route path="/register" component={Register} />
-                  <Route path="/login" component={Login} />
-                  <PrivateRoute path="/formfield" component={Dashboard} />
-                  <PrivateRoute path="/publish" component={PublishForm} />
-                  <PrivateRoute path="/card" component={CardForm} />
-                  <PrivateRoute path="/old" component={OldForms} />
-                  {this.props.FormName.map((formname) => (
-                    <PrivateRoute
-                      path={`/${formname.title}`}
-                      component={PublishForm}
-                    />
-                  ))}
+                  <Urls />
                 </Switch>
               </div>
             </Fragment>
@@ -84,7 +73,5 @@ class App extends Component {
 const mapStateToProps = (state) => ({
   FormName: state.FormName.FormName,
 });
-
-connect(mapStateToProps, { getName })(App);
 
 ReactDOM.render(<App />, document.getElementById("app"));

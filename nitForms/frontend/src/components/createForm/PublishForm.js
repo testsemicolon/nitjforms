@@ -4,13 +4,14 @@ import { getField } from "../../actions/CreateForm";
 import { getName } from "../../actions/FormName";
 import { formSubmit } from "../../actions/SubmitPage";
 import PropTypes from "prop-types";
-
+import cloneDeep from "lodash/cloneDeep";
 export class PublishForm extends Component {
   state = {};
   ftitle = "";
   fdescription = "";
   constructor(props) {
     super(props);
+    console.log(this.props);
     this.props.getField();
     this.props.getName();
 
@@ -33,7 +34,28 @@ export class PublishForm extends Component {
   onSubmit = (e) => {
     e.preventDefault();
     const quest = this.state;
+
+    function renameKey(obj, old_key, new_key) {
+      if (old_key !== new_key) {
+        Object.defineProperty(
+          obj,
+          new_key,
+
+          Object.getOwnPropertyDescriptor(obj, old_key)
+        );
+        delete obj[old_key];
+      }
+    }
+
+    Object.keys(quest).map((obj) =>
+      renameKey(quest, obj, obj.replace(/[ ]/g, "_"))
+    );
+
     this.props.formSubmit(quest, this.ftitle);
+
+    // {
+    //   Object.keys(quest).map((q) => console.log(q.replace(/ /g, "_")));
+    // }
   };
 
   render() {

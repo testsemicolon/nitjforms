@@ -1,7 +1,8 @@
 node_modules
 
-migrate.bat
-Start nitForms django server.bat
-stop nitForms.bat
-Start nitForms react server.bat
+
+nitForms/Server/Start nitForms django server.bat
+nitForms/Server/stop nitForms.bat
+nitForms/Server/Start nitForms react server.bat
 nitForms/db.sqlite3
+nitForms/Server/migrate.bat

@@ -15,19 +15,32 @@ class FormNameSerializer(serializers.ModelSerializer):
 
 
 
-class HelloSerializer(serializers.ModelSerializer):
+
+class test1Serializer(serializers.ModelSerializer):
     class Meta:
-        model = Hello
+        model = test1
         fields = '__all__'
 
 
-class SAFePOPMSerializer(serializers.ModelSerializer):
+class test2Serializer(serializers.ModelSerializer):
     class Meta:
-        model = SAFePOPM
+        model = test2
         fields = '__all__'
 
 
-class dasdasdadSerializer(serializers.ModelSerializer):
+class test3Serializer(serializers.ModelSerializer):
     class Meta:
-        model = dasdasdad
+        model = test3
+        fields = '__all__'
+
+
+class zvczxxcvSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = zvczxxcv
+        fields = '__all__'
+
+
+class test4Serializer(serializers.ModelSerializer):
+    class Meta:
+        model = test4
         fields = '__all__'

@@ -26,19 +26,27 @@ class FormName(models.Model):
 
 
 
-class Hello(models.Model):
-    ascxda = models.CharField(max_length=100)
-    vzcxcxzvccxv = models.CharField(max_length=100)
-    cvzxcvzxv = models.TextField()
+class test1(models.Model):
+    what_is_your_mother_name = models.CharField(max_length=100)
+    what_is_your_father_name = models.CharField(max_length=100)
 
 
-class SAFePOPM(models.Model):
-    ascxda = models.CharField(max_length=100)
-    vzcxcxzvccxv = models.CharField(max_length=100)
-    cvzxcvzxv = models.TextField()
-    Enter_Your_Age = models.CharField(max_length=100)
+class test2(models.Model):
+    what_is_your_mother_name = models.CharField(max_length=100)
 
 
-class dasdasdad(models.Model):
-    Enter_Your_Age = models.CharField(max_length=100)
-    enter_your_date_of_birth = models.CharField(max_length=100)
+class test3(models.Model):
+    what_is_your_mother_name = models.CharField(max_length=100)
+    what_is_your_father_name = models.CharField(max_length=100)
+
+
+class zvczxxcv(models.Model):
+    what_is_your_mother_name = models.CharField(max_length=100)
+    what_is_your_father_name = models.CharField(max_length=100)
+
+
+class test4(models.Model):
+    what_is_your_mother_name = models.CharField(max_length=100)
+    what_is_your_father_name = models.CharField(max_length=100)
+    dsd = models.CharField(max_length=100)
+    fdafad = models.CharField(max_length=100)
