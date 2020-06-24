@@ -1,4 +1,10 @@
-import { GET_FIELD, DELETE_FIELD, ADD_FIELD, GET_FORM_FIELD } from "./types";
+import {
+  GET_FIELD,
+  DELETE_FIELD,
+  ADD_FIELD,
+  GET_FORM_FIELD,
+  GET_FORM_VIEW,
+} from "./types";
 import axios from "axios";
 import { createMessage, returnErrors } from "./Messages";
 import { tokenConfig } from "./Auth";
@@ -57,6 +63,18 @@ export const getFormField = () => (dispatch, getState) => {
     .then((res) => {
       dispatch({
         type: GET_FORM_FIELD,
+        payload: res.data,
+      });
+    })
+    .catch((err) => console.log(err));
+};
+
+export const getFormView = (title) => (dispatch, getState) => {
+  axios
+    .get(`/${title}/`, tokenConfig(getState))
+    .then((res) => {
+      dispatch({
+        type: GET_FORM_VIEW,
         payload: res.data,
       });
     })

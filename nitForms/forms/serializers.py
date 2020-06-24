@@ -44,3 +44,9 @@ class test4Serializer(serializers.ModelSerializer):
     class Meta:
         model = test4
         fields = '__all__'
+
+
+class test8Serializer(serializers.ModelSerializer):
+    class Meta:
+        model = test8
+        fields = '__all__'

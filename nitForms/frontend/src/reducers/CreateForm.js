@@ -3,6 +3,7 @@ import {
   DELETE_FIELD,
   ADD_FIELD,
   GET_FORM_FIELD,
+  GET_FORM_VIEW,
 } from "../actions/types";
 
 const initialState = {
@@ -27,6 +28,11 @@ export default function (state = initialState, action) {
         Forms: [...state.Forms, action.payload],
       };
     case GET_FORM_FIELD:
+      return {
+        ...state,
+        Forms: [action.payload],
+      };
+    case GET_FORM_VIEW:
       return {
         ...state,
         Forms: [action.payload],

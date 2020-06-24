@@ -4,7 +4,7 @@ import { getField } from "../../actions/CreateForm";
 import { getName } from "../../actions/FormName";
 import { formSubmit } from "../../actions/SubmitPage";
 import PropTypes from "prop-types";
-import cloneDeep from "lodash/cloneDeep";
+
 export class PublishForm extends Component {
   state = {};
   ftitle = "";
@@ -17,7 +17,8 @@ export class PublishForm extends Component {
 
     this.props.FormName.map(
       (form) => (
-        (this.ftitle = form.title), (this.fdescription = form.description)
+        (this.ftitle = this.props.title),
+        (this.fdescription = this.props.description)
       )
     );
   }

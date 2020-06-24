@@ -17,3 +17,4 @@ export const LOGOUT_FAIL = "LOGOUT_FAIL";
 export const REGISTER_SUCCESS = "REGISTER_SUCCESS";
 export const REGISTER_FAIL = "REGISTER_FAIL";
 export const GET_FORM_FIELD = "GET_FORM_FIELD";
+export const GET_FORM_VIEW = "GET_FORM_VIEW";

@@ -53,3 +53,9 @@ class test4ViewSet(viewsets.ModelViewSet):
     queryset = test4.objects.all()
     permission_class = [permissions.AllowAny]
     serializer_class = test4Serializer
+
+
+class test8ViewSet(viewsets.ModelViewSet):
+    queryset = test8.objects.all()
+    permission_class = [permissions.AllowAny]
+    serializer_class = test8Serializer
