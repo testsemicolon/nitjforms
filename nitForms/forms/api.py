@@ -25,39 +25,8 @@ class FormNameViewSet(viewsets.ModelViewSet):
         serializer.save(owner=self.request.user)
 
 
+
 class test1ViewSet(viewsets.ModelViewSet):
     queryset = test1.objects.all()
     permission_class = [permissions.AllowAny]
     serializer_class = test1Serializer
-
-
-class test2ViewSet(viewsets.ModelViewSet):
-    queryset = test2.objects.all()
-    permission_class = [permissions.AllowAny]
-    serializer_class = test2Serializer
-
-
-class test3ViewSet(viewsets.ModelViewSet):
-    queryset = test3.objects.all()
-    permission_class = [permissions.AllowAny]
-    serializer_class = test3Serializer
-
-
-class zvczxxcvViewSet(viewsets.ModelViewSet):
-    queryset = zvczxxcv.objects.all()
-    permission_class = [permissions.AllowAny]
-    serializer_class = zvczxxcvSerializer
-
-
-class test4ViewSet(viewsets.ModelViewSet):
-    queryset = test4.objects.all()
-    permission_class = [permissions.AllowAny]
-    serializer_class = test4Serializer
-
-
-
-
-class test8ViewSet(viewsets.ModelViewSet):
-    queryset = test8.objects.all()
-    permission_class = [permissions.AllowAny]
-    serializer_class = test8Serializer

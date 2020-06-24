@@ -4,15 +4,11 @@ import { getField } from "../../actions/CreateForm";
 import { getName } from "../../actions/FormName";
 import { formSubmit } from "../../actions/SubmitPage";
 import PropTypes from "prop-types";
-<<<<<<< HEAD
 
-=======
 import TextareaAutosize from "react-textarea-autosize";
 // import "./style.css";
 import { Card } from "react-bootstrap";
 
-import cloneDeep from "lodash/cloneDeep";
->>>>>>> 2c6931c9a0bd0bef29168255af73273dc66f0076
 export class PublishForm extends Component {
   state = {};
   ftitle = "";
@@ -25,8 +21,7 @@ export class PublishForm extends Component {
 
     this.props.FormName.map(
       (form) => (
-        (this.ftitle = this.props.title),
-        (this.fdescription = this.props.description)
+        (this.ftitle = form.title), (this.fdescription = form.description)
       )
     );
   }
