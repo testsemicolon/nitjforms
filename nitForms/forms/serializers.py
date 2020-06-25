@@ -14,13 +14,9 @@ class FormNameSerializer(serializers.ModelSerializer):
         fields = "__all__"
 
 
-
-
-
-
-
-
-class test1Serializer(serializers.ModelSerializer):
+class GeneralFormsSerializer(serializers.ModelSerializer):
     class Meta:
-        model = test1
-        fields = '__all__'
+        model = GeneralForms
+        fields = "__all__"
+
+

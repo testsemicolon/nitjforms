@@ -15,7 +15,6 @@ export class PublishForm extends Component {
   fdescription = "";
   constructor(props) {
     super(props);
-    console.log(this.props);
     this.props.getField();
     this.props.getName();
 

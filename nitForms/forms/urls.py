@@ -10,8 +10,6 @@ urlpatterns = router.urls
 router.register("name", FormNameViewSet, "name")
 urlpatterns = router.urls
 
-
-
-
-router.register('test1', test1ViewSet, 'test1')
+router.register("generic", GeneralFormsViewSet, "generic")
 urlpatterns = router.urls
+

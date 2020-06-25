@@ -1,7 +1,6 @@
-import React, { Fragment } from "react";
+import React, { Fragment, Component } from "react";
 import FormField from "./FormFields";
 import AddField from "./AddField";
-import { Link } from "react-router-dom";
 
 export default function Dashboard() {
   return (

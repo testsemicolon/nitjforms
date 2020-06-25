@@ -25,5 +25,12 @@ class FormName(models.Model):
         return self.title
 
 
-class test1(models.Model):
-    what_is_your_mother_name = models.CharField(max_length=100)
+class GeneralForms(models.Model):
+    formName = models.CharField(max_length=100, blank=False)
+    question = models.CharField(max_length=100, blank=False)
+    inputType = models.CharField(max_length=50, blank=False)
+
+    def __str__(self):
+        return self.formName
+
+

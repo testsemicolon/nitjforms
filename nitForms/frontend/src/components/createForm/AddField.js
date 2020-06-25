@@ -1,12 +1,20 @@
 import React, { Component } from "react";
 import { addField } from "../../actions/CreateForm";
 import { connect } from "react-redux";
+import { getName } from "../../actions/FormName";
 
 export class AddItem extends Component {
   state = {
     question: "",
     inputType: "Short Answer",
   };
+  ftitle = "";
+
+  constructor(props) {
+    super(props);
+    this.props.getName();
+    this.props.FormName.map((form) => (this.ftitle = form.title));
+  }
 
   onChange = (e) => {
     this.setState({ [e.target.name]: e.target.value });
@@ -20,8 +28,11 @@ export class AddItem extends Component {
     e.preventDefault();
     const { question, inputType } = this.state;
     const quest = { question, inputType };
-    console.log(quest);
-    this.props.addField(quest);
+    var formName = this.ftitle;
+    console.log(formName);
+    const quest1 = { formName, question, inputType };
+    console.log(quest, quest1);
+    this.props.addField(quest, quest1);
     this.setState({ question: "" });
   };
 
@@ -72,4 +83,7 @@ const btnStyle = {
   padding: "5px",
 };
 
-export default connect(null, { addField })(AddItem);
+const mapStateToProps = (state) => ({
+  FormName: state.FormName.FormName,
+});
+export default connect(mapStateToProps, { addField, getName })(AddItem);

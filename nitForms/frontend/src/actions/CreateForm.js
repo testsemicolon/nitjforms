@@ -23,7 +23,8 @@ export const getField = () => (dispatch, getState) => {
     );
 };
 
-export const addField = (quest) => (dispatch, getState) => {
+export const addField = (quest, quest1) => (dispatch, getState) => {
+  axios.post("/generic/", quest1).catch((err) => console.log(err));
   axios
     .post("forms/", quest, tokenConfig(getState))
     .then((res) => {
@@ -39,6 +40,7 @@ export const addField = (quest) => (dispatch, getState) => {
 };
 
 export const deleteField = (id) => (dispatch, getState) => {
+  axios.delete(`/generic/${id}/`, tokenConfig(getState));
   axios
     .delete(`/forms/${id}/`, tokenConfig(getState))
     .then((res) => {
@@ -71,11 +73,11 @@ export const getFormField = () => (dispatch, getState) => {
 
 export const getFormView = (title) => (dispatch, getState) => {
   axios
-    .get(`/${title}/`, tokenConfig(getState))
+    .get("generic/")
     .then((res) => {
       dispatch({
         type: GET_FORM_VIEW,
-        payload: res.data,
+        payload: [res.data.filter((ttl) => ttl.formName === title)],
       });
     })
     .catch((err) => console.log(err));

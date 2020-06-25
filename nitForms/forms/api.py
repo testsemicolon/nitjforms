@@ -25,8 +25,9 @@ class FormNameViewSet(viewsets.ModelViewSet):
         serializer.save(owner=self.request.user)
 
 
-
-class test1ViewSet(viewsets.ModelViewSet):
-    queryset = test1.objects.all()
+class GeneralFormsViewSet(viewsets.ModelViewSet):
+    querySet = GeneralForms.objects.all()
     permission_class = [permissions.AllowAny]
-    serializer_class = test1Serializer
+    serializer_class = GeneralFormsSerializer
+  
+
