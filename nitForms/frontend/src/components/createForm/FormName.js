@@ -1,14 +1,15 @@
 import React, { Component, Fragment } from "react";
 import { connect } from "react-redux";
 import { addName, postName, getName } from "../../actions/FormName";
-import { withRouter } from "react-router-dom";
+import { withRouter, Redirect } from "react-router-dom";
+import Dashboard from "./Dashboard";
 
 export class FormName extends Component {
   state = {
     title: "",
     description: "",
+    flag: false,
   };
-
   onChange = (e) => {
     this.setState({ [e.target.name]: e.target.value });
   };
@@ -18,11 +19,14 @@ export class FormName extends Component {
     const { title, description } = this.state;
     const desc = { title, description };
     this.props.addName(desc);
-    this.props.history.push("/formfield");
+    this.setState({ flag: true });
   };
 
   render() {
     const { title, description } = this.state;
+    if (this.state.flag) {
+      return <Dashboard title={this.state.title} />;
+    }
     return (
       <Fragment>
         <div

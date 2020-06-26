@@ -39,6 +39,8 @@ export const addField = (quest, quest1) => (dispatch, getState) => {
     );
 };
 
+
+
 export const deleteField = (id) => (dispatch, getState) => {
   axios.delete(`/generic/${id}/`, tokenConfig(getState));
   axios
@@ -77,7 +79,7 @@ export const getFormView = (title) => (dispatch, getState) => {
     .then((res) => {
       dispatch({
         type: GET_FORM_VIEW,
-        payload: [res.data.filter((ttl) => ttl.formName === title)],
+        payload: res.data.filter((ttl) => ttl.formName === title),
       });
     })
     .catch((err) => console.log(err));

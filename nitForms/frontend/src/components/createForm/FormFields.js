@@ -20,6 +20,7 @@ export class FormItems extends Component {
   onSubmit = (e) => {
     e.preventDefault();
     this.props.submitForm();
+    
     this.props.history.push("/publish");
   };
 

@@ -3,18 +3,12 @@ import { addField } from "../../actions/CreateForm";
 import { connect } from "react-redux";
 import { getName } from "../../actions/FormName";
 
-export class AddItem extends Component {
+export class AddField extends Component {
   state = {
     question: "",
     inputType: "Short Answer",
   };
-  ftitle = "";
-
-  constructor(props) {
-    super(props);
-    this.props.getName();
-    this.props.FormName.map((form) => (this.ftitle = form.title));
-  }
+  ftitle = this.props.title;
 
   onChange = (e) => {
     this.setState({ [e.target.name]: e.target.value });
@@ -86,4 +80,4 @@ const btnStyle = {
 const mapStateToProps = (state) => ({
   FormName: state.FormName.FormName,
 });
-export default connect(mapStateToProps, { addField, getName })(AddItem);
+export default connect(mapStateToProps, { addField, getName })(AddField);

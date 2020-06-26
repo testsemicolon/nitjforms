@@ -26,8 +26,25 @@ class FormNameViewSet(viewsets.ModelViewSet):
 
 
 class GeneralFormsViewSet(viewsets.ModelViewSet):
-    querySet = GeneralForms.objects.all()
+    queryset = GeneralForms.objects.all()
     permission_class = [permissions.AllowAny]
     serializer_class = GeneralFormsSerializer
-  
 
+
+
+class test1221ViewSet(viewsets.ModelViewSet):
+    queryset = test1221.objects.all()
+    permission_class = [permissions.AllowAny]
+    serializer_class = test1221Serializer
+
+
+class test2112ViewSet(viewsets.ModelViewSet):
+    queryset = test2112.objects.all()
+    permission_class = [permissions.AllowAny]
+    serializer_class = test2112Serializer
+
+
+class test1223ViewSet(viewsets.ModelViewSet):
+    queryset = test1223.objects.all()
+    permission_class = [permissions.AllowAny]
+    serializer_class = test1223Serializer

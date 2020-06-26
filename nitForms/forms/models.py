@@ -34,3 +34,21 @@ class GeneralForms(models.Model):
         return self.formName
 
 
+
+
+
+
+
+class test1221(models.Model):
+    what_is_your_mother_name = models.CharField(max_length=100)
+    father_name = models.CharField(max_length=100)
+
+
+class test2112(models.Model):
+    sister_name = models.CharField(max_length=100)
+    job_name = models.CharField(max_length=100)
+
+
+class test1223(models.Model):
+    hj_name = models.CharField(max_length=100)
+    gf_name = models.CharField(max_length=100)

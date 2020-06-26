@@ -35,8 +35,9 @@ export default function (state = initialState, action) {
     case GET_FORM_VIEW:
       return {
         ...state,
-        Forms: [action.payload],
+        Forms: action.payload,
       };
+
     default:
       return state;
   }
