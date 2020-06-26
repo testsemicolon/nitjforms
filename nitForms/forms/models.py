@@ -36,19 +36,28 @@ class GeneralForms(models.Model):
 
 
 
-
-
-
-class test1221(models.Model):
+class test103(models.Model):
     what_is_your_mother_name = models.CharField(max_length=100)
-    father_name = models.CharField(max_length=100)
+    dsd = models.CharField(max_length=100)
+    dsa = models.CharField(max_length=100)
+    mother = models.CharField(max_length=100)
+    jatin = models.CharField(max_length=100)
 
 
-class test2112(models.Model):
+class test104(models.Model):
+    what_is_your_mother_name = models.CharField(max_length=100)
+    dsd = models.CharField(max_length=100)
+    dsa = models.CharField(max_length=100)
+    mother = models.CharField(max_length=100)
+    jatin = models.CharField(max_length=100)
+    fdafad = models.CharField(max_length=100)
+
+
+class test105(models.Model):
+    what_is_your_mother_name = models.CharField(max_length=100)
+    dsd = models.CharField(max_length=100)
+    dsa = models.CharField(max_length=100)
+    mother = models.CharField(max_length=100)
+    jatin = models.CharField(max_length=100)
+    fdafad = models.CharField(max_length=100)
     sister_name = models.CharField(max_length=100)
-    job_name = models.CharField(max_length=100)
-
-
-class test1223(models.Model):
-    hj_name = models.CharField(max_length=100)
-    gf_name = models.CharField(max_length=100)

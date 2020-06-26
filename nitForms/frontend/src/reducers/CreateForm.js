@@ -4,6 +4,7 @@ import {
   ADD_FIELD,
   GET_FORM_FIELD,
   GET_FORM_VIEW,
+  GET_GENERIC_RESPONSES,
 } from "../actions/types";
 
 const initialState = {
@@ -33,6 +34,11 @@ export default function (state = initialState, action) {
         Forms: [action.payload],
       };
     case GET_FORM_VIEW:
+      return {
+        ...state,
+        Forms: action.payload,
+      };
+    case GET_GENERIC_RESPONSES:
       return {
         ...state,
         Forms: action.payload,

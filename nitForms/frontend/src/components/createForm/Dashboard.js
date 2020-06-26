@@ -11,7 +11,7 @@ export default class Dashboard extends Component {
         </div>
         <hr />
         <div className="container">
-          <FormField />
+          <FormField title={this.props.title} />
         </div>
       </Fragment>
     );

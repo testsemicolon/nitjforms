@@ -3,7 +3,12 @@ import { connect } from "react-redux";
 import { withRouter } from "react-router-dom";
 import { hashHistory } from "react-router";
 
-import { getField, deleteField, submitForm } from "../../actions/CreateForm";
+import {
+  getField,
+  deleteField,
+  submitForm,
+  addGeneric,
+} from "../../actions/CreateForm";
 import PropTypes from "prop-types";
 
 export class FormItems extends Component {
@@ -19,8 +24,15 @@ export class FormItems extends Component {
 
   onSubmit = (e) => {
     e.preventDefault();
+    console.log("jatin");
+    console.log(this.props.Forms);
+    var title = this.props.title;
+    {
+      this.props.Forms.map((form) =>
+        this.props.addGeneric(title, form.question, form.inputType)
+      );
+    }
     this.props.submitForm();
-    
     this.props.history.push("/publish");
   };
 
@@ -80,6 +92,9 @@ const mapStateToProps = (state) => ({
   Forms: state.Forms.Forms,
 });
 
-export default connect(mapStateToProps, { getField, deleteField, submitForm })(
-  withRouter(FormItems)
-);
+export default connect(mapStateToProps, {
+  getField,
+  deleteField,
+  submitForm,
+  addGeneric,
+})(withRouter(FormItems));

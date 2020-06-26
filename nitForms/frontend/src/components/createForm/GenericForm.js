@@ -4,6 +4,7 @@ import { getFormView } from "../../actions/CreateForm";
 import TextareaAutosize from "react-textarea-autosize";
 import { Card } from "react-bootstrap";
 import { formSubmit } from "../../actions/SubmitPage";
+import GenericResponses from "./GenericResponses";
 
 export class GenericForm extends Component {
   state = {};

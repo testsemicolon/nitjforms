@@ -15,13 +15,13 @@ urlpatterns = router.urls
 
 
 
-router.register('test1221', test1221ViewSet, 'test1221')
+router.register('test103', test103ViewSet, 'test103')
 urlpatterns = router.urls
 
 
-router.register('test2112', test2112ViewSet, 'test2112')
+router.register('test104', test104ViewSet, 'test104')
 urlpatterns = router.urls
 
 
-router.register('test1223', test1223ViewSet, 'test1223')
+router.register('test105', test105ViewSet, 'test105')
 urlpatterns = router.urls

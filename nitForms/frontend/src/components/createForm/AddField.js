@@ -8,7 +8,7 @@ export class AddField extends Component {
     question: "",
     inputType: "Short Answer",
   };
-  ftitle = this.props.title;
+  // ftitle = this.props.title;
 
   onChange = (e) => {
     this.setState({ [e.target.name]: e.target.value });
@@ -22,11 +22,8 @@ export class AddField extends Component {
     e.preventDefault();
     const { question, inputType } = this.state;
     const quest = { question, inputType };
-    var formName = this.ftitle;
-    console.log(formName);
-    const quest1 = { formName, question, inputType };
-    console.log(quest, quest1);
-    this.props.addField(quest, quest1);
+
+    this.props.addField(quest);
     this.setState({ question: "" });
   };
 

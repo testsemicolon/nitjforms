@@ -10,6 +10,7 @@ import Grid from "@material-ui/core/Grid";
 import Typography from "@material-ui/core/Typography";
 import Container from "@material-ui/core/Container";
 import { getName } from "../../actions/FormName";
+import { Link } from "react-router-dom";
 
 export class OldForms extends Component {
   constructor(props) {
@@ -57,11 +58,13 @@ export class OldForms extends Component {
                       <Typography>{card.description}</Typography>
                     </CardContent>
                     <CardActions>
+                      <Link to={`/${card.title}`}>
+                        <Button size="small" color="primary">
+                          View
+                        </Button>
+                      </Link>
                       <Button size="small" color="primary">
-                        View
-                      </Button>
-                      <Button size="small" color="primary">
-                        Edit
+                        Responses
                       </Button>
                     </CardActions>
                   </Card>

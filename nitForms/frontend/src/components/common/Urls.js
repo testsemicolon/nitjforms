@@ -15,6 +15,7 @@ import { getName } from "../../actions/FormName";
 import PrivateRoute from "./PrivateRoutes";
 import { OldForms } from "../createForm/OldForms";
 import GenericForm from "../createForm/GenericForm";
+import GenericResponses from "../createForm/GenericResponses";
 
 export class Urls extends Component {
   constructor(props) {
@@ -32,6 +33,7 @@ export class Urls extends Component {
         <PrivateRoute path="/publish" component={PublishForm} />
         <PrivateRoute path="/card" component={CardForm} />
         <PrivateRoute path="/old" component={OldForms} />
+        <PrivateRoute path="/response" component={GenericResponses} />
         {this.props.FormName.map((formname) => (
           <PrivateRoute
             key={formname.id}

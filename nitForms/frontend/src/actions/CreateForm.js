@@ -4,6 +4,7 @@ import {
   ADD_FIELD,
   GET_FORM_FIELD,
   GET_FORM_VIEW,
+  GET_GENERIC_RESPONSES,
 } from "./types";
 import axios from "axios";
 import { createMessage, returnErrors } from "./Messages";
@@ -23,8 +24,7 @@ export const getField = () => (dispatch, getState) => {
     );
 };
 
-export const addField = (quest, quest1) => (dispatch, getState) => {
-  axios.post("/generic/", quest1).catch((err) => console.log(err));
+export const addField = (quest) => (dispatch, getState) => {
   axios
     .post("forms/", quest, tokenConfig(getState))
     .then((res) => {
@@ -38,8 +38,6 @@ export const addField = (quest, quest1) => (dispatch, getState) => {
       dispatch(returnErrors(err.response.data, err.response.status))
     );
 };
-
-
 
 export const deleteField = (id) => (dispatch, getState) => {
   axios.delete(`/generic/${id}/`, tokenConfig(getState));
@@ -85,4 +83,28 @@ export const getFormView = (title) => (dispatch, getState) => {
     .catch((err) => console.log(err));
 };
 
-export default { getField, addField, deleteField, submitForm, getFormField };
+export const addGeneric = (formName, question, inputType) => (dispatch) => {
+  const quest1 = { formName, question, inputType };
+  axios.post("/generic/", quest1).catch((err) => console.log(err));
+};
+
+export const getGeneric = (title) => (dispatch) => {
+  axios
+    .get(`/${title}`)
+    .then((res) => {
+      dispatch({
+        type: GET_GENERIC_RESPONSES,
+        payload: res.data,
+      });
+    })
+    .catch((err) => console.log(err));
+};
+
+export default {
+  getField,
+  addField,
+  deleteField,
+  submitForm,
+  getFormField,
+  getGeneric,
+};
