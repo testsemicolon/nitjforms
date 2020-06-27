@@ -34,11 +34,3 @@ class GeneralForms(models.Model):
         return self.formName
 
 
-class test104(models.Model):
-    dsd = models.CharField(max_length=100)
-    dasdsa = models.CharField(max_length=100)
-
-
-class test1022(models.Model):
-    what_is_your_sdaasdas = models.CharField(max_length=100)
-    father = models.CharField(max_length=100)
