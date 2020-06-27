@@ -37,3 +37,9 @@ class HelloViewSet(viewsets.ModelViewSet):
     queryset = Hello.objects.all()
     permission_class = [permissions.AllowAny]
     serializer_class = HelloSerializer
+
+
+class test103ViewSet(viewsets.ModelViewSet):
+    queryset = test103.objects.all()
+    permission_class = [permissions.AllowAny]
+    serializer_class = test103Serializer

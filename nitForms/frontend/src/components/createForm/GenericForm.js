@@ -51,7 +51,16 @@ export class GenericForm extends Component {
         >
           Title: {this.props.title}
           <Link to={`/response/${this.props.title}`}>
-            <button>response</button>
+            <button
+              style={{
+                fontSize: "1.5rem",
+                justifyContent: "center",
+                color: "black",
+                marginLeft: "45rem",
+              }}
+            >
+              response
+            </button>
           </Link>
           <div
             style={{

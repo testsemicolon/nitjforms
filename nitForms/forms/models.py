@@ -41,3 +41,9 @@ class GeneralForms(models.Model):
 class Hello(models.Model):
     Enter_Your_Age = models.CharField(max_length=1000)
     enter_your_date_of_birth = models.CharField(max_length=1000)
+
+
+class test103(models.Model):
+    what_is_your_mother_name = models.CharField(max_length=1000)
+    father = models.CharField(max_length=1000)
+    qualification = models.CharField(max_length=1000)

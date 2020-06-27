@@ -6,3 +6,5 @@ admin.site.register(FormName)
 admin.site.register(GeneralForms)
 
 admin.site.register(Hello)
+
+admin.site.register(test103)

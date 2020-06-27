@@ -16,3 +16,7 @@ urlpatterns = router.urls
 
 router.register('Hello', HelloViewSet, 'Hello')
 urlpatterns = router.urls
+
+
+router.register('test103', test103ViewSet, 'test103')
+urlpatterns = router.urls

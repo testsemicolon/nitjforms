@@ -26,3 +26,9 @@ class HelloSerializer(serializers.ModelSerializer):
     class Meta:
         model = Hello
         fields = '__all__'
+
+
+class test103Serializer(serializers.ModelSerializer):
+    class Meta:
+        model = test103
+        fields = '__all__'
