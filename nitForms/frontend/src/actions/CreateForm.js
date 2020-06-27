@@ -40,7 +40,6 @@ export const addField = (quest) => (dispatch, getState) => {
 };
 
 export const deleteField = (id) => (dispatch, getState) => {
-  axios.delete(`/generic/${id}/`, tokenConfig(getState));
   axios
     .delete(`/forms/${id}/`, tokenConfig(getState))
     .then((res) => {

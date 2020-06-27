@@ -75,7 +75,7 @@ def post_views(request):
 def modelFunc(modelPath, question, inputType):
     f = open(modelPath, 'a')
     if(inputType == "Short Answer"):
-        f.write("    "+question+" = models.CharField(max_length=100)\n")
+        f.write("    "+question+" = models.CharField(max_length=1000)\n")
     elif(inputType == "Paragraph"):
         f.write("    "+question+" = models.TextField()\n")
     elif(inputType == "Date"):

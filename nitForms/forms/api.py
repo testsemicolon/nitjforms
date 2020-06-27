@@ -29,3 +29,11 @@ class GeneralFormsViewSet(viewsets.ModelViewSet):
     queryset = GeneralForms.objects.all()
     permission_class = [permissions.AllowAny]
     serializer_class = GeneralFormsSerializer
+
+
+
+
+class HelloViewSet(viewsets.ModelViewSet):
+    queryset = Hello.objects.all()
+    permission_class = [permissions.AllowAny]
+    serializer_class = HelloSerializer

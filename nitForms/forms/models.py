@@ -34,3 +34,10 @@ class GeneralForms(models.Model):
         return self.formName
 
 
+
+
+
+
+class Hello(models.Model):
+    Enter_Your_Age = models.CharField(max_length=1000)
+    enter_your_date_of_birth = models.CharField(max_length=1000)

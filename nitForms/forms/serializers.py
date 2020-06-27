@@ -18,3 +18,11 @@ class GeneralFormsSerializer(serializers.ModelSerializer):
     class Meta:
         model = GeneralForms
         fields = "__all__"
+
+
+
+
+class HelloSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Hello
+        fields = '__all__'

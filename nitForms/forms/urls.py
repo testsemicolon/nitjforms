@@ -11,3 +11,8 @@ urlpatterns = router.urls
 
 router.register("generic", GeneralFormsViewSet, "generic")
 urlpatterns = router.urls
+
+
+
+router.register('Hello', HelloViewSet, 'Hello')
+urlpatterns = router.urls
