@@ -14,14 +14,9 @@ router.register("generic", GeneralFormsViewSet, "generic")
 urlpatterns = router.urls
 
 
-
-router.register('test103', test103ViewSet, 'test103')
-urlpatterns = router.urls
-
-
 router.register('test104', test104ViewSet, 'test104')
 urlpatterns = router.urls
 
 
-router.register('test105', test105ViewSet, 'test105')
+router.register('test1022', test1022ViewSet, 'test1022')
 urlpatterns = router.urls

@@ -63,9 +63,11 @@ export class OldForms extends Component {
                           View
                         </Button>
                       </Link>
-                      <Button size="small" color="primary">
-                        Responses
-                      </Button>
+                      <Link to={`/response/${card.title}`}>
+                        <Button size="small" color="primary">
+                          Responses
+                        </Button>
+                      </Link>
                     </CardActions>
                   </Card>
                 </Grid>

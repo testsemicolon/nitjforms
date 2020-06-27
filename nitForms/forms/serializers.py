@@ -20,22 +20,13 @@ class GeneralFormsSerializer(serializers.ModelSerializer):
         fields = "__all__"
 
 
-
-
-
-class test103Serializer(serializers.ModelSerializer):
-    class Meta:
-        model = test103
-        fields = '__all__'
-
-
 class test104Serializer(serializers.ModelSerializer):
     class Meta:
         model = test104
         fields = '__all__'
 
 
-class test105Serializer(serializers.ModelSerializer):
+class test1022Serializer(serializers.ModelSerializer):
     class Meta:
-        model = test105
+        model = test1022
         fields = '__all__'

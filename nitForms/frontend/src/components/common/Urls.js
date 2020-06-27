@@ -33,7 +33,13 @@ export class Urls extends Component {
         <PrivateRoute path="/publish" component={PublishForm} />
         <PrivateRoute path="/card" component={CardForm} />
         <PrivateRoute path="/old" component={OldForms} />
-        <PrivateRoute path="/response" component={GenericResponses} />
+        {this.props.FormName.map((formname) => (
+          <PrivateRoute
+            key={formname.id}
+            path={`/response/${formname.title}`}
+            component={() => <GenericResponses title={formname.title} />}
+          />
+        ))}
         {this.props.FormName.map((formname) => (
           <PrivateRoute
             key={formname.id}

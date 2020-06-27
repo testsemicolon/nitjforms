@@ -5,6 +5,7 @@ import TextareaAutosize from "react-textarea-autosize";
 import { Card } from "react-bootstrap";
 import { formSubmit } from "../../actions/SubmitPage";
 import GenericResponses from "./GenericResponses";
+import { Link } from "react-router-dom";
 
 export class GenericForm extends Component {
   state = {};
@@ -49,6 +50,9 @@ export class GenericForm extends Component {
           }}
         >
           Title: {this.props.title}
+          <Link to={`/response/${this.props.title}`}>
+            <button>response</button>
+          </Link>
           <div
             style={{
               fontSize: "1rem",

@@ -34,30 +34,11 @@ class GeneralForms(models.Model):
         return self.formName
 
 
-
-
-class test103(models.Model):
-    what_is_your_mother_name = models.CharField(max_length=100)
-    dsd = models.CharField(max_length=100)
-    dsa = models.CharField(max_length=100)
-    mother = models.CharField(max_length=100)
-    jatin = models.CharField(max_length=100)
-
-
 class test104(models.Model):
-    what_is_your_mother_name = models.CharField(max_length=100)
     dsd = models.CharField(max_length=100)
-    dsa = models.CharField(max_length=100)
-    mother = models.CharField(max_length=100)
-    jatin = models.CharField(max_length=100)
-    fdafad = models.CharField(max_length=100)
+    dasdsa = models.CharField(max_length=100)
 
 
-class test105(models.Model):
-    what_is_your_mother_name = models.CharField(max_length=100)
-    dsd = models.CharField(max_length=100)
-    dsa = models.CharField(max_length=100)
-    mother = models.CharField(max_length=100)
-    jatin = models.CharField(max_length=100)
-    fdafad = models.CharField(max_length=100)
-    sister_name = models.CharField(max_length=100)
+class test1022(models.Model):
+    what_is_your_sdaasdas = models.CharField(max_length=100)
+    father = models.CharField(max_length=100)
