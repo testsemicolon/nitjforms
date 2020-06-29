@@ -47,3 +47,34 @@ class test103(models.Model):
     what_is_your_mother_name = models.CharField(max_length=1000)
     father = models.CharField(max_length=1000)
     qualification = models.CharField(max_length=1000)
+
+
+class test105(models.Model):
+    hello = models.CharField(max_length=1000)
+
+
+class test106(models.Model):
+    jatin = models.CharField(max_length=1000)
+
+
+class test107(models.Model):
+    what_is_your_mother_name = models.CharField(max_length=1000)
+    mother = models.CharField(max_length=1000)
+    father_name = models.CharField(max_length=1000)
+    fdafad = models.CharField(max_length=1000)
+
+
+class test108(models.Model):
+    what_is_your_mother_name = models.CharField(max_length=1000)
+    mother = models.CharField(max_length=1000)
+    father_name = models.CharField(max_length=1000)
+    fdafad = models.CharField(max_length=1000)
+    raghav = models.TextField()
+
+
+class test109(models.Model):
+    mother = models.CharField(max_length=1000)
+    father_name = models.CharField(max_length=1000)
+    fdafad = models.CharField(max_length=1000)
+    raghav = models.TextField()
+    what_is_yo = models.CharField(max_length=1000)

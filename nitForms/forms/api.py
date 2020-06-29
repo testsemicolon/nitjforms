@@ -43,3 +43,33 @@ class test103ViewSet(viewsets.ModelViewSet):
     queryset = test103.objects.all()
     permission_class = [permissions.AllowAny]
     serializer_class = test103Serializer
+
+
+class test105ViewSet(viewsets.ModelViewSet):
+    queryset = test105.objects.all()
+    permission_class = [permissions.AllowAny]
+    serializer_class = test105Serializer
+
+
+class test106ViewSet(viewsets.ModelViewSet):
+    queryset = test106.objects.all()
+    permission_class = [permissions.AllowAny]
+    serializer_class = test106Serializer
+
+
+class test107ViewSet(viewsets.ModelViewSet):
+    queryset = test107.objects.all()
+    permission_class = [permissions.AllowAny]
+    serializer_class = test107Serializer
+
+
+class test108ViewSet(viewsets.ModelViewSet):
+    queryset = test108.objects.all()
+    permission_class = [permissions.AllowAny]
+    serializer_class = test108Serializer
+
+
+class test109ViewSet(viewsets.ModelViewSet):
+    queryset = test109.objects.all()
+    permission_class = [permissions.AllowAny]
+    serializer_class = test109Serializer

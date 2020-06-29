@@ -2,12 +2,13 @@ import React, { Component, Fragment } from "react";
 import { connect } from "react-redux";
 import { getGeneric } from "../../actions/CreateForm";
 import { Table } from "react-bootstrap";
+import ReactHTMLTableToExcel from "react-html-table-to-excel";
 
 export class GenericResponses extends Component {
   constructor(props) {
     super(props);
     this.props.getGeneric(this.props.title);
-    console.log("called");
+    console.log("callexd");
   }
 
   componentDidMount() {}
@@ -15,9 +16,19 @@ export class GenericResponses extends Component {
   render() {
     return (
       <Fragment>
-        <h3 style={{ textAlign: "center" }}>Responses</h3>
+        <ReactHTMLTableToExcel
+          id="test-table-xls-button"
+          className="download-table-xls-button"
+          table={this.props.title}
+          filename={this.props.title}
+          sheet={this.props.title}
+          buttonText="Download as XLS"
+        />
+
+        <h3 style={{ textAlign: "center" }}>Respons</h3>
+        <h1>hello</h1>
         <div>
-          <Table striped bordered hover responsive>
+          <Table striped bordered hover responsive id={this.props.title}>
             {/* <thead>
               {Object.keys(this.props.Forms).map((quest) => console.log(quest))};
               
@@ -25,7 +36,7 @@ export class GenericResponses extends Component {
             <tbody>
               {Object.entries(this.props.Forms).map(([key, value]) => {
                 return (
-                  <Fragment>
+                  <Fragment key={key}>
                     <tr>
                       {Object.entries(value).map(([question, answer]) => {
                         return (

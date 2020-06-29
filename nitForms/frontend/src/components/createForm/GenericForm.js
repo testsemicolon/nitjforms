@@ -83,54 +83,108 @@ export class GenericForm extends Component {
           }}
         >
           <form onSubmit={this.onSubmit}>
-            {this.props.Forms.map((form) => (
-              <div
-                key={form.id}
-                style={{
-                  borderRadius: "5rem",
-                  borderWidth: ".5rem",
-                  borderColor: "grey",
-                  marginTop: "2rem",
-                }}
-              >
-                <Card
-                  style={{
-                    borderRadius: ".95rem",
-                    borderWidth: ".2rem",
-                    borderColor: "lightgrey",
-                    marginTop: "2rem",
-                  }}
-                >
-                  <div>
-                    <Card.Header
+            {this.props.Forms.map((form) => {
+              if (form.inputType === "Short Answer") {
+                return (
+                  <div
+                    key={form.id}
+                    style={{
+                      borderRadius: "5rem",
+                      borderWidth: ".5rem",
+                      borderColor: "grey",
+                      marginTop: "2rem",
+                    }}
+                  >
+                    <Card
                       style={{
-                        backgroundColor: "#A2B8FB ",
-                        borderRadius: ".75rem .75rem 0 0",
-                        width: "40rem",
+                        borderRadius: ".95rem",
+                        borderWidth: ".2rem",
+                        borderColor: "lightgrey",
+                        marginTop: "2rem",
                       }}
                     >
-                      QUESTION
-                    </Card.Header>
-                    <Card.Body
-                      style={{
-                        backgroundColor: "#EEF0F7 ",
-                        borderRadius: " 0 0 .75rem .75rem",
-                      }}
-                    >
-                      <Card.Title>{form.question}</Card.Title>
-                      <Card.Text>
-                        <TextareaAutosize
-                          name={form.question}
-                          style={{ width: "37rem", borderColor: "white" }}
-                          onChange={this.onChange}
-                          placeholder="Write your answer here..."
-                        ></TextareaAutosize>
-                      </Card.Text>
-                    </Card.Body>
+                      <div>
+                        <Card.Header
+                          style={{
+                            backgroundColor: "#A2B8FB ",
+                            borderRadius: ".75rem .75rem 0 0",
+                            width: "40rem",
+                          }}
+                        >
+                          QUESTION
+                        </Card.Header>
+                        <Card.Body
+                          style={{
+                            backgroundColor: "#EEF0F7 ",
+                            borderRadius: " 0 0 .75rem .75rem",
+                          }}
+                        >
+                          <Card.Title>{form.question}</Card.Title>
+                          <Card.Text>
+                            <TextareaAutosize
+                              name={form.question}
+                              style={{ width: "37rem", borderColor: "white" }}
+                              onChange={this.onChange}
+                              placeholder="Write your answer here..."
+                            ></TextareaAutosize>
+                          </Card.Text>
+                        </Card.Body>
+                      </div>
+                    </Card>
                   </div>
-                </Card>
-              </div>
-            ))}
+                );
+              }
+              if (form.inputType == "Paragraph") {
+                return (
+                  <div
+                    key={form.id}
+                    style={{
+                      borderRadius: "5rem",
+                      borderWidth: ".5rem",
+                      borderColor: "grey",
+                      marginTop: "2rem",
+                    }}
+                  >
+                    <Card
+                      style={{
+                        borderRadius: ".95rem",
+                        borderWidth: ".2rem",
+                        borderColor: "lightgrey",
+                        marginTop: "2rem",
+                      }}
+                    >
+                      <div>
+                        <Card.Header
+                          style={{
+                            backgroundColor: "#A2B8FB ",
+                            borderRadius: ".75rem .75rem 0 0",
+                            width: "40rem",
+                          }}
+                        >
+                          QUESTION
+                        </Card.Header>
+                        <Card.Body
+                          style={{
+                            backgroundColor: "#EEF0F7 ",
+                            borderRadius: " 0 0 .75rem .75rem",
+                          }}
+                        >
+                          <Card.Title>{form.question}</Card.Title>
+                          <Card.Text>
+                            <TextareaAutosize
+                              name={form.question}
+                              style={{ width: "37rem", borderColor: "white" }}
+                              onChange={this.onChange}
+                              placeholder="Write your answer paragraph.."
+                            ></TextareaAutosize>
+                          </Card.Text>
+                        </Card.Body>
+                      </div>
+                    </Card>
+                  </div>
+                );
+              }
+            })}
             <button
               type="submit"
               style={{ marginTop: "1.5rem", justifyContent: "center" }}
