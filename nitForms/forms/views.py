@@ -35,9 +35,9 @@ def post_views(request):
         f.close()
         data = CreateForms.objects.all()
         for i in data:
-            question = str(i.question)
-            question = question.replace(" ", "_")
-            modelFunc(modelPath, question, i.inputType)
+            question1 = str(i.question)
+            question1 = question1.replace(" ", "_")
+            modelFunc(modelPath, question1, i.inputType)
 
         # Writing Admin.py
         f = open(adminPath, 'a')
@@ -72,14 +72,17 @@ def post_views(request):
         os.startfile("migrate.bat")
 
 
-def modelFunc(modelPath, question, inputType):
+def modelFunc(modelPath, question1, inputType):
     f = open(modelPath, 'a')
     if(inputType == "Short Answer"):
-        f.write("    "+question+" = models.CharField(max_length=1000)\n")
+        f.write("    "+question1+" = models.CharField(max_length=1000)\n")
+        CreateForms.objects.filter(question=question1).delete()
     elif(inputType == "Paragraph"):
-        f.write("    "+question+" = models.TextField()\n")
+        f.write("    "+question1+" = models.TextField()\n")
+        CreateForms.objects.filter(question=question1).delete()
     elif(inputType == "Date"):
-        f.write("    "+question+" = models.DateField()\n")
+        f.write("    "+question1+" = models.DateField()\n")
+        CreateForms.objects.filter(question=question1).delete()
     else:
         pass
     f.close()

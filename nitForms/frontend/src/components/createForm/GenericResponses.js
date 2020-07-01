@@ -8,84 +8,76 @@ export class GenericResponses extends Component {
   constructor(props) {
     super(props);
     this.props.getGeneric(this.props.title);
-    console.log("callexd");
+    console.log(this.props.created_by1, this.props.created_by);
   }
 
   componentDidMount() {}
 
   render() {
-    return (
-      <Fragment>
-        <ReactHTMLTableToExcel
-          id="test-table-xls-button"
-          className="download-table-xls-button"
-          table={this.props.title}
-          filename={this.props.title}
-          sheet={this.props.title}
-          buttonText="Download as XLS"
-        />
+    if (this.props.created_by1 === this.props.created_by) {
+      return (
+        <Fragment>
+          <ReactHTMLTableToExcel
+            id="test-table-xls-button"
+            className="download-table-xls-button"
+            table={this.props.title}
+            filename={this.props.title}
+            sheet={this.props.title}
+            buttonText="Download as XLS"
+          />
 
-        <h3 style={{ textAlign: "center" }}>Respons</h3>
-        <h1>hello</h1>
-        <div>
-          <Table striped bordered hover responsive id={this.props.title}>
-            {/* <thead>
+          <h3 style={{ textAlign: "center" }}>Respons</h3>
+          <h1>hello</h1>
+          <div>
+            <Table striped bordered hover responsive id={this.props.title}>
+              {/* <thead>
               {Object.keys(this.props.Forms).map((quest) => console.log(quest))};
               
             </thead> */}
-            <tbody>
-              {Object.entries(this.props.Forms).map(([key, value]) => {
-                return (
-                  <Fragment key={key}>
-                    <tr>
-                      {Object.entries(value).map(([question, answer]) => {
-                        return (
-                          <Fragment key={question}>
-                            <td
-                              style={{
-                                alignContent: "center",
-                                alignItems: "center",
-                                textAlign: "center",
-                              }}
-                            >
-                              <strong>{question.toUpperCase()}</strong>
-                              <br />
-                              {answer}
-                            </td>
-                          </Fragment>
-                        );
-                      })}
-                    </tr>
-                  </Fragment>
-                );
-              })}
-            </tbody>
-          </Table>
+              <tbody>
+                {Object.entries(this.props.Forms).map(([key, value]) => {
+                  return (
+                    <Fragment key={key}>
+                      <tr>
+                        {Object.entries(value).map(([question, answer]) => {
+                          return (
+                            <Fragment key={question}>
+                              <td
+                                style={{
+                                  alignContent: "center",
+                                  alignItems: "center",
+                                  textAlign: "center",
+                                }}
+                              >
+                                <strong>{question.toUpperCase()}</strong>
+                                <br />
+                                {answer}
+                              </td>
+                            </Fragment>
+                          );
+                        })}
+                      </tr>
+                    </Fragment>
+                  );
+                })}
+              </tbody>
+            </Table>
+          </div>
+        </Fragment>
+      );
+    } else {
+      return (
+        <div>
+          <h1>Not authorized to view responses</h1>
         </div>
-      </Fragment>
-    );
+      );
+    }
   }
-
-  // {
-
-  //   this.props.Forms.map((items, index) => {
-  //     return (
-  //       <ul key={index}>
-  //         {Object.keys(items).map((key) => {
-  //           return (
-  //             <li key={key + index}>
-  //               {key}:{items[key]}
-  //             </li>
-  //           );
-  //         })}
-  //       </ul>
-  //     );
-  //   });
-  // }
 }
 
 const mapStateToProps = (state) => ({
   Forms: state.Forms.Forms,
+  created_by1: state.Auth.user.username,
 });
 
 export default connect(mapStateToProps, { getGeneric })(GenericResponses);

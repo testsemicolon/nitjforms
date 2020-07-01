@@ -3,7 +3,7 @@ import axios from "axios";
 import { tokenConfig } from "./Auth";
 
 export const addName = (desc) => (dispatch, getState) => {
-  axios.post("name/", desc, tokenConfig(getState)).then((res) => {
+  axios.post("name/", desc).then((res) => {
     dispatch({
       type: ADD_NAME,
       payload: res.data,
@@ -12,7 +12,7 @@ export const addName = (desc) => (dispatch, getState) => {
 };
 
 export const getName = () => (dispatch, getState) => {
-  axios.get("name/", tokenConfig(getState)).then((res) => {
+  axios.get("name/").then((res) => {
     dispatch({
       type: GET_NAME,
       payload: res.data,

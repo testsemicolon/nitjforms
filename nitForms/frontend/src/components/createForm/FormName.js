@@ -16,8 +16,10 @@ export class FormName extends Component {
 
   onSubmit = (e) => {
     e.preventDefault();
+    const created_by = this.props.created_by;
     const { title, description } = this.state;
-    const desc = { title, description };
+    const desc = { title, description, created_by };
+    console.log(desc);
     this.props.addName(desc);
     this.setState({ flag: true });
   };
@@ -95,7 +97,8 @@ const btnStyle = {
   marginLeft: "auto",
 };
 
-// const mapStateToProps = (state) => ({
-//   FormName: state.FormName.FormName,
-// });
-export default connect(null, { addName })(FormName);
+const mapStateToProps = (state) => ({
+  created_by: state.Auth.user.username,
+});
+
+export default connect(mapStateToProps, { addName })(FormName);

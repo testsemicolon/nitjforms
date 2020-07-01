@@ -37,7 +37,12 @@ export class Urls extends Component {
           <PrivateRoute
             key={formname.id}
             path={`/response/${formname.title}`}
-            component={() => <GenericResponses title={formname.title} />}
+            component={() => (
+              <GenericResponses
+                title={formname.title}
+                created_by={formname.created_by}
+              />
+            )}
           />
         ))}
         {this.props.FormName.map((formname) => (
