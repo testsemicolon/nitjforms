@@ -96,6 +96,7 @@ export default function Album() {
             <div className={classes.heroButtons}>
               <Grid container spacing={2} justify="center">
                 <Grid item>
+
                   <Link1 to="/formname">
                     <Button variant="contained" color="primary">
                       CREATE A NEW FORM

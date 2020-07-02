@@ -2,6 +2,13 @@ from django.db import models
 from django.contrib.auth.models import User
 
 
+class UserPerm(models.Model):
+    username = models.CharField(max_length=100, blank=False)
+
+    def __str__(self):
+        return self.username
+
+
 class CreateForms(models.Model):
     question = models.CharField(max_length=100, blank=False)
     inputType = models.CharField(max_length=50, blank=False)
@@ -30,7 +37,6 @@ class GeneralForms(models.Model):
 
     def __str__(self):
         return self.formName
-
 
 
 class test101(models.Model):

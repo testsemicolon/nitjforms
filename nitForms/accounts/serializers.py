@@ -23,7 +23,6 @@ class RegisterSerializer(serializers.ModelSerializer):
             validated_data["username"],
             validated_data["email"],
             validated_data["password"],
-            validated_data["type"],
         )
         return user
 

@@ -3,13 +3,39 @@ import { connect } from "react-redux";
 import { addName, postName, getName } from "../../actions/FormName";
 import { withRouter, Redirect } from "react-router-dom";
 import Dashboard from "./Dashboard";
+import { getperm } from "../../actions/common";
+import PropTypes from "prop-types";
 
 export class FormName extends Component {
+  constructor(props) {
+    super(props);
+  }
+
   state = {
     title: "",
     description: "",
     flag: false,
   };
+
+  // static = {
+  //   userperm: PropTypes.array.isRequired,
+  //   getperm: PropTypes.func.isRequired,
+  // };
+
+  componentDidMount() {
+    this.props.getperm();
+    console.log("called");
+    console.log(typeof this.props.userperm);
+    {
+      Object.keys(this.props.userperm).map(([key, value]) => {
+        console.log(key);
+      });
+    }
+    // {
+    //   this.props.userperm.map((a) => console.log(a));
+    // }
+  }
+
   onChange = (e) => {
     this.setState({ [e.target.name]: e.target.value });
   };
@@ -25,6 +51,8 @@ export class FormName extends Component {
   };
 
   render() {
+    // if(this.props.created_by in this.props.userperm){
+    //   return
     const { title, description } = this.state;
     if (this.state.flag) {
       return <Dashboard title={this.state.title} />;
@@ -99,6 +127,7 @@ const btnStyle = {
 
 const mapStateToProps = (state) => ({
   created_by: state.Auth.user.username,
+  userperm: state.userperm.userperm,
 });
 
-export default connect(mapStateToProps, { addName })(FormName);
+export default connect(mapStateToProps, { getperm, addName })(FormName);

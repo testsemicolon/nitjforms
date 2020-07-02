@@ -3,6 +3,12 @@ from .serializers import *
 from .models import *
 
 
+class UserPermViewSet(viewsets.ModelViewSet):
+    permission_classes = [permissions.IsAuthenticated]
+    serializer_class = UserPermSerializer
+    queryset = UserPerm.objects.all()
+
+
 class CreateFormsViewSet(viewsets.ModelViewSet):
     permission_class = [permissions.IsAuthenticated]
     serializer_class = CreateFormsSerializer

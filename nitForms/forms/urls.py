@@ -12,6 +12,9 @@ urlpatterns = router.urls
 router.register("generic", GeneralFormsViewSet, "generic")
 urlpatterns = router.urls
 
+router.register("userperm", UserPermViewSet, "userperm")
+urlpatterns = router.urls
+
 
 router.register('test101', test101ViewSet, 'test101')
 urlpatterns = router.urls
