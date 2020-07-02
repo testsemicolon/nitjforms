@@ -38,6 +38,7 @@ def post_views(request):
             question1 = str(i.question)
             question1 = question1.replace(" ", "_")
             modelFunc(modelPath, question1, i.inputType)
+        CreateForms.objects.all().delete()
 
         # Writing Admin.py
         f = open(adminPath, 'a')
@@ -76,13 +77,10 @@ def modelFunc(modelPath, question1, inputType):
     f = open(modelPath, 'a')
     if(inputType == "Short Answer"):
         f.write("    "+question1+" = models.CharField(max_length=1000)\n")
-        CreateForms.objects.filter(question=question1).delete()
     elif(inputType == "Paragraph"):
         f.write("    "+question1+" = models.TextField()\n")
-        CreateForms.objects.filter(question=question1).delete()
     elif(inputType == "Date"):
         f.write("    "+question1+" = models.DateField()\n")
-        CreateForms.objects.filter(question=question1).delete()
     else:
         pass
     f.close()

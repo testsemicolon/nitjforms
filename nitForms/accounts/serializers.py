@@ -3,6 +3,8 @@ from django.contrib.auth.models import User
 from django.contrib.auth import authenticate
 
 # User Serializer
+
+
 class UserSerializer(serializers.ModelSerializer):
     class Meta:
         model = User
@@ -21,6 +23,7 @@ class RegisterSerializer(serializers.ModelSerializer):
             validated_data["username"],
             validated_data["email"],
             validated_data["password"],
+            validated_data["type"],
         )
         return user
 

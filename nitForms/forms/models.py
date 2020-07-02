@@ -32,6 +32,14 @@ class GeneralForms(models.Model):
         return self.formName
 
 
-class test1(models.Model):
-    dsd = models.CharField(max_length=1000)
+
+class test101(models.Model):
+    ada = models.CharField(max_length=1000)
+    daadda = models.CharField(max_length=1000)
+    adada = models.CharField(max_length=1000)
+
+
+class test102(models.Model):
+    what_is_your_mother_name = models.CharField(max_length=1000)
     sister_name = models.CharField(max_length=1000)
+    da = models.CharField(max_length=1000)
