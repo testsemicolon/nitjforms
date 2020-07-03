@@ -6,6 +6,4 @@ admin.site.register(FormName)
 admin.site.register(GeneralForms)
 admin.site.register(UserPerm)
 
-admin.site.register(test101)
 
-admin.site.register(test102)

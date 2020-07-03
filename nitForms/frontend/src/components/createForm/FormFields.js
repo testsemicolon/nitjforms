@@ -24,8 +24,6 @@ export class FormItems extends Component {
 
   onSubmit = (e) => {
     e.preventDefault();
-    console.log("jatin");
-    console.log(this.props.Forms);
     var title = this.props.title;
     {
       this.props.Forms.map((form) =>

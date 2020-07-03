@@ -4,7 +4,7 @@ import FormName from "./FormName";
 import Errors from "./Errors";
 import Auth from "./Auth";
 import Messages from "./Messages";
-import userperm from "./common";
+import Userperm from "./Common";
 
 export default combineReducers({
   Forms: Forms,
@@ -12,5 +12,5 @@ export default combineReducers({
   Auth: Auth,
   Errors: Errors,
   Messages: Messages,
-  userperm: userperm,
+  Userperm: Userperm,
 });

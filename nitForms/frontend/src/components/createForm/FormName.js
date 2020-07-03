@@ -1,14 +1,13 @@
 import React, { Component, Fragment } from "react";
 import { connect } from "react-redux";
-import { addName, postName, getName } from "../../actions/FormName";
-import { withRouter, Redirect } from "react-router-dom";
+import { addName } from "../../actions/FormName";
 import Dashboard from "./Dashboard";
-import { getperm } from "../../actions/common";
-import PropTypes from "prop-types";
+import { getPerm } from "../../actions/common";
 
 export class FormName extends Component {
   constructor(props) {
     super(props);
+    this.props.getPerm();
   }
 
   state = {
@@ -17,24 +16,7 @@ export class FormName extends Component {
     flag: false,
   };
 
-  // static = {
-  //   userperm: PropTypes.array.isRequired,
-  //   getperm: PropTypes.func.isRequired,
-  // };
-
-  componentDidMount() {
-    this.props.getperm();
-    console.log("called");
-    console.log(typeof this.props.userperm);
-    {
-      Object.keys(this.props.userperm).map(([key, value]) => {
-        console.log(key);
-      });
-    }
-    // {
-    //   this.props.userperm.map((a) => console.log(a));
-    // }
-  }
+  componentDidMount() {}
 
   onChange = (e) => {
     this.setState({ [e.target.name]: e.target.value });
@@ -45,20 +27,21 @@ export class FormName extends Component {
     const created_by = this.props.created_by;
     const { title, description } = this.state;
     const desc = { title, description, created_by };
-    console.log(desc);
+
     this.props.addName(desc);
     this.setState({ flag: true });
   };
 
   render() {
-    // if(this.props.created_by in this.props.userperm){
-    //   return
     const { title, description } = this.state;
     if (this.state.flag) {
       return <Dashboard title={this.state.title} />;
     }
     return (
       <Fragment>
+        {this.props.Userperm.map((a) => (
+          <h1>{a.username}</h1>
+        ))}
         <div
           style={{
             wordWrap: "break-word",
@@ -126,8 +109,8 @@ const btnStyle = {
 };
 
 const mapStateToProps = (state) => ({
+  Userperm: state.Userperm.Userperm,
   created_by: state.Auth.user.username,
-  userperm: state.userperm.userperm,
 });
 
-export default connect(mapStateToProps, { getperm, addName })(FormName);
+export default connect(mapStateToProps, { getPerm, addName })(FormName);

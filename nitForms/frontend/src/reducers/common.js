@@ -1,19 +1,17 @@
 import { GET_PERM } from "../actions/types";
 
-const intitlaState = {
-  userperm: [],
+const initialState = {
+  Userperm: [],
 };
 
-export default function (state = intitlaState, action) {
+export default function (state = initialState, action) {
   switch (action.type) {
     case GET_PERM:
       return {
         ...state,
-        userperm: action.payload,
+        Userperm: action.payload,
       };
     default:
-      return {
-        ...state,
-      };
+      return state;
   }
 }

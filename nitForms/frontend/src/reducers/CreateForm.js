@@ -43,7 +43,6 @@ export default function (state = initialState, action) {
         ...state,
         Forms: action.payload,
       };
-
     default:
       return state;
   }

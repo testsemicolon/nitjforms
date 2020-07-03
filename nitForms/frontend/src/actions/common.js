@@ -2,7 +2,7 @@ import { GET_PERM } from "./types";
 import axios from "axios";
 import { tokenConfig } from "./Auth";
 
-export const getperm = () => (dispatch, getState) => {
+export const getPerm = () => (dispatch, getState) => {
   axios
     .get("userperm/", tokenConfig(getState))
     .then((res) => {
