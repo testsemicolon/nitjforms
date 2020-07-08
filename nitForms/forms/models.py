@@ -44,24 +44,3 @@ class GeneralForms(models.Model):
 
 
 
-
-
-
-
-
-class test1(models.Model):
-    what_is_your_name = models.CharField(max_length=1000)
-    sasasa = models.CharField(max_length=1000)
-
-
-class test1Accepted(models.Model):
-    what_is_your_name = models.CharField(max_length=1000)
-    sasasa = models.CharField(max_length=1000)
-
-
-class test2(models.Model):
-    what_is_your_name = models.CharField(max_length=1000)
-
-
-class test2Accepted(models.Model):
-    what_is_your_name = models.CharField(max_length=1000)

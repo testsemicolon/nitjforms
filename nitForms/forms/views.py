@@ -53,8 +53,11 @@ def post_views(request):
         # Writing Admin.py
         f = open(adminPath, 'a')
         f.write("\nadmin.site.register("+title+")\n")
+
         f.write("\nadmin.site.register("+title+"Accepted)\n")
+
         f.close()
+
 
         # Writing Serializers.py
         f = open(serializerPath, 'a')
@@ -62,11 +65,14 @@ def post_views(request):
         f.write("    class Meta:\n")
         f.write("        model = "+title+"\n")
         f.write("        fields = '__all__'\n")
+
         f.write("\n\nclass "+title+"AcceptedSerializer(serializers.ModelSerializer):\n")
         f.write("    class Meta:\n")
-        f.write("        model = "+title+"\n")
+        f.write("        model = "+title+"Accepted\n")
         f.write("        fields = '__all__'\n")
+
         f.close()
+
 
         # Writing Api.py
         f = open(apiPath, 'a')
@@ -74,20 +80,27 @@ def post_views(request):
         f.write("    queryset = "+title+".objects.all()\n")
         f.write("    permission_class = [permissions.AllowAny]\n")
         f.write("    serializer_class = "+title+"Serializer\n")
+
         f.write("\n\nclass "+title+"AcceptedViewSet(viewsets.ModelViewSet):\n")
-        f.write("    queryset = "+title+".objects.all()\n")
+        f.write("    queryset = "+title+"Accepted.objects.all()\n")
         f.write("    permission_class = [permissions.AllowAny]\n")
-        f.write("    serializer_class = "+title+"Serializer\n")
+        f.write("    serializer_class = "+title+"AcceptedSerializer\n")
+
         f.close()
+
 
         # Writing Urls.py
         f = open(urlPath, 'a')
         f.write("\n\nrouter.register('"+title +
                 "', "+title+"ViewSet, '"+title+"')\n")
-        f.write("\n\nrouter.register('"+title +
-                "Accepted', "+title+"ViewSet, '"+title+"')\n")
         f.write("urlpatterns = router.urls\n")
+
+        f.write("\n\nrouter.register('"+title +
+                "Accepted', "+title+"AcceptedViewSet, '"+title+"Accepted')\n")
+        f.write("urlpatterns = router.urls\n")
+
         f.close()
+
 
         # Calling Migrations to database
         os.chdir(migratePath)

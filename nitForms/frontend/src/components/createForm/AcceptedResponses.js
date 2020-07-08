@@ -12,10 +12,17 @@ export class AcceptedResponses extends Component {
   state = {
     content: "",
   };
-
+  created_by2 = "";
   constructor(props) {
     super(props);
     this.props.getAccepted(this.props.match.params.title);
+
+    {
+      this.props.FormName.map((a) => {
+        this.created_by2 = a.created_by;
+      });
+    }
+    console.log(this.created_by2, this.props.created_by1);
   }
 
   onSubmit = (e) => {
@@ -51,9 +58,7 @@ export class AcceptedResponses extends Component {
               editor={ClassicEditor}
               data=""
               onInit={(editor) => {
-                // You can store the "editor" and use when it is needed.
                 const data = editor.getData();
-                console.log("Editor is ready to use!", editor);
               }}
               onChange={(event, editor) => {
                 const data = editor.getData();
@@ -132,6 +137,8 @@ export class AcceptedResponses extends Component {
 
 const mapStateToProps = (state) => ({
   AcceptedResponse: state.AcceptedResponse.AcceptedResponse,
+  FormName: state.FormName.FormName,
+  created_by1: state.Auth.user.username,
 });
 
 export default connect(mapStateToProps, { getAccepted })(AcceptedResponses);
