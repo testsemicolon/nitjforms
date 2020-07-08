@@ -6,6 +6,7 @@ import { connect } from "react-redux";
 import { getAccepted } from "../../actions/AcceptedResponse";
 import { Table } from "react-bootstrap";
 import DownloadLink from "react-download-link";
+import { Button } from "react-bootstrap";
 
 export class AcceptedResponses extends Component {
   state = {
@@ -25,7 +26,7 @@ export class AcceptedResponses extends Component {
   render() {
     return (
       <Fragment>
-        <AutoComplete
+        {/* <AutoComplete
           options={[
             "Papaya",
             "Persimmon",
@@ -35,34 +36,59 @@ export class AcceptedResponses extends Component {
             "Pomegranate",
             "Pineapple",
           ]}
-        />
-        <h2>Using CKEditor 5 build in React</h2>
-        <form onSubmit={this.onSubmit}>
-          <CKEditor
-            editor={ClassicEditor}
-            data=""
-            onInit={(editor) => {
-              // You can store the "editor" and use when it is needed.
-              const data = editor.getData();
-              console.log("Editor is ready to use!", editor);
-            }}
-            onChange={(event, editor) => {
-              const data = editor.getData();
-              this.setState({
-                content: data,
-              });
-            }}
-          />
-          <button type="submit">
-            <DownloadLink
-              label="SUBMT AND DOWNLOAD"
-              filename="myfile.html"
-              exportFile={() => this.state.content}
+        /> */}
+        <div
+          style={{
+            position: "relative",
+            float: "left",
+            width: "35vw",
+          }}
+        >
+          <h3 style={{ textAlign: "center" }}>Editor</h3>
+          <hr />
+          <form onSubmit={this.onSubmit}>
+            <CKEditor
+              editor={ClassicEditor}
+              data=""
+              onInit={(editor) => {
+                // You can store the "editor" and use when it is needed.
+                const data = editor.getData();
+                console.log("Editor is ready to use!", editor);
+              }}
+              onChange={(event, editor) => {
+                const data = editor.getData();
+                this.setState({
+                  content: data,
+                });
+              }}
             />
-          </button>
-        </form>
-
-        <div>
+            <div
+              style={{
+                alignItems: "center",
+                textAlign: "center",
+                marginTop: "2vw",
+              }}
+            >
+              <Button variant="outline-success" type="submit">
+                <DownloadLink
+                  style={{ font: "white" }}
+                  label="SUBMIT AND DOWNLOAD"
+                  filename="myfile.html"
+                  exportFile={() => this.state.content}
+                />
+              </Button>
+            </div>
+          </form>
+        </div>
+        <div
+          style={{
+            position: "relative",
+            float: "right",
+            width: "35vw",
+          }}
+        >
+          <h3 style={{ textAlign: "center" }}>Accepted Responses</h3>
+          <hr />
           <Table striped bordered hover responsive id={this.props.title}>
             {/* <thead>
           {Object.keys(this.props.Forms).map((quest) => console.log(quest))};

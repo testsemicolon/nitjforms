@@ -33,6 +33,7 @@ export class GenericResponses extends Component {
           <h3 style={{ textAlign: "center" }}>
             Responses for {this.props.title}
           </h3>
+          <hr />
           <br />
           <div>
             <Table striped bordered hover responsive id={this.props.title}>
@@ -45,7 +46,7 @@ export class GenericResponses extends Component {
                   return (
                     <Fragment key={key}>
                       <tr>
-                        <td>
+                        <td style={{ textAlign: "center" }}>
                           <Link
                             to={"/viewindividualresponse/" + key + "/" + title1}
                           >
@@ -82,7 +83,11 @@ export class GenericResponses extends Component {
     } else {
       return (
         <div>
-          <h1>Not authorized to view responses</h1>
+          <hr />
+          <h3 style={{ textAlign: "center" }}>
+            Not authorized to view responses!!
+          </h3>
+          <hr />
         </div>
       );
     }

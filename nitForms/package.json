@@ -38,6 +38,7 @@
     "react-alert": "^7.0.1",
     "react-alert-template-basic": "^1.0.0",
     "react-bootstrap": "^1.0.1",
+    "react-copy-to-clipboard": "^5.0.2",
     "react-dom": "^16.13.1",
     "react-download-link": "^2.3.0",
     "react-file-download": "^0.3.5",

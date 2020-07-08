@@ -120,9 +120,9 @@ export default function PersistentDrawerLeft() {
           >
             <MenuIcon />
           </IconButton>
-          <Typography variant="h6" style={{ fontSize: "1.7vw" }}>
-            NITJFORMS
-          </Typography>
+          <Link to="/">
+            <h2 style={{ fontSize: "1.7vw", color: "white" }}>NITJFORMS</h2>
+          </Link>
           <Buttons />
         </Toolbar>
       </AppBar>

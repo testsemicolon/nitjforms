@@ -4,13 +4,18 @@ import { getFormView } from "../../actions/CreateForm";
 import { getName } from "../../actions/FormName";
 import { formSubmit } from "../../actions/SubmitPage";
 import { Link } from "react-router-dom";
+import { CopyToClipboard } from "react-copy-to-clipboard";
+import { Button } from "react-bootstrap";
 
 import TextareaAutosize from "react-textarea-autosize";
 // import "./style.css";
 import { Card } from "react-bootstrap";
 
 export class PublishForm extends Component {
-  state = {};
+  state = {
+    value: "",
+    copied: false,
+  };
   ftitle = "";
   fdescription = "";
 
@@ -55,16 +60,17 @@ export class PublishForm extends Component {
   };
 
   render() {
+    this.state.value = "localhost:8000${this.ftitle}";
     return (
       <Fragment>
         <div
           style={{
             fontSize: "2rem",
-            justifyContent: "center",
+            textAlign: "center",
           }}
         >
           Title: {this.ftitle}
-          <Link to={`/response/${this.ftitle}`}>
+          {/* <Link to={`/response/${this.ftitle}`}>
             <button
               style={{
                 fontSize: "1.5rem",
@@ -75,7 +81,7 @@ export class PublishForm extends Component {
             >
               response
             </button>
-          </Link>
+          </Link> */}
           <div
             style={{
               fontSize: "1rem",
@@ -83,7 +89,11 @@ export class PublishForm extends Component {
               color: "grey",
             }}
           >
-            <hr />
+            <hr
+              style={{
+                width: "20vw",
+              }}
+            />
             Description: {this.fdescription}
           </div>
           <hr />
@@ -94,118 +104,34 @@ export class PublishForm extends Component {
             justifyContent: "center",
             marginTop: "2rem",
             marginBottom: "2rem",
+
+            alignItems: "center",
           }}
         >
-          <form onSubmit={this.onSubmit}>
-            {this.props.Forms.map((form) => {
-              if (form.inputType === "Short Answer") {
-                return (
-                  <div
-                    key={form.id}
-                    style={{
-                      borderRadius: "5rem",
-                      borderWidth: ".5rem",
-                      borderColor: "grey",
-                      marginTop: "2rem",
-                    }}
-                  >
-                    <Card
-                      style={{
-                        borderRadius: ".95rem",
-                        borderWidth: ".2rem",
-                        borderColor: "lightgrey",
-                        marginTop: "2rem",
-                      }}
-                    >
-                      <div>
-                        <Card.Header
-                          style={{
-                            backgroundColor: "#A2B8FB ",
-                            borderRadius: ".75rem .75rem 0 0",
-                            width: "40rem",
-                          }}
-                        >
-                          QUESTION
-                        </Card.Header>
-                        <Card.Body
-                          style={{
-                            backgroundColor: "#EEF0F7 ",
-                            borderRadius: " 0 0 .75rem .75rem",
-                          }}
-                        >
-                          <Card.Title>{form.question}</Card.Title>
-                          <Card.Text>
-                            <TextareaAutosize
-                              name={form.question}
-                              style={{ width: "37rem", borderColor: "white" }}
-                              onChange={this.onChange}
-                              placeholder="Write your answer here..."
-                            ></TextareaAutosize>
-                          </Card.Text>
-                        </Card.Body>
-                      </div>
-                    </Card>
-                  </div>
-                );
-              }
-              if (form.inputType == "Paragraph") {
-                return (
-                  <div
-                    key={form.id}
-                    style={{
-                      borderRadius: "5rem",
-                      borderWidth: ".5rem",
-                      borderColor: "grey",
-                      marginTop: "2rem",
-                    }}
-                  >
-                    <Card
-                      style={{
-                        borderRadius: ".95rem",
-                        borderWidth: ".2rem",
-                        borderColor: "lightgrey",
-                        marginTop: "2rem",
-                      }}
-                    >
-                      <div>
-                        <Card.Header
-                          style={{
-                            backgroundColor: "#A2B8FB ",
-                            borderRadius: ".75rem .75rem 0 0",
-                            width: "40rem",
-                          }}
-                        >
-                          QUESTION
-                        </Card.Header>
-                        <Card.Body
-                          style={{
-                            backgroundColor: "#EEF0F7 ",
-                            borderRadius: " 0 0 .75rem .75rem",
-                          }}
-                        >
-                          <Card.Title>{form.question}</Card.Title>
-                          <Card.Text>
-                            <TextareaAutosize
-                              name={form.question}
-                              style={{ width: "37rem", borderColor: "white" }}
-                              onChange={this.onChange}
-                              placeholder="Write your answer paragraph.."
-                            ></TextareaAutosize>
-                          </Card.Text>
-                        </Card.Body>
-                      </div>
-                    </Card>
-                  </div>
-                );
-              }
-            })}
-            <button
-              type="submit"
-              style={{ marginTop: "1.5rem", justifyContent: "center" }}
-            >
-              Submit
-            </button>
-          </form>
+          Your form has been created!
+        </div>
+        <br />
+        <div style={{ textAlign: "center", alignItems: "center" }}>
+          <Link to={`/${this.ftitle}`}>
+            <Button variant="outline-warning">Go to form</Button>
+          </Link>
+          <Button
+            style={{
+              width: "2vw",
+              backgroundColor: "transparent",
+              borderWidth: 0,
+            }}
+          >
+            {" "}
+          </Button>
+          <CopyToClipboard
+            text={`localhost:8000/#/${this.ftitle}`}
+            onCopy={() => this.setState({ copied: true })}
+          >
+            <Button variant="outline-success" style={{ textAlign: "center" }}>
+              Copy to clipboard
+            </Button>
+          </CopyToClipboard>
         </div>
       </Fragment>
     );

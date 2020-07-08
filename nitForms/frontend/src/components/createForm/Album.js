@@ -96,7 +96,6 @@ export default function Album() {
             <div className={classes.heroButtons}>
               <Grid container spacing={2} justify="center">
                 <Grid item>
-
                   <Link1 to="/formname">
                     <Button variant="contained" color="primary">
                       CREATE A NEW FORM
@@ -118,7 +117,8 @@ export default function Album() {
       {/* Footer */}
       <footer className={classes.footer}>
         <Typography variant="h6" align="center" gutterBottom>
-          Footer
+          {" "}
+          National Institute of Technology
         </Typography>
         <Typography
           variant="subtitle1"
@@ -126,9 +126,8 @@ export default function Album() {
           color="textSecondary"
           component="p"
         >
-          Something here to give the footer a purpose!
+          Jalandhar
         </Typography>
-        <Copyright />
       </footer>
       {/* End footer */}
     </React.Fragment>
