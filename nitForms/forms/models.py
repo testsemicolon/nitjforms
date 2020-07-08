@@ -12,9 +12,10 @@ class UserPerm(models.Model):
 class CreateForms(models.Model):
     question = models.CharField(max_length=100, blank=False)
     inputType = models.CharField(max_length=50, blank=False)
-    owner = models.ForeignKey(
-        User, related_name="createForm", on_delete=models.CASCADE, null=True
-    )
+    owner = models.ForeignKey(User,
+                              related_name="createForm",
+                              on_delete=models.CASCADE,
+                              null=True)
 
     def __str__(self):
         return self.question
@@ -51,3 +52,11 @@ class test3(models.Model):
     fdafad = models.TextField()
     jhgjghjhg = models.TextField()
     ghjghjghj = models.TextField()
+
+
+class testtt(models.Model):
+    what_is_your_name = models.CharField(max_length=1000)
+
+
+class testtt(models.Model):
+    what_is_your_name = models.CharField(max_length=1000)

@@ -38,9 +38,10 @@ export class GenericResponses extends Component {
             sheet={this.props.title}
             buttonText="Download as XLS"
           />
-
-          <h3 style={{ textAlign: "center" }}>Response</h3>
-          <h1>hello</h1>
+          <h3 style={{ textAlign: "center" }}>
+            Responses for {this.props.title}
+          </h3>
+          <br />
           <div>
             <Table striped bordered hover responsive id={this.props.title}>
               {/* <thead>

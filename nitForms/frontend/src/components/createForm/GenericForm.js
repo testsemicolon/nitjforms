@@ -2,7 +2,7 @@ import React, { Component, Fragment } from "react";
 import { connect } from "react-redux";
 import { getFormView } from "../../actions/CreateForm";
 import TextareaAutosize from "react-textarea-autosize";
-import { Card } from "react-bootstrap";
+import { Card, Button } from "react-bootstrap";
 import { formSubmit } from "../../actions/SubmitPage";
 import GenericResponses from "./GenericResponses";
 import { Link } from "react-router-dom";
@@ -50,29 +50,51 @@ export class GenericForm extends Component {
           }}
         >
           Title: {this.props.title}
-          <Link to="/accepted/">
-            <button
-              style={{
-                fontSize: "1.5rem",
-                justifyContent: "center",
-                color: "black",
-                marginLeft: "45rem",
-              }}
-            >
-              accepted response
-            </button>
-          </Link>
           <Link to={`/response/${this.props.title}`}>
-            <button
+            <Button
               style={{
-                fontSize: "1.5rem",
-                justifyContent: "center",
-                color: "black",
-                marginLeft: "45rem",
+                fontSize: "1vw",
+                float: "right",
+                position: "relative",
+                background: "#3f51b5",
+                color: "#fff",
+                padding: "0.4vw",
+                borderRadius: ".3vw",
+                borderColor: "black",
+                borderWidth: "0.08vw",
+                width: "12vw",
               }}
             >
-              response
-            </button>
+              Responses
+            </Button>
+          </Link>
+          <Button
+            style={{
+              backgroundColor: "transparent",
+              float: "right",
+              position: "relative",
+              borderWidth: 0,
+            }}
+          >
+            {" "}
+          </Button>
+          <Link to="/accepted/">
+            <Button
+              style={{
+                background: "#3f51b5",
+                color: "#fff",
+                padding: "0.4vw",
+                borderRadius: ".3vw",
+                borderColor: "black",
+                borderWidth: "0.08vw",
+                width: "12vw",
+                fontSize: "1vw",
+                float: "right",
+                position: "relative",
+              }}
+            >
+              Accepted responses
+            </Button>{" "}
           </Link>
           <div
             style={{
@@ -82,7 +104,6 @@ export class GenericForm extends Component {
             }}
           >
             <hr />
-            {/* Description: {this.fdescription} */}
           </div>
           <hr />
         </div>
@@ -109,18 +130,27 @@ export class GenericForm extends Component {
                   >
                     <Card
                       style={{
-                        borderRadius: ".95rem",
-                        borderWidth: ".2rem",
+                        borderRadius: ".95vw",
+                        borderWidth: ".2vw",
                         borderColor: "lightgrey",
-                        marginTop: "2rem",
+                        marginTop: "2vw",
+                        width: "40.37vw",
+                        marginLeft: "auto",
+                        marginRight: "auto",
+                        height: "auto",
                       }}
                     >
                       <div>
                         <Card.Header
                           style={{
                             backgroundColor: "#A2B8FB ",
-                            borderRadius: ".75rem .75rem 0 0",
-                            width: "40rem",
+                            borderRadius: ".75vw .75vw 0 0",
+                            width: "40vw",
+                            height: "2.5vw",
+                            fontSize: "1vw",
+
+                            margin: 0,
+                            padding: "0.6vw",
                           }}
                         >
                           QUESTION
@@ -128,14 +158,26 @@ export class GenericForm extends Component {
                         <Card.Body
                           style={{
                             backgroundColor: "#EEF0F7 ",
-                            borderRadius: " 0 0 .75rem .75rem",
+                            borderRadius: " 0 0 .75vw .75vw",
+                            width: "40vw",
+                            fontSize: "0.93vw",
+                            height: "auto",
+                            padding: "0.6vw",
+                            margin: 0,
                           }}
                         >
-                          <Card.Title>{form.question}</Card.Title>
+                          <Card.Title
+                            style={{
+                              fontSize: ".93vw",
+                              marginBottom: ".5vw",
+                            }}
+                          >
+                            {form.question}
+                          </Card.Title>
                           <Card.Text>
                             <TextareaAutosize
                               name={form.question}
-                              style={{ width: "37rem", borderColor: "white" }}
+                              style={{ width: "37vw", borderColor: "white" }}
                               onChange={this.onChange}
                               placeholder="Write your answer here..."
                             ></TextareaAutosize>
@@ -159,18 +201,27 @@ export class GenericForm extends Component {
                   >
                     <Card
                       style={{
-                        borderRadius: ".95rem",
-                        borderWidth: ".2rem",
+                        borderRadius: ".95vw",
+                        borderWidth: ".2vw",
                         borderColor: "lightgrey",
-                        marginTop: "2rem",
+                        marginTop: "2vw",
+                        width: "40.37vw",
+                        marginLeft: "auto",
+                        marginRight: "auto",
+                        height: "auto",
                       }}
                     >
                       <div>
                         <Card.Header
                           style={{
                             backgroundColor: "#A2B8FB ",
-                            borderRadius: ".75rem .75rem 0 0",
-                            width: "40rem",
+                            borderRadius: ".75vw .75vw 0 0",
+                            width: "40vw",
+                            height: "2.5vw",
+                            fontSize: "1vw",
+
+                            margin: 0,
+                            padding: "0.6vw",
                           }}
                         >
                           QUESTION
@@ -178,14 +229,26 @@ export class GenericForm extends Component {
                         <Card.Body
                           style={{
                             backgroundColor: "#EEF0F7 ",
-                            borderRadius: " 0 0 .75rem .75rem",
+                            borderRadius: " 0 0 .75vw .75vw",
+                            width: "40vw",
+                            fontSize: "0.93vw",
+                            height: "auto",
+                            padding: "0.6vw",
+                            margin: 0,
                           }}
                         >
-                          <Card.Title>{form.question}</Card.Title>
+                          <Card.Title
+                            style={{
+                              fontSize: ".93vw",
+                              marginBottom: ".5vw",
+                            }}
+                          >
+                            {form.question}
+                          </Card.Title>
                           <Card.Text>
                             <TextareaAutosize
                               name={form.question}
-                              style={{ width: "37rem", borderColor: "white" }}
+                              style={{ width: "37vw", borderColor: "white" }}
                               onChange={this.onChange}
                               placeholder="Write your answer paragraph.."
                             ></TextareaAutosize>
@@ -197,12 +260,26 @@ export class GenericForm extends Component {
                 );
               }
             })}
-            <button
-              type="submit"
-              style={{ marginTop: "1.5rem", justifyContent: "center" }}
-            >
-              Submit
-            </button>
+            <div style={{ alignItem: "center", textAlign: "center" }}>
+              <Button
+                type="submit"
+                style={{
+                  marginTop: "1.5rem",
+                  background: "#3f51b5",
+                  color: "#fff",
+                  padding: ".4rem",
+                  borderRadius: ".3rem",
+                  borderColor: "black",
+                  borderWidth: "0rem",
+                  width: "12rem",
+
+                  // marginLeft: "auto",
+                  // marginRight: "auto",
+                }}
+              >
+                Submit
+              </Button>
+            </div>
           </form>
         </div>
       </Fragment>

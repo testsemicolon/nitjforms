@@ -9,3 +9,5 @@ admin.site.register(UserPerm)
 admin.site.register(test101)
 
 admin.site.register(test3)
+
+admin.site.register(testtt)

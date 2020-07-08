@@ -1,7 +1,7 @@
 import React, { Component, Fragment } from "react";
 import AutoComplete from "./AutoComplete";
-import CKEditor from "@ckeditor/ckeditor5-react";
-import ClassicEditor from "@ckeditor/ckeditor5-build-classic/build/ckeditor";
+// import CKEditor from "@ckeditor/ckeditor5-react";
+// import ClassicEditor from "@ckeditor/ckeditor5-build-classic/build/ckeditor";
 // import Mention from "@ckeditor/ckeditor5-mention/src/mention";
 // ClassicEditor.create(editorElement, {
 //   plugins: [Mention],
@@ -42,7 +42,7 @@ export class AcceptedResponses extends Component {
         />
 
         <h2>Using CKEditor 5 build in React</h2>
-        <CKEditor
+        {/* <CKEditor
           editor={ClassicEditor}
           data=""
           onInit={(editor) => {
@@ -51,7 +51,7 @@ export class AcceptedResponses extends Component {
             console.log("Editor is ready to use!", editor);
           }}
           onChange={this.onChange(event, this.editor)}
-        />
+        /> */}
       </Fragment>
     );
   }
