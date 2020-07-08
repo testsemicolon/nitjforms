@@ -15,19 +15,11 @@ export class GenericResponses extends Component {
     console.log(this.props.created_by1, this.props.created_by);
   }
 
-  onClick = () => {
-    console.log("hello");
-    return (
-      <div>
-        <ViewIndividualResponse />
-      </div>
-    );
-  };
-
   componentDidMount() {}
 
   render() {
     if (this.props.created_by1 === this.props.created_by) {
+      const title1 = this.props.title;
       return (
         <Fragment>
           <ReactHTMLTableToExcel
@@ -54,7 +46,9 @@ export class GenericResponses extends Component {
                     <Fragment key={key}>
                       <tr>
                         <td>
-                          <Link to={"/viewindividualresponse/" + key}>
+                          <Link
+                            to={"/viewindividualresponse/" + key + "/" + title1}
+                          >
                             <Button>View</Button>
                           </Link>
                         </td>

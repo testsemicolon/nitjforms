@@ -40,5 +40,10 @@ class GeneralForms(models.Model):
         return self.formName
 
 
-class test102(models.Model):
-    what_is_your_mother_name = models.CharField(max_length=1000)
+
+
+
+
+
+
+

@@ -33,7 +33,3 @@ class GeneralFormsViewSet(viewsets.ModelViewSet):
 
 
 
-class test102ViewSet(viewsets.ModelViewSet):
-    queryset = test102.objects.all()
-    permission_class = [permissions.AllowAny]
-    serializer_class = test102Serializer

@@ -2,11 +2,20 @@ import React, { Component, Fragment } from "react";
 import AutoComplete from "./AutoComplete";
 import CKEditor from "@ckeditor/ckeditor5-react";
 import ClassicEditor from "@ckeditor/ckeditor5-build-classic/build/ckeditor";
+import { connect } from "react-redux";
+import { getAccepted } from "../../actions/AcceptedResponse";
+import { Table } from "react-bootstrap";
+import DownloadLink from "react-download-link";
 
 export class AcceptedResponses extends Component {
   state = {
     content: "",
   };
+
+  constructor(props) {
+    super(props);
+    this.props.getAccepted(this.props.match.params.title);
+  }
 
   onSubmit = (e) => {
     e.preventDefault();
@@ -27,7 +36,6 @@ export class AcceptedResponses extends Component {
             "Pineapple",
           ]}
         />
-
         <h2>Using CKEditor 5 build in React</h2>
         <form onSubmit={this.onSubmit}>
           <CKEditor
@@ -45,11 +53,59 @@ export class AcceptedResponses extends Component {
               });
             }}
           />
-          <button type="submit">Submit</button>
+          <button type="submit">
+            <DownloadLink
+              label="SUBMT AND DOWNLOAD"
+              filename="myfile.html"
+              exportFile={() => this.state.content}
+            />
+          </button>
         </form>
+
+        <div>
+          <Table striped bordered hover responsive id={this.props.title}>
+            {/* <thead>
+          {Object.keys(this.props.Forms).map((quest) => console.log(quest))};
+          
+        </thead> */}
+            <tbody>
+              {Object.entries(this.props.AcceptedResponse).map(
+                ([key, value]) => {
+                  return (
+                    <Fragment key={key}>
+                      <tr>
+                        {Object.entries(value).map(([question, answer]) => {
+                          return (
+                            <Fragment key={question}>
+                              <td
+                                style={{
+                                  alignContent: "center",
+                                  alignItems: "center",
+                                  textAlign: "center",
+                                }}
+                              >
+                                <strong>{question.toUpperCase()}</strong>
+                                <br />
+                                {answer}
+                              </td>
+                            </Fragment>
+                          );
+                        })}
+                      </tr>
+                    </Fragment>
+                  );
+                }
+              )}
+            </tbody>
+          </Table>
+        </div>
       </Fragment>
     );
   }
 }
 
-export default AcceptedResponses;
+const mapStateToProps = (state) => ({
+  AcceptedResponse: state.AcceptedResponse.AcceptedResponse,
+});
+
+export default connect(mapStateToProps, { getAccepted })(AcceptedResponses);

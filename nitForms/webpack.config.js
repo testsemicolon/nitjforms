@@ -10,9 +10,9 @@ module.exports = {
         },
       },
       {
-        test: /plugin\.css$/,
+        test: /\.css$/i,
         use: {
-          loader: "style-loader",
+          loader: "css-loader",
         },
       },
     ],

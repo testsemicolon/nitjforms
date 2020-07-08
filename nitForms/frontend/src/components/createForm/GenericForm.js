@@ -36,7 +36,7 @@ export class GenericForm extends Component {
     Object.keys(quest).map((obj) =>
       renameKey(quest, obj, obj.replace(/[ ]/g, "_"))
     );
-
+    console.log(quest);
     this.props.formSubmit(quest, this.props.title);
   };
 
@@ -78,7 +78,7 @@ export class GenericForm extends Component {
           >
             {" "}
           </Button>
-          <Link to="/accepted/">
+          <Link to={"/accepted/" + this.props.title}>
             <Button
               style={{
                 background: "#3f51b5",

@@ -5,6 +5,7 @@ import Errors from "./Errors";
 import Auth from "./Auth";
 import Messages from "./Messages";
 import Userperm from "./Common";
+import AcceptedResponse from "./AcceptedResponse";
 
 export default combineReducers({
   Forms: Forms,
@@ -13,4 +14,5 @@ export default combineReducers({
   Errors: Errors,
   Messages: Messages,
   Userperm: Userperm,
+  AcceptedResponse: AcceptedResponse,
 });

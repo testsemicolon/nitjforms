@@ -34,9 +34,9 @@ export class Urls extends Component {
         <PrivateRoute path="/publish" component={PublishForm} />
         <PrivateRoute path="/card" component={CardForm} />
         <PrivateRoute path="/old" component={OldForms} />
-        <PrivateRoute path="/accepted" component={AcceptedResponses} />
+        <PrivateRoute path="/accepted/:title" component={AcceptedResponses} />
         <PrivateRoute
-          path="/viewindividualresponse/:value"
+          path="/viewindividualresponse/:value/:title"
           component={ViewIndividualResponse}
         />
 

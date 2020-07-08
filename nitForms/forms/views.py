@@ -38,16 +38,31 @@ def post_views(request):
             question1 = str(i.question)
             question1 = question1.replace(" ", "_")
             modelFunc(modelPath, question1, i.inputType)
+
+        f = open(modelPath, 'a')
+        f.write("\n\nclass "+title+"Accepted(models.Model):\n")
+        f.close()
+        data1 = CreateForms.objects.all()
+        for i in data1:
+            question1 = str(i.question)
+            question1 = question1.replace(" ", "_")
+            modelFunc(modelPath, question1, i.inputType)
+
         CreateForms.objects.all().delete()
 
         # Writing Admin.py
         f = open(adminPath, 'a')
         f.write("\nadmin.site.register("+title+")\n")
+        f.write("\nadmin.site.register("+title+"Accepted)\n")
         f.close()
 
         # Writing Serializers.py
         f = open(serializerPath, 'a')
         f.write("\n\nclass "+title+"Serializer(serializers.ModelSerializer):\n")
+        f.write("    class Meta:\n")
+        f.write("        model = "+title+"\n")
+        f.write("        fields = '__all__'\n")
+        f.write("\n\nclass "+title+"AcceptedSerializer(serializers.ModelSerializer):\n")
         f.write("    class Meta:\n")
         f.write("        model = "+title+"\n")
         f.write("        fields = '__all__'\n")
@@ -59,12 +74,18 @@ def post_views(request):
         f.write("    queryset = "+title+".objects.all()\n")
         f.write("    permission_class = [permissions.AllowAny]\n")
         f.write("    serializer_class = "+title+"Serializer\n")
+        f.write("\n\nclass "+title+"AcceptedViewSet(viewsets.ModelViewSet):\n")
+        f.write("    queryset = "+title+".objects.all()\n")
+        f.write("    permission_class = [permissions.AllowAny]\n")
+        f.write("    serializer_class = "+title+"Serializer\n")
         f.close()
 
         # Writing Urls.py
         f = open(urlPath, 'a')
         f.write("\n\nrouter.register('"+title +
                 "', "+title+"ViewSet, '"+title+"')\n")
+        f.write("\n\nrouter.register('"+title +
+                "Accepted', "+title+"ViewSet, '"+title+"')\n")
         f.write("urlpatterns = router.urls\n")
         f.close()
 
