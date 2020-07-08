@@ -9,33 +9,12 @@ module.exports = {
           loader: "babel-loader",
         },
       },
-      // {
-      //   test: /ckeditor5-[^/\\]+[/\\]theme[/\\]icons[/\\][^/\\]+\.svg$/,
-      //   use: ["raw-loader"],
-      // },
-      // {
-      //   test: /ckeditor5-[^/\\]+[/\\]theme[/\\].+\.css$/,
-      //   use: [
-      //     {
-      //       loader: "style-loader",
-      //       options: {
-      //         injectType: "singletonStyleTag",
-      //         attributes: {
-      //           "data-cke": true,
-      //         },
-      //       },
-      //     },
-      //   {
-      //     loader: "postcss-loader",
-      //     options: styles.getPostCssConfig({
-      //       themeImporter: {
-      //         themePath: require.resolve("@ckeditor/ckeditor5-theme-lark"),
-      //       },
-      //       minify: true,
-      //     }),
-      //   },
-      // ],
-      // },
+      {
+        test: /plugin\.css$/,
+        use: {
+          loader: "style-loader",
+        },
+      },
     ],
   },
 };

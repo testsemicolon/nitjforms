@@ -1,29 +1,16 @@
 import React, { Component, Fragment } from "react";
 import AutoComplete from "./AutoComplete";
-// import CKEditor from "@ckeditor/ckeditor5-react";
-// import ClassicEditor from "@ckeditor/ckeditor5-build-classic/build/ckeditor";
-// import Mention from "@ckeditor/ckeditor5-mention/src/mention";
-// ClassicEditor.create(editorElement, {
-//   plugins: [Mention],
-//   mention: {
-//     feeds: [
-//       {
-//         marker: "@",
-//         feed: ["@Barney", "@Lily", "@Marshall", "@Robin", "@Ted"],
-//       },
-//     ],
-//   },
-// })
-//   .then((editor) => {
-//     console.log("Editor was initialized", editor);
-//   })
-//   .catch((error) => {
-//     console.error(error.stack);
-//   });
+import CKEditor from "@ckeditor/ckeditor5-react";
+import ClassicEditor from "@ckeditor/ckeditor5-build-classic/build/ckeditor";
 
 export class AcceptedResponses extends Component {
-  onChange = (event, editor) => {
-    console.log(editor);
+  state = {
+    content: "",
+  };
+
+  onSubmit = (e) => {
+    e.preventDefault();
+    console.log(this.state.content);
   };
 
   render() {
@@ -42,16 +29,24 @@ export class AcceptedResponses extends Component {
         />
 
         <h2>Using CKEditor 5 build in React</h2>
-        {/* <CKEditor
-          editor={ClassicEditor}
-          data=""
-          onInit={(editor) => {
-            // You can store the "editor" and use when it is needed.
-            const data = editor.getData();
-            console.log("Editor is ready to use!", editor);
-          }}
-          onChange={this.onChange(event, this.editor)}
-        /> */}
+        <form onSubmit={this.onSubmit}>
+          <CKEditor
+            editor={ClassicEditor}
+            data=""
+            onInit={(editor) => {
+              // You can store the "editor" and use when it is needed.
+              const data = editor.getData();
+              console.log("Editor is ready to use!", editor);
+            }}
+            onChange={(event, editor) => {
+              const data = editor.getData();
+              this.setState({
+                content: data,
+              });
+            }}
+          />
+          <button type="submit">Submit</button>
+        </form>
       </Fragment>
     );
   }

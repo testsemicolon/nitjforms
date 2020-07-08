@@ -40,23 +40,5 @@ class GeneralForms(models.Model):
         return self.formName
 
 
-class test101(models.Model):
+class test102(models.Model):
     what_is_your_mother_name = models.CharField(max_length=1000)
-    mother = models.CharField(max_length=1000)
-    sister_name = models.CharField(max_length=1000)
-
-
-class test3(models.Model):
-    what_is_your_name = models.CharField(max_length=1000)
-    what_is_your_father_name = models.TextField()
-    fdafad = models.TextField()
-    jhgjghjhg = models.TextField()
-    ghjghjghj = models.TextField()
-
-
-class testtt(models.Model):
-    what_is_your_name = models.CharField(max_length=1000)
-
-
-class testtt(models.Model):
-    what_is_your_name = models.CharField(max_length=1000)
