@@ -52,7 +52,6 @@ export class PublishForm extends Component {
     );
 
     this.props.formSubmit(quest, this.ftitle);
-    this.props.history.push("/publish");
   };
 
   render() {

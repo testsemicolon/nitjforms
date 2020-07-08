@@ -28,3 +28,15 @@ class GeneralFormsSerializer(serializers.ModelSerializer):
 
 
 
+
+
+class test101Serializer(serializers.ModelSerializer):
+    class Meta:
+        model = test101
+        fields = '__all__'
+
+
+class test3Serializer(serializers.ModelSerializer):
+    class Meta:
+        model = test3
+        fields = '__all__'

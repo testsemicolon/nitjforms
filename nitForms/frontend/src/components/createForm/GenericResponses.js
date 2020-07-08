@@ -3,6 +3,10 @@ import { connect } from "react-redux";
 import { getGeneric } from "../../actions/CreateForm";
 import { Table } from "react-bootstrap";
 import ReactHTMLTableToExcel from "react-html-table-to-excel";
+import { Button } from "react-bootstrap";
+import { Redirect } from "react-router-dom";
+import { Link } from "react-router-dom";
+import ViewIndividualResponse from "./ViewIndividualResponse";
 
 export class GenericResponses extends Component {
   constructor(props) {
@@ -10,6 +14,15 @@ export class GenericResponses extends Component {
     this.props.getGeneric(this.props.title);
     console.log(this.props.created_by1, this.props.created_by);
   }
+
+  onClick = () => {
+    console.log("hello");
+    return (
+      <div>
+        <ViewIndividualResponse />
+      </div>
+    );
+  };
 
   componentDidMount() {}
 
@@ -26,7 +39,7 @@ export class GenericResponses extends Component {
             buttonText="Download as XLS"
           />
 
-          <h3 style={{ textAlign: "center" }}>Respons</h3>
+          <h3 style={{ textAlign: "center" }}>Response</h3>
           <h1>hello</h1>
           <div>
             <Table striped bordered hover responsive id={this.props.title}>
@@ -39,6 +52,12 @@ export class GenericResponses extends Component {
                   return (
                     <Fragment key={key}>
                       <tr>
+                        <td>
+                          <Link to={"/viewindividualresponse/" + key}>
+                            <Button>View</Button>
+                          </Link>
+                        </td>
+
                         {Object.entries(value).map(([question, answer]) => {
                           return (
                             <Fragment key={question}>

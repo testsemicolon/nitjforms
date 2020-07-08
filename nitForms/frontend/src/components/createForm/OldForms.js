@@ -11,11 +11,12 @@ import Typography from "@material-ui/core/Typography";
 import Container from "@material-ui/core/Container";
 import { getName } from "../../actions/FormName";
 import { Link } from "react-router-dom";
-
+import { getPerm } from "../../actions/common";
 export class OldForms extends Component {
   constructor(props) {
     super(props);
     this.props.getName();
+    this.props.getPerm();
   }
 
   static = {
@@ -82,6 +83,7 @@ export class OldForms extends Component {
 
 const mapStateToProps = (state) => ({
   FormName: state.FormName.FormName,
+  Userperm: state.Userperm.Userperm,
 });
 
-export default connect(mapStateToProps, { getName })(OldForms);
+export default connect(mapStateToProps, { getPerm, getName })(OldForms);
