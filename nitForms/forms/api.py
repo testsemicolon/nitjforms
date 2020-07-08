@@ -33,3 +33,15 @@ class GeneralFormsViewSet(viewsets.ModelViewSet):
 
 
 
+
+
+class test1ViewSet(viewsets.ModelViewSet):
+    queryset = test1.objects.all()
+    permission_class = [permissions.AllowAny]
+    serializer_class = test1Serializer
+
+
+class test1AcceptedViewSet(viewsets.ModelViewSet):
+    queryset = test1Accepted.objects.all()
+    permission_class = [permissions.AllowAny]
+    serializer_class = test1AcceptedSerializer

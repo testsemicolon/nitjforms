@@ -11,10 +11,17 @@ export class AcceptedResponses extends Component {
   state = {
     content: "",
   };
-
+  created_by2 = "";
   constructor(props) {
     super(props);
     this.props.getAccepted(this.props.match.params.title);
+
+    {
+      this.props.FormName.map((a) => {
+        this.created_by2 = a.created_by;
+      });
+    }
+    console.log(this.created_by2, this.props.created_by1);
   }
 
   onSubmit = (e) => {
@@ -23,89 +30,89 @@ export class AcceptedResponses extends Component {
   };
 
   render() {
-    return (
-      <Fragment>
-        <AutoComplete
-          options={[
-            "Papaya",
-            "Persimmon",
-            "Paw Paw",
-            "Prickly Pear",
-            "Peach",
-            "Pomegranate",
-            "Pineapple",
-          ]}
-        />
-        <h2>Using CKEditor 5 build in React</h2>
-        <form onSubmit={this.onSubmit}>
-          <CKEditor
-            editor={ClassicEditor}
-            data=""
-            onInit={(editor) => {
-              // You can store the "editor" and use when it is needed.
-              const data = editor.getData();
-              console.log("Editor is ready to use!", editor);
-            }}
-            onChange={(event, editor) => {
-              const data = editor.getData();
-              this.setState({
-                content: data,
-              });
-            }}
+    if (this.created_by2 === this.props.created_by1) {
+      return (
+        <Fragment>
+          <AutoComplete
+            options={[
+              "Papaya",
+              "Persimmon",
+              "Paw Paw",
+              "Prickly Pear",
+              "Peach",
+              "Pomegranate",
+              "Pineapple",
+            ]}
           />
-          <button type="submit">
-            <DownloadLink
-              label="SUBMT AND DOWNLOAD"
-              filename="myfile.html"
-              exportFile={() => this.state.content}
+          <h2>Using CKEditor 5 build in React</h2>
+          <form onSubmit={this.onSubmit}>
+            <CKEditor
+              editor={ClassicEditor}
+              data=""
+              onInit={(editor) => {
+                const data = editor.getData();
+              }}
+              onChange={(event, editor) => {
+                const data = editor.getData();
+                this.setState({
+                  content: data,
+                });
+              }}
             />
-          </button>
-        </form>
+            <button type="submit">
+              <DownloadLink
+                label="SUBMT AND DOWNLOAD"
+                filename="myfile.html"
+                exportFile={() => this.state.content}
+              />
+            </button>
+          </form>
 
-        <div>
-          <Table striped bordered hover responsive id={this.props.title}>
-            {/* <thead>
-          {Object.keys(this.props.Forms).map((quest) => console.log(quest))};
-          
-        </thead> */}
-            <tbody>
-              {Object.entries(this.props.AcceptedResponse).map(
-                ([key, value]) => {
-                  return (
-                    <Fragment key={key}>
-                      <tr>
-                        {Object.entries(value).map(([question, answer]) => {
-                          return (
-                            <Fragment key={question}>
-                              <td
-                                style={{
-                                  alignContent: "center",
-                                  alignItems: "center",
-                                  textAlign: "center",
-                                }}
-                              >
-                                <strong>{question.toUpperCase()}</strong>
-                                <br />
-                                {answer}
-                              </td>
-                            </Fragment>
-                          );
-                        })}
-                      </tr>
-                    </Fragment>
-                  );
-                }
-              )}
-            </tbody>
-          </Table>
-        </div>
-      </Fragment>
-    );
+          <div>
+            <Table striped bordered hover responsive id={this.props.title}>
+              <tbody>
+                {Object.entries(this.props.AcceptedResponse).map(
+                  ([key, value]) => {
+                    return (
+                      <Fragment key={key}>
+                        <tr>
+                          {Object.entries(value).map(([question, answer]) => {
+                            return (
+                              <Fragment key={question}>
+                                <td
+                                  style={{
+                                    alignContent: "center",
+                                    alignItems: "center",
+                                    textAlign: "center",
+                                  }}
+                                >
+                                  <strong>{question.toUpperCase()}</strong>
+                                  <br />
+                                  {answer}
+                                </td>
+                              </Fragment>
+                            );
+                          })}
+                        </tr>
+                      </Fragment>
+                    );
+                  }
+                )}
+              </tbody>
+            </Table>
+          </div>
+        </Fragment>
+      );
+    } else {
+      return <h1>You are not authorized </h1>;
+    }
   }
 }
 
 const mapStateToProps = (state) => ({
   AcceptedResponse: state.AcceptedResponse.AcceptedResponse,
+  FormName: state.FormName.FormName,
+  created_by1: state.Auth.user.username,
 });
 
 export default connect(mapStateToProps, { getAccepted })(AcceptedResponses);

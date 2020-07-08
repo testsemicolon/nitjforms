@@ -45,5 +45,13 @@ class GeneralForms(models.Model):
 
 
 
+class test1(models.Model):
+    Enter_Your_Age = models.CharField(max_length=1000)
+    acacac = models.CharField(max_length=1000)
+    csdcd = models.CharField(max_length=1000)
 
 
+class test1Accepted(models.Model):
+    Enter_Your_Age = models.CharField(max_length=1000)
+    acacac = models.CharField(max_length=1000)
+    csdcd = models.CharField(max_length=1000)
