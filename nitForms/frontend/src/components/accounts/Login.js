@@ -4,7 +4,6 @@ import { connect } from "react-redux";
 import { login } from "../../actions/Auth";
 import PropTypes from "prop-types";
 
-
 export class Login extends Component {
   state = {
     username: "",
@@ -23,7 +22,6 @@ export class Login extends Component {
   onSubmit = (e) => {
     e.preventDefault();
     this.props.login(this.state.username, this.state.password);
-   
   };
 
   render() {
@@ -56,14 +54,24 @@ export class Login extends Component {
                 value={password}
               />
             </div>
-            <div className="form-group">
-              <button type="submit" className="btn btn-primary">
+            <div
+              className="form-group"
+              style={{
+                alignItems: "center",
+                textAlign: "center",
+              }}
+            >
+              <button
+                style={{
+                  paddingLeft: "3vw",
+                  paddingRight: "3vw",
+                }}
+                type="submit"
+                className="btn btn-primary"
+              >
                 Login
               </button>
             </div>
-            <p>
-              Don't have an account?<Link to="/register">Register</Link>
-            </p>
           </form>
         </div>
       </div>
@@ -73,6 +81,6 @@ export class Login extends Component {
 
 const mapStateToProps = (state) => ({
   isAuthenticated: state.Auth.isAuthenticated,
- });
+});
 
 export default connect(mapStateToProps, { login })(Login);

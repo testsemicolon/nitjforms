@@ -6,6 +6,7 @@ import { Card, Button } from "react-bootstrap";
 import { formSubmit } from "../../actions/SubmitPage";
 import GenericResponses from "./GenericResponses";
 import { Link } from "react-router-dom";
+import { FormName } from "./FormName";
 
 export class GenericForm extends Component {
   state = {};
@@ -105,6 +106,7 @@ export class GenericForm extends Component {
           >
             <hr />
           </div>
+          <h5>Description: {this.props.description}</h5>
           <hr />
         </div>
         <div

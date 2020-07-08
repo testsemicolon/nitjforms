@@ -31,107 +31,108 @@ export class AcceptedResponses extends Component {
   };
 
   render() {
-    return (
-      <Fragment>
-        {/* <AutoComplete
-          options={[
-            "Papaya",
-            "Persimmon",
-            "Paw Paw",
-            "Prickly Pear",
-            "Peach",
-            "Pomegranate",
-            "Pineapple",
-          ]}
-        /> */}
-        <div
-          style={{
-            position: "relative",
-            float: "left",
-            width: "35vw",
-          }}
-        >
-          <h3 style={{ textAlign: "center" }}>Editor</h3>
-          <hr />
-          <form onSubmit={this.onSubmit}>
-            <CKEditor
-              editor={ClassicEditor}
-              data=""
-              onInit={(editor) => {
-                const data = editor.getData();
-              }}
-              onChange={(event, editor) => {
-                const data = editor.getData();
-                this.setState({
-                  content: data,
-                });
-              }}
-            />
-            <div
-              style={{
-                alignItems: "center",
-                textAlign: "center",
-                marginTop: "2vw",
-              }}
-            >
-              <Button variant="outline-success" type="submit">
-                <DownloadLink
-                  style={{ font: "white" }}
-                  label="SUBMIT AND DOWNLOAD"
-                  filename="myfile.html"
-                  exportFile={() => this.state.content}
-                />
-              </Button>
-            </div>
-          </form>
-        </div>
-        <div
-          style={{
-            position: "relative",
-            float: "right",
-            width: "35vw",
-          }}
-        >
-          <h3 style={{ textAlign: "center" }}>Accepted Responses</h3>
-          <hr />
-          <Table striped bordered hover responsive id={this.props.title}>
-            {/* <thead>
+    if (this.created_by2 === this.props.created_by1) {
+      return (
+        <Fragment>
+          <div
+            style={{
+              position: "relative",
+              float: "left",
+              width: "35vw",
+            }}
+          >
+            <h3 style={{ textAlign: "center" }}>Editor</h3>
+            <hr />
+            <form onSubmit={this.onSubmit}>
+              <CKEditor
+                editor={ClassicEditor}
+                data=""
+                onInit={(editor) => {
+                  const data = editor.getData();
+                }}
+                onChange={(event, editor) => {
+                  const data = editor.getData();
+                  this.setState({
+                    content: data,
+                  });
+                }}
+              />
+              <div
+                style={{
+                  alignItems: "center",
+                  textAlign: "center",
+                  marginTop: "2vw",
+                }}
+              >
+                <Button variant="outline-success" type="submit">
+                  <DownloadLink
+                    style={{ font: "white" }}
+                    label="SUBMIT AND DOWNLOAD"
+                    filename="myfile.html"
+                    exportFile={() => this.state.content}
+                  />
+                </Button>
+              </div>
+            </form>
+          </div>
+          <div
+            style={{
+              position: "relative",
+              float: "right",
+              width: "35vw",
+            }}
+          >
+            <h3 style={{ textAlign: "center" }}>Accepted Responses</h3>
+            <hr />
+            <Table striped bordered hover responsive id={this.props.title}>
+              {/* <thead>
           {Object.keys(this.props.Forms).map((quest) => console.log(quest))};
           
         </thead> */}
-            <tbody>
-              {Object.entries(this.props.AcceptedResponse).map(
-                ([key, value]) => {
-                  return (
-                    <Fragment key={key}>
-                      <tr>
-                        {Object.entries(value).map(([question, answer]) => {
-                          return (
-                            <Fragment key={question}>
-                              <td
-                                style={{
-                                  alignContent: "center",
-                                  alignItems: "center",
-                                  textAlign: "center",
-                                }}
-                              >
-                                <strong>{question.toUpperCase()}</strong>
-                                <br />
-                                {answer}
-                              </td>
-                            </Fragment>
-                          );
-                        })}
-                      </tr>
-                    </Fragment>
-                  );
-                }
-              )}
-            </tbody>
-          </Table>
+              <tbody>
+                {Object.entries(this.props.AcceptedResponse).map(
+                  ([key, value]) => {
+                    return (
+                      <Fragment key={key}>
+                        <tr>
+                          {Object.entries(value).map(([question, answer]) => {
+                            return (
+                              <Fragment key={question}>
+                                <td
+                                  style={{
+                                    alignContent: "center",
+                                    alignItems: "center",
+                                    textAlign: "center",
+                                  }}
+                                >
+                                  <strong>{question.toUpperCase()}</strong>
+                                  <br />
+                                  {answer}
+                                </td>
+                              </Fragment>
+                            );
+                          })}
+                        </tr>
+                      </Fragment>
+                    );
+                  }
+                )}
+              </tbody>
+            </Table>
+          </div>
+        </Fragment>
+      );
+    } else {
+      return (
+        <div>
+          <hr />
+          <h4 style={{ textAlign: "center" }}>
+            Not authorized to view responses!
+          </h4>
+          <hr />
         </div>
-      </Fragment>
-    );
+      );
+    }
   }
 }
 

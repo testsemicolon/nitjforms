@@ -56,7 +56,12 @@ export class Urls extends Component {
           <PrivateRoute
             key={formname.id}
             path={`/${formname.title}`}
-            component={() => <GenericForm title={formname.title} />}
+            component={() => (
+              <GenericForm
+                title={formname.title}
+                description={formname.description}
+              />
+            )}
           />
         ))}
       </Fragment>
