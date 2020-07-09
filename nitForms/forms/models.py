@@ -46,49 +46,14 @@ class GeneralForms(models.Model):
 
 
 
-class test1(models.Model):
-    what_is_your_occupation = models.CharField(max_length=1000)
-    what_is_your_name = models.CharField(max_length=1000)
-    father_name = models.CharField(max_length=1000)
-
-
-class test1Accepted(models.Model):
-    what_is_your_occupation = models.CharField(max_length=1000)
-    what_is_your_name = models.CharField(max_length=1000)
-    father_name = models.CharField(max_length=1000)
-
-
 class test2(models.Model):
-    what_is_your_name = models.CharField(max_length=1000)
-    occupation = models.CharField(max_length=1000)
-    job = models.CharField(max_length=1000)
+    Enter_Your_Age = models.CharField(max_length=1000)
+    cxzc = models.CharField(max_length=1000)
+    enter_your_date_of_birth = models.CharField(max_length=1000)
 
 
 class test2Accepted(models.Model):
-    what_is_your_name = models.CharField(max_length=1000)
-    occupation = models.CharField(max_length=1000)
-    job = models.CharField(max_length=1000)
-
-
-class test3(models.Model):
-    what_is_your_name = models.CharField(max_length=1000)
-    occupation = models.CharField(max_length=1000)
-    father_name = models.CharField(max_length=1000)
-
-
-class test3Accepted(models.Model):
-    what_is_your_name = models.CharField(max_length=1000)
-    occupation = models.CharField(max_length=1000)
-    father_name = models.CharField(max_length=1000)
-
-
-class test4(models.Model):
+    comment = models.CharField(max_length=1000, blank=True)
     Enter_Your_Age = models.CharField(max_length=1000)
+    cxzc = models.CharField(max_length=1000)
     enter_your_date_of_birth = models.CharField(max_length=1000)
-    acacac = models.CharField(max_length=1000)
-
-
-class test4Accepted(models.Model):
-    Enter_Your_Age = models.CharField(max_length=1000)
-    enter_your_date_of_birth = models.CharField(max_length=1000)
-    acacac = models.CharField(max_length=1000)

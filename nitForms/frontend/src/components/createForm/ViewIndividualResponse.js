@@ -6,19 +6,29 @@ import TextareaAutosize from "react-textarea-autosize";
 import { Card } from "react-bootstrap";
 import CKEditor from "@ckeditor/ckeditor5-react";
 import ClassicEditor from "@ckeditor/ckeditor5-build-classic/build/ckeditor";
+import ReactHtmlParser from "react-html-parser";
 
 export class ViewIndividualResponse extends Component {
-  state = {};
+  state = {
+    content: "",
+  };
   constructor(props) {
     super(props);
     console.log(this.props);
   }
 
+  onChange = (e) => {
+    this.setState({ [e.target.name]: e.target.value });
+    console.log(e.target.value);
+  };
+
   onClick = () => {
     let value1 = this.props.match.params.value;
     let title1 = this.props.match.params.title;
     const quest = {};
-    console.log("wewrewrre");
+    var comm = "";
+    var comm1 = "";
+    var comm2 = "";
     {
       Object.entries(this.props.Forms).map(([key, value]) => {
         if (key === value1) {
@@ -30,13 +40,14 @@ export class ViewIndividualResponse extends Component {
         }
       });
     }
-    console.log(quest);
+    console.log(this.state.content);
+    quest["comment"] = this.state.content;
     this.props.addAccepted(quest, title1);
   };
 
   render() {
     let value1 = this.props.match.params.value;
-    console.log(value1);
+    const { content } = this.state.content;
     return (
       <Fragment>
         {Object.entries(this.props.Forms).map(([key, value]) => {
@@ -101,7 +112,6 @@ export class ViewIndividualResponse extends Component {
                                   borderColor: "white",
                                   fontSize: "1vw",
                                 }}
-                                onChange={this.onChange}
                               >
                                 {answer}
                               </TextareaAutosize>
@@ -142,19 +152,19 @@ export class ViewIndividualResponse extends Component {
             }}
           >
             <h3>Comment</h3>
-            <CKEditor
-              editor={ClassicEditor}
-              data=""
-              onInit={(editor) => {
-                const data = editor.getData();
+
+            <TextareaAutosize
+              name="content"
+              value={content}
+              style={{
+                width: "37vw",
+                borderColor: "white",
+                fontSize: "1vw",
               }}
-              onChange={(event, editor) => {
-                const data = editor.getData();
-                this.setState({
-                  content: data,
-                });
-              }}
-            />
+              onChange={this.onChange}
+            >
+              Enter comment
+            </TextareaAutosize>
           </div>
           <br />
           <br />

@@ -43,6 +43,7 @@
     "react-download-link": "^2.3.0",
     "react-file-download": "^0.3.5",
     "react-final-form": "^6.5.0",
+    "react-html-parser": "^2.0.2",
     "react-html-table-to-excel": "^2.0.0",
     "react-redux": "^7.2.0",
     "react-router-dom": "^5.1.2",
