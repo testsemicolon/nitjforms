@@ -4,6 +4,8 @@ import { addAccepted } from "../../actions/AcceptedResponse";
 import { Button } from "react-bootstrap";
 import TextareaAutosize from "react-textarea-autosize";
 import { Card } from "react-bootstrap";
+import CKEditor from "@ckeditor/ckeditor5-react";
+import ClassicEditor from "@ckeditor/ckeditor5-build-classic/build/ckeditor";
 
 export class ViewIndividualResponse extends Component {
   state = {};
@@ -129,6 +131,37 @@ export class ViewIndividualResponse extends Component {
           <Button variant="danger" style={{ width: "10vw", fontSize: ".95vw" }}>
             Reject Response
           </Button>
+          <br />
+          <br />
+          <br />
+          <div
+            style={{
+              position: "relative",
+              marginLeft: "18vw",
+              width: "35vw",
+            }}
+          >
+            <h3>Comment</h3>
+            <CKEditor
+              editor={ClassicEditor}
+              data=""
+              onInit={(editor) => {
+                const data = editor.getData();
+              }}
+              onChange={(event, editor) => {
+                const data = editor.getData();
+                this.setState({
+                  content: data,
+                });
+              }}
+            />
+          </div>
+          <br />
+          <br />
+          <br />
+          <br />
+          <br />
+          <br />
           <br />
           <br />
           <br />

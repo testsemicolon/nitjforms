@@ -42,3 +42,11 @@ urlpatterns = router.urls
 
 router.register('test3Accepted', test3AcceptedViewSet, 'test3Accepted')
 urlpatterns = router.urls
+
+
+router.register('test4', test4ViewSet, 'test4')
+urlpatterns = router.urls
+
+
+router.register('test4Accepted', test4AcceptedViewSet, 'test4Accepted')
+urlpatterns = router.urls

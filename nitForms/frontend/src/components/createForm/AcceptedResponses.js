@@ -41,7 +41,7 @@ export class AcceptedResponses extends Component {
               width: "35vw",
             }}
           >
-            <h3 style={{ textAlign: "center" }}>Editor</h3>
+            <h3 style={{ textAlign: "center" }}>Noting Template Generation</h3>
             <hr />
             <form onSubmit={this.onSubmit}>
               <CKEditor

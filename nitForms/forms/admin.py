@@ -19,3 +19,7 @@ admin.site.register(test2Accepted)
 admin.site.register(test3)
 
 admin.site.register(test3Accepted)
+
+admin.site.register(test4)
+
+admin.site.register(test4Accepted)

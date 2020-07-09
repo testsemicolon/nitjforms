@@ -80,3 +80,15 @@ class test3Accepted(models.Model):
     what_is_your_name = models.CharField(max_length=1000)
     occupation = models.CharField(max_length=1000)
     father_name = models.CharField(max_length=1000)
+
+
+class test4(models.Model):
+    Enter_Your_Age = models.CharField(max_length=1000)
+    enter_your_date_of_birth = models.CharField(max_length=1000)
+    acacac = models.CharField(max_length=1000)
+
+
+class test4Accepted(models.Model):
+    Enter_Your_Age = models.CharField(max_length=1000)
+    enter_your_date_of_birth = models.CharField(max_length=1000)
+    acacac = models.CharField(max_length=1000)
