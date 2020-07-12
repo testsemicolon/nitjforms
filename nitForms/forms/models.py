@@ -57,3 +57,14 @@ class test2Accepted(models.Model):
     Enter_Your_Age = models.CharField(max_length=1000)
     cxzc = models.CharField(max_length=1000)
     enter_your_date_of_birth = models.CharField(max_length=1000)
+
+
+class Hello(models.Model):
+    Enter_Your_Age = models.CharField(max_length=1000)
+    cxzc = models.CharField(max_length=1000)
+
+
+class HelloAccepted(models.Model):
+    comment = models.CharField(max_length=1000, blank=True)
+    Enter_Your_Age = models.CharField(max_length=1000)
+    cxzc = models.CharField(max_length=1000)
