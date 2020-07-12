@@ -18,6 +18,7 @@ import GenericForm from "../createForm/GenericForm";
 import GenericResponses from "../createForm/GenericResponses";
 import ViewIndividualResponse from "../createForm/ViewIndividualResponse";
 import AcceptedResponses from "../createForm/AcceptedResponses";
+import Steps from "../createForm/Steps";
 
 export class Urls extends Component {
   constructor(props) {
@@ -28,7 +29,7 @@ export class Urls extends Component {
     return (
       <Fragment>
         <PrivateRoute exact path="/" component={Album} />
-        <PrivateRoute path="/formname" component={FormName} />
+        <PrivateRoute path="/formname" component={Steps} />
         <Route path="/register" component={Register} />
         <Route path="/login" component={Login} />
         <PrivateRoute path="/publish" component={PublishForm} />

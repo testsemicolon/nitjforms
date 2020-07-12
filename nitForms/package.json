@@ -54,6 +54,8 @@
     "redux-devtools-extension": "^2.13.8",
     "redux-form": "^8.3.6",
     "redux-thunk": "^2.3.0",
+    "resuite": "0.0.2",
+    "rsuite": "^4.8.0",
     "xlsx": "^0.16.3"
   }
 }

@@ -3,6 +3,7 @@ import { connect } from "react-redux";
 import { addName } from "../../actions/FormName";
 import Dashboard from "./Dashboard";
 import { getPerm } from "../../actions/common";
+import HorizontalNonLinearStepper from "./progressBar";
 
 export class FormName extends Component {
   state = {
