@@ -8,6 +8,7 @@ import Typography from "@material-ui/core/Typography";
 import Dashboard from "./Dashboard";
 import FormName from "./FormName";
 import NotingTemplate from "./NotingTemplate";
+import NotingTemplatePayement from "./NotingTemplatePayement";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -34,6 +35,7 @@ function getSteps() {
     "Create form",
     "Template Generation",
     "Setting up Payment form",
+    "Generating Reimbursement Noting",
     "Setting up Payment TYpe",
   ];
 }
@@ -47,9 +49,11 @@ function getStepContent(step) {
     case 2:
       return <NotingTemplate />;
     case 3:
-      return "connect krlene";
+      return "Payement Form ";
     case 4:
-      return "apne aap krlena";
+      return <NotingTemplatePayement />;
+    case 5:
+      return "Payement Type";
 
     default:
       return "Unknown step";
