@@ -1,5 +1,5 @@
 from django.db import models
-from django.contrib.auth.models import User
+from accounts.models import CustomUser as User
 
 
 class UserPerm(models.Model):
@@ -38,20 +38,3 @@ class GeneralForms(models.Model):
 
     def __str__(self):
         return self.formName
-
-
-
-
-
-
-
-
-
-
-class test1(models.Model):
-    what_is_your_mother_name = models.CharField(max_length=1000)
-
-
-class test1Accepted(models.Model):
-    comment = models.CharField(max_length=1000, blank=True)
-    what_is_your_mother_name = models.CharField(max_length=1000)
