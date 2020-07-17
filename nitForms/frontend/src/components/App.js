@@ -27,7 +27,7 @@ import { loadUser } from "../actions/Auth";
 import PrivateRoute from "./common/PrivateRoutes";
 import { OldForms } from "./createForm/OldForms";
 import Urls from "./common/Urls";
-
+import "../components/createForm/Style.css";
 
 const alertOptions = {
   timeout: 3000,
