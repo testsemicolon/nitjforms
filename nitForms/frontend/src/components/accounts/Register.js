@@ -16,15 +16,39 @@ export class Register extends Component {
     email: "",
     password: "",
     password2: "",
+    can_generate_form: false,
+    can_generate_template: false,
+    can_make_noting: false,
   };
 
   onChange = (e) => {
     this.setState({ [e.target.name]: e.target.value });
   };
+  toggleChange1 = () => {
+    console.log("asdasd1");
+    this.setState({ can_generate_form: !this.state.can_generate_form });
+  };
+  toggleChange2 = () => {
+    console.log("asdasd2");
+    this.setState({ can_generate_template: !this.state.can_generate_template });
+  };
+  toggleChange3 = () => {
+    console.log("asdasd3");
+    this.setState({ can_make_noting: !this.state.can_make_noting });
+  };
 
   onSubmit = (e) => {
     e.preventDefault();
-    const { username, email, password, password2 } = this.state;
+    console.log("asdasd");
+    const {
+      username,
+      email,
+      password,
+      password2,
+      can_generate_form,
+      can_generate_template,
+      can_make_noting,
+    } = this.state;
     if (password !== password2) {
       this.props.createMessage({ passwordsNotMatch: "Passwords do not match" });
     } else {
@@ -32,7 +56,11 @@ export class Register extends Component {
         username,
         password,
         email,
+        can_generate_form,
+        can_generate_template,
+        can_make_noting,
       };
+      console.log(newUser);
       this.props.register(newUser);
     }
   };
@@ -41,7 +69,15 @@ export class Register extends Component {
     if (this.props.isAuthenticated) {
       return <Redirect to="/" />;
     }
-    const { username, email, password, password2 } = this.state;
+    const {
+      username,
+      email,
+      password,
+      password2,
+      can_generate_form,
+      can_generate_template,
+      can_make_noting,
+    } = this.state;
     return (
       <div className="col-md-6 m-auto">
         <div className="card card-body mt-5">
@@ -87,6 +123,30 @@ export class Register extends Component {
                 value={password2}
               />
             </div>
+            <input
+              name="can_generate_form"
+              onChange={this.toggleChange1}
+              value={can_generate_form}
+              type="checkbox"
+            />
+            <label>Can Generate Forms</label>
+            <br />
+            <input
+              name="can_generate_template"
+              onChange={this.toggleChange2}
+              value={can_generate_template}
+              type="checkbox"
+            />
+            <label>Can Generate Template</label>
+            <br />
+            <input
+              name="can_make_noting"
+              onChange={this.toggleChange3}
+              value={can_make_noting}
+              type="checkbox"
+            />
+            <label>Can Make Noting</label>
+            <br />
             <div className="form-group">
               <button type="submit" className="btn btn-primary">
                 Register

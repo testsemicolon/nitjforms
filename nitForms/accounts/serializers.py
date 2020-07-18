@@ -27,8 +27,7 @@ class RegisterSerializer(serializers.ModelSerializer):
             validated_data["password"],
             can_make_noting=validated_data["can_make_noting"],
             can_generate_template=validated_data["can_generate_template"],
-            can_generate_form=validated_data["can_generate_form"],
-        )
+            can_generate_form=validated_data["can_generate_form"])
         return user
 
 

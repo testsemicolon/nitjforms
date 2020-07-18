@@ -10,16 +10,7 @@ export class FormName extends Component {
     title: "",
     description: "",
     flag: false,
-    flag2: false,
   };
-
-  componentDidMount() {
-    this.props.Userperm.map((a) => {
-      if (a.username === this.props.created_by) {
-        this.setState({ flag2: true });
-      }
-    });
-  }
 
   onChange = (e) => {
     this.setState({ [e.target.name]: e.target.value });
@@ -35,13 +26,12 @@ export class FormName extends Component {
   };
 
   render() {
-    console.log(this.state.flag2);
     const { title, description } = this.state;
     if (this.state.flag) {
       return <Dashboard title={this.state.title} />;
     }
 
-    if (this.state.flag2) {
+    if (this.props.canGenerateForm) {
       return (
         <Fragment>
           <div
@@ -118,7 +108,7 @@ const btnStyle = {
 };
 
 const mapStateToProps = (state) => ({
-  Userperm: state.Userperm.Userperm,
+  canGenerateForm: state.Auth.user.can_generate_form,
   created_by: state.Auth.user.username,
 });
 

@@ -61,7 +61,14 @@ export const login = (username, password) => (dispatch) => {
 };
 
 //REGISTER USER
-export const register = ({ username, password, email }) => (dispatch) => {
+export const register = ({
+  username,
+  password,
+  email,
+  can_generate_form,
+  can_generate_template,
+  can_make_noting,
+}) => (dispatch) => {
   //Headers
   const config = {
     headers: {
@@ -70,7 +77,14 @@ export const register = ({ username, password, email }) => (dispatch) => {
   };
 
   // Body
-  const body = JSON.stringify({ username, email, password });
+  const body = JSON.stringify({
+    username,
+    email,
+    password,
+    can_generate_form,
+    can_generate_template,
+    can_make_noting,
+  });
 
   // LOGIN
   axios

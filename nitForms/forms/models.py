@@ -38,3 +38,14 @@ class GeneralForms(models.Model):
 
     def __str__(self):
         return self.formName
+
+
+class test1(models.Model):
+    Enter_Your_Age = models.CharField(max_length=1000)
+    cxzc = models.CharField(max_length=1000)
+
+
+class test1Accepted(models.Model):
+    comment = models.CharField(max_length=1000, blank=True)
+    Enter_Your_Age = models.CharField(max_length=1000)
+    cxzc = models.CharField(max_length=1000)
