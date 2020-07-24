@@ -22,6 +22,7 @@ import Steps from "../createForm/Steps";
 import AlbumUser from "../createForm/AlbumUser";
 import TimeLine from "../createForm/TimeLine";
 import AlbumSource from "../createForm/AlbumSource";
+import NotingSlate from "../createForm/NotingSlate";
 
 export class Urls extends Component {
   constructor(props) {
@@ -39,6 +40,7 @@ export class Urls extends Component {
         <PrivateRoute path="/publish" component={PublishForm} />
         <PrivateRoute path="/card" component={CardForm} />
         <PrivateRoute path="/old" component={OldForms} />
+        <PrivateRoute path="/slate" component={NotingSlate} />
         <PrivateRoute path="/accepted/:title" component={AcceptedResponses} />
         <PrivateRoute
           path="/viewindividualresponse/:value/:title"

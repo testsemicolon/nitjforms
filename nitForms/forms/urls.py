@@ -16,9 +16,20 @@ router.register("userperm", UserPermViewSet, "userperm")
 urlpatterns = router.urls
 
 
-router.register('test1', test1ViewSet, 'test1')
+
+
+
+router.register('sdasdss', sdasdssViewSet, 'sdasdss')
 urlpatterns = router.urls
 
 
-router.register('test1Accepted', test1AcceptedViewSet, 'test1Accepted')
+router.register('sdasdssAccepted', sdasdssAcceptedViewSet, 'sdasdssAccepted')
+urlpatterns = router.urls
+
+
+router.register('test4', test4ViewSet, 'test4')
+urlpatterns = router.urls
+
+
+router.register('test4Accepted', test4AcceptedViewSet, 'test4Accepted')
 urlpatterns = router.urls

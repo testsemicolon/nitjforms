@@ -7,6 +7,10 @@ import { formSubmit } from "../../actions/SubmitPage";
 import GenericResponses from "./GenericResponses";
 import { Link } from "react-router-dom";
 import { FormName } from "./FormName";
+import DatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
+import { tokenConfig } from "../../actions/Auth";
+import axios from "axios";
 
 export class GenericForm extends Component {
   state = {};
@@ -17,11 +21,15 @@ export class GenericForm extends Component {
   onChange = (e) => {
     this.setState({ [e.target.name]: e.target.value });
   };
+  onChangeFile = (e) => {
+    console.log("asdas");
+    this.setState({ [e.target.name]: e.target.files[0] });
+  };
 
   onSubmit = (e) => {
     e.preventDefault();
     const quest = this.state;
-
+    // const token = tokenConfig.token;
     function renameKey(obj, old_key, new_key) {
       if (old_key !== new_key) {
         Object.defineProperty(
@@ -38,6 +46,12 @@ export class GenericForm extends Component {
       renameKey(quest, obj, obj.replace(/[ ]/g, "_"))
     );
     console.log(quest);
+    // const config = {
+    //   headers: {},
+    // };
+
+    // config.headers["Authorization"] = `Token ${token}`;
+    // axios.post(`${this.props.title}/`, quest, config);
     this.props.formSubmit(quest, this.props.title);
   };
 
@@ -117,7 +131,7 @@ export class GenericForm extends Component {
             marginBottom: "2rem",
           }}
         >
-          <form onSubmit={this.onSubmit}>
+          <form encType="multipart/form-data" onSubmit={this.onSubmit}>
             {this.props.Forms.map((form) => {
               if (form.inputType === "Short Answer") {
                 return (
@@ -182,6 +196,149 @@ export class GenericForm extends Component {
                               style={{ width: "37vw", borderColor: "white" }}
                               onChange={this.onChange}
                               placeholder="Write your answer here..."
+                            ></TextareaAutosize>
+                          </Card.Text>
+                        </Card.Body>
+                      </div>
+                    </Card>
+                  </div>
+                );
+              }
+              if (form.inputType == "File Upload") {
+                console.log("adsfasd");
+                return (
+                  <div
+                    key={form.id}
+                    style={{
+                      borderRadius: "5rem",
+                      borderWidth: ".5rem",
+                      borderColor: "grey",
+                      marginTop: "2rem",
+                    }}
+                  >
+                    <Card
+                      style={{
+                        borderRadius: ".95vw",
+                        borderWidth: ".2vw",
+                        borderColor: "lightgrey",
+                        marginTop: "2vw",
+                        width: "40.37vw",
+                        marginLeft: "auto",
+                        marginRight: "auto",
+                        height: "auto",
+                      }}
+                    >
+                      <div>
+                        <Card.Header
+                          style={{
+                            backgroundColor: "#A2B8FB ",
+                            borderRadius: ".75vw .75vw 0 0",
+                            width: "40vw",
+                            height: "2.5vw",
+                            fontSize: "1vw",
+
+                            margin: 0,
+                            padding: "0.6vw",
+                          }}
+                        >
+                          QUESTION
+                        </Card.Header>
+                        <Card.Body
+                          style={{
+                            backgroundColor: "#EEF0F7 ",
+                            borderRadius: " 0 0 .75vw .75vw",
+                            width: "40vw",
+                            fontSize: "0.93vw",
+                            height: "auto",
+                            padding: "0.6vw",
+                            margin: 0,
+                          }}
+                        >
+                          <Card.Title
+                            style={{
+                              fontSize: ".93vw",
+                              marginBottom: ".5vw",
+                            }}
+                          >
+                            {form.question}
+                          </Card.Title>
+                          <Card.Text>
+                            <input
+                              type="file"
+                              name={form.question}
+                              onChange={this.onChangeFile}
+                            />
+                          </Card.Text>
+                        </Card.Body>
+                      </div>
+                    </Card>
+                  </div>
+                );
+              }
+              if (form.inputType == "Date") {
+                return (
+                  <div
+                    key={form.id}
+                    style={{
+                      borderRadius: "5rem",
+                      borderWidth: ".5rem",
+                      borderColor: "grey",
+                      marginTop: "2rem",
+                    }}
+                  >
+                    <Card
+                      style={{
+                        borderRadius: ".95vw",
+                        borderWidth: ".2vw",
+                        borderColor: "lightgrey",
+                        marginTop: "2vw",
+                        width: "40.37vw",
+                        marginLeft: "auto",
+                        marginRight: "auto",
+                        height: "auto",
+                      }}
+                    >
+                      <div>
+                        <Card.Header
+                          style={{
+                            backgroundColor: "#A2B8FB ",
+                            borderRadius: ".75vw .75vw 0 0",
+                            width: "40vw",
+                            height: "2.5vw",
+                            fontSize: "1vw",
+
+                            margin: 0,
+                            padding: "0.6vw",
+                          }}
+                        >
+                          QUESTION
+                        </Card.Header>
+                        <Card.Body
+                          style={{
+                            backgroundColor: "#EEF0F7 ",
+                            borderRadius: " 0 0 .75vw .75vw",
+                            width: "40vw",
+                            fontSize: "0.93vw",
+                            height: "auto",
+                            padding: "0.6vw",
+                            margin: 0,
+                          }}
+                        >
+                          <Card.Title
+                            style={{
+                              fontSize: ".93vw",
+                              marginBottom: ".5vw",
+                            }}
+                          >
+                            {form.question}
+                          </Card.Title>
+                          <Card.Text>
+                            <TextareaAutosize
+                              name={form.question}
+                              style={{ width: "37vw", borderColor: "white" }}
+                              onChange={this.onChange}
+                              placeholder="write in DD/MM/YYYY fromat"
+                              //still to apply length limit and numbers only restriction
                             ></TextareaAutosize>
                           </Card.Text>
                         </Card.Body>

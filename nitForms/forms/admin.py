@@ -6,6 +6,10 @@ admin.site.register(FormName)
 admin.site.register(GeneralForms)
 admin.site.register(UserPerm)
 
-admin.site.register(test1)
+admin.site.register(sdasdss)
 
-admin.site.register(test1Accepted)
+admin.site.register(sdasdssAccepted)
+
+admin.site.register(test4)
+
+admin.site.register(test4Accepted)

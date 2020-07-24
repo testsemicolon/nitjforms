@@ -60,6 +60,8 @@ function getStepContent(step) {
   }
 }
 
+
+
 export default function HorizontalNonLinearAlternativeLabelStepper() {
   const classes = useStyles();
   const [activeStep, setActiveStep] = React.useState(0);
@@ -107,6 +109,7 @@ export default function HorizontalNonLinearAlternativeLabelStepper() {
   };
 
   const handleNext = () => {
+    console.log("dasmd,gasbhj");
     const newActiveStep =
       isLastStep() && !allStepsCompleted()
         ? // It's the last step, but not all steps have been completed

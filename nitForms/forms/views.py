@@ -80,6 +80,7 @@ def post_views(request):
         f = open(apiPath, 'a')
         f.write("\n\nclass " + title + "ViewSet(viewsets.ModelViewSet):\n")
         f.write("    queryset = " + title + ".objects.all()\n")
+        f.write("    parser_class = (MultiPartParser, FormParser)\n")
         f.write("    permission_class = [permissions.AllowAny]\n")
         f.write("    serializer_class = " + title + "Serializer\n")
 
@@ -114,6 +115,10 @@ def modelFunc(modelPath, question1, inputType):
         f.write("    " + question1 + " = models.CharField(max_length=1000)\n")
     elif (inputType == "Paragraph"):
         f.write("    " + question1 + " = models.TextField()\n")
+    elif (inputType == "Date"):
+        f.write("    " + question1 + " = models.DateField()\n")
+    elif (inputType == "File Upload"):
+        f.write("    " + question1 + " = models.FileField()\n")
     elif (inputType == "Date"):
         f.write("    " + question1 + " = models.DateField()\n")
     else:

@@ -1,6 +1,7 @@
 from rest_framework import viewsets, permissions
 from .serializers import *
 from .models import *
+from rest_framework.parsers import MultiPartParser, FormParser
 
 
 class UserPermViewSet(viewsets.ModelViewSet):
@@ -32,13 +33,26 @@ class GeneralFormsViewSet(viewsets.ModelViewSet):
     serializer_class = GeneralFormsSerializer
 
 
-class test1ViewSet(viewsets.ModelViewSet):
-    queryset = test1.objects.all()
+class sdasdssViewSet(viewsets.ModelViewSet):
+    queryset = sdasdss.objects.all()
     permission_class = [permissions.AllowAny]
-    serializer_class = test1Serializer
+    serializer_class = sdasdssSerializer
 
 
-class test1AcceptedViewSet(viewsets.ModelViewSet):
-    queryset = test1Accepted.objects.all()
+class sdasdssAcceptedViewSet(viewsets.ModelViewSet):
+    queryset = sdasdssAccepted.objects.all()
     permission_class = [permissions.AllowAny]
-    serializer_class = test1AcceptedSerializer
+    serializer_class = sdasdssAcceptedSerializer
+
+
+class test4ViewSet(viewsets.ModelViewSet):
+    queryset = test4.objects.all()
+    parser_class = (MultiPartParser, FormParser)
+    permission_class = [permissions.AllowAny]
+    serializer_class = test4Serializer
+
+
+class test4AcceptedViewSet(viewsets.ModelViewSet):
+    queryset = test4Accepted.objects.all()
+    permission_class = [permissions.AllowAny]
+    serializer_class = test4AcceptedSerializer
