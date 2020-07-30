@@ -1,12 +1,15 @@
 import React, { Component, Fragment } from "react";
 import { connect } from "react-redux";
 import { addName } from "../../actions/FormName";
-import HorizontalNonLinearAlternativeLabelStepper from "./progressBar";
+import Dashboard from "./Dashboard";
+import { getPerm } from "../../actions/common";
+import HorizontalNonLinearStepper from "./progressBar";
 
 export class FormName extends Component {
   state = {
     title: "",
     description: "",
+    flag: false,
   };
 
   onChange = (e) => {
@@ -18,14 +21,16 @@ export class FormName extends Component {
     const created_by = this.props.created_by;
     const { title, description } = this.state;
     const desc = { title, description, created_by };
-    console.log("chal rha");
-
     this.props.addName(desc);
-    HorizontalNonLinearAlternativeLabelStepper.handleNext();
+    this.setState({ flag: true });
   };
 
   render() {
     const { title, description } = this.state;
+    if (this.state.flag) {
+      return <Dashboard title={this.state.title} />;
+    }
+
     if (this.props.canGenerateForm) {
       return (
         <Fragment>

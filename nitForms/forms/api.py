@@ -32,27 +32,27 @@ class GeneralFormsViewSet(viewsets.ModelViewSet):
     permission_class = [permissions.AllowAny]
     serializer_class = GeneralFormsSerializer
 
-
-class sdasdssViewSet(viewsets.ModelViewSet):
-    queryset = sdasdss.objects.all()
-    permission_class = [permissions.AllowAny]
-    serializer_class = sdasdssSerializer
-
-
-class sdasdssAcceptedViewSet(viewsets.ModelViewSet):
-    queryset = sdasdssAccepted.objects.all()
-    permission_class = [permissions.AllowAny]
-    serializer_class = sdasdssAcceptedSerializer
-
-
-class test4ViewSet(viewsets.ModelViewSet):
-    queryset = test4.objects.all()
+class test1ViewSet(viewsets.ModelViewSet):
+    queryset = test1.objects.all()
     parser_class = (MultiPartParser, FormParser)
     permission_class = [permissions.AllowAny]
-    serializer_class = test4Serializer
+    serializer_class = test1Serializer
 
 
-class test4AcceptedViewSet(viewsets.ModelViewSet):
-    queryset = test4Accepted.objects.all()
+class test1AcceptedViewSet(viewsets.ModelViewSet):
+    queryset = test1Accepted.objects.all()
     permission_class = [permissions.AllowAny]
-    serializer_class = test4AcceptedSerializer
+    serializer_class = test1AcceptedSerializer
+
+
+class test2ViewSet(viewsets.ModelViewSet):
+    queryset = test2.objects.all()
+    parser_class = (MultiPartParser, FormParser)
+    permission_class = [permissions.AllowAny]
+    serializer_class = test2Serializer
+
+
+class test2AcceptedViewSet(viewsets.ModelViewSet):
+    queryset = test2Accepted.objects.all()
+    permission_class = [permissions.AllowAny]
+    serializer_class = test2AcceptedSerializer

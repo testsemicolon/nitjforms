@@ -40,26 +40,23 @@ class GeneralForms(models.Model):
         return self.formName
 
 
-
-class sdasdss(models.Model):
-    sadasd = models.CharField(max_length=1000)
-    sadas = models.CharField(max_length=1000)
-    sadasdas = models.DateField()
-
-
-class sdasdssAccepted(models.Model):
-    comment = models.CharField(max_length=1000, blank=True)
-    sadasd = models.CharField(max_length=1000)
-    sadas = models.CharField(max_length=1000)
-    sadasdas = models.DateField()
-
-
-class test4(models.Model):
+class test1(models.Model):
     what_is_your_mother_name = models.CharField(max_length=1000)
-    mother = models.FileField()
+    mother = models.CharField(max_length=1000)
 
 
-class test4Accepted(models.Model):
+class test1Accepted(models.Model):
     comment = models.CharField(max_length=1000, blank=True)
     what_is_your_mother_name = models.CharField(max_length=1000)
-    mother = models.FileField()
+    mother = models.CharField(max_length=1000)
+
+
+class test2(models.Model):
+    mother = models.CharField(max_length=1000)
+    father_name = models.CharField(max_length=1000)
+
+
+class test2Accepted(models.Model):
+    comment = models.CharField(max_length=1000, blank=True)
+    mother = models.CharField(max_length=1000)
+    father_name = models.CharField(max_length=1000)
