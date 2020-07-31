@@ -40,23 +40,13 @@ class GeneralForms(models.Model):
         return self.formName
 
 
+
 class test1(models.Model):
     what_is_your_mother_name = models.CharField(max_length=1000)
-    mother = models.CharField(max_length=1000)
+    dsd = models.CharField(max_length=1000)
 
 
 class test1Accepted(models.Model):
     comment = models.CharField(max_length=1000, blank=True)
     what_is_your_mother_name = models.CharField(max_length=1000)
-    mother = models.CharField(max_length=1000)
-
-
-class test2(models.Model):
-    mother = models.CharField(max_length=1000)
-    father_name = models.CharField(max_length=1000)
-
-
-class test2Accepted(models.Model):
-    comment = models.CharField(max_length=1000, blank=True)
-    mother = models.CharField(max_length=1000)
-    father_name = models.CharField(max_length=1000)
+    dsd = models.CharField(max_length=1000)
