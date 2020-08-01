@@ -2,13 +2,6 @@ from django.db import models
 from accounts.models import CustomUser as User
 
 
-class UserPerm(models.Model):
-    username = models.CharField(max_length=100, blank=False)
-
-    def __str__(self):
-        return self.username
-
-
 class CreateForms(models.Model):
     question = models.CharField(max_length=100, blank=False)
     inputType = models.CharField(max_length=50, blank=False)
@@ -40,23 +33,25 @@ class GeneralForms(models.Model):
         return self.formName
 
 
-class test1(models.Model):
-    what_is_your_mother_name = models.CharField(max_length=1000)
-    mother = models.CharField(max_length=1000)
+class Post(models.Model):
+    image = models.ImageField(upload_to='post_images')
 
 
-class test1Accepted(models.Model):
+class Hello(models.Model):
+    Enter_Your_Age = models.CharField(max_length=1000)
+    enter_your_date_of_birth = models.CharField(max_length=1000)
+
+
+class HelloAccepted(models.Model):
     comment = models.CharField(max_length=1000, blank=True)
-    what_is_your_mother_name = models.CharField(max_length=1000)
-    mother = models.CharField(max_length=1000)
+    Enter_Your_Age = models.CharField(max_length=1000)
+    enter_your_date_of_birth = models.CharField(max_length=1000)
 
 
-class test2(models.Model):
-    mother = models.CharField(max_length=1000)
-    father_name = models.CharField(max_length=1000)
+class test3(models.Model):
+    Enter_Your_Age = models.ImageField(upload_to='post_images')
 
 
-class test2Accepted(models.Model):
+class test3Accepted(models.Model):
     comment = models.CharField(max_length=1000, blank=True)
-    mother = models.CharField(max_length=1000)
-    father_name = models.CharField(max_length=1000)
+    Enter_Your_Age = models.FileField()

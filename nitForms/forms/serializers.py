@@ -2,12 +2,6 @@ from rest_framework import serializers
 from .models import *
 
 
-class UserPermSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = UserPerm
-        fields = "__all__"
-
-
 class CreateFormsSerializer(serializers.ModelSerializer):
     class Meta:
         model = CreateForms
@@ -26,29 +20,30 @@ class GeneralFormsSerializer(serializers.ModelSerializer):
         fields = "__all__"
 
 
-
-
-
-
-class test1Serializer(serializers.ModelSerializer):
+class PostSerializer(serializers.ModelSerializer):
     class Meta:
-        model = test1
+        model = Post
+        fields = '__all__'
+
+class HelloSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Hello
         fields = '__all__'
 
 
-class test1AcceptedSerializer(serializers.ModelSerializer):
+class HelloAcceptedSerializer(serializers.ModelSerializer):
     class Meta:
-        model = test1Accepted
+        model = HelloAccepted
         fields = '__all__'
 
 
-class test2Serializer(serializers.ModelSerializer):
+class test3Serializer(serializers.ModelSerializer):
     class Meta:
-        model = test2
+        model = test3
         fields = '__all__'
 
 
-class test2AcceptedSerializer(serializers.ModelSerializer):
+class test3AcceptedSerializer(serializers.ModelSerializer):
     class Meta:
-        model = test2Accepted
+        model = test3Accepted
         fields = '__all__'
