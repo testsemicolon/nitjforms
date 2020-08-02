@@ -1,5 +1,6 @@
 from django.db import models
 from accounts.models import CustomUser as User
+from django.contrib.postgres.fields import ArrayField
 
 
 class CreateForms(models.Model):
@@ -38,11 +39,13 @@ class Post(models.Model):
 
 
 class test1(models.Model):
-    Enter_Your_Age = models.CharField(max_length=1000)
     cxzc = models.CharField(max_length=1000)
+    csdcd = models.CharField(max_length=1000)
+    Enter_Your_Age = models.CharField(max_length=1000)
 
 
 class test1Accepted(models.Model):
     comment = models.CharField(max_length=1000, blank=True)
-    Enter_Your_Age = models.FileField()
     cxzc = models.CharField(max_length=1000)
+    csdcd = models.CharField(max_length=1000)
+    Enter_Your_Age = models.CharField(max_length=1000)

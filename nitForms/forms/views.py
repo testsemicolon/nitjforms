@@ -32,6 +32,7 @@ def post_views(request):
         # Writing Models.py
         f = open(modelPath, 'a')
         f.write("\n\nclass " + title + "(models.Model):\n")
+
         f.close()
         data = CreateForms.objects.all()
         for i in data:
@@ -43,6 +44,7 @@ def post_views(request):
         f.write("\n\nclass " + title + "Accepted(models.Model):\n")
         f.write(
             "    comment = models.CharField(max_length=1000, blank=True)\n")
+
         f.close()
         data1 = CreateForms.objects.all()
         for i in data1:
@@ -118,7 +120,7 @@ def modelFunc(modelPath, question1, inputType):
     elif (inputType == "Date"):
         f.write("    " + question1 + " = models.DateField()\n")
     elif (inputType == "File Upload"):
-        f.write("    " + question1 + " = models.FileField()\n")
+        f.write("    " + question1 + " = models.CharField(max_length=1000)\n")
     elif (inputType == "Date"):
         f.write("    " + question1 + " = models.DateField()\n")
     else:

@@ -11,7 +11,7 @@ export class FileUpload extends Component {
     e.preventDefault();
     const urlImage = `http://127.0.0.1:8000/media/post_images/${this.image.name}`;
     console.log(this.props.name);
-    this.props.fileNameHandler(urlImage);
+    this.props.fileNameHandler(urlImage, this.props.name);
     let form_data = new FormData();
     form_data.append("image", this.image, this.image.name);
 

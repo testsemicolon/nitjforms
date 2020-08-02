@@ -22,16 +22,18 @@ export class GenericForm extends Component {
   onChange = (e) => {
     this.setState({ [e.target.name]: e.target.value });
   };
-  onChangeFile = (e) => {
-    this.setState({ [e.target.name]: e.target.files[0] });
-  };
-  fileNameHandler = (obj) => {
-    console.log(obj);
-    // this.setState({ [e.target.name]: obj });
+  // onChangeFile = (e) => {
+  //   this.setState({ [e.target.name]: e.target.files[0] });
+  // };
+
+  fileNameHandler = (obj1, obj2) => {
+    console.log(obj1, obj2);
+    this.setState({ [obj2]: obj1 });
   };
   onSubmit = (e) => {
     e.preventDefault();
     const quest = this.state;
+    console.log(this.state);
     function renameKey(obj, old_key, new_key) {
       if (old_key !== new_key) {
         Object.defineProperty(
