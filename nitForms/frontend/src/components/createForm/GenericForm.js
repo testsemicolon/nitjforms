@@ -11,6 +11,7 @@ import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import { tokenConfig } from "../../actions/Auth";
 import axios from "axios";
+import FileUpload from "./FileUpload";
 
 export class GenericForm extends Component {
   state = {};
@@ -22,14 +23,15 @@ export class GenericForm extends Component {
     this.setState({ [e.target.name]: e.target.value });
   };
   onChangeFile = (e) => {
-    console.log("asdas");
     this.setState({ [e.target.name]: e.target.files[0] });
   };
-
+  fileNameHandler = (obj) => {
+    console.log(obj);
+    // this.setState({ [e.target.name]: obj });
+  };
   onSubmit = (e) => {
     e.preventDefault();
     const quest = this.state;
-    // const token = tokenConfig.token;
     function renameKey(obj, old_key, new_key) {
       if (old_key !== new_key) {
         Object.defineProperty(
@@ -46,12 +48,6 @@ export class GenericForm extends Component {
       renameKey(quest, obj, obj.replace(/[ ]/g, "_"))
     );
     console.log(quest);
-    // const config = {
-    //   headers: {},
-    // };
-
-    // config.headers["Authorization"] = `Token ${token}`;
-    // axios.post(`${this.props.title}/`, quest, config);
     this.props.formSubmit(quest, this.props.title);
   };
 
@@ -131,7 +127,7 @@ export class GenericForm extends Component {
             marginBottom: "2rem",
           }}
         >
-          <form encType="multipart/form-data" onSubmit={this.onSubmit}>
+          <form onSubmit={this.onSubmit}>
             {this.props.Forms.map((form) => {
               if (form.inputType === "Short Answer") {
                 return (
@@ -263,10 +259,9 @@ export class GenericForm extends Component {
                             {form.question}
                           </Card.Title>
                           <Card.Text>
-                            <input
-                              type="file"
+                            <FileUpload
                               name={form.question}
-                              onChange={this.onChangeFile}
+                              fileNameHandler={this.fileNameHandler}
                             />
                           </Card.Text>
                         </Card.Body>

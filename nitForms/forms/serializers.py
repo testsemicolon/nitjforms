@@ -25,25 +25,14 @@ class PostSerializer(serializers.ModelSerializer):
         model = Post
         fields = '__all__'
 
-class HelloSerializer(serializers.ModelSerializer):
+
+class test1Serializer(serializers.ModelSerializer):
     class Meta:
-        model = Hello
+        model = test1
         fields = '__all__'
 
 
-class HelloAcceptedSerializer(serializers.ModelSerializer):
+class test1AcceptedSerializer(serializers.ModelSerializer):
     class Meta:
-        model = HelloAccepted
-        fields = '__all__'
-
-
-class test3Serializer(serializers.ModelSerializer):
-    class Meta:
-        model = test3
-        fields = '__all__'
-
-
-class test3AcceptedSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = test3Accepted
+        model = test1Accepted
         fields = '__all__'

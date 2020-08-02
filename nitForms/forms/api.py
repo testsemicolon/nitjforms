@@ -50,47 +50,14 @@ class PostView(APIView):
                             status=status.HTTP_400_BAD_REQUEST)
 
 
-class HelloViewSet(viewsets.ModelViewSet):
-    queryset = Hello.objects.all()
+class test1ViewSet(viewsets.ModelViewSet):
+    queryset = test1.objects.all()
     parser_class = (MultiPartParser, FormParser)
     permission_class = [permissions.AllowAny]
-    serializer_class = HelloSerializer
+    serializer_class = test1Serializer
 
 
-class HelloAcceptedViewSet(viewsets.ModelViewSet):
-    queryset = HelloAccepted.objects.all()
+class test1AcceptedViewSet(viewsets.ModelViewSet):
+    queryset = test1Accepted.objects.all()
     permission_class = [permissions.AllowAny]
-    serializer_class = HelloAcceptedSerializer
-
-
-class test3ViewSet(viewsets.ModelViewSet):
-    queryset = test3.objects.all()
-    parser_class = (MultiPartParser, FormParser)
-    permission_class = [permissions.AllowAny]
-    serializer_class = test3Serializer
-
-
-class test3ViewSet(APIView):
-    parser_classes = (MultiPartParser, FormParser)
-
-    def get(self, request, *args, **kwargs):
-        Test3 = test3.objects.all()
-        serializer = test3Serializer(Test3, many=True)
-        return Response(serializer.data)
-
-    def post(self, request, *args, **kwargs):
-        test3_serializer = test3Serializer(data=request.data)
-        if test3_serializer.is_valid():
-            test3_serializer.save()
-            return Response(test3_serializer.data,
-                            status=status.HTTP_201_CREATED)
-        else:
-            print('error', test3_serializer.errors)
-            return Response(test3_serializer.errors,
-                            status=status.HTTP_400_BAD_REQUEST)
-
-
-class test3AcceptedViewSet(viewsets.ModelViewSet):
-    queryset = test3Accepted.objects.all()
-    permission_class = [permissions.AllowAny]
-    serializer_class = test3AcceptedSerializer
+    serializer_class = test1AcceptedSerializer

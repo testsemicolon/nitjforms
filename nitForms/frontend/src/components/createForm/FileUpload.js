@@ -9,7 +9,9 @@ export class FileUpload extends Component {
 
   handleSubmit = (e) => {
     e.preventDefault();
-
+    const urlImage = `http://127.0.0.1:8000/media/post_images/${this.image.name}`;
+    console.log(this.props.name);
+    this.props.fileNameHandler(urlImage);
     let form_data = new FormData();
     form_data.append("image", this.image, this.image.name);
 
@@ -29,7 +31,7 @@ export class FileUpload extends Component {
   render() {
     return (
       <div className="App">
-        <form onSubmit={this.handleSubmit}>
+        <form>
           <p>
             <input
               type="file"
@@ -39,7 +41,7 @@ export class FileUpload extends Component {
               required
             />
           </p>
-          <input type="submit" />
+          <button onClick={this.handleSubmit}>Submit</button>
         </form>
       </div>
     );

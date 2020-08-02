@@ -37,21 +37,12 @@ class Post(models.Model):
     image = models.ImageField(upload_to='post_images')
 
 
-class Hello(models.Model):
+class test1(models.Model):
     Enter_Your_Age = models.CharField(max_length=1000)
-    enter_your_date_of_birth = models.CharField(max_length=1000)
+    cxzc = models.CharField(max_length=1000)
 
 
-class HelloAccepted(models.Model):
-    comment = models.CharField(max_length=1000, blank=True)
-    Enter_Your_Age = models.CharField(max_length=1000)
-    enter_your_date_of_birth = models.CharField(max_length=1000)
-
-
-class test3(models.Model):
-    Enter_Your_Age = models.ImageField(upload_to='post_images')
-
-
-class test3Accepted(models.Model):
+class test1Accepted(models.Model):
     comment = models.CharField(max_length=1000, blank=True)
     Enter_Your_Age = models.FileField()
+    cxzc = models.CharField(max_length=1000)
