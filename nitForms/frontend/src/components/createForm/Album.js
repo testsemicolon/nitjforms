@@ -113,7 +113,7 @@ export default function Album() {
         </div>
       </main>
       <OldForms />
-
+      <div className="chahat">hihihiii</div>
       {/* Footer */}
       <footer className={classes.footer}>
         <Typography variant="h6" align="center" gutterBottom>
@@ -126,7 +126,7 @@ export default function Album() {
           color="textSecondary"
           component="p"
         >
-          Jalandhar
+          Jalandharr
         </Typography>
       </footer>
       {/* End footer */}
