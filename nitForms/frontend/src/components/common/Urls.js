@@ -26,6 +26,8 @@ import NotingSlate from "../createForm/NotingSlate";
 import AdminSuperSteps from "../createForm/AdminSuperSteps";
 import FileUpload from "../createForm/FileUpload";
 import CombinedView from "../createForm/CombinedView";
+import DefineSteps from "../createForm/DefineSteps";
+import PreviousForms from "../createForm/PreviousForms";
 export class Urls extends Component {
   constructor(props) {
     super(props);
@@ -38,6 +40,8 @@ export class Urls extends Component {
         <PrivateRoute path="/formname" component={Steps} />
         <Route path="/register" component={Register} />
         <PrivateRoute path="/timeline" component={TimeLine} />
+        <PrivateRoute path="/previousforms" component={PreviousForms} />
+        <PrivateRoute path="/definingsteps" component={DefineSteps} />
         <PrivateRoute path="/combine" component={CombinedView} />
         <Route path="/login" component={Login} />
         <PrivateRoute path="/publish" component={PublishForm} />

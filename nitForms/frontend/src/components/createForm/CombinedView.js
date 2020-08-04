@@ -7,13 +7,14 @@ import {
 export default class CombinedView extends Component {
   render() {
     return (
-      <div>
+      <div style={{ marginLeft: 0 }}>
         <div
           style={{
-            width: "40vw",
+            width: "30vw",
             float: "left",
             position: "relative",
             backgroundColor: "lightblue",
+            marginLeft: "-5vw",
           }}
         >
           <VerticalTimeline>
@@ -33,13 +34,13 @@ export default class CombinedView extends Component {
                 marginTop: "2vw",
               }}
             >
-              <h3 style={{ color: "black" }}>Creative Director</h3>
-              <h4
+              <h5 style={{ color: "black" }}>Creative Director</h5>
+              <h6
                 style={{ color: "black" }}
                 className="vertical-timeline-element-subtitle"
               >
                 Miami, FL
-              </h4>
+              </h6>
               <p style={{ color: "darkblue" }}>
                 Creative Direction, User Experience, Visual Design, Project
                 Management, Team Leading
