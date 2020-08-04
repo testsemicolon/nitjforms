@@ -25,7 +25,7 @@ import AlbumSource from "../createForm/AlbumSource";
 import NotingSlate from "../createForm/NotingSlate";
 import AdminSuperSteps from "../createForm/AdminSuperSteps";
 import FileUpload from "../createForm/FileUpload";
-
+import CombinedView from "../createForm/CombinedView";
 export class Urls extends Component {
   constructor(props) {
     super(props);
@@ -38,6 +38,7 @@ export class Urls extends Component {
         <PrivateRoute path="/formname" component={Steps} />
         <Route path="/register" component={Register} />
         <PrivateRoute path="/timeline" component={TimeLine} />
+        <PrivateRoute path="/combine" component={CombinedView} />
         <Route path="/login" component={Login} />
         <PrivateRoute path="/publish" component={PublishForm} />
         <PrivateRoute path="/card" component={CardForm} />
