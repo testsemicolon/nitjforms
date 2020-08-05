@@ -146,7 +146,7 @@ export default function PersistentDrawerLeft() {
         </div>
         <Divider />
         <List>
-          {["Create", "Edit/Delete", "View Previous", "Drafts"].map(
+          {/* {["Create", "Edit/Delete", "View Previous", "Drafts"].map(
             (text, index) => (
               <ListItem button key={text}>
                 <ListItemIcon>
@@ -155,7 +155,13 @@ export default function PersistentDrawerLeft() {
                 <ListItemText primary={text} />
               </ListItem>
             )
-          )}
+          )} */}
+          <ListItem>Create</ListItem>
+          <ListItem>Edit/Delete</ListItem>
+          <Link to="/previousforms">
+            <ListItem>View Previous</ListItem>
+          </Link>
+          <ListItem>Drafts</ListItem>
         </List>
         <Divider />
       </Drawer>

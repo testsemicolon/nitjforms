@@ -96,7 +96,7 @@ export default function Album() {
             <div className={classes.heroButtons}>
               <Grid container spacing={2} justify="center">
                 <Grid item>
-                  <Link1 to="/formname">
+                  <Link1 to="/definingsteps">
                     <Button variant="contained" color="primary">
                       CREATE A NEW FORM
                     </Button>
@@ -126,7 +126,7 @@ export default function Album() {
           color="textSecondary"
           component="p"
         >
-          Jalandhar
+          Jalandharr
         </Typography>
       </footer>
       {/* End footer */}

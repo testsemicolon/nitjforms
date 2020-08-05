@@ -2,12 +2,6 @@ from rest_framework import serializers
 from .models import *
 
 
-class UserPermSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = UserPerm
-        fields = "__all__"
-
-
 class CreateFormsSerializer(serializers.ModelSerializer):
     class Meta:
         model = CreateForms
@@ -26,6 +20,13 @@ class GeneralFormsSerializer(serializers.ModelSerializer):
         fields = "__all__"
 
 
+<<<<<<< HEAD
+=======
+class PostSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Post
+        fields = '__all__'
+>>>>>>> 20e3314d2758936959c5bc612b320c21c3315459
 
 
 class test1Serializer(serializers.ModelSerializer):

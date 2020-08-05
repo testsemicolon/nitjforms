@@ -11,6 +11,7 @@ import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import { tokenConfig } from "../../actions/Auth";
 import axios from "axios";
+import FileUpload from "./FileUpload";
 
 export class GenericForm extends Component {
   state = {};
@@ -21,15 +22,18 @@ export class GenericForm extends Component {
   onChange = (e) => {
     this.setState({ [e.target.name]: e.target.value });
   };
-  onChangeFile = (e) => {
-    console.log("asdas");
-    this.setState({ [e.target.name]: e.target.files[0] });
-  };
+  // onChangeFile = (e) => {
+  //   this.setState({ [e.target.name]: e.target.files[0] });
+  // };
 
+  fileNameHandler = (obj1, obj2) => {
+    console.log(obj1, obj2);
+    this.setState({ [obj2]: obj1 });
+  };
   onSubmit = (e) => {
     e.preventDefault();
     const quest = this.state;
-    // const token = tokenConfig.token;
+    console.log(this.state);
     function renameKey(obj, old_key, new_key) {
       if (old_key !== new_key) {
         Object.defineProperty(
@@ -46,12 +50,6 @@ export class GenericForm extends Component {
       renameKey(quest, obj, obj.replace(/[ ]/g, "_"))
     );
     console.log(quest);
-    // const config = {
-    //   headers: {},
-    // };
-
-    // config.headers["Authorization"] = `Token ${token}`;
-    // axios.post(`${this.props.title}/`, quest, config);
     this.props.formSubmit(quest, this.props.title);
   };
 
@@ -131,7 +129,7 @@ export class GenericForm extends Component {
             marginBottom: "2rem",
           }}
         >
-          <form encType="multipart/form-data" onSubmit={this.onSubmit}>
+          <form onSubmit={this.onSubmit}>
             {this.props.Forms.map((form) => {
               if (form.inputType === "Short Answer") {
                 return (
@@ -263,10 +261,9 @@ export class GenericForm extends Component {
                             {form.question}
                           </Card.Title>
                           <Card.Text>
-                            <input
-                              type="file"
+                            <FileUpload
                               name={form.question}
-                              onChange={this.onChangeFile}
+                              fileNameHandler={this.fileNameHandler}
                             />
                           </Card.Text>
                         </Card.Body>
