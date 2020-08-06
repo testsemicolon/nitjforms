@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import ReactDOM from "react-dom";
 import styled from "@emotion/styled";
+import { Button } from "react-bootstrap";
 
 // import { options } from "./Options";
 
@@ -8,13 +9,28 @@ import Select from "react-dropdown-select";
 const options = [
   {
     id: 1,
-    name: "jatin",
-    username: "jatin",
+    name: "Create Form",
+    username: "Create Form",
   },
   {
     id: 2,
-    name: "Ervin Howell",
-    username: "Antonette",
+    name: "Choose/Create Noting",
+    username: "Choose/Create Noting",
+  },
+  {
+    id: 3,
+    name: "Choose Payment Form",
+    username: "Choose Payment Form",
+  },
+  {
+    id: 4,
+    name: "Choose/Create Payment Noting",
+    username: "Choose/Create Payment Noting",
+  },
+  {
+    id: 5,
+    name: "Choose Payment Type",
+    username: "Choose Payment Type",
   },
 ];
 
@@ -24,7 +40,7 @@ export default class DefineSteps extends Component {
 
     this.state = {
       multi: true,
-
+      selectValues: [],
       handle: true,
       addPlaceholder: "+ click to add",
       labelField: "username",
@@ -33,6 +49,11 @@ export default class DefineSteps extends Component {
       keepSelectedInList: false,
     };
   }
+  // onClick = () => {
+  //   {
+  //     <div>{JSON.stringify(this.state.selectValues)}</div>;
+  //   }
+  // };
 
   setValues = (selectValues) => this.setState({ selectValues });
 
@@ -44,7 +65,7 @@ export default class DefineSteps extends Component {
             <StyledSelect
               placeholder="Select steps"
               multi={this.state.multi}
-              values={[options.find((opt) => opt.username === "jatin")]}
+              values={[options.find((opt) => opt.username === "Create Form")]}
               labelField={this.state.labelField}
               valueField={this.state.valueField}
               options={options}
@@ -54,10 +75,12 @@ export default class DefineSteps extends Component {
             />
           </div>
         </div>
-        <details>
-          <summary>Selected values:</summary>
-          <pre>{JSON.stringify(this.state.selectValues)}</pre>
-        </details>
+        <div>
+          {/* <Button onClick={this.onClick}>Click to generate steps</Button> */}
+          Selected values:
+          {console.log(this.state.selectValues)}
+          {JSON.stringify(this.state.selectValues)}
+        </div>
       </div>
     );
   }

@@ -1,7 +1,8 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
-import { Button, Card } from "@material-ui/core";
+import { Card } from "@material-ui/core";
+import { Button } from "react-bootstrap";
 
 import { OldForms } from "./OldForms";
 import { getName } from "../../actions/FormName";
@@ -31,26 +32,65 @@ class PreviousForms extends Component {
       <div>
         {/* <OldForms /> */}
         {this.props.FormName.map((card) => (
-          <div style={{ backgroundColor: "pink" }}>
-            {card.title}
-            <br />
-            <hr />
-            {card.description}
+          <div
+            style={{
+              backgroundColor: "#F5FCFF",
+              border: ".1vw solid grey",
+              padding: "1vw",
+              borderRadius: "1vw",
+            }}
+          >
             <div>
+              <h4>
+                TITLE: {card.title}
+                {this.state.status === true ? (
+                  <Button
+                    variant="success"
+                    style={{
+                      float: "right",
+                      position: "relative",
+                      marginBottom: "1vw",
+                    }}
+                    onClick={this.onclick}
+                  >
+                    Activate
+                  </Button>
+                ) : (
+                  <Button
+                    variant="danger"
+                    style={{
+                      float: "right",
+                      position: "relative",
+                      marginBottom: "1vw",
+                    }}
+                    onClick={this.onclick}
+                  >
+                    Deactivate
+                  </Button>
+                )}
+                <br />
+                <hr />
+              </h4>
+            </div>
+            DESCRIPTION:{card.description}
+            <hr />
+            <div
+              style={{
+                alignItems: "center",
+                alignContent: "center",
+                textAlign: "center",
+              }}
+            >
               <Link to={`/${card.title}`}>
-                <Button size="small" color="primary">
+                <Button style={{ marginRight: "2vw" }} variant="success">
                   View
                 </Button>
-              </Link>
+              </Link>{" "}
               <Link to={`/response/${card.title}`}>
-                <Button size="small" color="primary">
+                <Button style={{ marginRight: "2vw" }} variant="info">
                   Responses
                 </Button>
-              </Link>
-              <Button size="small" color="primary" onClick={this.onclick}>
-                Activate
-              </Button>
-              {this.state.status === true ? "tick" : " cross"}
+              </Link>{" "}
             </div>
           </div>
         ))}

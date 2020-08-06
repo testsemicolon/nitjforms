@@ -49,3 +49,25 @@ class test1Accepted(models.Model):
     cxzc = models.CharField(max_length=1000)
     csdcd = models.CharField(max_length=1000)
     Enter_Your_Age = models.CharField(max_length=1000)
+
+
+class test3(models.Model):
+    what_is_your_name = models.CharField(max_length=1000)
+    sasasa = models.DateField()
+
+
+class test3Accepted(models.Model):
+    comment = models.CharField(max_length=1000, blank=True)
+    what_is_your_name = models.CharField(max_length=1000)
+    sasasa = models.DateField()
+
+
+class test2(models.Model):
+    what_is_your_name = models.CharField(max_length=1000)
+    sasasa = models.CharField(max_length=1000)
+
+
+class test2Accepted(models.Model):
+    comment = models.CharField(max_length=1000, blank=True)
+    what_is_your_name = models.CharField(max_length=1000)
+    sasasa = models.CharField(max_length=1000)

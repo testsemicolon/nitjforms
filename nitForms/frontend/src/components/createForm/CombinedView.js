@@ -20,7 +20,10 @@ export default class CombinedView extends Component {
           <VerticalTimeline>
             <VerticalTimelineElement
               className="vertical-timeline-element--work"
-              contentStyle={{ background: "white", color: "#fff" }}
+              contentStyle={{
+                background: "white",
+                color: "#fff",
+              }}
               // contentArrowStyle={{
               //   borderRight: "19px solid  rgb(33, 150, 243)",
               // }}
