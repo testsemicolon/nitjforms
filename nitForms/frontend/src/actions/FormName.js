@@ -19,3 +19,7 @@ export const getName = () => (dispatch, getState) => {
     });
   });
 };
+
+export const updateName = (id, quest) => (dispatch) => {
+  axios.put(`name/${id}/`, quest);
+};

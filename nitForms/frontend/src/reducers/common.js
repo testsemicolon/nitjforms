@@ -1,15 +1,15 @@
-import { GET_PERM } from "../actions/types";
+import { GET_SHARED_USERS } from "../actions/types";
 
 const initialState = {
-  Userperm: [],
+  SharedUsers: [],
 };
 
 export default function (state = initialState, action) {
   switch (action.type) {
-    case GET_PERM:
+    case GET_SHARED_USERS:
       return {
         ...state,
-        Userperm: action.payload,
+        SharedUsers: action.payload,
       };
     default:
       return state;

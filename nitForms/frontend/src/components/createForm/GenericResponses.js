@@ -9,16 +9,31 @@ import { Link } from "react-router-dom";
 import ViewIndividualResponse from "./ViewIndividualResponse";
 
 export class GenericResponses extends Component {
+  state = {
+    flag: false,
+  };
   constructor(props) {
     super(props);
     this.props.getGeneric(this.props.title);
-    console.log(this.props.created_by1, this.props.created_by);
   }
 
-  componentDidMount() {}
+  componentDidMount() {
+    this.props.SharedUsers.map((a) => {
+      if (a.formName === this.props.title) {
+        a.userName.map((a1) => {
+          if (a1 === this.props.created_by1) {
+            this.setState({ flag: true });
+          }
+        });
+      }
+    });
+  }
 
   render() {
-    if (this.props.created_by1 === this.props.created_by) {
+    if (
+      this.props.created_by1 === this.props.created_by ||
+      this.state.flag === true
+    ) {
       const title1 = this.props.title;
       return (
         <Fragment>
@@ -97,6 +112,7 @@ export class GenericResponses extends Component {
 const mapStateToProps = (state) => ({
   Forms: state.Forms.Forms,
   created_by1: state.Auth.user.username,
+  SharedUsers: state.SharedUsers.SharedUsers,
 });
 
 export default connect(mapStateToProps, { getGeneric })(GenericResponses);

@@ -4,36 +4,73 @@ import { getFormView } from "../../actions/CreateForm";
 import TextareaAutosize from "react-textarea-autosize";
 import { Card, Button } from "react-bootstrap";
 import { formSubmit } from "../../actions/SubmitPage";
-import GenericResponses from "./GenericResponses";
 import { Link } from "react-router-dom";
-import { FormName } from "./FormName";
-import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
-import { tokenConfig } from "../../actions/Auth";
-import axios from "axios";
 import FileUpload from "./FileUpload";
+import { deleteSharedUsers } from "../../actions/common";
 
 export class GenericForm extends Component {
   state = {};
-
+  created_by = "";
+  toShareWith = "";
+  arr = [];
+  fname = "";
+  id = null;
+  flag = false;
   componentDidMount() {
     this.props.getFormView(this.props.title);
+    this.props.SharedUsers.map((a) => {
+      if (a.formName === this.props.title) {
+        this.id = a.id;
+        this.fname = this.props.title;
+        a.userName.map((a1) => {
+          this.arr.push(a1);
+          if (a1 === this.props.username) {
+            this.flag = true;
+            console.log("sahi hai");
+          }
+        });
+      }
+    });
+
+    this.props.FormName.map((f1) => {
+      if (f1.title === this.props.title) {
+        this.created_by = f1.created_by;
+      }
+    });
   }
+
   onChange = (e) => {
     this.setState({ [e.target.name]: e.target.value });
   };
-  // onChangeFile = (e) => {
-  //   this.setState({ [e.target.name]: e.target.files[0] });
-  // };
 
   fileNameHandler = (obj1, obj2) => {
-    console.log(obj1, obj2);
     this.setState({ [obj2]: obj1 });
   };
+
+  onChangeUser = (e) => {
+    console.log(e.target.value);
+    this.toShareWith = e.target.value;
+  };
+
+  onSubmitUser = (e) => {
+    e.preventDefault();
+
+    var arr1 = [];
+    this.arr.push(this.toShareWith);
+    this.arr.map((ar) => arr1.push(ar));
+    const quest = {};
+    console.log(arr1);
+    quest["formName"] = this.fname;
+    quest["userName"] = arr1;
+    console.log(quest);
+    this.props.deleteSharedUsers(this.id, quest);
+  };
+
   onSubmit = (e) => {
     e.preventDefault();
     const quest = this.state;
-    console.log(this.state);
+
     function renameKey(obj, old_key, new_key) {
       if (old_key !== new_key) {
         Object.defineProperty(
@@ -45,11 +82,10 @@ export class GenericForm extends Component {
         delete obj[old_key];
       }
     }
-
     Object.keys(quest).map((obj) =>
       renameKey(quest, obj, obj.replace(/[ ]/g, "_"))
     );
-    console.log(quest);
+
     this.props.formSubmit(quest, this.props.title);
   };
 
@@ -121,6 +157,20 @@ export class GenericForm extends Component {
           <h5>Description: {this.props.description}</h5>
           <hr />
         </div>
+        {this.props.username == this.created_by ? (
+          <div>
+            <form>
+              <input
+                type="text"
+                name={this.toShareWith}
+                onChange={this.onChangeUser}
+              />
+              <button onClick={this.onSubmitUser}>Submit</button>
+            </form>
+          </div>
+        ) : (
+          "hello"
+        )}
         <div
           style={{
             display: "flex",
@@ -203,7 +253,6 @@ export class GenericForm extends Component {
                 );
               }
               if (form.inputType == "File Upload") {
-                console.log("adsfasd");
                 return (
                   <div
                     key={form.id}
@@ -445,8 +494,13 @@ export class GenericForm extends Component {
 
 const mapStateToProps = (state) => ({
   Forms: state.Forms.Forms,
+  SharedUsers: state.SharedUsers.SharedUsers,
+  username: state.Auth.user.username,
+  FormName: state.FormName.FormName,
 });
 
-export default connect(mapStateToProps, { formSubmit, getFormView })(
-  GenericForm
-);
+export default connect(mapStateToProps, {
+  formSubmit,
+  getFormView,
+  deleteSharedUsers,
+})(GenericForm);

@@ -19,5 +19,5 @@ export const REGISTER_FAIL = "REGISTER_FAIL";
 export const GET_FORM_FIELD = "GET_FORM_FIELD";
 export const GET_FORM_VIEW = "GET_FORM_VIEW";
 export const GET_GENERIC_RESPONSES = "GET_GENERIC_RESPONSES";
-export const GET_PERM = "GET_PERM";
 export const GET_ACCEPTED = "GET_ACCEPTED";
+export const GET_SHARED_USERS = "GET_SHARED_USERS";

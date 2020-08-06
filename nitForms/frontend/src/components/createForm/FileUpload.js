@@ -30,7 +30,7 @@ export class FileUpload extends Component {
 
   render() {
     return (
-      <div className="App">
+      <div>
         <form>
           <p>
             <input

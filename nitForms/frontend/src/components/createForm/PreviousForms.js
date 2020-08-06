@@ -1,66 +1,74 @@
-import React, { Component } from "react";
+import React, { Component, Fragment } from "react";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
-import { Button, Card } from "@material-ui/core";
-
-import { OldForms } from "./OldForms";
-import { getName } from "../../actions/FormName";
+import { Button } from "@material-ui/core";
+import { getName, updateName } from "../../actions/FormName";
 import { Link } from "react-router-dom";
-import { getPerm } from "../../actions/common";
 
 class PreviousForms extends Component {
+  state = { status: false };
   constructor(props) {
     super(props);
-    this.state = {
-      status: false,
-    };
     this.props.getName();
-    this.props.getPerm();
   }
-  onclick = (e) => {
-    e.preventDefault();
-    this.setState({ status: !this.state.status });
-  };
-
   static = {
     FormName: PropTypes.array.isRequired,
   };
 
+  onClick = () => {
+    console.log("adas");
+    // quest["activationStatus"] = !quest.activationStatus;
+    // console.log(id, quest);
+    // this.props.updateName();
+  };
+
   render() {
     return (
-      <div>
-        {/* <OldForms /> */}
-        {this.props.FormName.map((card) => (
-          <div style={{ backgroundColor: "pink" }}>
-            {card.title}
-            <br />
-            <hr />
-            {card.description}
-            <div>
-              <Link to={`/${card.title}`}>
-                <Button size="small" color="primary">
-                  View
-                </Button>
-              </Link>
-              <Link to={`/response/${card.title}`}>
-                <Button size="small" color="primary">
-                  Responses
-                </Button>
-              </Link>
-              <Button size="small" color="primary" onClick={this.onclick}>
-                Activate
-              </Button>
-              {this.state.status === true ? "tick" : " cross"}
-            </div>
-          </div>
-        ))}
-      </div>
+      <Fragment>
+        {this.props.FormName.map((card) => {
+          if (this.props.username === card.created_by) {
+            return (
+              <div key={card.id} style={{ backgroundColor: "pink" }}>
+                {card.title}
+                <br />
+                <hr />
+                {card.description}
+                <div>
+                  <Link to={`/${card.title}`}>
+                    <Button size="small" color="primary">
+                      View
+                    </Button>
+                  </Link>
+                  <Link to={`/response/${card.title}`}>
+                    <Button size="small" color="primary">
+                      Responses
+                    </Button>
+                  </Link>
+                  <Button
+                    size="small"
+                    color="primary"
+                    onClick={() => {
+                      card.activationStatus = !card.activationStatus;
+                      this.props.updateName(card.id, card);
+                      this.setState({ status: !this.state.status });
+                      console.log(card);
+                    }}
+                  >
+                    Activate
+                  </Button>
+                  {this.state.status === true ? "tick" : " cross"}
+                </div>
+              </div>
+            );
+          }
+        })}
+      </Fragment>
     );
   }
 }
 const mapStateToProps = (state) => ({
   FormName: state.FormName.FormName,
-  Userperm: state.Userperm.Userperm,
+  username: state.Auth.user.username,
 });
 
-export default connect(mapStateToProps, { getPerm, getName })(PreviousForms);
+export default connect(mapStateToProps, { getName, updateName })(PreviousForms);
