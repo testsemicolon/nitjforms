@@ -6,6 +6,7 @@ admin.site.register(FormName)
 admin.site.register(GeneralForms)
 admin.site.register(Post)
 
+
 admin.site.register(test1)
 
 admin.site.register(test1Accepted)
