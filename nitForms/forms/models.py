@@ -35,18 +35,8 @@ class GeneralForms(models.Model):
         return self.formName
 
 
-<<<<<<< HEAD
-
-class test1(models.Model):
-    what_is_your_mother_name = models.CharField(max_length=1000)
-    dsd = models.CharField(max_length=1000)
 
 
-class test1Accepted(models.Model):
-    comment = models.CharField(max_length=1000, blank=True)
-    what_is_your_mother_name = models.CharField(max_length=1000)
-    dsd = models.CharField(max_length=1000)
-=======
 class Post(models.Model):
     image = models.ImageField(upload_to='post_images')
 
@@ -56,52 +46,38 @@ class sharedUsers(models.Model):
 
 
 
+
+
 class test1(models.Model):
-    dssad = models.CharField(max_length=1000)
-    cxzc = models.CharField(max_length=1000)
+    fdasfdasf = models.CharField(max_length=1000)
+    enter_your_date_of_birth = models.CharField(max_length=1000)
 
 
 class test1Accepted(models.Model):
     comment = models.CharField(max_length=1000, blank=True)
-    dssad = models.CharField(max_length=1000)
-    cxzc = models.CharField(max_length=1000)
+    fdasfdasf = models.CharField(max_length=1000)
+    enter_your_date_of_birth = models.CharField(max_length=1000)
 
 
-class test2(models.Model):
+class Hello1(models.Model):
     Enter_Your_Age = models.CharField(max_length=1000)
-    csdcd = models.CharField(max_length=1000)
+    enter_your_date_of_birth = models.CharField(max_length=1000)
+    enter_your_date_of_birth = models.CharField(max_length=1000)
 
 
-class test2Accepted(models.Model):
+class Hello1Accepted(models.Model):
     comment = models.CharField(max_length=1000, blank=True)
     Enter_Your_Age = models.CharField(max_length=1000)
-<<<<<<< HEAD
-    csdcd = models.CharField(max_length=1000)
-=======
-<<<<<<< HEAD
+    enter_your_date_of_birth = models.CharField(max_length=1000)
+    enter_your_date_of_birth = models.CharField(max_length=1000)
 
 
-class test3(models.Model):
-    what_is_your_name = models.CharField(max_length=1000)
-    sasasa = models.DateField()
+class sadsa(models.Model):
+    sd = models.CharField(max_length=1000)
+    sad = models.CharField(max_length=1000)
 
 
-class test3Accepted(models.Model):
+class sadsaAccepted(models.Model):
     comment = models.CharField(max_length=1000, blank=True)
-    what_is_your_name = models.CharField(max_length=1000)
-    sasasa = models.DateField()
-
-
-class test2(models.Model):
-    what_is_your_name = models.CharField(max_length=1000)
-    sasasa = models.CharField(max_length=1000)
-
-
-class test2Accepted(models.Model):
-    comment = models.CharField(max_length=1000, blank=True)
-    what_is_your_name = models.CharField(max_length=1000)
-    sasasa = models.CharField(max_length=1000)
-=======
->>>>>>> 20e3314d2758936959c5bc612b320c21c3315459
->>>>>>> cd40bae59dce44b0827021f2a11097b8841dca3b
->>>>>>> 998529ce27bfe67a6783c030b94d761d9482d586
+    sd = models.CharField(max_length=1000)
+    sad = models.CharField(max_length=1000)

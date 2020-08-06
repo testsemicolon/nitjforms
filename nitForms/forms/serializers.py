@@ -20,13 +20,10 @@ class GeneralFormsSerializer(serializers.ModelSerializer):
         fields = "__all__"
 
 
-<<<<<<< HEAD
-=======
 class PostSerializer(serializers.ModelSerializer):
     class Meta:
         model = Post
         fields = '__all__'
->>>>>>> 20e3314d2758936959c5bc612b320c21c3315459
 
 
 
@@ -34,6 +31,7 @@ class sharedUsersSerializer(serializers.ModelSerializer):
     class Meta:
         model = sharedUsers
         fields = '__all__'
+
 
 
 
@@ -49,28 +47,25 @@ class test1AcceptedSerializer(serializers.ModelSerializer):
         fields = '__all__'
 
 
-<<<<<<< HEAD
-=======
-class test3Serializer(serializers.ModelSerializer):
+class Hello1Serializer(serializers.ModelSerializer):
     class Meta:
-        model = test3
+        model = Hello1
         fields = '__all__'
 
 
-class test3AcceptedSerializer(serializers.ModelSerializer):
+class Hello1AcceptedSerializer(serializers.ModelSerializer):
     class Meta:
-        model = test3Accepted
+        model = Hello1Accepted
         fields = '__all__'
 
 
->>>>>>> 998529ce27bfe67a6783c030b94d761d9482d586
-class test2Serializer(serializers.ModelSerializer):
+class sadsaSerializer(serializers.ModelSerializer):
     class Meta:
-        model = test2
+        model = sadsa
         fields = '__all__'
 
 
-class test2AcceptedSerializer(serializers.ModelSerializer):
+class sadsaAcceptedSerializer(serializers.ModelSerializer):
     class Meta:
-        model = test2Accepted
+        model = sadsaAccepted
         fields = '__all__'

@@ -37,7 +37,7 @@ export class Urls extends Component {
     return (
       <Fragment>
         <PrivateRoute exact path="/" component={AlbumSource} />
-        <PrivateRoute path="/formname" component={FormName} />
+        <PrivateRoute path="/formname" component={Steps} />
         <Route path="/register" component={Register} />
         <PrivateRoute path="/timeline" component={TimeLine} />
         <PrivateRoute path="/previousforms" component={PreviousForms} />
