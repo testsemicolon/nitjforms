@@ -32,7 +32,6 @@ class PreviousForms extends Component {
 
   render() {
     return (
-<<<<<<< HEAD
       <Fragment>
         {this.props.FormName.map((card) => {
           if (this.props.username === card.created_by) {
@@ -72,7 +71,6 @@ class PreviousForms extends Component {
           }
         })}
       </Fragment>
-=======
       <div>
         {/* <OldForms /> */}
         {this.props.FormName.map((card) => (
@@ -139,7 +137,6 @@ class PreviousForms extends Component {
           </div>
         ))}
       </div>
->>>>>>> 998529ce27bfe67a6783c030b94d761d9482d586
     );
   }
 }
