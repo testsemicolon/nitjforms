@@ -1,107 +1,85 @@
-import React from "react";
-import { makeStyles } from "@material-ui/core/styles";
-import Stepper from "@material-ui/core/Stepper";
-import Step from "@material-ui/core/Step";
-import StepLabel from "@material-ui/core/StepLabel";
-import StepContent from "@material-ui/core/StepContent";
-import Button from "@material-ui/core/Button";
-import Paper from "@material-ui/core/Paper";
-import Typography from "@material-ui/core/Typography";
+import { Timeline, TimelineEvent } from "react-event-timeline";
+import React, { Component } from "react";
 
-const useStyles = makeStyles((theme) => ({
-  root: {
-    width: "100%",
-  },
-  button: {
-    marginTop: theme.spacing(1),
-    marginRight: theme.spacing(1),
-  },
-  actionsContainer: {
-    marginBottom: theme.spacing(2),
-  },
-  resetContainer: {
-    padding: theme.spacing(3),
-  },
-}));
-
-function getSteps() {
-  return ["Select campaign settings", "Create an ad group", "Create an ad"];
-}
-
-function getStepContent(step) {
-  switch (step) {
-    case 0:
-      return `For each ad campaign that you create, you can control how much
-              you're willing to spend on clicks and conversions, which networks
-              and geographical locations you want your ads to show on, and more.`;
-    case 1:
-      return "An ad group contains one or more ads which target a shared set of keywords.";
-    case 2:
-      return `Try out different ad text to see what brings in the most customers,
-              and learn how to enhance your ads using features like ad extensions.
-              If you run into any problems with your ads, find out how to tell if
-              they're running and how to resolve approval issues.`;
-    default:
-      return "Unknown step";
+export default class TimeLine extends Component {
+  render() {
+    return (
+      <div>
+        <Timeline>
+          <TimelineEvent
+            title="    John Doe sent a SMS"
+            titleStyle={{
+              fontSize: "1.2vw",
+              paddingTop: ".5vw",
+              color: "white",
+            }}
+            subtitleStyle={{ fontSize: "1vw", color: "white" }}
+            subtitle="2016-09-12 10:06 PM"
+            icon={<span class="material-icons">done</span>}
+            style={{
+              backgroundColor: "#20294f",
+              paddingLeft: "1.12vw",
+              paddingRight: ".25vw",
+              paddingBottom: ".25vw",
+            }}
+          >
+            <h6>
+              {" "}
+              I received the payment for $543. Should be shipping the item
+              within a couple of hours.
+            </h6>
+          </TimelineEvent>
+          <TimelineEvent
+            title="    John Doe sent a SMS"
+            titleStyle={{
+              fontSize: "1.2vw",
+              paddingTop: ".5vw",
+              color: "white",
+            }}
+            subtitleStyle={{ fontSize: "1vw", color: "white" }}
+            subtitle="2016-09-12 10:06 PM"
+            icon={<span class="material-icons">done</span>}
+            style={{
+              backgroundColor: "#20294f",
+              color: "black",
+              paddingLeft: "1.12vw",
+              paddingRight: ".25vw",
+              paddingBottom: ".25vw",
+            }}
+          >
+            <h6>
+              Like we talked, you said that you would share the shipment
+              details? This is an urgent order and so I am losing patience. Can
+              you expedite the process and pls do share the details asap.
+              Consider this a gentle reminder if you are on track already!
+            </h6>
+          </TimelineEvent>
+        </Timeline>
+      </div>
+    );
   }
 }
-
-export default function VerticalLinearStepper() {
-  const classes = useStyles();
-  const [activeStep, setActiveStep] = React.useState(0);
-  const steps = getSteps();
-
-  const handleNext = () => {
-    setActiveStep((prevActiveStep) => prevActiveStep + 1);
-  };
-
-  const handleBack = () => {
-    setActiveStep((prevActiveStep) => prevActiveStep - 1);
-  };
-
-  const handleReset = () => {
-    setActiveStep(0);
-  };
-
-  return (
-    <div className={classes.root}>
-      <Stepper activeStep={activeStep} orientation="vertical">
-        {steps.map((label, index) => (
-          <Step key={label}>
-            <StepLabel>{label}</StepLabel>
-            <StepContent>
-              <Typography>{getStepContent(index)}</Typography>
-              <div className={classes.actionsContainer}>
-                <div>
-                  <Button
-                    disabled={activeStep === 0}
-                    onClick={handleBack}
-                    className={classes.button}
-                  >
-                    Back
-                  </Button>
-                  <Button
-                    variant="contained"
-                    color="primary"
-                    onClick={handleNext}
-                    className={classes.button}
-                  >
-                    {activeStep === steps.length - 1 ? "Finish" : "Next"}
-                  </Button>
-                </div>
-              </div>
-            </StepContent>
-          </Step>
-        ))}
-      </Stepper>
-      {activeStep === steps.length && (
-        <Paper square elevation={0} className={classes.resetContainer}>
-          <Typography>All steps completed - you&apos;re finished</Typography>
-          <Button onClick={handleReset} className={classes.button}>
-            Reset
-          </Button>
-        </Paper>
-      )}
-    </div>
-  );
+/**
+.custom-timeline {
+  margin-left: 20px;
 }
+
+.custom-timeline .rs-timeline-item-custom-dot .rs-icon {
+  position: absolute;
+  background: #fff;
+  top: 0;
+  left: -2px;
+  border: 2px solid #ddd;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  font-size: 18px;
+  padding-top: 9px;
+  color: #999;
+  margin-left: -13px;
+}
+
+.custom-timeline .rs-timeline-item-content {
+  margin-left: 24px;
+}
+**/

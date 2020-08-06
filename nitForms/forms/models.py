@@ -35,6 +35,18 @@ class GeneralForms(models.Model):
         return self.formName
 
 
+<<<<<<< HEAD
+
+class test1(models.Model):
+    what_is_your_mother_name = models.CharField(max_length=1000)
+    dsd = models.CharField(max_length=1000)
+
+
+class test1Accepted(models.Model):
+    comment = models.CharField(max_length=1000, blank=True)
+    what_is_your_mother_name = models.CharField(max_length=1000)
+    dsd = models.CharField(max_length=1000)
+=======
 class Post(models.Model):
     image = models.ImageField(upload_to='post_images')
 
@@ -63,4 +75,33 @@ class test2(models.Model):
 class test2Accepted(models.Model):
     comment = models.CharField(max_length=1000, blank=True)
     Enter_Your_Age = models.CharField(max_length=1000)
+<<<<<<< HEAD
     csdcd = models.CharField(max_length=1000)
+=======
+<<<<<<< HEAD
+
+
+class test3(models.Model):
+    what_is_your_name = models.CharField(max_length=1000)
+    sasasa = models.DateField()
+
+
+class test3Accepted(models.Model):
+    comment = models.CharField(max_length=1000, blank=True)
+    what_is_your_name = models.CharField(max_length=1000)
+    sasasa = models.DateField()
+
+
+class test2(models.Model):
+    what_is_your_name = models.CharField(max_length=1000)
+    sasasa = models.CharField(max_length=1000)
+
+
+class test2Accepted(models.Model):
+    comment = models.CharField(max_length=1000, blank=True)
+    what_is_your_name = models.CharField(max_length=1000)
+    sasasa = models.CharField(max_length=1000)
+=======
+>>>>>>> 20e3314d2758936959c5bc612b320c21c3315459
+>>>>>>> cd40bae59dce44b0827021f2a11097b8841dca3b
+>>>>>>> 998529ce27bfe67a6783c030b94d761d9482d586

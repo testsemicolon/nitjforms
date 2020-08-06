@@ -37,7 +37,7 @@ export class Urls extends Component {
     return (
       <Fragment>
         <PrivateRoute exact path="/" component={AlbumSource} />
-        <PrivateRoute path="/formname" component={Steps} />
+        <PrivateRoute path="/formname" component={FormName} />
         <Route path="/register" component={Register} />
         <PrivateRoute path="/timeline" component={TimeLine} />
         <PrivateRoute path="/previousforms" component={PreviousForms} />
@@ -46,7 +46,7 @@ export class Urls extends Component {
         <Route path="/login" component={Login} />
         <PrivateRoute path="/publish" component={PublishForm} />
         <PrivateRoute path="/card" component={CardForm} />
-        <PrivateRoute path="/steps" component={AdminSuperSteps} />
+        <PrivateRoute path="/steps" component={Steps} />
         <PrivateRoute path="/old" component={OldForms} />
         <PrivateRoute path="/slate" component={NotingSlate} />
         <PrivateRoute path="/posts" component={FileUpload} />
