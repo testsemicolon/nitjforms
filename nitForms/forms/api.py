@@ -49,10 +49,12 @@ class PostView(APIView):
             return Response(posts_serializer.errors,
                             status=status.HTTP_400_BAD_REQUEST)
 
+
 class sharedUsersViewSet(viewsets.ModelViewSet):
     queryset = sharedUsers.objects.all()
     permission_class = [permissions.AllowAny]
     serializer_class = sharedUsersSerializer
+
 
 class notingTemplateViewSet(viewsets.ModelViewSet):
     queryset = notingTemplate.objects.all()
@@ -60,17 +62,14 @@ class notingTemplateViewSet(viewsets.ModelViewSet):
     serializer_class = notingTemplateSerializer
 
 
-
-
-
-class test1ViewSet(viewsets.ModelViewSet):
-    queryset = test1.objects.all()
+class test6ViewSet(viewsets.ModelViewSet):
+    queryset = test6.objects.all()
     parser_class = (MultiPartParser, FormParser)
     permission_class = [permissions.AllowAny]
-    serializer_class = test1Serializer
+    serializer_class = test6Serializer
 
 
-class test1AcceptedViewSet(viewsets.ModelViewSet):
-    queryset = test1Accepted.objects.all()
+class test6AcceptedViewSet(viewsets.ModelViewSet):
+    queryset = test6Accepted.objects.all()
     permission_class = [permissions.AllowAny]
-    serializer_class = test1AcceptedSerializer
+    serializer_class = test6AcceptedSerializer

@@ -26,11 +26,11 @@ class PostSerializer(serializers.ModelSerializer):
         fields = '__all__'
 
 
-
 class sharedUsersSerializer(serializers.ModelSerializer):
     class Meta:
         model = sharedUsers
         fields = '__all__'
+
 
 class notingTemplateSerializer(serializers.ModelSerializer):
     class Meta:
@@ -38,14 +38,13 @@ class notingTemplateSerializer(serializers.ModelSerializer):
         fields = '__all__'
 
 
-
-class test1Serializer(serializers.ModelSerializer):
+class test6Serializer(serializers.ModelSerializer):
     class Meta:
-        model = test1
+        model = test6
         fields = '__all__'
 
 
-class test1AcceptedSerializer(serializers.ModelSerializer):
+class test6AcceptedSerializer(serializers.ModelSerializer):
     class Meta:
-        model = test1Accepted
+        model = test6Accepted
         fields = '__all__'

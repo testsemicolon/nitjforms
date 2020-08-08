@@ -5,6 +5,8 @@ import { Button } from "react-bootstrap";
 import TextareaAutosize from "react-textarea-autosize";
 import { Card } from "react-bootstrap";
 import DisplayEditor from "./DisplayEditor";
+import { DropdownButton } from "react-bootstrap/DropdownButton";
+import { Dropdown } from "react-bootstrap";
 
 export class ViewResponseNoteGenerate extends Component {
   state = {
@@ -150,6 +152,26 @@ export class ViewResponseNoteGenerate extends Component {
         >
           <DisplayEditor />
 
+          <div className="dropdown">
+            <button
+              type="button"
+              className="btn btn-primary dropdown-toggle"
+              data-toggle="dropdown"
+            >
+              Choose Noting
+            </button>
+            <div className="dropdown-menu">
+              <a class="dropdown-item">Link 1</a>
+              <a class="dropdown-item">Link 2</a>
+              <a class="dropdown-item">Link 3</a>
+            </div>
+          </div>
+
+          <br />
+          <Button>GENERATE</Button>
+          <br />
+          <br />
+          <br />
           <Button onClick={this.onclick2}>Forward to</Button>
 
           {this.state.toggleforward === true ? (
