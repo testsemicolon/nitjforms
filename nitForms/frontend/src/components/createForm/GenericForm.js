@@ -5,6 +5,7 @@ import TextareaAutosize from "react-textarea-autosize";
 import { Card, Button } from "react-bootstrap";
 import { formSubmit } from "../../actions/SubmitPage";
 import { Link } from "react-router-dom";
+import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import FileUpload from "./FileUpload";
 import { deleteSharedUsers } from "../../actions/common";
@@ -18,6 +19,7 @@ export class GenericForm extends Component {
   id = null;
   flag = false;
   status = false;
+  toggleshare = true;
   componentDidMount() {
     this.props.getFormView(this.props.title);
     this.props.SharedUsers.map((a) => {
@@ -162,20 +164,34 @@ export class GenericForm extends Component {
               <h5>Description: {this.props.description}</h5>
               <hr />
             </div>
+            {console.log(this.toggleshare)}
             {this.props.username == this.created_by ? (
               <div>
-                <form>
-                  <input
-                    type="text"
-                    name={this.toShareWith}
-                    onChange={this.onChangeUser}
-                  />
-                  <button onClick={this.onSubmitUser}>Submit</button>
-                </form>
+                <Button
+                  onClick={() => {
+                    this.toggleshare = !this.toggleshare;
+                  }}
+                >
+                  {console.log(this.toggleshare)}
+                  Share with
+                </Button>
+                {this.toggleshare === true ? (
+                  <form>
+                    <input
+                      type="text"
+                      name={this.toShareWith}
+                      onChange={this.onChangeUser}
+                    />
+                    <Button onClick={this.onSubmitUser}>Submit</Button>
+                  </form>
+                ) : (
+                  "NO PERMISSION TO SHARE"
+                )}
               </div>
             ) : (
-              "hello"
+              "NO PERMISSION TO SHARE"
             )}
+
             <div
               style={{
                 display: "flex",
@@ -387,7 +403,7 @@ export class GenericForm extends Component {
                                 {form.question}
                               </Card.Title>
                               <Card.Text>
-                                <TextareaAutosize
+                                {/* <TextareaAutosize
                                   name={form.question}
                                   style={{
                                     width: "37vw",
@@ -396,7 +412,12 @@ export class GenericForm extends Component {
                                   onChange={this.onChange}
                                   placeholder="write in DD/MM/YYYY fromat"
                                   //still to apply length limit and numbers only restriction
-                                ></TextareaAutosize>
+                                ></TextareaAutosize> */}
+                                <DatePicker
+                                  // selected={this.state.startDate}
+                                  name={form.question}
+                                  onChange={this.onChange}
+                                />
                               </Card.Text>
                             </Card.Body>
                           </div>

@@ -49,3 +49,27 @@ class notingTemplate(models.Model):
     def __str__(self):
         return self.key
 
+
+
+class test1(models.Model):
+    what_is_your_name = models.CharField(max_length=1000)
+    sasa = models.CharField(max_length=1000)
+    date_choose = models.DateField()
+
+
+class test1Accepted(models.Model):
+    comment = JSONField(null=True)
+    what_is_your_name = models.CharField(max_length=1000)
+    sasa = models.CharField(max_length=1000)
+    date_choose = models.DateField()
+
+
+class test2(models.Model):
+    what_is_your_name = models.CharField(max_length=1000)
+    sasasa = models.CharField(max_length=1000)
+
+
+class test2Accepted(models.Model):
+    comment = JSONField(null=True)
+    what_is_your_name = models.CharField(max_length=1000)
+    sasasa = models.CharField(max_length=1000)

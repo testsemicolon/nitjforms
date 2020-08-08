@@ -28,6 +28,7 @@ import FileUpload from "../createForm/FileUpload";
 import CombinedView from "../createForm/CombinedView";
 import DefineSteps from "../createForm/DefineSteps";
 import PreviousForms from "../createForm/PreviousForms";
+import ViewResponseNoteGenerate from "../createForm/ViewResponseNoteGenerate";
 export class Urls extends Component {
   constructor(props) {
     super(props);
@@ -54,6 +55,10 @@ export class Urls extends Component {
         <PrivateRoute
           path="/viewindividualresponse/:value/:title"
           component={ViewIndividualResponse}
+        />
+        <PrivateRoute
+          path="/viewresponsenotegenerate/:value/:title"
+          component={ViewResponseNoteGenerate}
         />
 
         {this.props.FormName.map((formname) => (
