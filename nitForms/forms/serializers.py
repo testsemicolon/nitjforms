@@ -32,40 +32,7 @@ class sharedUsersSerializer(serializers.ModelSerializer):
         model = sharedUsers
         fields = '__all__'
 
-
-
-
-class test1Serializer(serializers.ModelSerializer):
+class notingTemplateSerializer(serializers.ModelSerializer):
     class Meta:
-        model = test1
-        fields = '__all__'
-
-
-class test1AcceptedSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = test1Accepted
-        fields = '__all__'
-
-
-class Hello1Serializer(serializers.ModelSerializer):
-    class Meta:
-        model = Hello1
-        fields = '__all__'
-
-
-class Hello1AcceptedSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = Hello1Accepted
-        fields = '__all__'
-
-
-class sadsaSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = sadsa
-        fields = '__all__'
-
-
-class sadsaAcceptedSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = sadsaAccepted
+        model = notingTemplate
         fields = '__all__'

@@ -54,44 +54,9 @@ class sharedUsersViewSet(viewsets.ModelViewSet):
     permission_class = [permissions.AllowAny]
     serializer_class = sharedUsersSerializer
 
-
-
-
-
-class test1ViewSet(viewsets.ModelViewSet):
-    queryset = test1.objects.all()
-    parser_class = (MultiPartParser, FormParser)
+class notingTemplateViewSet(viewsets.ModelViewSet):
+    queryset = notingTemplate.objects.all()
     permission_class = [permissions.AllowAny]
-    serializer_class = test1Serializer
+    serializer_class = notingTemplateSerializer
 
 
-class test1AcceptedViewSet(viewsets.ModelViewSet):
-    queryset = test1Accepted.objects.all()
-    permission_class = [permissions.AllowAny]
-    serializer_class = test1AcceptedSerializer
-
-
-class Hello1ViewSet(viewsets.ModelViewSet):
-    queryset = Hello1.objects.all()
-    parser_class = (MultiPartParser, FormParser)
-    permission_class = [permissions.AllowAny]
-    serializer_class = Hello1Serializer
-
-
-class Hello1AcceptedViewSet(viewsets.ModelViewSet):
-    queryset = Hello1Accepted.objects.all()
-    permission_class = [permissions.AllowAny]
-    serializer_class = Hello1AcceptedSerializer
-
-
-class sadsaViewSet(viewsets.ModelViewSet):
-    queryset = sadsa.objects.all()
-    parser_class = (MultiPartParser, FormParser)
-    permission_class = [permissions.AllowAny]
-    serializer_class = sadsaSerializer
-
-
-class sadsaAcceptedViewSet(viewsets.ModelViewSet):
-    queryset = sadsaAccepted.objects.all()
-    permission_class = [permissions.AllowAny]
-    serializer_class = sadsaAcceptedSerializer

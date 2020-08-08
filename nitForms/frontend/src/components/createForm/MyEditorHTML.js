@@ -35,11 +35,11 @@ class MyEditorHTML extends React.Component {
     const contentState = this.state.editorState.getCurrentContent();
     const raw = convertToRaw(contentState);
 
-    return JSON.stringify(raw, null, 2);
+    return raw;
   }
   saveContent() {
     const json = this.getContentAsRawJson();
-    localStorage.setItem("DraftEditorContentJson", json);
+    // console.log(json);
   }
   loadContent() {
     const savedData = localStorage.getItem("DraftEditorContentJson");

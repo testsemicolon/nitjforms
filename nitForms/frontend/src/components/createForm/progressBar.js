@@ -7,7 +7,7 @@ import Button from "@material-ui/core/Button";
 import Typography from "@material-ui/core/Typography";
 import Dashboard from "./Dashboard";
 import FormName from "./FormName";
-import NotingTemplate from "./NotingTemplate";
+import NotingSlate from "./NotingSlate";
 import NotingTemplatePayement from "./NotingTemplatePayement";
 
 const useStyles = makeStyles((theme) => ({
@@ -47,7 +47,7 @@ function getStepContent(step) {
     case 1:
       return <Dashboard />;
     case 2:
-      return <NotingTemplate />;
+      return <NotingSlate />;
     case 3:
       return "Payement Form ";
     case 4:

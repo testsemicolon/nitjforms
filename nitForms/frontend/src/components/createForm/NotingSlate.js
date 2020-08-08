@@ -8,7 +8,7 @@ export default class NotingSlate extends Component {
     return (
       <div>
         <DisplayEditor />
-        <MyEditorHTML />
+
         <MyEditor />
       </div>
     );

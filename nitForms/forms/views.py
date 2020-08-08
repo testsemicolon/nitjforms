@@ -43,7 +43,7 @@ def post_views(request):
         f = open(modelPath, 'a')
         f.write("\n\nclass " + title + "Accepted(models.Model):\n")
         f.write(
-            "    comment = models.CharField(max_length=1000, blank=True)\n")
+            "    comment = JSONField(null=True)\n")
 
         f.close()
         data1 = CreateForms.objects.all()
@@ -98,11 +98,10 @@ def post_views(request):
         f = open(urlPath, 'a')
         f.write("\n\nrouter.register('" + title + "', " + title +
                 "ViewSet, '" + title + "')\n")
-        f.write("urlpatterns = router.urls\n")
 
         f.write("\n\nrouter.register('" + title + "Accepted', " + title +
                 "AcceptedViewSet, '" + title + "Accepted')\n")
-        f.write("urlpatterns = router.urls\n")
+        f.write("urlpatterns += router.urls\n")
 
         f.close()
 

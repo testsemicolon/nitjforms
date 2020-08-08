@@ -6,6 +6,7 @@ import Auth from "./Auth";
 import Messages from "./Messages";
 import AcceptedResponse from "./AcceptedResponse";
 import SharedUsers from "./Common";
+import NotingTemplate from "./NotingTemplate";
 
 export default combineReducers({
   Forms: Forms,
@@ -15,4 +16,5 @@ export default combineReducers({
   Messages: Messages,
   AcceptedResponse: AcceptedResponse,
   SharedUsers: SharedUsers,
+  NotingTemplate: NotingTemplate,
 });
