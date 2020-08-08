@@ -17,6 +17,7 @@ export class AcceptedResponses extends Component {
   created_by2 = "";
   constructor(props) {
     super(props);
+    console.log(this.props.match.params.title);
     this.props.getAccepted(this.props.match.params.title);
 
     {
@@ -34,6 +35,7 @@ export class AcceptedResponses extends Component {
 
   render() {
     if (this.created_by2 === this.props.created_by1) {
+      const title1 = this.props.match.params.title;
       return (
         <Fragment>
           {/* <div
@@ -94,7 +96,7 @@ export class AcceptedResponses extends Component {
                                 "/viewresponsenotegenerate/" +
                                 key +
                                 "/" +
-                                "test2"
+                                title1
                               }
                             >
                               <Button>View</Button>

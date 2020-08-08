@@ -11,6 +11,7 @@ import {
   getNotingTemplate,
 } from "../../actions/NotingTemplate";
 import { connect } from "react-redux";
+import { Button } from "react-bootstrap";
 
 class MyEditor extends React.Component {
   editorStyles = {
@@ -18,6 +19,8 @@ class MyEditor extends React.Component {
     margin: "10px",
     border: "1px solid gray",
   };
+  quest1 = {};
+
   constructor(props) {
     super(props);
     this.props.getNotingTemplate();
@@ -25,7 +28,9 @@ class MyEditor extends React.Component {
       editorState: EditorState.createEmpty(),
     };
     this.onChange = (editorState) => this.setState({ editorState });
+    this.props.FormName.map((a) => (this.quest1 = a));
   }
+
   handleKeyCommand(command) {
     const { editorState } = this.state;
     const newState = RichUtils.handleKeyCommand(editorState, command);
@@ -47,39 +52,36 @@ class MyEditor extends React.Component {
     const json = this.getContentAsRawJson();
     quest["noting"] = json;
     console.log(quest);
-    this.props.postNotingTemplate(quest);
+    this.props.postNotingTemplate(quest, this.quest1);
   }
-  loadContent() {
-    const savedData = {
-      blocks: [
-        {
-          key: "33uvq",
-          text: "asdasdas",
-          type: "unstyled",
-          depth: 0,
-          inlineStyleRanges: [
-            {
-              offset: 0,
-              length: 8,
-              style: "BOLD",
-            },
-          ],
-          entityRanges: [],
-          data: {},
-        },
-      ],
-      entityMap: {},
-    };
-    return savedData;
-  }
+  // loadContent() {
+  //   const savedData = {
+  //     blocks: [
+  //       {
+  //         key: "33uvq",
+  //         text: "asdasdas",
+  //         type: "unstyled",
+  //         depth: 0,
+  //         inlineStyleRanges: [
+  //           {
+  //             offset: 0,
+  //             length: 8,
+  //             style: "BOLD",
+  //           },
+  //         ],
+  //         entityRanges: [],
+  //         data: {},
+  //       },
+  //     ],
+  //     entityMap: {},
+  //   };
+  //   return savedData;
+  // }
   setEditorContent() {
     var rawEditorData = {};
     this.props.NotingTemplate.map((a) => (rawEditorData = a.noting));
     console.log(rawEditorData);
-    // var quest = {};
-    // this.props.FormName.map((a) => (quest = a));
-    // quest["notingLink"] = "";
-    // console.log(quest);
+
     if (rawEditorData !== null) {
       const contentState = convertFromRaw(rawEditorData);
       const newEditorState = EditorState.createWithContent(contentState);
@@ -123,6 +125,7 @@ class MyEditor extends React.Component {
 const mapStateToProps = (state) => ({
   NotingTemplate: state.NotingTemplate.NotingTemplate,
   FormName: state.FormName.FormName,
+  uuid1: state.NotingTemplate.uuid1,
 });
 
 export default connect(mapStateToProps, {

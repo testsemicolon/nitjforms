@@ -21,7 +21,7 @@ class FormName(models.Model):
     created_by = models.CharField(max_length=100)
     created_at = models.DateTimeField(auto_now_add=True)
     activationStatus = models.BooleanField(default=True)
-    notingLink = ArrayField(models.CharField(max_length=1000), default=None, null=True)
+    notingLink = ArrayField(models.CharField(max_length=1000),blank = True, default=list)
 
     def __str__(self):
         return self.title
@@ -46,30 +46,16 @@ class notingTemplate(models.Model):
     key = models.UUIDField(default=uuid.uuid4, editable=False)
     noting = JSONField()
 
-    def __str__(self):
-        return self.key
+
 
 
 
 class test1(models.Model):
-    what_is_your_name = models.CharField(max_length=1000)
-    sasa = models.CharField(max_length=1000)
-    date_choose = models.DateField()
+    saxzc = models.CharField(max_length=1000)
+    sacdsacc = models.CharField(max_length=1000)
 
 
 class test1Accepted(models.Model):
     comment = JSONField(null=True)
-    what_is_your_name = models.CharField(max_length=1000)
-    sasa = models.CharField(max_length=1000)
-    date_choose = models.DateField()
-
-
-class test2(models.Model):
-    what_is_your_name = models.CharField(max_length=1000)
-    sasasa = models.CharField(max_length=1000)
-
-
-class test2Accepted(models.Model):
-    comment = JSONField(null=True)
-    what_is_your_name = models.CharField(max_length=1000)
-    sasasa = models.CharField(max_length=1000)
+    saxzc = models.CharField(max_length=1000)
+    sacdsacc = models.CharField(max_length=1000)

@@ -3,10 +3,10 @@ import MyEditor from "./MyEditor";
 import MyEditorHTML from "./MyEditorHTML";
 import DisplayEditor from "./DisplayEditor";
 import Tabs from "react-bootstrap/Tabs";
-
+import { connect } from "react-redux";
 import Tab from "react-bootstrap/Tab";
 
-export default class NotingSlate extends Component {
+export class NotingSlate extends Component {
   render() {
     return (
       <div
@@ -27,6 +27,11 @@ export default class NotingSlate extends Component {
             style={{ color: "blue" }}
             title="Previous Templates"
           >
+            {this.props.NotingTemplate.map((a) => (
+              <div key={a.id}>
+                <h3>{a.noting}</h3>
+              </div>
+            ))}
             <DisplayEditor />
           </Tab>
           <Tab eventKey="New Template" title="New Template">
@@ -37,3 +42,8 @@ export default class NotingSlate extends Component {
     );
   }
 }
+const mapStateToProps = (state) => ({
+  NotingTemplate: state.NotingTemplate.NotingTemplate,
+});
+
+export default connect(mapStateToProps)(NotingSlate);

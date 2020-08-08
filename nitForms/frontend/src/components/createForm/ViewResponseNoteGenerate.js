@@ -6,7 +6,7 @@ import TextareaAutosize from "react-textarea-autosize";
 import { Card } from "react-bootstrap";
 import DisplayEditor from "./DisplayEditor";
 
-export class ViewIndividualResponse extends Component {
+export class ViewResponseNoteGenerate extends Component {
   state = {
     content: "",
     toggleforward: false,
@@ -62,7 +62,8 @@ export class ViewIndividualResponse extends Component {
           }}
         >
           <Fragment>
-            {Object.entries(this.props.Forms).map(([key, value]) => {
+            {Object.entries(this.props.AcceptedResponse).map(([key, value]) => {
+              console.log();
               if (key === value1)
                 return (
                   <Fragment key={key}>
@@ -166,10 +167,8 @@ export class ViewIndividualResponse extends Component {
 }
 
 const mapStateToProps = (state) => ({
-  Forms: state.Forms.Forms,
+  AcceptedResponse: state.AcceptedResponse.AcceptedResponse,
   created_by1: state.Auth.user.username,
 });
 
-export default connect(mapStateToProps, { addAccepted })(
-  ViewIndividualResponse
-);
+export default connect(mapStateToProps)(ViewResponseNoteGenerate);
