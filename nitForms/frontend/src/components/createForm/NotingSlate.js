@@ -14,6 +14,7 @@ import CardMedia from "@material-ui/core/CardMedia";
 import Grid from "@material-ui/core/Grid";
 import Typography from "@material-ui/core/Typography";
 import Container from "@material-ui/core/Container";
+import { Editor } from "draft-js";
 
 export class NotingSlate extends Component {
   render() {
@@ -66,9 +67,8 @@ export class NotingSlate extends Component {
                       />
                       <CardContent style={{ flexGrow: 1 }}>
                         <Typography gutterBottom variant="h5" component="h2">
-                          jhvjhvjh
+                          {a.name}
                         </Typography>
-                        <Typography> bvjhvjgvgj</Typography>
                       </CardContent>
                       <CardActions style={{ margin: 0 }}>
                         {/* <Link to={`/${card.title}`}> */}
@@ -86,7 +86,9 @@ export class NotingSlate extends Component {
                           }
                           position="right center"
                         >
-                          <div>Popup content here !!</div>
+                          <div>
+                            <DisplayEditor noting={a.noting} />
+                          </div>
                         </Popup>
 
                         {/* </Link> */}
@@ -101,7 +103,6 @@ export class NotingSlate extends Component {
                 ))}
               </Grid>
             </Container>
-            <DisplayEditor />
           </Tab>
           <Tab eventKey="New Template" title="New Template">
             <MyEditor />

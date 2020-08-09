@@ -9,6 +9,7 @@ import DownloadLink from "react-download-link";
 import { Button } from "react-bootstrap";
 import DisplayEditor from "./DisplayEditor";
 import { Link } from "react-router-dom";
+import { getNotingTemplate } from "../../actions/NotingTemplate";
 
 export class AcceptedResponses extends Component {
   state = {
@@ -19,6 +20,7 @@ export class AcceptedResponses extends Component {
     super(props);
     console.log(this.props.match.params.title);
     this.props.getAccepted(this.props.match.params.title);
+    this.props.getNotingTemplate();
 
     {
       this.props.FormName.map((a) => {
@@ -149,4 +151,6 @@ const mapStateToProps = (state) => ({
   created_by1: state.Auth.user.username,
 });
 
-export default connect(mapStateToProps, { getAccepted })(AcceptedResponses);
+export default connect(mapStateToProps, { getAccepted, getNotingTemplate })(
+  AcceptedResponses
+);

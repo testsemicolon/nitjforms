@@ -1,12 +1,11 @@
 import React, { Component, Fragment } from "react";
 import { connect } from "react-redux";
-import { addAccepted } from "../../actions/AcceptedResponse";
 import { Button } from "react-bootstrap";
 import TextareaAutosize from "react-textarea-autosize";
 import { Card } from "react-bootstrap";
 import DisplayEditor from "./DisplayEditor";
-import { DropdownButton } from "react-bootstrap/DropdownButton";
-import { Dropdown } from "react-bootstrap";
+
+import NotingIndivdiual from "./NotingIndivdiual";
 
 export class ViewResponseNoteGenerate extends Component {
   state = {
@@ -15,40 +14,38 @@ export class ViewResponseNoteGenerate extends Component {
   };
   constructor(props) {
     super(props);
-    console.log(this.props);
   }
   onclick2 = (e) => {
     e.preventDefault();
-    console.log(this.state.toggleforward);
+
     this.setState({ toggleforward: !this.state.toggleforward });
   };
   onChange = (e) => {
     this.setState({ [e.target.name]: e.target.value });
-    console.log(e.target.value);
   };
 
-  onClick = () => {
-    let value1 = this.props.match.params.value;
-    let title1 = this.props.match.params.title;
-    const quest = {};
-    var comm = "";
-    var comm1 = "";
-    var comm2 = "";
-    {
-      Object.entries(this.props.Forms).map(([key, value]) => {
-        if (key === value1) {
-          Object.entries(value).map(([question, answer]) => {
-            if (question !== "id") {
-              quest[question] = answer;
-            }
-          });
-        }
-      });
-    }
-    console.log(this.state.content);
-    quest["comment"] = this.state.content;
-    this.props.addAccepted(quest, title1);
-  };
+  // onClick = () => {
+  //   let value1 = this.props.match.params.value;
+  //   let title1 = this.props.match.params.title;
+  //   const quest = {};
+  //   var comm = "";
+  //   var comm1 = "";
+  //   var comm2 = "";
+  //   {
+  //     Object.entries(this.props.Forms).map(([key, value]) => {
+  //       if (key === value1) {
+  //         Object.entries(value).map(([question, answer]) => {
+  //           if (question !== "id") {
+  //             quest[question] = answer;
+  //           }
+  //         });
+  //       }
+  //     });
+  //   }
+  //   console.log(this.state.content);
+  //   quest["comment"] = this.state.content;
+  //   this.props.addAccepted(quest, title1);
+  // };
 
   render() {
     let value1 = this.props.match.params.value;
@@ -65,7 +62,6 @@ export class ViewResponseNoteGenerate extends Component {
         >
           <Fragment>
             {Object.entries(this.props.AcceptedResponse).map(([key, value]) => {
-              console.log();
               if (key === value1)
                 return (
                   <Fragment key={key}>
@@ -142,6 +138,7 @@ export class ViewResponseNoteGenerate extends Component {
             })}
           </Fragment>
         </div>
+
         <div
           style={{
             float: "left",
@@ -150,8 +147,6 @@ export class ViewResponseNoteGenerate extends Component {
             border: ".12vw solid lightgrey",
           }}
         >
-          <DisplayEditor />
-
           <div className="dropdown">
             <button
               type="button"
@@ -161,19 +156,17 @@ export class ViewResponseNoteGenerate extends Component {
               Choose Noting
             </button>
             <div className="dropdown-menu">
-              <a class="dropdown-item">Link 1</a>
-              <a class="dropdown-item">Link 2</a>
-              <a class="dropdown-item">Link 3</a>
+              <a className="dropdown-item">Link 1</a>
+              <a className="dropdown-item">Link 2</a>
+              <a className="dropdown-item">Link 3</a>
             </div>
           </div>
-
           <br />
           <Button>GENERATE</Button>
           <br />
           <br />
           <br />
           <Button onClick={this.onclick2}>Forward to</Button>
-
           {this.state.toggleforward === true ? (
             <div>
               <form>
@@ -183,6 +176,7 @@ export class ViewResponseNoteGenerate extends Component {
             </div>
           ) : null}
         </div>
+        <NotingIndivdiual title={this.props.match.params.title} />
       </div>
     );
   }
@@ -191,6 +185,7 @@ export class ViewResponseNoteGenerate extends Component {
 const mapStateToProps = (state) => ({
   AcceptedResponse: state.AcceptedResponse.AcceptedResponse,
   created_by1: state.Auth.user.username,
+  FormName: state.FormName.FormName,
 });
 
 export default connect(mapStateToProps)(ViewResponseNoteGenerate);

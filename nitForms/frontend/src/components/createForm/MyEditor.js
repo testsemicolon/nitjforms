@@ -20,7 +20,7 @@ class MyEditor extends React.Component {
     border: "1px solid gray",
   };
   quest1 = {};
-
+  name = "";
   constructor(props) {
     super(props);
     this.props.getNotingTemplate();
@@ -30,6 +30,10 @@ class MyEditor extends React.Component {
     this.onChange = (editorState) => this.setState({ editorState });
     this.props.FormName.map((a) => (this.quest1 = a));
   }
+
+  onChange1 = (e) => {
+    this.name = e.target.value;
+  };
 
   handleKeyCommand(command) {
     const { editorState } = this.state;
@@ -49,6 +53,7 @@ class MyEditor extends React.Component {
   saveContent() {
     const quest = {};
     quest["key"] = "1";
+    quest["name"] = this.name;
     const json = this.getContentAsRawJson();
     quest["noting"] = json;
     console.log(quest);
@@ -113,6 +118,9 @@ class MyEditor extends React.Component {
           <button onClick={this.setEditorContent.bind(this)}>
             Load content
           </button>
+        </div>
+        <div>
+          <input type="text" onChange={this.onChange1} name={this.name} />
         </div>
         <div>
           <pre>{this.getContentAsRawJson()}</pre>

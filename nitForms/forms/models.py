@@ -49,15 +49,28 @@ class sharedUsers(models.Model):
 
 class notingTemplate(models.Model):
     key = models.UUIDField(default=uuid.uuid4, editable=False)
+    name = models.CharField(max_length=1000)
     noting = JSONField()
 
 
-class test6(models.Model):
-    what_is_your_name = models.CharField(max_length=1000)
-    sasasa = models.CharField(max_length=1000)
+
+class test1(models.Model):
+    dfaf = models.CharField(max_length=1000)
+    fafds = models.CharField(max_length=1000)
 
 
-class test6Accepted(models.Model):
+class test1Accepted(models.Model):
     comment = JSONField(null=True)
-    what_is_your_name = models.CharField(max_length=1000)
-    sasasa = models.CharField(max_length=1000)
+    dfaf = models.CharField(max_length=1000)
+    fafds = models.CharField(max_length=1000)
+
+
+class test3(models.Model):
+    asdasdasd = models.CharField(max_length=1000)
+    zxczvcx = models.CharField(max_length=1000)
+
+
+class test3Accepted(models.Model):
+    comment = JSONField(null=True)
+    asdasdasd = models.CharField(max_length=1000)
+    zxczvcx = models.CharField(max_length=1000)

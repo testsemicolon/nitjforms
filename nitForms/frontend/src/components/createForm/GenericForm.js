@@ -164,6 +164,7 @@ export class GenericForm extends Component {
               <h5>Description: {this.props.description}</h5>
               <hr />
             </div>
+
             {console.log(this.toggleshare)}
             {this.props.username == this.created_by ? (
               <div>
