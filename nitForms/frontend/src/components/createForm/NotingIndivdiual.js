@@ -4,7 +4,7 @@ import MyEditorHTML from "./MyEditorHTML";
 import DisplayEditor from "./DisplayEditor";
 import Tabs from "react-bootstrap/Tabs";
 import { connect } from "react-redux";
-import Button from "@material-ui/core/Button";
+import { Button } from "react-bootstrap";
 import Tab from "react-bootstrap/Tab";
 import Card from "@material-ui/core/Card";
 import Popup from "reactjs-popup";
@@ -52,15 +52,14 @@ export class NotingIndividual extends Component {
           style={{
             margin: "1vw",
           }}
-          defaultActiveKey="New Template"
+          defaultActiveKey="Previous Templates"
           id="uncontrolled-tab-example"
         >
           <Tab
             eventKey="Previous Templates"
             style={{ color: "blue" }}
-            title="Previous Templates"
+            title="Linked Templates"
           >
-            <h1>hello</h1>
             <Container
               style={{
                 margin: 0,
@@ -69,7 +68,7 @@ export class NotingIndividual extends Component {
             >
               <Grid container spacing={4} style={{ margin: 0 }}>
                 {this.obj.map((a) => (
-                  <Grid item key={a.id} xs={5} sm={4} md={2}>
+                  <Grid item key={a.id} xs={7} sm={7} md={2} lg={4}>
                     <Card
                       key={a.id}
                       style={{
@@ -105,16 +104,27 @@ export class NotingIndividual extends Component {
                           }
                           position="right center"
                         >
-                          <div>
+                          <div
+                            style={{
+                              marginLeft: "auto",
+                              marginRight: "auto",
+                              textAlign: "center",
+                            }}
+                          >
                             <DisplayEditor noting={a.noting} />
+                            <Button
+                              style={{
+                                marginTop: "23vw",
+
+                                alignSelf: "center",
+                              }}
+                            >
+                              GENERATE
+                            </Button>
                           </div>
                         </Popup>
-
                         {/* </Link> */}
                         {/* <Link to={`/response/${card.title}`}> */}
-                        <Button size="small" color="primary">
-                          Use
-                        </Button>
                         {/* </Link> */}
                       </CardActions>
                     </Card>

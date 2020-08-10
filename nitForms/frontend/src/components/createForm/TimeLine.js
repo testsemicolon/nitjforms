@@ -7,7 +7,7 @@ export default class TimeLine extends Component {
       <div>
         <Timeline>
           <TimelineEvent
-            title="    John Doe sent a SMS"
+            title="Form Accepted"
             titleStyle={{
               fontSize: "1.2vw",
               paddingTop: ".5vw",
@@ -23,14 +23,10 @@ export default class TimeLine extends Component {
               paddingBottom: ".25vw",
             }}
           >
-            <h6>
-              {" "}
-              I received the payment for $543. Should be shipping the item
-              within a couple of hours.
-            </h6>
+            <h6> your form has been accepted and is under consideration</h6>
           </TimelineEvent>
           <TimelineEvent
-            title="    John Doe sent a SMS"
+            title="Form Accepted"
             titleStyle={{
               fontSize: "1.2vw",
               paddingTop: ".5vw",
@@ -41,18 +37,12 @@ export default class TimeLine extends Component {
             icon={<span class="material-icons">done</span>}
             style={{
               backgroundColor: "#20294f",
-              color: "black",
               paddingLeft: "1.12vw",
               paddingRight: ".25vw",
               paddingBottom: ".25vw",
             }}
           >
-            <h6>
-              Like we talked, you said that you would share the shipment
-              details? This is an urgent order and so I am losing patience. Can
-              you expedite the process and pls do share the details asap.
-              Consider this a gentle reminder if you are on track already!
-            </h6>
+            <h6> your form has been accepted and is under consideration</h6>
           </TimelineEvent>
         </Timeline>
       </div>

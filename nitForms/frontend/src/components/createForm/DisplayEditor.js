@@ -1,5 +1,6 @@
 import React from "react";
 import { Editor, EditorState, convertFromRaw } from "draft-js";
+import { Button } from "react-bootstrap";
 
 class DisplayEditor extends React.Component {
   constructor(props) {
@@ -27,7 +28,7 @@ class DisplayEditor extends React.Component {
     return (
       <div>
         <div>
-          <button onClick={() => this.setEditorContent()}>Load content</button>
+          <Button onClick={() => this.setEditorContent()}>Load content</Button>
         </div>
         <Editor editorState={this.state.editorState} readOnly={true} />
       </div>

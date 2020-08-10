@@ -525,7 +525,19 @@ export class GenericForm extends Component {
             </div>
           </Fragment>
         ) : (
-          "hellp"
+          <div style={{ textAlign: "center" }}>
+            <h3>
+              Owner has stopped accepting responses.
+              <br />
+              Contact
+              <h2 style={{ color: "red" }}>
+                {this.created_by}
+                <br />
+                mail id{" "}
+              </h2>{" "}
+              for more Details
+            </h3>
+          </div>
         )}
       </Fragment>
     );
