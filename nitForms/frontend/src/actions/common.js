@@ -2,7 +2,7 @@ import axios from "axios";
 import { tokenConfig } from "./Auth";
 import { GET_SHARED_USERS } from "./types";
 
-export const getSharedUsers = () => (dispatch) => {
+export const getSharedUser = () => (dispatch) => {
   axios
     .get("/sharedUser")
     .then((res) => {
@@ -14,13 +14,10 @@ export const getSharedUsers = () => (dispatch) => {
     .catch((err) => console.log(err));
 };
 
-export const deleteSharedUsers = (id, quest) => (dispatch) => {
-  axios
-    .delete(`/sharedUser/${id}`)
-    .then(postSharedUsers(quest))
-    .catch((err) => console.log(err));
+export const putSharedUser = (id, quest) => () => {
+  axios.put(`/sharedUser/${id}/`, quest);
 };
-export const postSharedUsers = (quest) => (dispatch) => {
+export const postSharedUser = (quest) => () => {
   axios
     .post("/sharedUser/", quest)
     .then((res) => {

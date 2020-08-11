@@ -11,13 +11,13 @@ import Typography from "@material-ui/core/Typography";
 import Container from "@material-ui/core/Container";
 import { getName } from "../../actions/FormName";
 import { Link } from "react-router-dom";
-import { getSharedUsers } from "../../actions/common";
+import { getSharedUser } from "../../actions/common";
 
 export class OldForms extends Component {
   constructor(props) {
     super(props);
     this.props.getName();
-    this.props.getSharedUsers();
+    this.props.getSharedUser();
   }
 
   static = {
@@ -86,4 +86,4 @@ const mapStateToProps = (state) => ({
   FormName: state.FormName.FormName,
 });
 
-export default connect(mapStateToProps, { getName, getSharedUsers })(OldForms);
+export default connect(mapStateToProps, { getName, getSharedUser })(OldForms);
