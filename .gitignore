@@ -6,3 +6,4 @@ nitForms/Server/stop nitForms.bat
 nitForms/Server/Start nitForms react server.bat
 nitForms/db.sqlite3
 nitForms/Server/migrate.bat
+nitForms/Server/migrate.bat

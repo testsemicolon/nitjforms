@@ -49,6 +49,38 @@ export default class CombinedView extends Component {
                 Management, Team Leading
               </p>
             </VerticalTimelineElement>
+            <VerticalTimelineElement
+              className="vertical-timeline-element--work"
+              contentStyle={{
+                background: "white",
+                color: "#fff",
+              }}
+              // contentArrowStyle={{
+              //   borderRight: "19px solid  rgb(33, 150, 243)",
+              // }}
+              date="2011 - present"
+              dateStyle={{ color: "darkblue" }}
+              iconStyle={{
+                background: "darkblue",
+                width: "2vw",
+                height: "2vw",
+                margin: "-1vw",
+                color: "#fff",
+                marginTop: "2vw",
+              }}
+            >
+              <h5 style={{ color: "black" }}>Creative Director</h5>
+              <h6
+                style={{ color: "black" }}
+                className="vertical-timeline-element-subtitle"
+              >
+                Miami, FL
+              </h6>
+              <p style={{ color: "darkblue" }}>
+                Creative Direction, User Experience, Visual Design, Project
+                Management, Team Leading
+              </p>
+            </VerticalTimelineElement>
           </VerticalTimeline>
         </div>
       </div>

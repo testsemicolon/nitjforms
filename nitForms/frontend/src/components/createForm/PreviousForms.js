@@ -101,7 +101,7 @@ class PreviousForms extends Component {
                 </div>
               </div>
             );
-          }
+          } else return <h1>No Forms</h1>;
         })}
       </Fragment>
     );

@@ -57,7 +57,6 @@ export class ViewResponseNoteGenerate extends Component {
             float: "right",
             postion: "relative",
             width: "35vw",
-            border: ".12vw solid lightgrey",
           }}
         >
           <Fragment>
@@ -145,9 +144,11 @@ export class ViewResponseNoteGenerate extends Component {
             postion: "relative",
             width: "35vw",
             border: ".12vw solid lightgrey",
+            textAlign: "center",
           }}
         >
-          <div className="dropdown">
+          <NotingIndivdiual title={this.props.match.params.title} />
+          {/* <div className="dropdown">
             <button
               type="button"
               className="btn btn-primary dropdown-toggle"
@@ -160,15 +161,17 @@ export class ViewResponseNoteGenerate extends Component {
               <a className="dropdown-item">Link 2</a>
               <a className="dropdown-item">Link 3</a>
             </div>
-          </div>
+          </div> */}
           <br />
-          <Button>GENERATE</Button>
+
           <br />
           <br />
           <br />
-          <Button onClick={this.onclick2}>Forward to</Button>
+          <Button style={{ marginBottom: "2vw" }} onClick={this.onclick2}>
+            Forward to
+          </Button>
           {this.state.toggleforward === true ? (
-            <div>
+            <div style={{ textAlign: "center" }}>
               <form>
                 <input type="text" placeholder="Enter Username" />
                 <Button>Forward</Button>
@@ -176,7 +179,6 @@ export class ViewResponseNoteGenerate extends Component {
             </div>
           ) : null}
         </div>
-        <NotingIndivdiual title={this.props.match.params.title} />
       </div>
     );
   }
