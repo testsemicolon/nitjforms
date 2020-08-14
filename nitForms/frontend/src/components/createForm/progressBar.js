@@ -31,8 +31,7 @@ const useStyles = makeStyles((theme) => ({
 
 function getSteps() {
   return [
-    "Set Title and Description",
-    "Create form",
+    "Create Form",
     "Template Generation",
     "Setting up Payment form",
     "Generating Reimbursement Noting",
@@ -45,14 +44,12 @@ function getStepContent(step) {
     case 0:
       return <FormName />;
     case 1:
-      return <Dashboard />;
-    case 2:
       return <NotingSlate />;
+    case 2:
+      return <FormName />;
     case 3:
-      return "Payement Form ";
+      return <NotingSlate />;
     case 4:
-      return <NotingTemplatePayement />;
-    case 5:
       return "Payement Type";
 
     default:
@@ -107,7 +104,6 @@ export default function HorizontalNonLinearAlternativeLabelStepper() {
   };
 
   const handleNext = () => {
-    console.log("dasmd,gasbhj");
     const newActiveStep =
       isLastStep() && !allStepsCompleted()
         ? // It's the last step, but not all steps have been completed

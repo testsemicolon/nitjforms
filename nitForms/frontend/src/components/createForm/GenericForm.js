@@ -101,8 +101,8 @@ export class GenericForm extends Component {
     Object.keys(quest).map((obj) =>
       renameKey(quest, obj, obj.replace(/[ ]/g, "_"))
     );
-
-    this.props.formSubmit(quest, this.props.title);
+    var title = this.props.title;
+    this.props.formSubmit(quest, title);
   };
 
   render() {
@@ -178,7 +178,7 @@ export class GenericForm extends Component {
             </div>
 
             {console.log(this.toggleshare)}
-            {this.props.username == this.created_by ? (
+            {this.props.username === this.created_by ? (
               <div>
                 <Button
                   onClick={() => {

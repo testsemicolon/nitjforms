@@ -28,6 +28,7 @@ def post_views(request):
 
         # Accessing Database
         title = FormName.objects.all().order_by('-created_at')[0].title
+        title = title.replace(" ", "_")
 
         # Writing Models.py
         f = open(modelPath, 'a')
@@ -42,8 +43,10 @@ def post_views(request):
 
         f = open(modelPath, 'a')
         f.write("\n\nclass " + title + "Accepted(models.Model):\n")
+        f.write("    comment = JSONField(null=True)\n")
         f.write(
-            "    comment = JSONField(null=True)\n")
+            "    forwardTo = ArrayField(models.CharField(max_length=100),blank=True, default=list)\n"
+        )
 
         f.close()
         data1 = CreateForms.objects.all()

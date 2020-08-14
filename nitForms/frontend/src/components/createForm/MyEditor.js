@@ -12,8 +12,51 @@ import {
 } from "../../actions/NotingTemplate";
 import { connect } from "react-redux";
 import { Button } from "react-bootstrap";
+import Autocomplete from "draft-js-autocomplete";
 
 class MyEditor extends React.Component {
+  hashtags = [];
+  componentDidMount() {
+    {
+      Object.entries(this.props.Forms).map(([key, value]) => {
+        var question = value.question.replace(/[ ]/g, "_");
+        console.log(question);
+        this.hashtags.push(question);
+      });
+    }
+    console.log(this.hashtags);
+  }
+
+  onMatch = (text) =>
+    this.hashtags.filter((hashtag) => hashtag.indexOf(text) !== -1);
+
+  Hasthtag = ({ children }) => <span className="Hashtag">{children}</span>;
+
+  List = ({ display, children }) => {
+    return <ul className="HashtagList">{children}</ul>;
+  };
+
+  Item = ({ item, current, onClick }) => {
+    let classNames = "HashtagListItem";
+    classNames += current ? " current" : "";
+    return (
+      <li className={classNames} onClick={onClick}>
+        {item}
+      </li>
+    );
+  };
+
+  hashtag = {
+    prefix: "#",
+    type: "HASHTAG",
+    mutability: "IMMUTABLE",
+    onMatch: this.onMatch,
+    component: this.Hasthtag,
+    listComponent: this.List,
+    itemComponent: this.Item,
+    format: (item) => `#${item}`,
+  };
+  autocompletes = [this.hashtag];
   editorStyles = {
     width: "200px",
     margin: "10px",
@@ -107,11 +150,14 @@ class MyEditor extends React.Component {
           <button onClick={() => this.handleKeyCommand("code")}>Code</button>
         </div>
         <div style={this.editorStyles}>
-          <Editor
+          <Autocomplete
             editorState={this.state.editorState}
             onChange={this.onChange}
             handleKeyCommand={this.handleKeyCommand.bind(this)}
-          />
+            autocompletes={this.autocompletes}
+          >
+            <Editor />
+          </Autocomplete>
         </div>
         <div style={{ margin: "10px" }}>
           <button onClick={this.saveContent.bind(this)}>Save content</button>
@@ -134,6 +180,7 @@ const mapStateToProps = (state) => ({
   NotingTemplate: state.NotingTemplate.NotingTemplate,
   FormName: state.FormName.FormName,
   uuid1: state.NotingTemplate.uuid1,
+  Forms: state.Forms.Forms,
 });
 
 export default connect(mapStateToProps, {

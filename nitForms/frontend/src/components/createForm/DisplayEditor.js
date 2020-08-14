@@ -1,24 +1,95 @@
 import React from "react";
 import { Editor, EditorState, convertFromRaw } from "draft-js";
 import { Button } from "react-bootstrap";
+import { connect } from "react-redux";
+import { putAccepted } from "../../actions/AcceptedResponse";
 
 class DisplayEditor extends React.Component {
+  flag = false;
+  eg = "hellooooo";
+  arr = [];
   constructor(props) {
     super(props);
-
+    console.log(this.props.key1);
     this.state = {
       editorState: EditorState.createEmpty(),
+      comment: "",
+      quest: {},
     };
   }
+  componentDidMount() {
+    this.setEditorContent();
+  }
+  onChange = (e) => {
+    this.setState({ comment: e.target.value });
+  };
+  onClick = () => {
+    var key1 = this.props.key1;
+    var cmnt = [];
+    var cmntAuthor = {};
+    cmntAuthor[this.props.username] = this.state.comment;
+    cmnt.push(cmntAuthor);
+    var id = parseInt(this.props.id);
+    this.props.AcceptedResponse.map((a) => {
+      console.log(a.id, id);
+      if (a.id === id) {
+        if (a.comment === "") {
+          const quest = { [key1]: cmnt };
+          console.log(quest);
+          console.log("if");
+          a["comment"] = quest;
+        } else {
+          console.log("else");
+          Object.entries(a.comment).map(([key, value]) => {
+            if (key1 === key) {
+              console.log(key, value);
+              value.push(cmntAuthor);
+              // const quest = { [key1]: value };
+              a["comment"][key1] = value;
+              // console.log(quest);
+              this.flag = true;
+            }
+          });
+          if (this.flag === false) {
+            a["comment"][key1] = cmnt;
+          }
+        }
+        console.log(a);
+        this.props.putAccepted(a.id, this.props.title, a);
+      }
+    });
+    console.log("asdmhgadkhvdaf");
+  };
   loadContent() {
     const savedData = this.props.noting;
     return savedData ? JSON.parse(savedData) : null;
   }
   setEditorContent() {
     const rawEditorData = this.loadContent();
+    console.log("hello");
+    rawEditorData.blocks.map((s) => {});
+    rawEditorData.blocks.map((s) => {
+      this.props.AcceptedResponse.map((s1) => {
+        console.log("12");
+        var id = parseInt(this.props.id);
+        var id1 = parseInt(s1.id);
+        console.log(id, id1);
+        if (id === id1) {
+          Object.entries(s1).map(([key, value]) => {
+            if (key !== "comment") {
+              console.log(key, value);
+              s.text = s.text.replace("#", "");
+              s.text = s.text.replace(key, value);
+            }
+          });
+        }
+      });
+      console.log(s.text);
+    });
+    rawEditorData.blocks.map((s) => console.log(s.text));
     if (rawEditorData !== null) {
       const contentState = convertFromRaw(rawEditorData);
-      const newEditorState = EditorState.createWithContent(contentState);
+      let newEditorState = EditorState.createWithContent(contentState);
       this.setState({ editorState: newEditorState });
     } else {
       this.setState({ editorState: EditorState.createEmpty() });
@@ -27,13 +98,17 @@ class DisplayEditor extends React.Component {
   render() {
     return (
       <div>
-        <div>
-          <Button onClick={() => this.setEditorContent()}>Load content</Button>
-        </div>
-        <Editor editorState={this.state.editorState} readOnly={true} />
+        <Editor editorState={this.state.editorState} />
+        <input onChange={this.onChange} type="text" />
+        <Button type="submit" onClick={this.onClick}>
+          Add comment
+        </Button>
       </div>
     );
   }
 }
-
-export default DisplayEditor;
+const mapStateToProps = (state) => ({
+  AcceptedResponse: state.AcceptedResponse.AcceptedResponse,
+  username: state.Auth.user.username,
+});
+export default connect(mapStateToProps, { putAccepted })(DisplayEditor);

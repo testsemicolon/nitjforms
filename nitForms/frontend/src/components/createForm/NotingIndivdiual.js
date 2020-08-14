@@ -18,16 +18,17 @@ import Container from "@material-ui/core/Container";
 export class NotingIndividual extends Component {
   arr = [];
   obj = [];
+  formname = {};
   constructor(props) {
     super(props);
-
+    console.log(this.props);
     this.props.FormName.map((a) => {
       if (a.title === this.props.title) {
+        this.formname = a;
         this.arr = a.notingLink;
-        console.log("Asd");
       }
     });
-    console.log(this.arr);
+
     this.props.NotingTemplate.map((b) => {
       this.arr.map((a) => {
         if (a === b.key) {
@@ -111,7 +112,12 @@ export class NotingIndividual extends Component {
                               textAlign: "center",
                             }}
                           >
-                            <DisplayEditor noting={a.noting} />
+                            <DisplayEditor
+                              noting={a.noting}
+                              key1={a.key}
+                              title={this.props.title}
+                              id={this.props.id}
+                            />
                             <Button
                               style={{
                                 marginTop: "23vw",

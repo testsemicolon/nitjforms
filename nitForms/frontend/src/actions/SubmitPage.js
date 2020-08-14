@@ -3,6 +3,7 @@ import { tokenConfig } from "./Auth";
 import { createMessage, returnErrors } from "./Messages";
 
 export const formSubmit = (quest, url) => (dispatch, getState) => {
+  url = url.replace(/[ ]/g, "_");
   axios
     .post(`${url}/`, quest, tokenConfig(getState))
     .then((res) => {

@@ -14,6 +14,7 @@ import { getNotingTemplate } from "../../actions/NotingTemplate";
 export class AcceptedResponses extends Component {
   state = {
     content: "",
+    flag: false,
   };
   created_by2 = "";
   constructor(props) {
@@ -30,13 +31,28 @@ export class AcceptedResponses extends Component {
     console.log(this.created_by2, this.props.created_by1);
   }
 
+  componentDidMount() {
+    this.props.SharedUsers.map((a) => {
+      if (a.formName === this.props.match.params.title) {
+        a.userName.map((a1) => {
+          if (a1 === this.props.created_by1) {
+            this.setState({ flag: true });
+          }
+        });
+      }
+    });
+  }
+
   onSubmit = (e) => {
     e.preventDefault();
     console.log(this.state.content);
   };
 
   render() {
-    if (this.created_by2 === this.props.created_by1) {
+    if (
+      this.created_by2 === this.props.created_by1 ||
+      this.state.flag === true
+    ) {
       const title1 = this.props.match.params.title;
       return (
         <Fragment>
@@ -89,6 +105,7 @@ export class AcceptedResponses extends Component {
               <tbody>
                 {Object.entries(this.props.AcceptedResponse).map(
                   ([key, value]) => {
+                    console.log(value);
                     return (
                       <Fragment key={key}>
                         <tr>
@@ -98,28 +115,35 @@ export class AcceptedResponses extends Component {
                                 "/viewresponsenotegenerate/" +
                                 key +
                                 "/" +
-                                title1
+                                title1 +
+                                "/" +
+                                value.id
                               }
                             >
                               <Button>View</Button>
                             </Link>
                           </td>
                           {Object.entries(value).map(([question, answer]) => {
-                            return (
-                              <Fragment key={question}>
-                                <td
-                                  style={{
-                                    alignContent: "center",
-                                    alignItems: "center",
-                                    textAlign: "center",
-                                  }}
-                                >
-                                  <strong>{question.toUpperCase()}</strong>
-                                  <br />
-                                  {answer}
-                                </td>
-                              </Fragment>
-                            );
+                            if (
+                              (question !== "comment") &
+                              (question !== "forwardTo")
+                            ) {
+                              return (
+                                <Fragment key={question}>
+                                  <td
+                                    style={{
+                                      alignContent: "center",
+                                      alignItems: "center",
+                                      textAlign: "center",
+                                    }}
+                                  >
+                                    <strong>{question.toUpperCase()}</strong>
+                                    <br />
+                                    {answer}
+                                  </td>
+                                </Fragment>
+                              );
+                            }
                           })}
                         </tr>
                       </Fragment>
@@ -149,6 +173,7 @@ const mapStateToProps = (state) => ({
   AcceptedResponse: state.AcceptedResponse.AcceptedResponse,
   FormName: state.FormName.FormName,
   created_by1: state.Auth.user.username,
+  SharedUsers: state.SharedUsers.SharedUsers,
 });
 
 export default connect(mapStateToProps, { getAccepted, getNotingTemplate })(
