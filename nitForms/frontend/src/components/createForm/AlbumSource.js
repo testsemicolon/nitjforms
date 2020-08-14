@@ -3,6 +3,7 @@ import AlbumUser from "./AlbumUser";
 import Album from "./Album";
 import AlbumAdminStaff from "./AlbumAdminStaff";
 import { connect } from "react-redux";
+import Albumm from "./Albumm";
 
 export class AlbumSource extends Component {
   render() {

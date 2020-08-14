@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Component, Fragment } from "react";
 import AppBar from "@material-ui/core/AppBar";
 import Button from "@material-ui/core/Button";
 // import CameraIcon from '@material-ui/icons/PhotoCamera';
@@ -64,72 +64,80 @@ const useStyles = makeStyles((theme) => ({
 
 const cards = [1, 2, 3, 4, 5, 6, 7, 8, 9];
 
-export default function Album() {
-  const classes = useStyles();
+export default class Album extends Component {
+  render() {
+    // const classes = useStyles();
 
-  return (
-    <React.Fragment>
-      <CssBaseline />
-      <Header />
-      <main>
-        {/* Hero unit */}
-        <div className={classes.heroContent}>
-          <Container maxWidth="sm">
-            <Typography
-              component="h1"
-              variant="h2"
-              align="center"
-              color="textPrimary"
-              gutterBottom
-            >
-              FORMS
-            </Typography>
-
-            <Typography
-              variant="h5"
-              align="center"
-              color="textSecondary"
-              paragraph
-            >
-              LET'S CREATE A NEW FORM
-            </Typography>
-            <div className={classes.heroButtons}>
-              <Grid container spacing={2} justify="center">
-                <Grid item>
-                  <Link1 to="/definingsteps">
-                    <Button variant="contained" color="primary">
-                      CREATE A NEW FORM
-                    </Button>
-                  </Link1>
-                </Grid>
-                <Grid item>
-                  <Button variant="outlined" color="primary">
-                    VIEW PREVIOUS FORMS
-                  </Button>
-                </Grid>
-              </Grid>
-            </div>
-          </Container>
+    return (
+      <Fragment>
+        <Header />
+        <div>
+          <div style={{ width: "20vw", backgroundColor: "pink" }}>
+            abcdckfhvgf
+          </div>
+          <div style={{ width: "20vw", backgroundColor: "pink" }}>
+            abcdckfhvgf
+          </div>
         </div>
-      </main>
-      <OldForms />
+        {/* Hero unit */}
+        <div>
+          {/* <Container maxWidth="sm"> */}
+          <Typography
+            component="h1"
+            variant="h2"
+            align="center"
+            color="textPrimary"
+            gutterBottom
+          >
+            FORMS
+          </Typography>
 
-      {/* Footer */}
-      <footer className={classes.footer}>
-        <Typography variant="h6" align="center" gutterBottom>
-          {" "}
-          National Institute of Technology
-        </Typography>
-        <Typography
-          variant="subtitle1"
-          align="center"
-          color="textSecondary"
-          component="p"
-        >
-          Jalandharr
-        </Typography>
-      </footer>
-      {/* End footer */}
-    </React.Fragment>
-  );
+          <Typography
+            variant="h5"
+            align="center"
+            color="textSecondary"
+            paragraph
+          >
+            LET'S CREATE A NEW FORM
+          </Typography>
+          <div>
+            <Grid container spacing={2} justify="center">
+              <Grid item>
+                <Link1 to="/definingsteps">
+                  <Button variant="contained" color="primary">
+                    CREATE A NEW FORM
+                  </Button>
+                </Link1>
+              </Grid>
+              <Grid item>
+                <Button variant="outlined" color="primary">
+                  VIEW PREVIOUS FORMS
+                </Button>
+              </Grid>
+            </Grid>
+          </div>
+          {/* </Container> */}
+        </div>
+
+        <OldForms />
+
+        {/* Footer */}
+        <footer>
+          <Typography variant="h6" align="center" gutterBottom>
+            {" "}
+            National Institute of Technology
+          </Typography>
+          <Typography
+            variant="subtitle1"
+            align="center"
+            color="textSecondary"
+            component="p"
+          >
+            Jalandharr
+          </Typography>
+        </footer>
+        {/* End footer */}
+      </Fragment>
+    );
+  }
 }

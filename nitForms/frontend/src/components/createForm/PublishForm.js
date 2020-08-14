@@ -67,6 +67,8 @@ export class PublishForm extends Component {
           style={{
             fontSize: "2rem",
             textAlign: "center",
+            border: ".1vw solid lightgrey",
+            padding: "2vw",
           }}
         >
           Title: {this.ftitle}
@@ -87,6 +89,7 @@ export class PublishForm extends Component {
               fontSize: "1rem",
               justifyContent: "center",
               color: "grey",
+              border: ".1vw solid lightgrey",
             }}
           >
             <hr

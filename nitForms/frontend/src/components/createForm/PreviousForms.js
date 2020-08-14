@@ -3,6 +3,7 @@ import { connect } from "react-redux";
 import PropTypes from "prop-types";
 import { Button } from "react-bootstrap";
 import { getName, updateName } from "../../actions/FormName";
+import { shadows } from "@material-ui/system";
 import { Card } from "@material-ui/core";
 
 import { Link } from "react-router-dom";
@@ -33,54 +34,76 @@ class PreviousForms extends Component {
               <div
                 key={card.id}
                 style={{
-                  backgroundColor: "#F5FCFF",
-                  border: ".1vw solid grey",
-                  padding: "1vw",
-                  borderRadius: "1vw",
+                  backgroundColor: "#eeeeee",
+                  // border: ".1vw solid #009999",
+                  paddingLeft: "3.5vw",
+                  paddingRight: "3.5VW",
+                  paddingTop: "1.5vw",
+                  paddingBottom: "1vw",
+                  borderRadius: "0.8vw",
+                  marginBottom: "1VW",
+                  width: "55vw",
+                  marginLeft: "auto",
+                  marginRight: "auto",
+                  boxShadow: ".3vw .3vw .5vw silver",
                 }}
               >
-                <h4>
-                  TITLE: {card.title}
-                  {card.activationStatus === true ? (
-                    <Button
-                      variant="danger"
-                      style={{
-                        float: "right",
-                        position: "relative",
-                        marginBottom: "1vw",
-                      }}
-                      onClick={() => {
-                        card.activationStatus = !card.activationStatus;
-                        this.props.updateName(card.id, card);
-                        this.setState({ status: !this.state.status });
-                        console.log(card);
-                      }}
-                    >
-                      Deactivate
-                    </Button>
-                  ) : (
-                    <Button
-                      variant="success"
-                      style={{
-                        float: "right",
-                        position: "relative",
-                        marginBottom: "1vw",
-                      }}
-                      onClick={() => {
-                        card.activationStatus = !card.activationStatus;
-                        this.props.updateName(card.id, card);
-                        this.setState({ status: !this.state.status });
-                        console.log(card);
-                      }}
-                    >
-                      Activate
-                    </Button>
-                  )}
-                  <br />
+                <div
+                  style={{
+                    backgroundColor: "#ffffff",
+                    paddingBottom: 0,
+                    paddingTop: ".7vw",
+                    paddingLeft: ".7vw",
+                    paddingRight: ".7vw",
+                    borderRadius: "1vw",
+                    boxShadow: ".3vw .3vw .5vw silver",
+                  }}
+                >
+                  <h4>
+                    TITLE: {card.title}
+                    {card.activationStatus === true ? (
+                      <Button
+                        style={{
+                          float: "right",
+                          position: "relative",
+                          marginBottom: "1vw",
+                          backgroundColor: "red",
+                          boxShadow: ".1vw .1vw .1vw .1vw silver",
+                        }}
+                        onClick={() => {
+                          card.activationStatus = !card.activationStatus;
+                          this.props.updateName(card.id, card);
+                          this.setState({ status: !this.state.status });
+                          console.log(card);
+                        }}
+                      >
+                        Deactivate
+                      </Button>
+                    ) : (
+                      <Button
+                        style={{
+                          float: "right",
+                          position: "relative",
+                          marginBottom: "1vw",
+                          backgroundColor: "green",
+                          boxShadow: ".1vw .1vw .1vw .1vw silver",
+                        }}
+                        onClick={() => {
+                          card.activationStatus = !card.activationStatus;
+                          this.props.updateName(card.id, card);
+                          this.setState({ status: !this.state.status });
+                          console.log(card);
+                        }}
+                      >
+                        Activate
+                      </Button>
+                    )}
+                    <br />
+                    <hr />
+                  </h4>
+                  DESCRIPTION:{card.description}
                   <hr />
-                </h4>
-                DESCRIPTION:{card.description}
-                <hr />
+                </div>
                 <div
                   style={{
                     alignItems: "center",
@@ -89,12 +112,26 @@ class PreviousForms extends Component {
                   }}
                 >
                   <Link to={`/${card.title}`}>
-                    <Button style={{ marginRight: "2vw" }} variant="success">
+                    <Button
+                      style={{
+                        marginRight: "1vw",
+                        backgroundColor: "#009999",
+                        boxShadow: ".1vw .1vw .1vw .1vw silver",
+                      }}
+                    >
                       View
                     </Button>
                   </Link>{" "}
                   <Link to={`/response/${card.title}`}>
-                    <Button style={{ marginRight: "2vw" }} variant="info">
+                    <Button
+                      style={{
+                        marginRight: "2vw",
+                        backgroundColor: "white",
+                        color: "#009999",
+                        border: " 0.06vw solid #009999",
+                        boxShadow: ".1vw .1vw .1vw .1vw silver",
+                      }}
+                    >
                       Responses
                     </Button>
                   </Link>{" "}

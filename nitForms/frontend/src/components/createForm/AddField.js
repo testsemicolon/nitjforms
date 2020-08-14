@@ -30,21 +30,21 @@ export class AddField extends Component {
   render() {
     const { question, inputType } = this.state;
     return (
-      <div>
+      <div style={{ border: ".1vw solid lightgrey", padding: "2vw" }}>
         <h3>Add Form Field</h3>
         <form onSubmit={this.onSubmit} style={{ display: "flex" }}>
           <input
             type="text"
             name="question"
             placeholder="Enter your question here...."
-            style={{ flex: "7", padding: "5px" }}
+            style={{ flex: "7", padding: "5px", marginRight: ".5vw" }}
             value={question}
             onChange={this.onChange}
-          />
+          />{" "}
           <select
             value={inputType}
             onChange={this.handleChange}
-            style={{ flex: "3", padding: "5px" }}
+            style={{ flex: "3", padding: "5px", marginRight: ".5vw" }}
           >
             <option value="Short Answer">Short Answer</option>
             <option value="Paragraph">Paragraph</option>
@@ -53,13 +53,8 @@ export class AddField extends Component {
             <option value="Dropdown">Dropdown</option>
             <option value="File Upload">File Upload</option>
             <option value="Date">Date</option>
-          </select>
-          <input
-            type="submit"
-            value="Add Field"
-            className="btn"
-            style={btnStyle}
-          />
+          </select>{" "}
+          <input type="submit" value="Add Field" style={btnStyle} />
         </form>
       </div>
     );
@@ -71,7 +66,8 @@ const btnStyle = {
   background: "#3f51b5",
   color: "#fff",
   flex: "1",
-  padding: "5px",
+  // padding: "5px",
+  boxShadow: ".1vw .1vw .1vw silver",
 };
 
 const mapStateToProps = (state) => ({

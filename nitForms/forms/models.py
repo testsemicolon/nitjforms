@@ -51,37 +51,3 @@ class notingTemplate(models.Model):
     key = models.UUIDField(default=uuid.uuid4, editable=False)
     name = models.CharField(max_length=1000)
     noting = JSONField()
-
-
-
-class test1(models.Model):
-    what_is_your_mother_name = models.CharField(max_length=1000)
-    dsd = models.CharField(max_length=1000)
-
-
-class test1Accepted(models.Model):
-    comment = JSONField(null=True)
-    what_is_your_mother_name = models.CharField(max_length=1000)
-    dsd = models.CharField(max_length=1000)
-
-
-class test2(models.Model):
-    what_is_your_mother_name = models.CharField(max_length=1000)
-    dsd = models.CharField(max_length=1000)
-
-
-class test2Accepted(models.Model):
-    comment = JSONField(null=True)
-    what_is_your_mother_name = models.CharField(max_length=1000)
-    dsd = models.CharField(max_length=1000)
-
-
-class test3(models.Model):
-    what_is_your_mother_name = models.CharField(max_length=1000)
-    mother = models.CharField(max_length=1000)
-
-
-class test3Accepted(models.Model):
-    comment = JSONField(null=True)
-    what_is_your_mother_name = models.CharField(max_length=1000)
-    mother = models.CharField(max_length=1000)

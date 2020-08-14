@@ -34,6 +34,7 @@
     "draft-js-export-html": "^1.4.1",
     "final-form": "^4.20.0",
     "jquery": "^3.5.1",
+    "material-ui-search-bar": "^1.0.0",
     "mdbreact": "^4.27.0",
     "npm-upgrade": "^2.0.3",
     "popper.js": "^1.16.1-lts",
@@ -53,6 +54,7 @@
     "react-horizontal-timeline": "^1.5.3",
     "react-html-parser": "^2.0.2",
     "react-html-table-to-excel": "^2.0.0",
+    "react-icons": "^3.10.0",
     "react-notifications-component": "^2.4.0",
     "react-redux": "^7.2.0",
     "react-router-dom": "^5.1.2",
@@ -69,6 +71,7 @@
     "rsuite": "^4.8.0",
     "slate": "^0.58.4",
     "slate-react": "^0.58.4",
+    "styled-table-component": "^4.0.0",
     "xlsx": "^0.16.3"
   }
 }

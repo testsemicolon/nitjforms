@@ -3,6 +3,8 @@
 }
 .vertical-timeline {
   width: 95%;
+  background: #009999;
+
   max-width: 1170px;
   margin: 0 auto;
   position: relative;
@@ -13,6 +15,7 @@
   display: table;
   clear: both;
 }
+
 .vertical-timeline::before {
   content: "";
   position: absolute;
@@ -20,7 +23,7 @@
   left: 18px;
   height: 100%;
   width: 4px;
-  background: #fff;
+  background: #009999;
 }
 @media only screen and (min-width: 1170px) {
   .vertical-timeline.vertical-timeline--two-columns {
@@ -155,7 +158,7 @@
 .vertical-timeline-element-content {
   position: relative;
   margin-left: 60px;
-  background: #fff;
+  background: #009999;
   border-radius: 0.25em;
   border: 1vw;
   padding: 1e;

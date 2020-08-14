@@ -28,7 +28,17 @@ class DisplayEditor extends React.Component {
     return (
       <div>
         <div>
-          <Button onClick={() => this.setEditorContent()}>Load content</Button>
+          <Button
+            style={{
+              backgroundColor: "#3f51b5",
+              boxShadow: ".1vw .1vw .1vw .1vw silver",
+              marginLeft: "auto",
+              marginRight: "auto",
+            }}
+            onClick={() => this.setEditorContent()}
+          >
+            Load content
+          </Button>
         </div>
         <Editor editorState={this.state.editorState} readOnly={true} />
       </div>

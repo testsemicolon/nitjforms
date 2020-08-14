@@ -48,7 +48,7 @@ export class NotingSlate extends Component {
               }}
               // maxWidth="md"
             >
-              <Grid container spacing={4} style={{ margin: 0 }}>
+              <Grid container spacing={3} style={{ margin: 0 }}>
                 {this.props.NotingTemplate.map((a) => (
                   <Grid item key={a.id} xs={5} sm={4} md={2}>
                     <Card
@@ -57,7 +57,6 @@ export class NotingSlate extends Component {
                         // height: "100%",
                         display: "flex",
                         flexDirection: "column",
-                        margin: 0,
                       }}
                     >
                       <CardMedia
@@ -80,7 +79,15 @@ export class NotingSlate extends Component {
                           }}
                           modal
                           trigger={
-                            <Button size="small" color="primary">
+                            <Button
+                              style={{
+                                marginRight: ".2vw",
+                                backgroundColor: "#3f52b5",
+                                boxShadow: ".1vw .1vw .1vw .1vw silver",
+                                padding: ".17vw",
+                                color: "white",
+                              }}
+                            >
                               View
                             </Button>
                           }
@@ -93,7 +100,15 @@ export class NotingSlate extends Component {
 
                         {/* </Link> */}
                         {/* <Link to={`/response/${card.title}`}> */}
-                        <Button size="small" color="primary">
+                        <Button
+                          style={{
+                            backgroundColor: "white",
+                            color: "#3f51b5",
+                            border: " 0.06vw solid #3f51b5",
+                            boxShadow: ".1vw .1vw .1vw .1vw silver",
+                            padding: ".17vw",
+                          }}
+                        >
                           Use
                         </Button>
                         {/* </Link> */}

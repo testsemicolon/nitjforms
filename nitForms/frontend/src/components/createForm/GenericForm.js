@@ -9,6 +9,7 @@ import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import FileUpload from "./FileUpload";
 import { deleteSharedUsers } from "../../actions/common";
+import Popup from "reactjs-popup";
 
 export class GenericForm extends Component {
   state = {};
@@ -99,6 +100,7 @@ export class GenericForm extends Component {
       <Fragment>
         {this.status === true || this.props.username === this.created_by ? (
           <Fragment>
+            <div></div>
             <div
               style={{
                 fontSize: "2rem",
@@ -106,52 +108,6 @@ export class GenericForm extends Component {
               }}
             >
               Title: {this.props.title}
-              <Link to={`/response/${this.props.title}`}>
-                <Button
-                  style={{
-                    fontSize: "1vw",
-                    float: "right",
-                    position: "relative",
-                    background: "#3f51b5",
-                    color: "#fff",
-                    padding: "0.4vw",
-                    borderRadius: ".3vw",
-                    borderColor: "black",
-                    borderWidth: "0.08vw",
-                    width: "12vw",
-                  }}
-                >
-                  Responses
-                </Button>
-              </Link>
-              <Button
-                style={{
-                  backgroundColor: "transparent",
-                  float: "right",
-                  position: "relative",
-                  borderWidth: 0,
-                }}
-              >
-                {" "}
-              </Button>
-              <Link to={"/accepted/" + this.props.title}>
-                <Button
-                  style={{
-                    background: "#3f51b5",
-                    color: "#fff",
-                    padding: "0.4vw",
-                    borderRadius: ".3vw",
-                    borderColor: "black",
-                    borderWidth: "0.08vw",
-                    width: "12vw",
-                    fontSize: "1vw",
-                    float: "right",
-                    position: "relative",
-                  }}
-                >
-                  Accepted responses
-                </Button>{" "}
-              </Link>
               <div
                 style={{
                   fontSize: "1rem",
@@ -164,41 +120,127 @@ export class GenericForm extends Component {
               <h5>Description: {this.props.description}</h5>
               <hr />
             </div>
-
-            {console.log(this.toggleshare)}
-            {this.props.username == this.created_by ? (
-              <div>
+            <div
+              style={{
+                position: "relative",
+                width: "50vw",
+                justifyContent: "center",
+                textAlign: "center",
+                marginLeft: "auto",
+                marginRight: "auto",
+                paddingTop: "1vw",
+                backgroundImage:
+                  "linear-gradient(to right,rgba(0, 153, 153, 0.5),rgba(0, 231, 231, 0.5)",
+                // backgroundColor: "#00a3a3",
+                boxShadow: ".3vw .3vw .5vw grey",
+                borderRadius: "1vw",
+                paddingRight: "1vw",
+              }}
+            >
+              <Link to={"/accepted/" + this.props.title}>
                 <Button
-                  onClick={() => {
-                    this.toggleshare = !this.toggleshare;
+                  style={{
+                    color: "#009999",
+                    // padding: "0.4vw",
+                    borderRadius: ".3vw",
+                    border: "0.06vw solid #009999",
+                    marginBottom: "1.5vw",
+                    marginRight: "1vw",
+                    fontSize: "1vw",
+                    // float: "right",
+                    position: "relative",
+                    backgroundColor: "white",
+                    // boxShadow: ".1vw .1vw .1vw .1vw silver",
                   }}
                 >
-                  {console.log(this.toggleshare)}
-                  Share with
+                  Accepted responses
                 </Button>
-                {this.toggleshare === true ? (
-                  <form>
-                    <input
-                      type="text"
-                      name={this.toShareWith}
-                      onChange={this.onChangeUser}
-                    />
-                    <Button onClick={this.onSubmitUser}>Submit</Button>
-                  </form>
-                ) : (
-                  "NO PERMISSION TO SHARE"
-                )}
-              </div>
-            ) : (
-              "NO PERMISSION TO SHARE"
-            )}
+              </Link>{" "}
+              <Link to={`/response/${this.props.title}`}>
+                <Button
+                  style={{
+                    fontSize: "1vw",
+                    // float: "right",
+                    // position: "relative",
+                    background: "white",
+                    color: "#009999",
+                    marginBottom: "1.5vw",
+                    // padding: "0.4vw",
+                    marginRight: "1vw",
+                    borderRadius: ".3vw",
+                    borderColor: "#009999",
+                    borderWidth: "0.06vw",
+                    width: "10vw",
+                    // boxShadow: ".1vw .1vw .1vw .1vw silver",
+                  }}
+                >
+                  Responses
+                </Button>
+              </Link>
+              {this.props.username == this.created_by ? (
+                <Popup
+                  contentStyle={{
+                    width: "20%",
+                    height: "65%",
+                    border: ".1vw solid grey",
+                  }}
+                  modal
+                  trigger={
+                    <Button
+                      style={{
+                        fontSize: "1vw",
+                        // float: "right",
+                        // position: "relative",
+                        backgroundColor: "white",
+                        color: "#009999",
+
+                        paddingBottom: ".01vw",
+                        marginRight: "1vw",
+                        borderRadius: ".3vw",
+                        border: ".01vw solid #009999",
+                        width: "10vw",
+                        marginBottom: "1.5vw",
+                        // boxShadow: ".1vw .1vw .1vw .1vw silver",
+                      }}
+                    >
+                      <span class="material-icons">share</span>
+                    </Button>
+                  }
+                  position="right center"
+                >
+                  {this.toggleshare === true ? (
+                    <form>
+                      <input
+                        type="text"
+                        name={this.toShareWith}
+                        onChange={this.onChangeUser}
+                      />
+                      <Button onClick={this.onSubmitUser}>Submit</Button>
+                    </form>
+                  ) : (
+                    "NO PERMISSION TO SHARE"
+                  )}{" "}
+                </Popup>
+              ) : (
+                "NO PERMISSION TO SHARE"
+              )}
+            </div>
 
             <div
               style={{
                 display: "flex",
                 justifyContent: "center",
                 marginTop: "2rem",
-                marginBottom: "2rem",
+                marginBottom: "4vw",
+                backgroundColor: "#EEEEEE",
+                boxShadow: ".3vw .3vw .5vw silver",
+                borderRadius: "1vw",
+                //  border: ".2vw solid silver",
+
+                width: "50vw",
+                marginLeft: "auto",
+
+                marginRight: "auto",
               }}
             >
               <form onSubmit={this.onSubmit}>
@@ -211,39 +253,42 @@ export class GenericForm extends Component {
                           borderRadius: "5rem",
                           borderWidth: ".5rem",
                           borderColor: "grey",
+
                           marginTop: "2rem",
                         }}
                       >
                         <Card
                           style={{
                             borderRadius: ".95vw",
-                            borderWidth: ".2vw",
-                            borderColor: "lightgrey",
+                            borderWidth: 0,
+                            // border: ".2vw solid #ed6a5a",
                             marginTop: "2vw",
-                            width: "40.37vw",
+                            width: "40.33vw",
+                            color: "#009999",
                             marginLeft: "auto",
                             marginRight: "auto",
                             height: "auto",
+                            boxShadow: ".5vw .5vw .5vw  silver",
                           }}
                         >
                           <div>
                             <Card.Header
                               style={{
-                                backgroundColor: "#A2B8FB ",
+                                backgroundColor: "white",
                                 borderRadius: ".75vw .75vw 0 0",
                                 width: "40vw",
                                 height: "2.5vw",
-                                fontSize: "1vw",
-
+                                fontSize: "1.2vw",
+                                color: "#009999",
                                 margin: 0,
                                 padding: "0.6vw",
                               }}
                             >
-                              QUESTION
+                              <strong>{form.question}</strong>
                             </Card.Header>
                             <Card.Body
                               style={{
-                                backgroundColor: "#EEF0F7 ",
+                                backgroundColor: "white",
                                 borderRadius: " 0 0 .75vw .75vw",
                                 width: "40vw",
                                 fontSize: "0.93vw",
@@ -252,14 +297,15 @@ export class GenericForm extends Component {
                                 margin: 0,
                               }}
                             >
-                              <Card.Title
+                              {/* <Card.Title
                                 style={{
                                   fontSize: ".93vw",
                                   marginBottom: ".5vw",
+                                  color: "black",
                                 }}
                               >
                                 {form.question}
-                              </Card.Title>
+                              </Card.Title> */}
                               <Card.Text>
                                 <TextareaAutosize
                                   name={form.question}
@@ -506,14 +552,15 @@ export class GenericForm extends Component {
                     type="submit"
                     style={{
                       marginTop: "1.5rem",
-                      background: "#3f51b5",
+                      background: "#009999",
                       color: "#fff",
                       padding: ".4rem",
                       borderRadius: ".3rem",
                       borderColor: "black",
                       borderWidth: "0rem",
                       width: "12rem",
-
+                      marginBottom: "2vw",
+                      boxShadow: ".1vw .1vw .1vw .1vw silver",
                       // marginLeft: "auto",
                       // marginRight: "auto",
                     }}

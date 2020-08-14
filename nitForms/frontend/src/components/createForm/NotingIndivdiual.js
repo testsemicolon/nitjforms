@@ -44,11 +44,13 @@ export class NotingIndividual extends Component {
     return (
       <div
         style={{
-          border: ".1vw solid lightgrey",
+          boxShadow: ".3vw .3vw .5vw silver",
+          borderRadius: "1vw",
           margin: "1vw",
+          backgroundColor: "#ffffff",
         }}
       >
-        <Tabs
+        {/* <Tabs
           style={{
             margin: "1vw",
           }}
@@ -65,75 +67,92 @@ export class NotingIndividual extends Component {
                 margin: 0,
               }}
               // maxWidth="md"
-            >
-              <Grid container spacing={4} style={{ margin: 0 }}>
-                {this.obj.map((a) => (
-                  <Grid item key={a.id} xs={7} sm={7} md={2} lg={4}>
-                    <Card
-                      key={a.id}
+            > */}
+        <Grid container spacing={4} style={{ margin: 0 }}>
+          {this.obj.map((a) => (
+            <Grid item key={a.id} xs={7} sm={7} md={2} lg={4}>
+              <Card
+                key={a.id}
+                style={{
+                  // height: "100%",
+                  display: "flex",
+                  flexDirection: "column",
+                  boxShadow: ".3vw .3vw .5vw silver",
+                  border: ".01vw solid #009999",
+                  margin: ".7vw",
+                }}
+              >
+                <CardMedia
+                  style={{ paddingTop: "56.25%" }}
+                  image="https://source.unsplash.com/random"
+                  title="Image title"
+                />
+                <CardContent style={{ flexGrow: 1 }}>
+                  <strong>
+                    <h5 style={{ color: "#009999" }}>{a.name}</h5>
+                  </strong>
+                </CardContent>
+                <CardActions style={{ margin: 0 }}>
+                  {/* <Link to={`/${card.title}`}> */}
+                  <Popup
+                    contentStyle={{
+                      width: "17vw",
+                      height: "24vw",
+                      border: ".1vw solid grey",
+                    }}
+                    modal
+                    trigger={
+                      <Button
+                        size="small"
+                        style={{
+                          backgroundColor: "#009999",
+                          boxShadow: ".1vw .1vw .1vw .1vw silver",
+                          marginLeft: "auto",
+                          marginRight: "auto",
+                          borderWidth: 0,
+                        }}
+                      >
+                        View
+                      </Button>
+                    }
+                    position="right center"
+                  >
+                    <div
                       style={{
-                        // height: "100%",
-                        display: "flex",
-                        flexDirection: "column",
-                        margin: 0,
+                        marginLeft: "auto",
+                        marginRight: "auto",
+
+                        textAlign: "center",
                       }}
                     >
-                      <CardMedia
-                        style={{ paddingTop: "56.25%" }}
-                        image="https://source.unsplash.com/random"
-                        title="Image title"
-                      />
-                      <CardContent style={{ flexGrow: 1 }}>
-                        <Typography gutterBottom variant="h5" component="h2">
-                          {a.name}
-                        </Typography>
-                      </CardContent>
-                      <CardActions style={{ margin: 0 }}>
-                        {/* <Link to={`/${card.title}`}> */}
-                        <Popup
-                          contentStyle={{
-                            width: "20%",
-                            height: "65%",
-                            border: ".1vw solid grey",
-                          }}
-                          modal
-                          trigger={
-                            <Button size="small" color="primary">
-                              View
-                            </Button>
-                          }
-                          position="right center"
-                        >
-                          <div
-                            style={{
-                              marginLeft: "auto",
-                              marginRight: "auto",
-                              textAlign: "center",
-                            }}
-                          >
-                            <DisplayEditor noting={a.noting} />
-                            <Button
-                              style={{
-                                marginTop: "23vw",
+                      <DisplayEditor noting={a.noting} />
+                      <Button
+                        style={{
+                          // marginTop: "23vw",
+                          backgroundColor: "#009999",
+                          boxShadow: ".1vw .1vw .1vw .1vw silver",
+                          marginLeft: "auto",
+                          marginRight: "auto",
+                          borderWidth: 0,
 
-                                alignSelf: "center",
-                              }}
-                            >
-                              GENERATE
-                            </Button>
-                          </div>
-                        </Popup>
-                        {/* </Link> */}
-                        {/* <Link to={`/response/${card.title}`}> */}
-                        {/* </Link> */}
-                      </CardActions>
-                    </Card>
-                  </Grid>
-                ))}
-              </Grid>
-            </Container>
+                          alignSelf: "center",
+                        }}
+                      >
+                        GENERATE
+                      </Button>
+                    </div>
+                  </Popup>
+                  {/* </Link> */}
+                  {/* <Link to={`/response/${card.title}`}> */}
+                  {/* </Link> */}
+                </CardActions>
+              </Card>
+            </Grid>
+          ))}
+        </Grid>
+        {/* </Container>
           </Tab>
-        </Tabs>
+        </Tabs> */}
       </div>
     );
   }

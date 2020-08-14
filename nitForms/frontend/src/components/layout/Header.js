@@ -27,7 +27,7 @@ import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import Buttons from "./Buttons";
 
-const drawerWidth = 240;
+const drawerWidth = 100;
 
 const useStyles = makeStyles((Theme) =>
   createStyles({
@@ -64,14 +64,12 @@ const useStyles = makeStyles((Theme) =>
     drawerHeader: {
       display: "flex",
       alignItems: "center",
-      padding: Theme.spacing(0, 1),
       // necessary for content to be below app bar
       ...Theme.mixins.toolbar,
       justifyContent: "flex-end",
     },
     content: {
       flexGrow: 1,
-      padding: Theme.spacing(3),
       transition: Theme.transitions.create("margin", {
         easing: Theme.transitions.easing.sharp,
         duration: Theme.transitions.duration.leavingScreen,
@@ -104,6 +102,7 @@ export default function PersistentDrawerLeft() {
   return (
     <div className={classes.root}>
       <CssBaseline />
+
       <AppBar
         position="absolute"
         className={clsx(classes.appBar, {
@@ -123,8 +122,20 @@ export default function PersistentDrawerLeft() {
           <Link to="/">
             <h2 style={{ fontSize: "1.7vw", color: "white" }}>NITJFORMS</h2>
           </Link>
+
           <Buttons />
         </Toolbar>
+        {/* <Toolbar
+          style={{
+            minHeight: ".7vw",
+            alignItems: "right",
+            float: "right",
+            alignContent: "right",
+            marginLeft: "auto",
+          }}
+        >
+          
+        </Toolbar> */}
       </AppBar>
       <Drawer
         className={classes.drawer}
