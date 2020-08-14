@@ -31,6 +31,7 @@ export class FormItems extends Component {
       );
     }
     this.props.submitForm();
+    console.log("handled");
   };
 
   render() {

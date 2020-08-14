@@ -43,7 +43,7 @@ export class Urls extends Component {
         <PrivateRoute path="/timeline" component={TimeLine} />
         <PrivateRoute path="/previousforms" component={PreviousForms} />
         <PrivateRoute path="/definingsteps" component={DefineSteps} />
-        <PrivateRoute path="/combine" component={CombinedView} />
+        <PrivateRoute path="/combine/:id" component={CombinedView} />
         <Route path="/login" component={Login} />
         <PrivateRoute path="/publish" component={PublishForm} />
         <PrivateRoute path="/card" component={CardForm} />
@@ -57,7 +57,7 @@ export class Urls extends Component {
           component={ViewIndividualResponse}
         />
         <PrivateRoute
-          path="/viewresponsenotegenerate/:value/:title"
+          path="/viewresponsenotegenerate/:value/:title/:id"
           component={ViewResponseNoteGenerate}
         />
 

@@ -22,8 +22,9 @@ class FormName(models.Model):
     created_by = models.CharField(max_length=100)
     created_at = models.DateTimeField(auto_now_add=True)
     activationStatus = models.BooleanField(default=True)
-    notingLink = ArrayField(models.CharField(
-        max_length=1000), blank=True, default=list)
+    notingLink = ArrayField(models.CharField(max_length=1000),
+                            blank=True,
+                            default=list)
 
     def __str__(self):
         return self.title

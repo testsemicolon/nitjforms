@@ -18,16 +18,17 @@ import Container from "@material-ui/core/Container";
 export class NotingIndividual extends Component {
   arr = [];
   obj = [];
+  formname = {};
   constructor(props) {
     super(props);
-
+    console.log(this.props);
     this.props.FormName.map((a) => {
       if (a.title === this.props.title) {
+        this.formname = a;
         this.arr = a.notingLink;
-        console.log("Asd");
       }
     });
-    console.log(this.arr);
+
     this.props.NotingTemplate.map((b) => {
       this.arr.map((a) => {
         if (a === b.key) {
@@ -134,6 +135,48 @@ export class NotingIndividual extends Component {
                           marginLeft: "auto",
                           marginRight: "auto",
                           borderWidth: 0,
+                      <CardMedia
+                        style={{ paddingTop: "56.25%" }}
+                        image="https://source.unsplash.com/random"
+                        title="Image title"
+                      />
+                      <CardContent style={{ flexGrow: 1 }}>
+                        <Typography gutterBottom variant="h5" component="h2">
+                          {a.name}
+                        </Typography>
+                      </CardContent>
+                      <CardActions style={{ margin: 0 }}>
+                        {/* <Link to={`/${card.title}`}> */}
+                        <Popup
+                          contentStyle={{
+                            width: "20%",
+                            height: "65%",
+                            border: ".1vw solid grey",
+                          }}
+                          modal
+                          trigger={
+                            <Button size="small" color="primary">
+                              View
+                            </Button>
+                          }
+                          position="right center"
+                        >
+                          <div
+                            style={{
+                              marginLeft: "auto",
+                              marginRight: "auto",
+                              textAlign: "center",
+                            }}
+                          >
+                            <DisplayEditor
+                              noting={a.noting}
+                              key1={a.key}
+                              title={this.props.title}
+                              id={this.props.id}
+                            />
+                            <Button
+                              style={{
+                                marginTop: "23vw",
 
                           alignSelf: "center",
                         }}

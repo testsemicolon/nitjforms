@@ -8,20 +8,29 @@ import { Link } from "react-router-dom";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import FileUpload from "./FileUpload";
+<<<<<<< HEAD
 import { deleteSharedUsers } from "../../actions/common";
 import Popup from "reactjs-popup";
+=======
+import {
+  putSharedUser,
+  postSharedUser,
+  getSharedUser,
+} from "../../actions/common";
+>>>>>>> 102e526e34ee578ec73a250a264b2d5a7df552a8
 
 export class GenericForm extends Component {
   state = {};
   created_by = "";
   toShareWith = "";
   arr = [];
-  fname = "";
+  fname = this.props.title;
   id = null;
   flag = false;
   status = false;
   toggleshare = true;
   componentDidMount() {
+    this.props.getSharedUser();
     this.props.getFormView(this.props.title);
     this.props.SharedUsers.map((a) => {
       if (a.formName === this.props.title) {
@@ -54,13 +63,13 @@ export class GenericForm extends Component {
   };
 
   onChangeUser = (e) => {
+    e.preventDefault();
     console.log(e.target.value);
     this.toShareWith = e.target.value;
   };
 
-  onSubmitUser = (e) => {
-    e.preventDefault();
-
+  onSubmitUser = () => {
+    console.log("adsas");
     var arr1 = [];
     this.arr.push(this.toShareWith);
     this.arr.map((ar) => arr1.push(ar));
@@ -69,7 +78,14 @@ export class GenericForm extends Component {
     quest["formName"] = this.fname;
     quest["userName"] = arr1;
     console.log(quest);
-    this.props.deleteSharedUsers(this.id, quest);
+    console.log(this.id);
+    if (this.id === null) {
+      console.log("post");
+      this.props.postSharedUser(quest);
+    } else {
+      console.log("put");
+      this.props.putSharedUser(this.id, quest);
+    }
   };
 
   onSubmit = (e) => {
@@ -90,8 +106,8 @@ export class GenericForm extends Component {
     Object.keys(quest).map((obj) =>
       renameKey(quest, obj, obj.replace(/[ ]/g, "_"))
     );
-
-    this.props.formSubmit(quest, this.props.title);
+    var title = this.props.title;
+    this.props.formSubmit(quest, title);
   };
 
   render() {
@@ -157,6 +173,10 @@ export class GenericForm extends Component {
                 </Button>
               </Link>{" "}
               <Link to={`/response/${this.props.title}`}>
+
+            {console.log(this.toggleshare)}
+            {this.props.username === this.created_by ? (
+              <div>
                 <Button
                   style={{
                     fontSize: "1vw",
@@ -176,6 +196,7 @@ export class GenericForm extends Component {
                 >
                   Responses
                 </Button>
+<<<<<<< HEAD
               </Link>
               {this.props.username == this.created_by ? (
                 <Popup
@@ -225,6 +246,24 @@ export class GenericForm extends Component {
                 "NO PERMISSION TO SHARE"
               )}
             </div>
+=======
+                {this.toggleshare === true ? (
+                  <div>
+                    <input
+                      type="text"
+                      name={this.toShareWith}
+                      onChange={this.onChangeUser}
+                    />
+                    <Button onClick={this.onSubmitUser}>Submit</Button>
+                  </div>
+                ) : (
+                  "NO PERMISSION TO SHARE"
+                )}
+              </div>
+            ) : (
+              "NO PERMISSION TO SHARE"
+            )}
+>>>>>>> 102e526e34ee578ec73a250a264b2d5a7df552a8
 
             <div
               style={{
@@ -601,5 +640,7 @@ const mapStateToProps = (state) => ({
 export default connect(mapStateToProps, {
   formSubmit,
   getFormView,
-  deleteSharedUsers,
+  putSharedUser,
+  postSharedUser,
+  getSharedUser,
 })(GenericForm);

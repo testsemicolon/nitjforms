@@ -88,9 +88,12 @@ export const addGeneric = (formName, question, inputType) => (dispatch) => {
 };
 
 export const getGeneric = (title) => (dispatch) => {
+  title = title.replace(/[ ]/g, "_");
+  console.log(title);
   axios
     .get(`/${title}`)
     .then((res) => {
+      console.log(res);
       dispatch({
         type: GET_GENERIC_RESPONSES,
         payload: res.data,
