@@ -193,6 +193,11 @@ export default function HorizontalNonLinearAlternativeLabelStepper() {
             </Typography>
             <div>
               <Button
+                style={{
+                  background: "orange",
+                  boxShadow: ".3vw .3vw .3vw grey",
+                  color: "white",
+                }}
                 disabled={activeStep === 0}
                 onClick={handleBack}
                 className={classes.button}
@@ -200,8 +205,11 @@ export default function HorizontalNonLinearAlternativeLabelStepper() {
                 Back
               </Button>
               <Button
-                variant="contained"
-                color="primary"
+                style={{
+                  background: "orange",
+                  boxShadow: ".3vw .3vw .3vw grey",
+                  color: "white",
+                }}
                 onClick={handleNext}
                 className={classes.button}
               >
@@ -209,8 +217,11 @@ export default function HorizontalNonLinearAlternativeLabelStepper() {
               </Button>
               {isStepOptional(activeStep) && !completed.has(activeStep) && (
                 <Button
-                  variant="contained"
-                  color="primary"
+                  style={{
+                    background: "orange",
+                    boxShadow: ".3vw .3vw .3vw grey",
+                    color: "white",
+                  }}
                   onClick={handleSkip}
                   className={classes.button}
                 >
@@ -225,8 +236,11 @@ export default function HorizontalNonLinearAlternativeLabelStepper() {
                   </Typography>
                 ) : (
                   <Button
-                    variant="contained"
-                    color="primary"
+                    style={{
+                      background: "orange",
+                      boxShadow: ".3vw .3vw .3vw grey",
+                      color: "white",
+                    }}
                     onClick={handleComplete}
                   >
                     {completedSteps() === totalSteps() - 1

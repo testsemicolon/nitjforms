@@ -19,3 +19,7 @@ admin.site.register(paymentform1Accepted)
 admin.site.register(test2)
 
 admin.site.register(test2Accepted)
+
+admin.site.register(test3)
+
+admin.site.register(test3Accepted)

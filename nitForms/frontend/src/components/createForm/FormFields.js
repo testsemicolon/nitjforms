@@ -76,7 +76,8 @@ export class FormItems extends Component {
 }
 
 const btnStyle = {
-  background: "#3f51b5",
+  background: "orange",
+  boxShadow: ".3vw .3vw .3vw grey",
   color: "#fff",
   flex: "1",
   padding: "5px",

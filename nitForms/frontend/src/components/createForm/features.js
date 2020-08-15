@@ -8,13 +8,14 @@ export default class Features extends Component {
           style={{
             backgroundColor: "orange",
             boxShadow: ".3vw .7vw 2vw silver",
-            flexBasis: "15%",
+            flexBasis: "12%",
+            borderRadius: "50%",
             margin: ".5vw",
             minHeight: "8vw",
             padding: "1vw",
             color: "white",
             fontSize: "1.3vw",
-            borderRadius: ".3vw",
+            // borderRadius: ".3vw",
             textAlign: "CENTER",
           }}
         >
@@ -27,13 +28,14 @@ export default class Features extends Component {
           style={{
             backgroundColor: "orange",
             boxShadow: ".3vw .7vw 2vw silver",
-            flexBasis: "15%",
+            flexBasis: "12%",
             margin: ".5vw",
             minHeight: "8vw",
             padding: "1vw",
             color: "white",
+            borderRadius: "50%",
             fontSize: "1.3vw",
-            borderRadius: ".3vw",
+            // borderRadius: ".3vw",
             textAlign: "CENTER",
           }}
         >
@@ -46,13 +48,14 @@ export default class Features extends Component {
           style={{
             backgroundColor: "orange",
             boxShadow: ".3vw .7vw 2vw silver",
-            flexBasis: "15%",
+            flexBasis: "12%",
             margin: ".5vw",
             minHeight: "8vw",
             padding: "1vw",
             color: "white",
             fontSize: "1.3vw",
-            borderRadius: ".3vw",
+            borderRadius: "50%",
+            // borderRadius: ".3vw",
             textAlign: "CENTER",
           }}
         >
@@ -65,13 +68,13 @@ export default class Features extends Component {
           style={{
             backgroundColor: "orange",
             boxShadow: ".3vw .7vw 2vw silver",
-            flexBasis: "15%",
+            flexBasis: "12%",
             margin: ".5vw",
             minHeight: "8vw",
             padding: "1vw",
+            borderRadius: "50%",
             color: "white",
             fontSize: "1.3vw",
-            borderRadius: ".3vw",
             textAlign: "center",
           }}
         >
@@ -85,13 +88,13 @@ export default class Features extends Component {
           style={{
             backgroundColor: "orange",
             boxShadow: ".3vw .7vw 2vw silver",
-            flexBasis: "15%",
+            flexBasis: "12%",
             margin: ".5vw",
             minHeight: "8vw",
             padding: "1vw",
             color: "white",
             fontSize: "1.3vw",
-            borderRadius: ".3vw",
+            borderRadius: "50%",
             textAlign: "CENTER",
           }}
         >
@@ -104,13 +107,53 @@ export default class Features extends Component {
           style={{
             backgroundColor: "orange",
             boxShadow: ".3vw .7vw 2vw silver",
-            flexBasis: "15%",
+            flexBasis: "12%",
             margin: ".5vw",
             minHeight: "8vw",
             padding: "1vw",
             color: "white",
             fontSize: "1.3vw",
-            borderRadius: ".3vw",
+            borderRadius: "50%",
+            // borderRadius: ".3vw",
+            textAlign: "CENTER",
+          }}
+        >
+          <span style={{ fontSize: "5vw" }} class="material-icons">
+            notifications_active
+          </span>
+          Notifications
+        </div>
+        <div
+          style={{
+            backgroundColor: "orange",
+            boxShadow: ".3vw .7vw 2vw silver",
+            flexBasis: "12%",
+            margin: ".5vw",
+            minHeight: "8vw",
+            padding: "1vw",
+            color: "white",
+            fontSize: "1.3vw",
+            borderRadius: "50%",
+            // borderRadius: ".3vw",
+            textAlign: "CENTER",
+          }}
+        >
+          <span style={{ fontSize: "5vw" }} class="material-icons">
+            notifications_active
+          </span>
+          Notifications
+        </div>
+        <div
+          style={{
+            backgroundColor: "orange",
+            boxShadow: ".3vw .7vw 2vw silver",
+            flexBasis: "12%",
+            margin: ".5vw",
+            minHeight: "8vw",
+            padding: "1vw",
+            color: "white",
+            fontSize: "1.3vw",
+            borderRadius: "50%",
             textAlign: "center",
           }}
         >

@@ -57,11 +57,7 @@ class MyEditor extends React.Component {
     format: (item) => `#${item}`,
   };
   autocompletes = [this.hashtag];
-  editorStyles = {
-    width: "200px",
-    margin: "10px",
-    border: "1px solid gray",
-  };
+
   quest1 = {};
   name = "";
   constructor(props) {
@@ -115,48 +111,131 @@ class MyEditor extends React.Component {
   }
   render() {
     return (
-      <div>
-        <div style={{ margin: "1vw" }}>
-          <div>
+      <div
+        style={{
+          backgroundColor: "white",
+          borderRadius: ".5vw",
+          margin: "1vw",
+          padding: "2vw",
+        }}
+      >
+        <div>
+          <div style={{ textAlign: "center" }}>
             <input
               type="text"
-              style={{ width: "40vw", fontSize: "1.2vw" }}
+              style={{
+                width: "40vw",
+                fontSize: "1.2vw",
+                padding: ".7vw",
+                border: ".01vw solid grey",
+              }}
               onChange={this.onChange1}
               name={this.name}
-              placeholder="Enter Title"
+              placeholder="Enter Title of Your Noting"
             />
           </div>
           <br />
-          <br />
-          <button onClick={() => this.handleKeyCommand("bold")}>Bold</button>
-          <button onClick={() => this.handleKeyCommand("italic")}>
+          <hr />
+          <Button
+            style={{
+              borderWidth: 0,
+              backgroundColor: "transparent",
+              color: "grey",
+            }}
+            onClick={() => {
+              this.handleKeyCommand("bold");
+            }}
+          >
+            Bold
+          </Button>
+          <Button
+            style={{
+              borderWidth: 0,
+              backgroundColor: "transparent",
+              color: "grey",
+            }}
+            onClick={() => this.handleKeyCommand("italic")}
+          >
             Italic
-          </button>
-          <button onClick={() => this.handleKeyCommand("underline")}>
+          </Button>
+          <Button
+            style={{
+              borderWidth: 0,
+              backgroundColor: "transparent",
+              color: "grey",
+            }}
+            onClick={() => this.handleKeyCommand("underline")}
+          >
             Underline
-          </button>
-          <button onClick={() => this.handleKeyCommand("code")}>Code</button>
+          </Button>
+          <Button
+            style={{
+              borderWidth: 0,
+              backgroundColor: "transparent",
+              color: "grey",
+            }}
+            onClick={() => this.handleKeyCommand("unordered-list-item")}
+          >
+            H1
+          </Button>
+          <Button
+            style={{
+              borderWidth: 0,
+              backgroundColor: "transparent",
+              color: "grey",
+            }}
+            onClick={() => this.handleKeyCommand("code")}
+          >
+            Code
+          </Button>
+          <hr />
         </div>
-        <div style={this.editorStyles}>
+        <div>
           <Autocomplete
             editorState={this.state.editorState}
             onChange={this.onChange}
             handleKeyCommand={this.handleKeyCommand.bind(this)}
             autocompletes={this.autocompletes}
+            placeholder="Click here to make noting"
           >
             <Editor />
           </Autocomplete>
         </div>
-        <div style={{ margin: "10px" }}>
-          <button onClick={this.saveContent.bind(this)}>Save content</button>
-          <button onClick={this.setEditorContent.bind(this)}>
+        <div
+          style={{
+            margin: "10px",
+            textAlign: "center",
+            marginLeft: "auto",
+            marginRight: "auto",
+          }}
+        >
+          <Button
+            style={{
+              backgroundColor: "orange",
+              color: "white",
+              borderWidth: 0,
+              boxShadow: ".3vw .3vw .3vw grey",
+            }}
+            onClick={this.saveContent.bind(this)}
+          >
+            Save content
+          </Button>
+          <Button
+            style={{
+              backgroundColor: "white",
+              color: "orange",
+              border: ".01vw solid orange",
+              boxShadow: ".3vw .3vw .3vw grey",
+            }}
+            onClick={this.setEditorContent.bind(this)}
+          >
             Load content
-          </button>
+          </Button>
         </div>
 
-        <div>
+        {/* <div>
           <pre>{this.getContentAsRawJson()}</pre>
-        </div>
+        </div> */}
       </div>
     );
   }

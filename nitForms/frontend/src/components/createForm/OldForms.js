@@ -40,7 +40,7 @@ export class OldForms extends Component {
             {/* End hero unit */}
             <Grid container spacing={4}>
               {this.props.FormName.map((card) => (
-                <Grid item key={card.id} xs={12} sm={6} md={2}>
+                <Grid item key={card.id} xs={12} sm={6} md={3}>
                   <Card
                     key={card.id}
                     style={{
@@ -60,17 +60,46 @@ export class OldForms extends Component {
                       </Typography>
                       <Typography>{card.description}</Typography>
                     </CardContent>
-                    <CardActions>
-                      <Link to={`/${card.title}`}>
-                        <Button size="small" color="primary">
-                          View
-                        </Button>
-                      </Link>
-                      <Link to={`/response/${card.title}`}>
-                        <Button size="small" color="primary">
-                          Responses
-                        </Button>
-                      </Link>
+                    <CardActions
+                      style={{
+                        textAlign: "center",
+                        alignContent: "center",
+                        alignItems: "center",
+                        alignSelf: "center",
+                      }}
+                    >
+                      <div>
+                        <Link to={`/${card.title}`}>
+                          <Button
+                            style={{
+                              backgroundColor: "orange",
+                              color: "white",
+                              border: 0,
+                              marginRight: "1vw",
+
+                              boxShadow: ".3vw .3vw .3vw grey",
+                            }}
+                            size="small"
+                            color="primary"
+                          >
+                            View
+                          </Button>
+                        </Link>
+                        <Link to={`/response/${card.title}`}>
+                          <Button
+                            style={{
+                              backgroundColor: "white",
+                              color: "orange",
+                              border: "0.01vw solid orange",
+                              boxShadow: ".3vw .3vw .3vw grey",
+                            }}
+                            size="small"
+                            color="primary"
+                          >
+                            Responses
+                          </Button>
+                        </Link>
+                      </div>
                     </CardActions>
                   </Card>
                 </Grid>

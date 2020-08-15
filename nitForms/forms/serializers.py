@@ -72,3 +72,15 @@ class test2AcceptedSerializer(serializers.ModelSerializer):
     class Meta:
         model = test2Accepted
         fields = '__all__'
+
+
+class test3Serializer(serializers.ModelSerializer):
+    class Meta:
+        model = test3
+        fields = '__all__'
+
+
+class test3AcceptedSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = test3Accepted
+        fields = '__all__'

@@ -88,3 +88,13 @@ class test2Accepted(models.Model):
     comment = JSONField(null=True)
     forwardTo = ArrayField(JSONField(null=True), blank=True, default=list)
     sasa = models.CharField(max_length=1000)
+
+
+class test3(models.Model):
+    what_is_your_name = models.CharField(max_length=1000)
+
+
+class test3Accepted(models.Model):
+    comment = JSONField(null=True)
+    forwardTo = ArrayField(JSONField(null=True),blank=True, default=list)
+    what_is_your_name = models.CharField(max_length=1000)

@@ -82,8 +82,8 @@ export class NotingSlate extends Component {
                             <Button
                               style={{
                                 marginRight: ".2vw",
-                                backgroundColor: "#3f52b5",
-                                boxShadow: ".1vw .1vw .1vw .1vw silver",
+                                backgroundColor: "orange",
+                                boxShadow: ".3vw .3vw .3vw  grey",
                                 padding: ".17vw",
                                 color: "white",
                               }}
@@ -103,9 +103,9 @@ export class NotingSlate extends Component {
                         <Button
                           style={{
                             backgroundColor: "white",
-                            color: "#3f51b5",
-                            border: " 0.06vw solid #3f51b5",
-                            boxShadow: ".1vw .1vw .1vw .1vw silver",
+                            color: "orange",
+                            border: " 0.06vw solid orange",
+                            boxShadow: ".3vw .3vw .3vw  grey",
                             padding: ".17vw",
                           }}
                         >
@@ -120,57 +120,7 @@ export class NotingSlate extends Component {
             </Container>
           </Tab>
           <Tab eventKey="New Template" title="New Template">
-            <div style={{ backgroundColor: "red", width: "73vw" }}>
-              <div
-                style={{
-                  backgroundColor: "white",
-                  borderRadius: ".5vw",
-                  width: "49vw",
-                  float: "left",
-                  position: "relative",
-
-                  boxShadow: ".4vw .4vw .1vw silver",
-                  // marginBottom: "1vw",
-                }}
-              >
-                {" "}
-                <MyEditor />
-              </div>
-              <div
-                style={{
-                  backgroundColor: "transparent",
-                  borderRadius: ".5vw",
-                  width: "11vw",
-                  minHeight: "40vw",
-                  float: "right",
-                  position: "relative",
-                }}
-              >
-                <div
-                  style={{
-                    backgroundColor: "white",
-                    borderRadius: ".5vw",
-                    width: "30vw",
-                    minHeight: "16vw",
-                    boxShadow: ".4vw .4vw .1vw silver",
-                    marginBottom: "1.5vw",
-                  }}
-                >
-                  status
-                </div>
-                <div
-                  style={{
-                    backgroundColor: "white",
-                    borderRadius: ".5vw",
-                    width: "30vw",
-                    minHeight: "16vw",
-                    boxShadow: ".4vw .4vw .1vw silver",
-                  }}
-                >
-                  cbjfvg
-                </div>
-              </div>
-            </div>
+            <MyEditor />
           </Tab>
         </Tabs>
       </div>

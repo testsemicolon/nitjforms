@@ -23,3 +23,6 @@ body {
 .loginopacity:hover {
   opacity: 93%;
 }
+.MuiStepIcon-root.MuiStepIcon-active {
+  color: orange !important;
+}

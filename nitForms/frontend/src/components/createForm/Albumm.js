@@ -27,7 +27,7 @@ export default class Albumm extends Component {
         <div
           style={{
             // backgroundColor: "#ffb266",
-            backgroundImage: "linear-gradient(to right,#ffb266,white)",
+            backgroundImage: "linear-gradient(to right,orange,white)",
             marginTop: "1vw",
 
             minHeight: "7vw",
@@ -471,7 +471,7 @@ export default class Albumm extends Component {
             <Grid container spacing={2} justify="center">
               <Grid item>
                 <Link1 to="/definingsteps">
-                  <Button style={{ backgroundColor: "ORANGE" }}>
+                  <Button style={{ backgroundColor: "ORANGE", color: "white" }}>
                     CREATE A NEW FORM
                   </Button>
                 </Link1>

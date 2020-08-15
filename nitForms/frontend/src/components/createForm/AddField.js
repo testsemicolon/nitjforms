@@ -63,11 +63,14 @@ export class AddField extends Component {
 
 const btnStyle = {
   float: "right",
-  background: "#3f51b5",
-  color: "#fff",
+
+  background: "orange",
+  boxShadow: ".3vw .3vw .3vw grey",
+  color: "white",
+
   flex: "1",
   // padding: "5px",
-  boxShadow: ".1vw .1vw .1vw silver",
+  borderRadius: ".3vw",
 };
 
 const mapStateToProps = (state) => ({
