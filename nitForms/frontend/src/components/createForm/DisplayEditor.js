@@ -79,6 +79,7 @@ class DisplayEditor extends React.Component {
             if (key !== "comment") {
               console.log(key, value);
               s.text = s.text.replace("#", "");
+              console.log(key, value);
               s.text = s.text.replace(key, value);
             }
           });
@@ -99,9 +100,18 @@ class DisplayEditor extends React.Component {
     return (
       <div>
         <Editor editorState={this.state.editorState} />
-        <input onChange={this.onChange} type="text" />
-        <Button type="submit" onClick={this.onClick}>
-          Add comment
+        <br />
+        <input onChange={this.onChange} type="text" />{" "}
+        <Button
+          style={{
+            backgroundColor: "orange",
+            borderWidth: 0,
+            boxShadow: ".1vw .1vw .1vw .1vw silver",
+          }}
+          type="submit"
+          onClick={this.onClick}
+        >
+          ADD COMMENT
         </Button>
       </div>
     );

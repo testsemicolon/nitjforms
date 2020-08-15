@@ -36,3 +36,39 @@ class notingTemplateSerializer(serializers.ModelSerializer):
     class Meta:
         model = notingTemplate
         fields = '__all__'
+
+
+class test1Serializer(serializers.ModelSerializer):
+    class Meta:
+        model = test1
+        fields = '__all__'
+
+
+class test1AcceptedSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = test1Accepted
+        fields = '__all__'
+
+
+class paymentform1Serializer(serializers.ModelSerializer):
+    class Meta:
+        model = paymentform1
+        fields = '__all__'
+
+
+class paymentform1AcceptedSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = paymentform1Accepted
+        fields = '__all__'
+
+
+class test2Serializer(serializers.ModelSerializer):
+    class Meta:
+        model = test2
+        fields = '__all__'
+
+
+class test2AcceptedSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = test2Accepted
+        fields = '__all__'

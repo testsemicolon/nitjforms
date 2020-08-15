@@ -42,7 +42,7 @@ export class Urls extends Component {
         <Route path="/register" component={Register} />
         <PrivateRoute path="/timeline" component={TimeLine} />
         <PrivateRoute path="/previousforms" component={PreviousForms} />
-        <PrivateRoute path="/definingsteps" component={DefineSteps} />
+        <PrivateRoute path="/definingsteps" component={Steps} />
         <PrivateRoute path="/combine/:id" component={CombinedView} />
         <Route path="/login" component={Login} />
         <PrivateRoute path="/publish" component={PublishForm} />

@@ -8,6 +8,8 @@ import Button from "@material-ui/core/Button";
 import { Link as Link1 } from "react-router-dom";
 import { RiAccountCircleLine } from "react-icons/fa";
 import SearchBar from "material-ui-search-bar";
+import Features from "./features";
+import DashBox from "./DashBox";
 
 export default class Albumm extends Component {
   render() {
@@ -24,32 +26,66 @@ export default class Albumm extends Component {
         />
         <div
           style={{
+            // backgroundColor: "#ffb266",
+            backgroundImage: "linear-gradient(to right,#ffb266,white)",
+            marginTop: "1vw",
+
+            minHeight: "7vw",
+            borderRadius: ".3vw",
+            padding: "1vw",
+            color: "white",
+            fontSize: "1.2vw",
+          }}
+        >
+          <div
+            style={{
+              width: "5vw",
+              float: "left",
+              position: "relative",
+              marginRight: "3vw",
+            }}
+          >
+            <span style={{ fontSize: "5vw" }} class="material-icons">
+              account_circle
+            </span>
+          </div>
+          {/* <div
+            style={{ float: "right", position: "relative", marginLeft: "9vw" }}
+          ></div> */}
+          <h4 style={{ float: "right", color: "orange" }}>date and time</h4>
+          NAME:CHAHAT GANDHI <br />
+          USERTYPE:ADMIN <br />
+          DESIGNATION:ABC
+        </div>
+
+        <div
+          style={{
             display: "flex",
             flexWrap: "wrap",
             justifyContent: "space-evenly",
             marginTop: "1vw",
-            marginLeft: "3vw",
-            marginRight: "3vw",
+
+            // width: "60vw",
+            // position: "relative",
           }}
         >
           <div
             style={{
               //   width: "17vw",
 
-              //   backgroundImage:
-              //     "linear-gradient(rgba(179, 204, 37, .5),rgba(51, 204, 37, .5))",
+              backgroundImage: "linear-gradient(rgba(179, 204, 37, .5),white",
               //   marginLeft: "1vw",
               //   marginRight: "1vw",
               textAlign: "center",
-              flexBasis: "18%",
+              flexBasis: "19%",
               minHeight: "8vw",
               borderRadius: ".5vw",
-              backgroundColor: "white",
+              // backgroundColor: "white",
               padding: "1.5vw",
               color: "grey",
               // border: ".01vw solid red",
               boxShadow:
-                ".2vw .1vw .4vw red, 0 0 .1vw rgba(0, 0, 0, 0.1) inset",
+                ".2vw .1vw .4vw rgba(179, 204, 37, .5), 0 0 .1vw rgba(0, 0, 0, 0.1) inset",
 
               // WebkitBoxShadow:
               //   "0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) ",
@@ -66,20 +102,19 @@ export default class Albumm extends Component {
             style={{
               //   width: "17vw",
 
-              //   backgroundImage:
-              //     "linear-gradient(rgba(179, 204, 37, .5),rgba(51, 204, 37, .5))",
+              backgroundImage: "linear-gradient(pink,white)",
               //   marginLeft: "1vw",
               //   marginRight: "1vw",
               textAlign: "center",
-              flexBasis: "18%",
+              flexBasis: "19%",
               minHeight: "8vw",
               borderRadius: ".5vw",
-              backgroundColor: "white",
+              // backgroundColor: "white",
               padding: "1.5vw",
               color: "grey",
               // border: ".01vw solid red",
               boxShadow:
-                ".2vw .1vw .4vw orange, 0 0 .1vw rgba(0, 0, 0, 0.1) inset",
+                ".2vw .1vw .4vw pink, 0 0 .1vw rgba(0, 0, 0, 0.1) inset",
 
               // WebkitBoxShadow:
               //   "0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) ",
@@ -96,15 +131,14 @@ export default class Albumm extends Component {
             style={{
               //   width: "17vw",
 
-              //   backgroundImage:
-              //     "linear-gradient(rgba(179, 204, 37, .5),rgba(51, 204, 37, .5))",
+              backgroundImage: "linear-gradient(lightblue,white)",
               //   marginLeft: "1vw",
               //   marginRight: "1vw",
               textAlign: "center",
-              flexBasis: "18%",
+              flexBasis: "19%",
               minHeight: "8vw",
               borderRadius: ".5vw",
-              backgroundColor: "white",
+              // backgroundColor: "white",
               padding: "1.5vw",
               color: "grey",
               // border: ".01vw solid red",
@@ -126,12 +160,11 @@ export default class Albumm extends Component {
             style={{
               //   width: "17vw",
 
-              //   backgroundImage:
-              //     "linear-gradient(rgba(179, 204, 37, .5),rgba(51, 204, 37, .5))",
+              backgroundImage: "linear-gradient(#ffcc99,white)",
               //   marginLeft: "1vw",
               //   marginRight: "1vw",
               textAlign: "center",
-              flexBasis: "18%",
+              flexBasis: "19%",
               minHeight: "8vw",
               borderRadius: ".5vw",
               backgroundColor: "white",
@@ -139,7 +172,7 @@ export default class Albumm extends Component {
               color: "grey",
               // border: ".01vw solid red",
               boxShadow:
-                ".2vw .1vw .4vw lightgreen, 0 0 .1vw rgba(0, 0, 0, 0.1) inset",
+                ".2vw .1vw .4vw #ffcc99, 0 0 .1vw rgba(0, 0, 0, 0.1) inset",
 
               // WebkitBoxShadow:
               //   "0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) ",
@@ -156,12 +189,11 @@ export default class Albumm extends Component {
             style={{
               //   width: "17vw",
 
-              //   backgroundImage:
-              //     "linear-gradient(rgba(179, 204, 37, .5),rgba(51, 204, 37, .5))",
+              backgroundImage: "linear-gradient(#cc99ff,white",
               //   marginLeft: "1vw",
               //   marginRight: "1vw",
               textAlign: "center",
-              flexBasis: "18%",
+              flexBasis: "19%",
               minHeight: "8vw",
               borderRadius: ".5vw",
               backgroundColor: "white",
@@ -169,7 +201,7 @@ export default class Albumm extends Component {
               color: "grey",
               // border: ".01vw solid red",
               boxShadow:
-                ".2vw .1vw .4vw pink, 0 0 .1vw rgba(0, 0, 0, 0.1) inset",
+                ".2vw .1vw .4vw #cc99ff, 0 0 .1vw rgba(0, 0, 0, 0.1) inset",
 
               // WebkitBoxShadow:
               //   "0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) ",
@@ -189,8 +221,6 @@ export default class Albumm extends Component {
             flexWrap: "wrap",
             justifyContent: "space-evenly",
             marginTop: "1vw",
-            marginLeft: "3vw",
-            marginRight: "3vw",
           }}
         >
           <div
@@ -202,7 +232,7 @@ export default class Albumm extends Component {
               //   marginLeft: "1vw",
               //   marginRight: "1vw",
               textAlign: "center",
-              flexBasis: "30%",
+              flexBasis: "32%",
               minHeight: "18vw",
               borderRadius: ".5vw",
               backgroundColor: "white",
@@ -210,12 +240,12 @@ export default class Albumm extends Component {
               color: "grey",
               // border: ".01vw solid red",
               boxShadow:
-                ".2vw .1vw .4vw pink, 0 0 .1vw rgba(0, 0, 0, 0.1) inset",
+                ".4vw .4vw .5vw lightgrey, 0 0 .1vw rgba(0, 0, 0, 0.1) inset",
 
               // WebkitBoxShadow:
               //   "0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) ",
-              MozBoxShadow:
-                "0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) ",
+              // MozBoxShadow:
+              //   "0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) ",
               //        box-shadow:0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset,
             }}
           >
@@ -226,7 +256,8 @@ export default class Albumm extends Component {
                 width: "100%",
                 marginTop: "1vw",
                 // boxShadow: "0.1vw 0.2vw 0.1vw grey",
-                backgroundImage: "linear-gradient(pink,white)",
+                // backgroundImage: "linear-gradient(pink,white)",
+                backgroundColor: "white",
                 borderRadius: ".4vw",
                 padding: ".5vw",
               }}
@@ -301,20 +332,23 @@ export default class Albumm extends Component {
               //   marginLeft: "1vw",
               //   marginRight: "1vw",
               textAlign: "center",
-              flexBasis: "30%",
+              flexBasis: "32%",
               minHeight: "18vw",
               borderRadius: ".5vw",
               backgroundColor: "white",
+              boxShadow:
+                ".4vw .4vw .5vw lightgrey, 0 0 .1vw rgba(0, 0, 0, 0.1) inset",
+
               padding: "1.5vw",
               color: "grey",
               // border: ".01vw solid red",
-              boxShadow:
-                ".2vw .1vw .4vw purple, 0 0 .1vw rgba(0, 0, 0, 0.1) inset",
+              // boxShadow:
+              //   ".2vw .1vw .4vw purple, 0 0 .1vw rgba(0, 0, 0, 0.1) inset",
 
               // WebkitBoxShadow:
               //   "0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) ",
-              MozBoxShadow:
-                "0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) ",
+              // MozBoxShadow:
+              //   "0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) ",
               //        box-shadow:0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset,
             }}
           >
@@ -331,20 +365,23 @@ export default class Albumm extends Component {
               //   marginLeft: "1vw",
               //   marginRight: "1vw",
               textAlign: "center",
-              flexBasis: "30%",
+              boxShadow:
+                ".4vw .4vw .5vw lightgrey, 0 0 .1vw rgba(0, 0, 0, 0.1) inset",
+
+              flexBasis: "32%",
               minHeight: "18vw",
               borderRadius: ".5vw",
               backgroundColor: "white",
               padding: "1.5vw",
               color: "grey",
               // border: ".01vw solid red",
-              boxShadow:
-                ".2vw .1vw .4vw green, 0 0 .1vw rgba(0, 0, 0, 0.1) inset",
+              // boxShadow:
+              //   ".2vw .1vw .4vw green, 0 0 .1vw rgba(0, 0, 0, 0.1) inset",
 
               // WebkitBoxShadow:
               //   "0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) ",
-              MozBoxShadow:
-                "0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) ",
+              // MozBoxShadow:
+              //   "0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) ",
               //        box-shadow:0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset,
             }}
           >
@@ -356,9 +393,10 @@ export default class Albumm extends Component {
                 width: "100%",
                 marginTop: "1vw",
                 border: ".1vw solid grey",
+                backgroundColor: "white",
                 borderSpacing: "1vw",
                 // boxShadow: "0.1vw 0.2vw 0.1vw grey",
-                backgroundImage: "linear-gradient(lightgreen,white)",
+                // backgroundImage: "linear-gradient(lightgreen,white)",
               }}
             >
               {/* <thead>
@@ -397,16 +435,17 @@ export default class Albumm extends Component {
             </table>
           </div>
         </div>
-
+        {/* <Features /> */}
         <div
           style={{
-            backgroundImage: "linear-gradient(#eeeeee,#fafafa)",
+            // backgroundImage: "linear-gradient(#fffeaa,orange)",
             padding: "4vw",
             marginTop: "3vw",
             borderRadius: ".3vw",
-            marginLeft: "4vw",
-            marginRight: "4vw",
-            boxShadow: ".6vw .6vw .6vw silver",
+
+            backgroundColor: "white",
+            // border: ".1vw solid orange",
+            boxShadow: ".2vw .3vw .7vw .01vw orange",
             // height: "15vw",
           }}
         >
@@ -432,16 +471,18 @@ export default class Albumm extends Component {
             <Grid container spacing={2} justify="center">
               <Grid item>
                 <Link1 to="/definingsteps">
-                  <Button variant="contained" color="primary">
+                  <Button style={{ backgroundColor: "ORANGE" }}>
                     CREATE A NEW FORM
                   </Button>
                 </Link1>
               </Grid>
               <Grid item>
                 <Button
-                  style={{ backgroundColor: "white" }}
-                  variant="outlined"
-                  color="primary"
+                  style={{
+                    backgroundColor: "white",
+                    color: "orange",
+                    border: ".1vw solid orange",
+                  }}
                 >
                   VIEW PREVIOUS FORMS
                 </Button>
@@ -450,6 +491,7 @@ export default class Albumm extends Component {
           </div>
         </div>
         <OldForms />
+        <Features />
         <footer>
           <Typography variant="h6" align="center" gutterBottom>
             {" "}

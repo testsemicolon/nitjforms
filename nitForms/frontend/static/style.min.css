@@ -3,7 +3,7 @@
 }
 .vertical-timeline {
   width: 95%;
-  background: #009999;
+  background: white;
 
   max-width: 1170px;
   margin: 0 auto;
@@ -23,20 +23,12 @@
   left: 18px;
   height: 100%;
   width: 4px;
-  background: #009999;
+  background: orange;
 }
-@media only screen and (min-width: 1170px) {
-  .vertical-timeline.vertical-timeline--two-columns {
-    width: 90%;
-  }
-  .vertical-timeline.vertical-timeline--two-columns:before {
-    left: 50%;
-    margin-left: -2px;
-  }
-}
+
 .vertical-timeline-element {
   position: relative;
-  margin: 2em 0;
+  margin: 0.5vw 0;
 }
 .vertical-timeline-element > div {
   min-height: 1px;
@@ -54,7 +46,7 @@
 }
 @media only screen and (min-width: 1170px) {
   .vertical-timeline-element {
-    margin: 4em 0;
+    margin: 1em 0;
   }
   .vertical-timeline-element:first-child {
     margin-top: 0;

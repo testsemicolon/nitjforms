@@ -109,33 +109,32 @@ export default function PersistentDrawerLeft() {
           [classes.appBarShift]: open,
         })}
       >
-        <Toolbar>
+        <Toolbar
+          style={{
+            backgroundColor: "#12a6a3",
+            color: "white",
+          }}
+        >
           <IconButton
             color="inherit"
             aria-label="open drawer"
             onClick={handleDrawerOpen}
             edge="start"
+            // style={{ backgroundColor: "pink" }}
             className={clsx(classes.menuButton, open && classes.hide)}
           >
             <MenuIcon />
           </IconButton>
           <Link to="/">
-            <h2 style={{ fontSize: "1.7vw", color: "white" }}>NITJFORMS</h2>
+            <h2
+              style={{ fontSize: "1.7vw", color: "white", marginTop: ".8vw" }}
+            >
+              NITJFORMS
+            </h2>
           </Link>
 
           <Buttons />
         </Toolbar>
-        {/* <Toolbar
-          style={{
-            minHeight: ".7vw",
-            alignItems: "right",
-            float: "right",
-            alignContent: "right",
-            marginLeft: "auto",
-          }}
-        >
-          
-        </Toolbar> */}
       </AppBar>
       <Drawer
         className={classes.drawer}
@@ -157,16 +156,6 @@ export default function PersistentDrawerLeft() {
         </div>
         <Divider />
         <List>
-          {/* {["Create", "Edit/Delete", "View Previous", "Drafts"].map(
-            (text, index) => (
-              <ListItem button key={text}>
-                <ListItemIcon>
-                  {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
-                </ListItemIcon>
-                <ListItemText primary={text} />
-              </ListItem>
-            )
-          )} */}
           <ListItem>Create</ListItem>
           <ListItem>Edit/Delete</ListItem>
           <Link to="/previousforms">

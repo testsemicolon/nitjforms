@@ -51,27 +51,9 @@ export class NotingIndividual extends Component {
           backgroundColor: "#ffffff",
         }}
       >
-        {/* <Tabs
-          style={{
-            margin: "1vw",
-          }}
-          defaultActiveKey="Previous Templates"
-          id="uncontrolled-tab-example"
-        >
-          <Tab
-            eventKey="Previous Templates"
-            style={{ color: "blue" }}
-            title="Linked Templates"
-          >
-            <Container
-              style={{
-                margin: 0,
-              }}
-              // maxWidth="md"
-            > */}
         <Grid container spacing={4} style={{ margin: 0 }}>
           {this.obj.map((a) => (
-            <Grid item key={a.id} xs={7} sm={7} md={2} lg={4}>
+            <Grid item key={a.id} xs={6} sm={6} md={6} lg={4}>
               <Card
                 key={a.id}
                 style={{
@@ -122,61 +104,26 @@ export class NotingIndividual extends Component {
                       style={{
                         marginLeft: "auto",
                         marginRight: "auto",
-
+                        fontSize: "1vw",
                         textAlign: "center",
                       }}
                     >
-                      <DisplayEditor noting={a.noting} />
+                      <DisplayEditor
+                        noting={a.noting}
+                        key1={a.key}
+                        title={this.props.title}
+                        id={this.props.id}
+                      />
+                      <br />
+                      <br />
                       <Button
                         style={{
                           // marginTop: "23vw",
-                          backgroundColor: "#009999",
+                          backgroundColor: "orange",
                           boxShadow: ".1vw .1vw .1vw .1vw silver",
                           marginLeft: "auto",
                           marginRight: "auto",
                           borderWidth: 0,
-                      <CardMedia
-                        style={{ paddingTop: "56.25%" }}
-                        image="https://source.unsplash.com/random"
-                        title="Image title"
-                      />
-                      <CardContent style={{ flexGrow: 1 }}>
-                        <Typography gutterBottom variant="h5" component="h2">
-                          {a.name}
-                        </Typography>
-                      </CardContent>
-                      <CardActions style={{ margin: 0 }}>
-                        {/* <Link to={`/${card.title}`}> */}
-                        <Popup
-                          contentStyle={{
-                            width: "20%",
-                            height: "65%",
-                            border: ".1vw solid grey",
-                          }}
-                          modal
-                          trigger={
-                            <Button size="small" color="primary">
-                              View
-                            </Button>
-                          }
-                          position="right center"
-                        >
-                          <div
-                            style={{
-                              marginLeft: "auto",
-                              marginRight: "auto",
-                              textAlign: "center",
-                            }}
-                          >
-                            <DisplayEditor
-                              noting={a.noting}
-                              key1={a.key}
-                              title={this.props.title}
-                              id={this.props.id}
-                            />
-                            <Button
-                              style={{
-                                marginTop: "23vw",
 
                           alignSelf: "center",
                         }}

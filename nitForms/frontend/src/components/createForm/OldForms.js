@@ -29,17 +29,18 @@ export class OldForms extends Component {
     return (
       <div>
         <Fragment>
-          <Container
+          <div
             style={{
-              paddingTop: "8rem",
-              paddingBottom: "8rem",
+              marginTop: "4vw",
+              backgroundColor: "white",
+              padding: "3vw",
             }}
             // maxWidth="md"
           >
             {/* End hero unit */}
             <Grid container spacing={4}>
               {this.props.FormName.map((card) => (
-                <Grid item key={card.id} xs={12} sm={6} md={4}>
+                <Grid item key={card.id} xs={12} sm={6} md={2}>
                   <Card
                     key={card.id}
                     style={{
@@ -75,7 +76,7 @@ export class OldForms extends Component {
                 </Grid>
               ))}
             </Grid>
-          </Container>
+          </div>
         </Fragment>
       </div>
     );

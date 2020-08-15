@@ -102,29 +102,6 @@ class MyEditor extends React.Component {
     console.log(quest);
     this.props.postNotingTemplate(quest, this.quest1);
   }
-  // loadContent() {
-  //   const savedData = {
-  //     blocks: [
-  //       {
-  //         key: "33uvq",
-  //         text: "asdasdas",
-  //         type: "unstyled",
-  //         depth: 0,
-  //         inlineStyleRanges: [
-  //           {
-  //             offset: 0,
-  //             length: 8,
-  //             style: "BOLD",
-  //           },
-  //         ],
-  //         entityRanges: [],
-  //         data: {},
-  //       },
-  //     ],
-  //     entityMap: {},
-  //   };
-  //   return savedData;
-  // }
   setEditorContent() {
     var rawEditorData = {};
     this.props.NotingTemplate.map((a) => (rawEditorData = a.noting));
@@ -139,7 +116,18 @@ class MyEditor extends React.Component {
   render() {
     return (
       <div>
-        <div style={{ margin: "10px" }}>
+        <div style={{ margin: "1vw" }}>
+          <div>
+            <input
+              type="text"
+              style={{ width: "40vw", fontSize: "1.2vw" }}
+              onChange={this.onChange1}
+              name={this.name}
+              placeholder="Enter Title"
+            />
+          </div>
+          <br />
+          <br />
           <button onClick={() => this.handleKeyCommand("bold")}>Bold</button>
           <button onClick={() => this.handleKeyCommand("italic")}>
             Italic
@@ -165,9 +153,7 @@ class MyEditor extends React.Component {
             Load content
           </button>
         </div>
-        <div>
-          <input type="text" onChange={this.onChange1} name={this.name} />
-        </div>
+
         <div>
           <pre>{this.getContentAsRawJson()}</pre>
         </div>

@@ -52,3 +52,39 @@ class notingTemplate(models.Model):
     key = models.UUIDField(default=uuid.uuid4, editable=False)
     name = models.CharField(max_length=1000)
     noting = JSONField()
+
+
+class test1(models.Model):
+    what_is_your_name = models.CharField(max_length=1000)
+    sasasa = models.CharField(max_length=1000)
+
+
+class test1Accepted(models.Model):
+    comment = JSONField(null=True)
+    forwardTo = ArrayField(models.CharField(
+        max_length=100), blank=True, default=list)
+    what_is_your_name = models.CharField(max_length=1000)
+    sasasa = models.CharField(max_length=1000)
+
+
+class paymentform1(models.Model):
+    fields = models.CharField(max_length=1000)
+    sasa = models.CharField(max_length=1000)
+
+
+class paymentform1Accepted(models.Model):
+    comment = JSONField(null=True)
+    forwardTo = ArrayField(models.CharField(
+        max_length=100), blank=True, default=list)
+    fields = models.CharField(max_length=1000)
+    sasa = models.CharField(max_length=1000)
+
+
+class test2(models.Model):
+    sasa = models.CharField(max_length=1000)
+
+
+class test2Accepted(models.Model):
+    comment = JSONField(null=True)
+    forwardTo = ArrayField(JSONField(null=True), blank=True, default=list)
+    sasa = models.CharField(max_length=1000)

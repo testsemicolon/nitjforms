@@ -8,7 +8,7 @@ import Albumm from "./Albumm";
 export class AlbumSource extends Component {
   render() {
     if (this.props.canGenerateForm && this.props.canMakeNoting) {
-      return <Album />;
+      return <Albumm />;
     } else if (this.props.canMakeNoting) {
       return <AlbumAdminStaff />;
     } else {

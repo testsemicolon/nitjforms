@@ -45,7 +45,7 @@ def post_views(request):
         f.write("\n\nclass " + title + "Accepted(models.Model):\n")
         f.write("    comment = JSONField(null=True)\n")
         f.write(
-            "    forwardTo = ArrayField(models.CharField(max_length=100),blank=True, default=list)\n"
+            "    forwardTo = ArrayField(JSONField(null=True),blank=True, default=list)\n"
         )
 
         f.close()

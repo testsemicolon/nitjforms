@@ -8,16 +8,15 @@ import { Link } from "react-router-dom";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import FileUpload from "./FileUpload";
-<<<<<<< HEAD
-import { deleteSharedUsers } from "../../actions/common";
-import Popup from "reactjs-popup";
-=======
+
 import {
   putSharedUser,
   postSharedUser,
+  deleteSharedUsers,
   getSharedUser,
 } from "../../actions/common";
->>>>>>> 102e526e34ee578ec73a250a264b2d5a7df552a8
+
+import Popup from "reactjs-popup";
 
 export class GenericForm extends Component {
   state = {};
@@ -173,10 +172,6 @@ export class GenericForm extends Component {
                 </Button>
               </Link>{" "}
               <Link to={`/response/${this.props.title}`}>
-
-            {console.log(this.toggleshare)}
-            {this.props.username === this.created_by ? (
-              <div>
                 <Button
                   style={{
                     fontSize: "1vw",
@@ -196,7 +191,6 @@ export class GenericForm extends Component {
                 >
                   Responses
                 </Button>
-<<<<<<< HEAD
               </Link>
               {this.props.username == this.created_by ? (
                 <Popup
@@ -246,24 +240,6 @@ export class GenericForm extends Component {
                 "NO PERMISSION TO SHARE"
               )}
             </div>
-=======
-                {this.toggleshare === true ? (
-                  <div>
-                    <input
-                      type="text"
-                      name={this.toShareWith}
-                      onChange={this.onChangeUser}
-                    />
-                    <Button onClick={this.onSubmitUser}>Submit</Button>
-                  </div>
-                ) : (
-                  "NO PERMISSION TO SHARE"
-                )}
-              </div>
-            ) : (
-              "NO PERMISSION TO SHARE"
-            )}
->>>>>>> 102e526e34ee578ec73a250a264b2d5a7df552a8
 
             <div
               style={{
