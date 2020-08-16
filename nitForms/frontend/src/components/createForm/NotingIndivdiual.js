@@ -79,8 +79,8 @@ export class NotingIndividual extends Component {
                   {/* <Link to={`/${card.title}`}> */}
                   <Popup
                     contentStyle={{
-                      width: "17vw",
-                      height: "24vw",
+                      width: "auto",
+                      height: "auto",
                       border: ".1vw solid grey",
                     }}
                     modal

@@ -73,8 +73,8 @@ export class NotingSlate extends Component {
                         {/* <Link to={`/${card.title}`}> */}
                         <Popup
                           contentStyle={{
-                            width: "20%",
-                            height: "65%",
+                            width: "auto",
+                            height: "auto",
                             border: ".1vw solid grey",
                           }}
                           modal

@@ -10,8 +10,13 @@ import { RiAccountCircleLine } from "react-icons/fa";
 import SearchBar from "material-ui-search-bar";
 import Features from "./features";
 import DashBox from "./DashBox";
+import { connect } from "react-redux";
+import { getName, updateName } from "../../actions/FormName";
+import { getDefaultKeyBinding } from "draft-js";
+import Clock from "react-live-clock";
+import CountUp from "react-countup";
 
-export default class Albumm extends Component {
+class Albumm extends Component {
   render() {
     return (
       <Fragment>
@@ -52,10 +57,13 @@ export default class Albumm extends Component {
           {/* <div
             style={{ float: "right", position: "relative", marginLeft: "9vw" }}
           ></div> */}
-          <h4 style={{ float: "right", color: "orange" }}>date and time</h4>
-          NAME:CHAHAT GANDHI <br />
+          <h4 style={{ float: "right", color: "black" }}>
+            {" "}
+            <Clock format={"dddd, MMMM Do, YYYY, h:mm:ss A"} ticking={true} />
+          </h4>
+          NAME:{this.props.username}
+          <br />
           USERTYPE:ADMIN <br />
-          DESIGNATION:ABC
         </div>
 
         <div
@@ -96,7 +104,9 @@ export default class Albumm extends Component {
           >
             USERS
             <br />
-            <h3>123</h3>
+            <h3>
+              <CountUp end={13} duration={5} />
+            </h3>
           </div>
           <div
             style={{
@@ -125,7 +135,9 @@ export default class Albumm extends Component {
           >
             CUSTOMERS
             <br />
-            <h3>123</h3>
+            <h3>
+              <CountUp end={123} duration={5} />
+            </h3>
           </div>
           <div
             style={{
@@ -154,7 +166,9 @@ export default class Albumm extends Component {
           >
             NOTINGS
             <br />
-            <h3>123</h3>
+            <h3>
+              <CountUp end={6} duration={5} />
+            </h3>
           </div>
           <div
             style={{
@@ -183,7 +197,9 @@ export default class Albumm extends Component {
           >
             FORMS
             <br />
-            <h3>123</h3>
+            <h3>
+              <CountUp end={15} duration={5} />
+            </h3>
           </div>
           <div
             style={{
@@ -212,7 +228,9 @@ export default class Albumm extends Component {
           >
             DUES
             <br />
-            <h3>123</h3>
+            <h3>
+              <CountUp end={10} duration={5} />
+            </h3>
           </div>
         </div>
         <div
@@ -272,7 +290,7 @@ export default class Albumm extends Component {
               </thead>
               <tbody>
                 <tr>
-                  <td>2</td>
+                  <td>1</td>
                   <td>abc</td>
                   <td>abc@gmail.com</td>
                   <td>
@@ -289,7 +307,7 @@ export default class Albumm extends Component {
                 </tr>
                 <tr>
                   <td>2</td>
-                  <td>abc</td>
+                  <td>efg</td>
                   <td>abc@gmail.com</td>
                   <td>
                     <Button
@@ -304,8 +322,8 @@ export default class Albumm extends Component {
                   </td>
                 </tr>
                 <tr>
-                  <td>2</td>
-                  <td>abc</td>
+                  <td>3</td>
+                  <td>xyz</td>
                   <td>abc@gmail.com</td>
                   <td>
                     <Button
@@ -315,7 +333,7 @@ export default class Albumm extends Component {
                         color: "white",
                       }}
                     >
-                      Online
+                      Active Today
                     </Button>
                   </td>
                 </tr>
@@ -354,7 +372,7 @@ export default class Albumm extends Component {
           >
             USERS
             <br />
-            <h3>123</h3>
+            <h3>graph</h3>
           </div>
           <div
             style={{
@@ -409,27 +427,27 @@ export default class Albumm extends Component {
               <tbody>
                 <tr>
                   <td>12-03-2020</td>
-                  <td>Chcvdjv hbchjd dncbnfjv</td>
+                  <td>Test1</td>
                 </tr>
                 <tr>
                   <td>2-04-2020</td>
-                  <td>bc vfdvbfvdjvsf</td>
+                  <td>Test2</td>
                 </tr>
                 <tr>
                   <td>19-07-2020</td>
-                  <td>adf jbcdfbvnjvsj</td>
+                  <td>Test3</td>
                 </tr>
                 <tr>
                   <td>12-03-2020</td>
-                  <td>Chcvdjv hbchjd dncbnfjv</td>
+                  <td>Test4</td>
                 </tr>
                 <tr>
                   <td>2-04-2020</td>
-                  <td>bc vfdvbfvdjvsf</td>
+                  <td>Test5</td>
                 </tr>
                 <tr>
                   <td>19-07-2020</td>
-                  <td>adf jbcdfbvnjvsj</td>
+                  <td>Test6</td>
                 </tr>
               </tbody>
             </table>
@@ -510,3 +528,9 @@ export default class Albumm extends Component {
     );
   }
 }
+
+const mapStateToProps = (state) => ({
+  username: state.Auth.user.username,
+});
+
+export default connect(mapStateToProps, { getName })(Albumm);

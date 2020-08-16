@@ -60,55 +60,49 @@ export class ViewIndividualResponse extends Component {
                       <Card
                         style={{
                           borderRadius: ".95vw",
-                          borderWidth: ".2vw",
-                          borderColor: "lightgrey",
-                          marginTop: "2vw",
-                          width: "40.37vw",
+                          borderWidth: 0,
+                          // border: ".2vw solid #ed6a5a",
+                          marginBottom: "2vw",
+                          width: "40vw",
+                          color: "#009999",
                           marginLeft: "auto",
                           marginRight: "auto",
-                          height: "auto",
+                          // height: "auto",
+                          boxShadow: ".5vw .5vw .5vw  silver",
                         }}
                       >
                         <div>
                           <Card.Header
                             style={{
-                              backgroundColor: "#A2B8FB ",
+                              backgroundColor: "white",
                               borderRadius: ".75vw .75vw 0 0",
-                              width: "40vw",
+                              // width: "25vw",
                               height: "2.5vw",
                               fontSize: "1vw",
-
+                              color: "#009999",
                               margin: 0,
                               padding: "0.6vw",
                             }}
                           >
-                            QUESTION
+                            <strong> {question.toUpperCase()}</strong>
                           </Card.Header>
                           <Card.Body
                             style={{
-                              backgroundColor: "#EEF0F7 ",
+                              backgroundColor: "white",
                               borderRadius: " 0 0 .75vw .75vw",
-                              width: "40vw",
+                              // width: "25vw",
                               fontSize: "0.93vw",
                               height: "auto",
                               padding: "0.6vw",
                               margin: 0,
                             }}
                           >
-                            <Card.Title
-                              style={{
-                                fontSize: ".93vw",
-                                marginBottom: ".5vw",
-                              }}
-                            >
-                              <strong> {question.toUpperCase()}</strong>
-                            </Card.Title>
                             <Card.Text>
                               <TextareaAutosize
                                 name={question}
                                 value={answer}
                                 style={{
-                                  width: "37vw",
+                                  width: "33vw",
                                   borderColor: "white",
                                   fontSize: "1vw",
                                 }}
@@ -147,7 +141,8 @@ export class ViewIndividualResponse extends Component {
           <div
             style={{
               position: "relative",
-              marginLeft: "18vw",
+              marginLeft: "auto",
+              marginRight: "auto",
               width: "35vw",
             }}
           >

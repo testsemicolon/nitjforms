@@ -44,6 +44,11 @@ export class GenericResponses extends Component {
             filename={this.props.title}
             sheet={this.props.title}
             buttonText="Download as XLS"
+            style={{
+              backgroundColor: "orange",
+              color: "white",
+              boxShadow: ".3vw .3vw .3vw grey",
+            }}
           />
           <h3 style={{ textAlign: "center" }}>
             Responses for {this.props.title}
@@ -65,7 +70,16 @@ export class GenericResponses extends Component {
                           <Link
                             to={"/viewindividualresponse/" + key + "/" + title1}
                           >
-                            <Button>View</Button>
+                            <Button
+                              style={{
+                                backgroundColor: "orange",
+                                color: "white",
+                                boxShadow: ".3vw .3vw .3vw grey",
+                                borderWidth: 0,
+                              }}
+                            >
+                              View
+                            </Button>
                           </Link>
                         </td>
 

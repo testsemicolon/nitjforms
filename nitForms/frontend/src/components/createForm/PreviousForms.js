@@ -69,6 +69,7 @@ class PreviousForms extends Component {
                           marginBottom: "1vw",
                           backgroundColor: "red",
                           boxShadow: ".1vw .1vw .1vw .1vw silver",
+                          border: 0,
                         }}
                         onClick={() => {
                           card.activationStatus = !card.activationStatus;
@@ -87,6 +88,7 @@ class PreviousForms extends Component {
                           marginBottom: "1vw",
                           backgroundColor: "green",
                           boxShadow: ".1vw .1vw .1vw .1vw silver",
+                          border: 0,
                         }}
                         onClick={() => {
                           card.activationStatus = !card.activationStatus;
@@ -115,8 +117,9 @@ class PreviousForms extends Component {
                     <Button
                       style={{
                         marginRight: "1vw",
-                        backgroundColor: "#009999",
+                        backgroundColor: "orange",
                         boxShadow: ".1vw .1vw .1vw .1vw silver",
+                        borderWidth: 0,
                       }}
                     >
                       View
@@ -127,8 +130,8 @@ class PreviousForms extends Component {
                       style={{
                         marginRight: "2vw",
                         backgroundColor: "white",
-                        color: "#009999",
-                        border: " 0.06vw solid #009999",
+                        color: "orange",
+                        border: " 0.06vw solid orange",
                         boxShadow: ".1vw .1vw .1vw .1vw silver",
                       }}
                     >

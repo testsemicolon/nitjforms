@@ -120,7 +120,16 @@ export class AcceptedResponses extends Component {
                                 value.id
                               }
                             >
-                              <Button>View</Button>
+                              <Button
+                                style={{
+                                  backgroundColor: "orange",
+                                  color: "white",
+                                  boxShadow: ".3vw .3vw .3vw grey",
+                                  borderWidth: 0,
+                                }}
+                              >
+                                View
+                              </Button>
                             </Link>
                           </td>
                           {Object.entries(value).map(([question, answer]) => {
