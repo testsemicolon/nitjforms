@@ -72,12 +72,12 @@ export class OldForms extends Component {
                         <Link to={`/${card.title}`}>
                           <Button
                             style={{
-                              backgroundColor: "orange",
+                              backgroundColor: "#66a3ff",
                               color: "white",
                               border: 0,
                               marginRight: "1vw",
 
-                              boxShadow: ".3vw .3vw .3vw grey",
+                              boxShadow: ".3vw .3vw .3vw lightgray",
                             }}
                             size="small"
                             color="primary"
@@ -89,9 +89,9 @@ export class OldForms extends Component {
                           <Button
                             style={{
                               backgroundColor: "white",
-                              color: "orange",
-                              border: "0.01vw solid orange",
-                              boxShadow: ".3vw .3vw .3vw grey",
+                              color: "#66a3ff",
+                              border: "0.01vw solid #66a3ff",
+                              boxShadow: ".3vw .3vw .3vw lightgray",
                             }}
                             size="small"
                             color="primary"

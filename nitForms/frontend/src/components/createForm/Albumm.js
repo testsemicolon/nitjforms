@@ -15,24 +15,29 @@ import { getName, updateName } from "../../actions/FormName";
 import { getDefaultKeyBinding } from "draft-js";
 import Clock from "react-live-clock";
 import CountUp from "react-countup";
+import $ from "jquery";
 
 class Albumm extends Component {
+  state = {
+    users: true,
+    customers: false,
+  };
   render() {
     return (
       <Fragment>
         {/* <Header /> */}
-        <SearchBar
+        {/* <SearchBar
           onChange={() => console.log("onChange")}
           onRequestSearch={() => console.log("onRequestSearch")}
           style={{
             margin: "0 auto",
             maxWidth: 800,
           }}
-        />
+        /> */}
         <div
           style={{
             // backgroundColor: "#ffb266",
-            backgroundImage: "linear-gradient(to right,orange,white)",
+            backgroundImage: "linear-gradient(to right,#66a3ff,white)",
             marginTop: "1vw",
 
             minHeight: "7vw",
@@ -47,7 +52,8 @@ class Albumm extends Component {
               width: "5vw",
               float: "left",
               position: "relative",
-              marginRight: "3vw",
+              marginRight: "4vw",
+              marginLeft: "4vw",
             }}
           >
             <span style={{ fontSize: "5vw" }} class="material-icons">
@@ -64,6 +70,75 @@ class Albumm extends Component {
           NAME:{this.props.username}
           <br />
           USERTYPE:ADMIN <br />
+          <form style={{ float: "right" }}>
+            <input
+              type="text"
+              className="searchbar"
+              name="search"
+              placeholder="Search.."
+            />
+          </form>
+        </div>
+        <div
+          style={{
+            // backgroundImage: "linear-gradient(#fffeaa,#66a3ff)",
+            padding: "4vw",
+            marginTop: "1vw",
+            borderRadius: ".3vw",
+
+            backgroundColor: "white",
+            // border: ".1vw solid #66a3ff",
+            boxShadow: ".2vw .3vw .7vw .01vw #66a3ff",
+            // height: "15vw",
+          }}
+        >
+          <Typography
+            component="h1"
+            variant="h2"
+            align="center"
+            color="textPrimary"
+            gutterBottom
+          >
+            FORMS
+          </Typography>
+
+          <Typography
+            variant="h5"
+            align="center"
+            color="textSecondary"
+            paragraph
+          >
+            LET'S CREATE A NEW FORM
+          </Typography>
+          <div>
+            <Grid container spacing={2} justify="center">
+              <Grid item>
+                <Link1 to="/definingsteps">
+                  <Button
+                    style={{
+                      backgroundColor: "#66a3ff",
+                      color: "white",
+                      boxShadow: ".3vw .3vw .3vw lightgray",
+                    }}
+                  >
+                    CREATE A NEW FORM
+                  </Button>
+                </Link1>
+              </Grid>
+              <Grid item>
+                <Button
+                  style={{
+                    backgroundColor: "white",
+                    color: "#66a3ff",
+                    border: ".1vw solid #66a3ff",
+                    boxShadow: ".3vw .3vw .3vw lightgray",
+                  }}
+                >
+                  VIEW PREVIOUS FORMS
+                </Button>
+              </Grid>
+            </Grid>
+          </div>
         </div>
 
         <div
@@ -77,38 +152,37 @@ class Albumm extends Component {
             // position: "relative",
           }}
         >
-          <div
+          <Button
+            onClick={() => {
+              this.setState({ users: true });
+              this.setState({ customers: false });
+            }}
             style={{
-              //   width: "17vw",
-
               backgroundImage: "linear-gradient(rgba(179, 204, 37, .5),white",
-              //   marginLeft: "1vw",
-              //   marginRight: "1vw",
               textAlign: "center",
               flexBasis: "19%",
               minHeight: "8vw",
               borderRadius: ".5vw",
-              // backgroundColor: "white",
               padding: "1.5vw",
               color: "grey",
-              // border: ".01vw solid red",
               boxShadow:
                 ".2vw .1vw .4vw rgba(179, 204, 37, .5), 0 0 .1vw rgba(0, 0, 0, 0.1) inset",
-
-              // WebkitBoxShadow:
-              //   "0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) ",
               MozBoxShadow:
                 "0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) ",
-              //        box-shadow:0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset,
             }}
           >
+            {console.log(this.state.users)}
             USERS
             <br />
             <h3>
               <CountUp end={13} duration={5} />
             </h3>
-          </div>
-          <div
+          </Button>
+          <Button
+            onClick={() => {
+              this.setState({ customers: true });
+              this.setState({ users: false });
+            }}
             style={{
               //   width: "17vw",
 
@@ -138,8 +212,8 @@ class Albumm extends Component {
             <h3>
               <CountUp end={123} duration={5} />
             </h3>
-          </div>
-          <div
+          </Button>
+          <Button
             style={{
               //   width: "17vw",
 
@@ -169,8 +243,8 @@ class Albumm extends Component {
             <h3>
               <CountUp end={6} duration={5} />
             </h3>
-          </div>
-          <div
+          </Button>
+          <Button
             style={{
               //   width: "17vw",
 
@@ -200,8 +274,8 @@ class Albumm extends Component {
             <h3>
               <CountUp end={15} duration={5} />
             </h3>
-          </div>
-          <div
+          </Button>
+          <Button
             style={{
               //   width: "17vw",
 
@@ -231,7 +305,7 @@ class Albumm extends Component {
             <h3>
               <CountUp end={10} duration={5} />
             </h3>
-          </div>
+          </Button>
         </div>
         <div
           style={{
@@ -267,78 +341,163 @@ class Albumm extends Component {
               //        box-shadow:0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset,
             }}
           >
-            ONLINE USERS
-            <br />
-            <table
-              style={{
-                width: "100%",
-                marginTop: "1vw",
-                // boxShadow: "0.1vw 0.2vw 0.1vw grey",
-                // backgroundImage: "linear-gradient(pink,white)",
-                backgroundColor: "white",
-                borderRadius: ".4vw",
-                padding: ".5vw",
-              }}
-            >
-              <thead>
-                <tr>
-                  <th>ID</th>
-                  <th>USERNAME</th>
-                  <th>EMAIL </th>
-                  <th>STATUS</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td>1</td>
-                  <td>abc</td>
-                  <td>abc@gmail.com</td>
-                  <td>
-                    <Button
-                      style={{
-                        backgroundColor: "green",
-                        padding: ".1vw",
-                        color: "white",
-                      }}
-                    >
-                      Online
-                    </Button>
-                  </td>
-                </tr>
-                <tr>
-                  <td>2</td>
-                  <td>efg</td>
-                  <td>abc@gmail.com</td>
-                  <td>
-                    <Button
-                      style={{
-                        backgroundColor: "green",
-                        padding: ".1vw",
-                        color: "white",
-                      }}
-                    >
-                      Online
-                    </Button>
-                  </td>
-                </tr>
-                <tr>
-                  <td>3</td>
-                  <td>xyz</td>
-                  <td>abc@gmail.com</td>
-                  <td>
-                    <Button
-                      style={{
-                        backgroundColor: "red",
-                        padding: ".1vw",
-                        color: "white",
-                      }}
-                    >
-                      Active Today
-                    </Button>
-                  </td>
-                </tr>
-              </tbody>
-            </table>
+            {this.state.customers === true ? (
+              <div>
+                ONLINE customers
+                <br />
+                <table
+                  style={{
+                    width: "100%",
+                    marginTop: "1vw",
+                    // boxShadow: "0.1vw 0.2vw 0.1vw grey",
+                    // backgroundImage: "linear-gradient(pink,white)",
+                    backgroundColor: "white",
+                    borderRadius: ".4vw",
+                    padding: ".5vw",
+                  }}
+                >
+                  <thead>
+                    <tr>
+                      <th>ID</th>
+                      <th>USERNAME</th>
+                      <th>EMAIL </th>
+                      <th>STATUS</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>1</td>
+                      <td>abc</td>
+                      <td>abc@gmail.com</td>
+                      <td>
+                        <Button
+                          style={{
+                            backgroundColor: "green",
+                            padding: ".1vw",
+                            color: "white",
+                          }}
+                        >
+                          Online
+                        </Button>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>2</td>
+                      <td>efg</td>
+                      <td>abc@gmail.com</td>
+                      <td>
+                        <Button
+                          style={{
+                            backgroundColor: "green",
+                            padding: ".1vw",
+                            color: "white",
+                          }}
+                        >
+                          Online
+                        </Button>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>3</td>
+                      <td>xyz</td>
+                      <td>abc@gmail.com</td>
+                      <td>
+                        <Button
+                          style={{
+                            backgroundColor: "red",
+                            padding: ".1vw",
+                            color: "white",
+                          }}
+                        >
+                          Active Today
+                        </Button>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            ) : (
+              <div></div>
+            )}
+
+            {this.state.users === true ? (
+              <div>
+                ONLINE USERS
+                <br />
+                <table
+                  style={{
+                    width: "100%",
+                    marginTop: "1vw",
+                    // boxShadow: "0.1vw 0.2vw 0.1vw grey",
+                    // backgroundImage: "linear-gradient(pink,white)",
+                    backgroundColor: "white",
+                    borderRadius: ".4vw",
+                    padding: ".5vw",
+                  }}
+                >
+                  <thead>
+                    <tr>
+                      <th>ID</th>
+                      <th>USERNAME</th>
+                      <th>EMAIL </th>
+                      <th>STATUS</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>1</td>
+                      <td>abc</td>
+                      <td>abc@gmail.com</td>
+                      <td>
+                        <Button
+                          style={{
+                            backgroundColor: "green",
+                            padding: ".1vw",
+                            color: "white",
+                          }}
+                        >
+                          Online
+                        </Button>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>2</td>
+                      <td>efg</td>
+                      <td>abc@gmail.com</td>
+                      <td>
+                        <Button
+                          style={{
+                            backgroundColor: "green",
+                            padding: ".1vw",
+                            color: "white",
+                          }}
+                        >
+                          Online
+                        </Button>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>3</td>
+                      <td>xyz</td>
+                      <td>abc@gmail.com</td>
+                      <td>
+                        <Button
+                          style={{
+                            backgroundColor: "red",
+                            padding: ".1vw",
+                            color: "white",
+                          }}
+                        >
+                          Active Today
+                        </Button>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            ) : (
+              <div></div>
+            )}
           </div>
 
           <div
@@ -403,125 +562,143 @@ class Albumm extends Component {
               //        box-shadow:0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset,
             }}
           >
-            RECENT POSTS
-            <br />
-            <table
-              rules="all"
-              style={{
-                width: "100%",
-                marginTop: "1vw",
-                border: ".1vw solid grey",
-                backgroundColor: "white",
-                borderSpacing: "1vw",
-                // boxShadow: "0.1vw 0.2vw 0.1vw grey",
-                // backgroundImage: "linear-gradient(lightgreen,white)",
-              }}
-            >
-              {/* <thead>
+            {this.state.users ? (
+              <div>
+                RECENT POSTS USERS
+                <br />
+                <table
+                  rules="all"
+                  style={{
+                    width: "100%",
+                    marginTop: "1vw",
+                    border: ".1vw solid grey",
+                    backgroundColor: "white",
+                    borderSpacing: "1vw",
+                    // boxShadow: "0.1vw 0.2vw 0.1vw grey",
+                    // backgroundImage: "linear-gradient(lightgreen,white)",
+                  }}
+                >
+                  {/* <thead>
                 <tr>
                   <th>DATE</th>
                   <th></th>
                  
                 </tr>
               </thead> */}
-              <tbody>
+                  <tbody>
+                    <tr>
+                      <td>12-03-2020</td>
+                      <td>Test1</td>
+                    </tr>
+                    <tr>
+                      <td>2-04-2020</td>
+                      <td>Test2</td>
+                    </tr>
+                    <tr>
+                      <td>19-07-2020</td>
+                      <td>Test3</td>
+                    </tr>
+                    <tr>
+                      <td>12-03-2020</td>
+                      <td>Test4</td>
+                    </tr>
+                    <tr>
+                      <td>2-04-2020</td>
+                      <td>Test5</td>
+                    </tr>
+                    <tr>
+                      <td>19-07-2020</td>
+                      <td>Test6</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            ) : (
+              <div></div>
+            )}
+
+            {this.state.customers ? (
+              <div>
+                RECENT POSTS CUSTOMERS
+                <br />
+                <table
+                  rules="all"
+                  style={{
+                    width: "100%",
+                    marginTop: "1vw",
+                    border: ".1vw solid grey",
+                    backgroundColor: "white",
+                    borderSpacing: "1vw",
+                    // boxShadow: "0.1vw 0.2vw 0.1vw grey",
+                    // backgroundImage: "linear-gradient(lightgreen,white)",
+                  }}
+                >
+                  {/* <thead>
                 <tr>
-                  <td>12-03-2020</td>
-                  <td>Test1</td>
+                  <th>DATE</th>
+                  <th></th>
+                 
                 </tr>
-                <tr>
-                  <td>2-04-2020</td>
-                  <td>Test2</td>
-                </tr>
-                <tr>
-                  <td>19-07-2020</td>
-                  <td>Test3</td>
-                </tr>
-                <tr>
-                  <td>12-03-2020</td>
-                  <td>Test4</td>
-                </tr>
-                <tr>
-                  <td>2-04-2020</td>
-                  <td>Test5</td>
-                </tr>
-                <tr>
-                  <td>19-07-2020</td>
-                  <td>Test6</td>
-                </tr>
-              </tbody>
-            </table>
+              </thead> */}
+                  <tbody>
+                    <tr>
+                      <td>12-03-2020</td>
+                      <td>Test1</td>
+                    </tr>
+                    <tr>
+                      <td>2-04-2020</td>
+                      <td>Test2</td>
+                    </tr>
+                    <tr>
+                      <td>19-07-2020</td>
+                      <td>Test3</td>
+                    </tr>
+                    <tr>
+                      <td>12-03-2020</td>
+                      <td>Test4</td>
+                    </tr>
+                    <tr>
+                      <td>2-04-2020</td>
+                      <td>Test5</td>
+                    </tr>
+                    <tr>
+                      <td>19-07-2020</td>
+                      <td>Test6</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            ) : (
+              <div></div>
+            )}
           </div>
         </div>
         {/* <Features /> */}
-        <div
-          style={{
-            // backgroundImage: "linear-gradient(#fffeaa,orange)",
-            padding: "4vw",
-            marginTop: "3vw",
-            borderRadius: ".3vw",
 
-            backgroundColor: "white",
-            // border: ".1vw solid orange",
-            boxShadow: ".2vw .3vw .7vw .01vw orange",
-            // height: "15vw",
-          }}
-        >
-          <Typography
-            component="h1"
-            variant="h2"
-            align="center"
-            color="textPrimary"
-            gutterBottom
-          >
-            FORMS
-          </Typography>
-
-          <Typography
-            variant="h5"
-            align="center"
-            color="textSecondary"
-            paragraph
-          >
-            LET'S CREATE A NEW FORM
-          </Typography>
-          <div>
-            <Grid container spacing={2} justify="center">
-              <Grid item>
-                <Link1 to="/definingsteps">
-                  <Button style={{ backgroundColor: "ORANGE", color: "white" }}>
-                    CREATE A NEW FORM
-                  </Button>
-                </Link1>
-              </Grid>
-              <Grid item>
-                <Button
-                  style={{
-                    backgroundColor: "white",
-                    color: "orange",
-                    border: ".1vw solid orange",
-                  }}
-                >
-                  VIEW PREVIOUS FORMS
-                </Button>
-              </Grid>
-            </Grid>
-          </div>
-        </div>
         <OldForms />
         <Features />
-        <footer>
+        <footer
+          style={{
+            backgroundColor: "#12a6a3",
+            marginLeft: "-6vw",
+            marginRight: "-6vw",
+            padding: "2vw",
+            color: "white",
+          }}
+        >
           <Typography variant="h6" align="center" gutterBottom>
             {" "}
-            National Institute of Technology
+            Dr. B.R Ambedkar National Institute of Technology
           </Typography>
           <Typography
             variant="subtitle1"
             align="center"
-            color="textSecondary"
+            color="cream"
             component="p"
           >
-            Jalandharr
+            Jalandhar
+            <br />
+            Contact:1234567890
           </Typography>
         </footer>
       </Fragment>

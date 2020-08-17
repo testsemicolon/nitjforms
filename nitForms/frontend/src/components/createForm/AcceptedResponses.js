@@ -122,9 +122,9 @@ export class AcceptedResponses extends Component {
                             >
                               <Button
                                 style={{
-                                  backgroundColor: "orange",
+                                  backgroundColor: "#66a3ff",
                                   color: "white",
-                                  boxShadow: ".3vw .3vw .3vw grey",
+                                  boxShadow: ".3vw .3vw .3vw lightgray",
                                   borderWidth: 0,
                                 }}
                               >

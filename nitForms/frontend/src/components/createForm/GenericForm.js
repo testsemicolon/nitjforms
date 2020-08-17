@@ -150,7 +150,7 @@ export class GenericForm extends Component {
                 backgroundImage:
                   "linear-gradient(to right,rgba(0, 153, 153, 0.5),rgba(0, 231, 231, 0.5)",
                 // backgroundColor: "#00a3a3",
-                boxShadow: ".3vw .3vw .5vw grey",
+                boxShadow: ".3vw .3vw .3vw silver",
                 borderRadius: "1vw",
                 paddingRight: "1vw",
               }}
@@ -251,7 +251,7 @@ export class GenericForm extends Component {
                 marginTop: "2rem",
                 marginBottom: "4vw",
                 backgroundColor: "#EEEEEE",
-                boxShadow: ".3vw .3vw .5vw silver",
+                boxShadow: ".3vw .3vw .3vw silver",
                 borderRadius: "1vw",
                 //  border: ".2vw solid silver",
 
@@ -286,7 +286,7 @@ export class GenericForm extends Component {
                             marginLeft: "auto",
                             marginRight: "auto",
                             height: "auto",
-                            boxShadow: ".5vw .5vw .5vw  silver",
+                            boxShadow: ".3vw .3vw .3vw  silver",
                           }}
                         >
                           <div>
@@ -578,7 +578,7 @@ export class GenericForm extends Component {
                       borderWidth: "0rem",
                       width: "12rem",
                       marginBottom: "2vw",
-                      boxShadow: ".1vw .1vw .1vw .1vw silver",
+                      boxShadow: ".3vw .3vw .3vw lightgray",
                       // marginLeft: "auto",
                       // marginRight: "auto",
                     }}

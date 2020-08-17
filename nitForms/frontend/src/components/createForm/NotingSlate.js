@@ -82,7 +82,7 @@ export class NotingSlate extends Component {
                             <Button
                               style={{
                                 marginRight: ".2vw",
-                                backgroundColor: "orange",
+                                backgroundColor: "#66a3ff",
                                 boxShadow: ".3vw .3vw .3vw  grey",
                                 padding: ".17vw",
                                 color: "white",
@@ -103,8 +103,8 @@ export class NotingSlate extends Component {
                         <Button
                           style={{
                             backgroundColor: "white",
-                            color: "orange",
-                            border: " 0.06vw solid orange",
+                            color: "#66a3ff",
+                            border: " 0.06vw solid #66a3ff",
                             boxShadow: ".3vw .3vw .3vw  grey",
                             padding: ".17vw",
                           }}

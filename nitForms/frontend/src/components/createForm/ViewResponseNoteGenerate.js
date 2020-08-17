@@ -4,9 +4,12 @@ import { Button } from "react-bootstrap";
 import TextareaAutosize from "react-textarea-autosize";
 import { Card } from "react-bootstrap";
 import DisplayEditor from "./DisplayEditor";
+import Tabs from "react-bootstrap/Tabs";
+import Tab from "react-bootstrap/Tabs";
 import { Link } from "react-router-dom";
 import NotingIndivdiual from "./NotingIndivdiual";
 import { putAccepted } from "../../actions/AcceptedResponse";
+import { CombinedView } from "./CombinedView";
 
 export class ViewResponseNoteGenerate extends Component {
   state = {
@@ -84,7 +87,7 @@ export class ViewResponseNoteGenerate extends Component {
     const { content } = this.state.content;
 
     return (
-      <div>
+      <Fragment>
         <div
           style={{
             position: "relative",
@@ -95,92 +98,104 @@ export class ViewResponseNoteGenerate extends Component {
             marginRight: "7vw",
           }}
         >
-          <div
+          <Tabs
             style={{
-              position: "relative",
-              width: "36vw",
-              float: "right",
-              justifyContent: "center",
-              textAlign: "center",
-
-              paddingTop: "1vw",
-              marginBottom: "1.5vw",
-              // backgroundColor: "#009999",
-              // backgroundImage: "linear-gradient(to right,#009999,#00e7e7",
-              // backgroundImage:
-              //   "linear-gradient(to right,rgba(0, 153, 153, 0.5),rgba(0, 231, 231, 0.5)",
-              backgroundImage:
-                "linear-gradient(to right,rgba(0, 153, 153, 0.5),rgba(0, 231, 231, 0.5)",
-              boxShadow: ".3vw .3vw .5vw grey",
-              borderRadius: ".3vw",
-              paddingRight: "1vw",
+              margin: "1vw",
             }}
+            defaultActiveKey="Accepted Responses"
+            id="uncontrolled-tab-example"
           >
-            <h4 style={{ color: "white" }}> Accepted Responses</h4>
-          </div>
-          <div
-            style={{
-              float: "right",
-              postion: "relative",
-              width: "36vw",
-              paddingLeft: "2vw",
-              paddingRight: "2vw",
-              // display: "flex",
-              // justifyContent: "center",
-              paddingTop: "1vw",
-              paddingBottom: "1vw",
-              marginBottom: "4vw",
-              backgroundColor: "#EEEEEE",
-              boxShadow: ".3vw .3vw .5vw grey",
-              borderRadius: ".3vw",
-              //  border: ".2vw solid silver",
-            }}
-          >
-            <Fragment>
-              {Object.entries(this.obj).map(([question, answer]) => {
-                if ((question !== "comment") & (question !== "forwardTo")) {
-                  return (
-                    <Fragment key={question}>
-                      <Card
-                        style={{
-                          borderRadius: ".95vw",
-                          borderWidth: 0,
-                          // border: ".2vw solid #ed6a5a",
-                          marginBottom: "2vw",
-                          width: "25",
-                          color: "#009999",
+            <Tab
+              eventKey="Accepted Responses"
+              style={{ color: "blue" }}
+              title="Accepted Responses"
+            >
+              <div
+                style={{
+                  position: "relative",
+                  width: "36vw",
+                  float: "right",
+                  justifyContent: "center",
+                  textAlign: "center",
 
-                          // height: "auto",
-                          boxShadow: ".5vw .5vw .5vw  silver",
-                        }}
-                      >
-                        <div>
-                          <Card.Header
+                  paddingTop: "1vw",
+                  marginBottom: "1.5vw",
+                  // backgroundColor: "#009999",
+                  // backgroundImage: "linear-gradient(to right,#009999,#00e7e7",
+                  // backgroundImage:
+                  //   "linear-gradient(to right,rgba(0, 153, 153, 0.5),rgba(0, 231, 231, 0.5)",
+                  backgroundImage:
+                    "linear-gradient(to right,rgba(0, 153, 153, 0.5),rgba(0, 231, 231, 0.5)",
+                  boxShadow: ".3vw .3vw .5vw grey",
+                  borderRadius: ".3vw",
+                  paddingRight: "1vw",
+                }}
+              >
+                <h4 style={{ color: "white" }}> Accepted Responses</h4>
+              </div>
+              <div
+                style={{
+                  float: "right",
+                  postion: "relative",
+                  width: "36vw",
+                  paddingLeft: "2vw",
+                  paddingRight: "2vw",
+                  // display: "flex",
+                  // justifyContent: "center",
+                  paddingTop: "1vw",
+                  paddingBottom: "1vw",
+                  marginBottom: "4vw",
+                  backgroundColor: "#EEEEEE",
+                  boxShadow: ".3vw .3vw .5vw grey",
+                  borderRadius: ".3vw",
+                  //  border: ".2vw solid silver",
+                }}
+              >
+                <Fragment>
+                  {Object.entries(this.obj).map(([question, answer]) => {
+                    if ((question !== "comment") & (question !== "forwardTo")) {
+                      return (
+                        <Fragment key={question}>
+                          <Card
                             style={{
-                              backgroundColor: "white",
-                              borderRadius: ".75vw .75vw 0 0",
-                              // width: "25vw",
-                              height: "2.5vw",
-                              fontSize: "1vw",
+                              borderRadius: ".95vw",
+                              borderWidth: 0,
+                              // border: ".2vw solid #ed6a5a",
+                              marginBottom: "2vw",
+                              width: "25",
                               color: "#009999",
-                              margin: 0,
-                              padding: "0.6vw",
+
+                              // height: "auto",
+                              boxShadow: ".5vw .5vw .5vw  silver",
                             }}
                           >
-                            <strong> {question.toUpperCase()}</strong>
-                          </Card.Header>
-                          <Card.Body
-                            style={{
-                              backgroundColor: "white",
-                              borderRadius: " 0 0 .75vw .75vw",
-                              // width: "25vw",
-                              fontSize: "0.93vw",
-                              height: "auto",
-                              padding: "0.6vw",
-                              margin: 0,
-                            }}
-                          >
-                            {/* <Card.Title
+                            <div>
+                              <Card.Header
+                                style={{
+                                  backgroundColor: "white",
+                                  borderRadius: ".75vw .75vw 0 0",
+                                  // width: "25vw",
+                                  height: "2.5vw",
+                                  fontSize: "1vw",
+                                  color: "#009999",
+                                  margin: 0,
+                                  padding: "0.6vw",
+                                }}
+                              >
+                                <strong> {question.toUpperCase()}</strong>
+                              </Card.Header>
+                              <Card.Body
+                                style={{
+                                  backgroundColor: "white",
+                                  borderRadius: " 0 0 .75vw .75vw",
+                                  // width: "25vw",
+                                  fontSize: "0.93vw",
+                                  height: "auto",
+                                  padding: "0.6vw",
+                                  margin: 0,
+                                }}
+                              >
+                                {/* <Card.Title
                                   style={{
                                     fontSize: ".93vw",
                                     marginBottom: ".5vw",
@@ -188,143 +203,156 @@ export class ViewResponseNoteGenerate extends Component {
                                 >
                                 
                                 </Card.Title> */}
-                            <Card.Text>
-                              <TextareaAutosize
-                                name={question}
-                                value={answer}
-                                style={{
-                                  width: "25vw",
-                                  borderColor: "white",
-                                  fontSize: "1vw",
-                                }}
-                              >
-                                {answer}
-                              </TextareaAutosize>
-                            </Card.Text>
-                          </Card.Body>
-                        </div>
-                      </Card>
-                    </Fragment>
-                  );
-                }
-              })}
-            </Fragment>
-          </div>
+                                <Card.Text>
+                                  <TextareaAutosize
+                                    name={question}
+                                    value={answer}
+                                    style={{
+                                      width: "25vw",
+                                      borderColor: "white",
+                                      fontSize: "1vw",
+                                    }}
+                                  >
+                                    {answer}
+                                  </TextareaAutosize>
+                                </Card.Text>
+                              </Card.Body>
+                            </div>
+                          </Card>
+                        </Fragment>
+                      );
+                    }
+                  })}
+                </Fragment>
+              </div>
+            </Tab>
+            <Tab
+              eventKey="Linked Notings"
+              style={{ color: "blue" }}
+              title="Linked Notings"
+            >
+              <div>
+                <div
+                  style={{
+                    width: "34vw",
+
+                    justifyContent: "center",
+                    textAlign: "center",
+                    //backgroundImage: "linear-gradient(to right,#009999,#00e7e7",
+                    backgroundImage:
+                      "linear-gradient(to right,rgba(0, 153, 153, 0.5),rgba(0, 231, 231, 0.5)",
+                    paddingTop: "1vw",
+                    marginBottom: "1.5vw",
+                    // backgroundColor: "#00a3a3",
+                    boxShadow: ".3vw .3vw .5vw grey",
+                    borderRadius: ".3vw",
+                    paddingRight: "1vw",
+                  }}
+                >
+                  <h4 style={{ color: "white" }}> Linked Notings</h4>
+                </div>
+                <div
+                  style={{
+                    float: "left",
+                    postion: "relative",
+                    width: "34vw",
+
+                    textAlign: "center",
+
+                    paddingLeft: "2vw",
+                    paddingRight: "2vw",
+                    // display: "flex",
+                    // justifyContent: "center",
+                    paddingTop: "1vw",
+                    paddingBottom: "1vw",
+                    marginBottom: "4vw",
+                    backgroundColor: "#EEEEEE",
+                    boxShadow: ".3vw .3vw .5vw grey",
+                    borderRadius: ".3vw",
+                  }}
+                >
+                  <NotingIndivdiual
+                    title={this.props.match.params.title}
+                    value={this.props.match.params.value}
+                    id={this.props.match.params.id}
+                  />
+                  <br />
+                  <div>
+                    <Button
+                      style={{
+                        marginBottom: "2vw",
+                        marginRight: "2vw",
+                        backgroundColor: "white",
+                        color: "#009999",
+                        border: " 0.06vw solid #009999",
+                        boxShadow: ".1vw .1vw .1vw .1vw silver",
+                      }}
+                      onClick={this.onclick2}
+                    >
+                      Forward to
+                    </Button>
+                    {this.state.toggleforward === true ? (
+                      <div style={{ textAlign: "center" }}>
+                        <input
+                          name="forwardTo"
+                          value={this.state.forwardTo}
+                          onChange={this.onChange}
+                          type="text"
+                          placeholder="Enter Username"
+                        />{" "}
+                        <Button
+                          style={{
+                            marginRight: "2vw",
+                            backgroundColor: "white",
+                            color: "#009999",
+                            border: " 0.06vw solid #009999",
+                            boxShadow: ".1vw .1vw .1vw .1vw silver",
+                            marginBottom: "1vw",
+                          }}
+                          onClick={this.onClick3}
+                        >
+                          Forward
+                        </Button>
+                      </div>
+                    ) : null}
+                    {/* 
+                    <Link to={"/combine/" + this.props.match.params.id}>
+                      <Button
+                        style={{
+                          marginBottom: "2vw",
+                          marginRight: "2vw",
+                          backgroundColor: "white",
+                          color: "#009999",
+                          border: " 0.06vw solid #009999",
+                          boxShadow: ".1vw .1vw .1vw .1vw silver",
+                        }}
+                      >
+                        View timeline
+                      </Button>
+                    </Link> */}
+                  </div>
+                </div>
+              </div>
+            </Tab>
+          </Tabs>
         </div>
         <div
           style={{
             position: "relative",
-            width: "34vw",
+            width: "30vw",
             float: "left",
             marginBottom: "1vw",
-            marginLeft: "7vw",
-            marginTop: "2vw",
+            marginTop: "4vw",
+            marginLeft: "5vw",
+            marginRight: "7vw",
           }}
         >
-          <div
-            style={{
-              position: "relative",
-              width: "34vw",
-              float: "left",
-              justifyContent: "center",
-              textAlign: "center",
-              //backgroundImage: "linear-gradient(to right,#009999,#00e7e7",
-              backgroundImage:
-                "linear-gradient(to right,rgba(0, 153, 153, 0.5),rgba(0, 231, 231, 0.5)",
-              paddingTop: "1vw",
-              marginBottom: "1.5vw",
-              // backgroundColor: "#00a3a3",
-              boxShadow: ".3vw .3vw .5vw grey",
-              borderRadius: ".3vw",
-              paddingRight: "1vw",
-            }}
-          >
-            <h4 style={{ color: "white" }}> Linked Notings</h4>
-          </div>
-          <div
-            style={{
-              float: "left",
-              postion: "relative",
-              width: "34vw",
-
-              textAlign: "center",
-
-              paddingLeft: "2vw",
-              paddingRight: "2vw",
-              // display: "flex",
-              // justifyContent: "center",
-              paddingTop: "1vw",
-              paddingBottom: "1vw",
-              marginBottom: "4vw",
-              backgroundColor: "#EEEEEE",
-              boxShadow: ".3vw .3vw .5vw grey",
-              borderRadius: ".3vw",
-            }}
-          >
-            <NotingIndivdiual
-              title={this.props.match.params.title}
-              value={this.props.match.params.value}
-              id={this.props.match.params.id}
-            />
-            <br />
-            <div>
-              <Button
-                style={{
-                  marginBottom: "2vw",
-                  marginRight: "2vw",
-                  backgroundColor: "white",
-                  color: "#009999",
-                  border: " 0.06vw solid #009999",
-                  boxShadow: ".1vw .1vw .1vw .1vw silver",
-                }}
-                onClick={this.onclick2}
-              >
-                Forward to
-              </Button>
-              {this.state.toggleforward === true ? (
-                <div style={{ textAlign: "center" }}>
-                  <input
-                    name="forwardTo"
-                    value={this.state.forwardTo}
-                    onChange={this.onChange}
-                    type="text"
-                    placeholder="Enter Username"
-                  />{" "}
-                  <Button
-                    style={{
-                      marginRight: "2vw",
-                      backgroundColor: "white",
-                      color: "#009999",
-                      border: " 0.06vw solid #009999",
-                      boxShadow: ".1vw .1vw .1vw .1vw silver",
-                      marginBottom: "1vw",
-                    }}
-                    onClick={this.onClick3}
-                  >
-                    Forward
-                  </Button>
-                </div>
-              ) : null}
-
-              <Link to={"/combine/" + this.props.match.params.id}>
-                <Button
-                  style={{
-                    marginBottom: "2vw",
-                    marginRight: "2vw",
-                    backgroundColor: "white",
-                    color: "#009999",
-                    border: " 0.06vw solid #009999",
-                    boxShadow: ".1vw .1vw .1vw .1vw silver",
-                  }}
-                >
-                  View timeline
-                </Button>
-              </Link>
-            </div>
-            <div> </div>
-          </div>
+          <CombinedView
+            id={this.props.match.params.id}
+            AcceptedResponse={this.props.AcceptedResponse}
+          />
         </div>
-      </div>
+      </Fragment>
     );
   }
 }

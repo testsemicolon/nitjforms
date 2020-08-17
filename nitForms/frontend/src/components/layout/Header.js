@@ -125,13 +125,21 @@ export default function PersistentDrawerLeft() {
           >
             <MenuIcon />
           </IconButton>
+
           <Link to="/">
-            <h2
-              style={{ fontSize: "1.7vw", color: "white", marginTop: ".8vw" }}
-            >
-              NITJFORMS
-            </h2>
+            <img
+              src="static/Logo.png"
+              style={{ width: "3.5vw", heigth: "3.5vw", marginRight: "1vw" }}
+            />
           </Link>
+          {"  "}
+          <h2 style={{ fontSize: "1vw", color: "white", marginTop: ".8vw" }}>
+            DR. B.R AMBEDKAR
+            <br />
+            {/* </h2>
+          <h2 style={{ fontSize: "1vw", color: "white", marginTop: ".1vw" }}> */}
+            NATIONAL INSTITUTE OF TECHNOLOGY
+          </h2>
 
           <Buttons />
         </Toolbar>
