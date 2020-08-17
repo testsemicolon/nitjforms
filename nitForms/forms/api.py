@@ -62,6 +62,20 @@ class notingTemplateViewSet(viewsets.ModelViewSet):
     serializer_class = notingTemplateSerializer
 
 
+
+class test2ViewSet(viewsets.ModelViewSet):
+    queryset = test2.objects.all()
+    parser_class = (MultiPartParser, FormParser)
+    permission_class = [permissions.AllowAny]
+    serializer_class = test2Serializer
+
+
+class test2AcceptedViewSet(viewsets.ModelViewSet):
+    queryset = test2Accepted.objects.all()
+    permission_class = [permissions.AllowAny]
+    serializer_class = test2AcceptedSerializer
+
+
 class test3ViewSet(viewsets.ModelViewSet):
     queryset = test3.objects.all()
     parser_class = (MultiPartParser, FormParser)
@@ -73,55 +87,3 @@ class test3AcceptedViewSet(viewsets.ModelViewSet):
     queryset = test3Accepted.objects.all()
     permission_class = [permissions.AllowAny]
     serializer_class = test3AcceptedSerializer
-
-
-class test4ViewSet(viewsets.ModelViewSet):
-    queryset = test4.objects.all()
-    parser_class = (MultiPartParser, FormParser)
-    permission_class = [permissions.AllowAny]
-    serializer_class = test4Serializer
-
-
-class test4AcceptedViewSet(viewsets.ModelViewSet):
-    queryset = test4Accepted.objects.all()
-    permission_class = [permissions.AllowAny]
-    serializer_class = test4AcceptedSerializer
-
-
-class test5ViewSet(viewsets.ModelViewSet):
-    queryset = test5.objects.all()
-    parser_class = (MultiPartParser, FormParser)
-    permission_class = [permissions.AllowAny]
-    serializer_class = test5Serializer
-
-
-class test5AcceptedViewSet(viewsets.ModelViewSet):
-    queryset = test5Accepted.objects.all()
-    permission_class = [permissions.AllowAny]
-    serializer_class = test5AcceptedSerializer
-
-
-class test6ViewSet(viewsets.ModelViewSet):
-    queryset = test6.objects.all()
-    parser_class = (MultiPartParser, FormParser)
-    permission_class = [permissions.AllowAny]
-    serializer_class = test6Serializer
-
-
-class test6AcceptedViewSet(viewsets.ModelViewSet):
-    queryset = test6Accepted.objects.all()
-    permission_class = [permissions.AllowAny]
-    serializer_class = test6AcceptedSerializer
-
-
-class test7ViewSet(viewsets.ModelViewSet):
-    queryset = test7.objects.all()
-    parser_class = (MultiPartParser, FormParser)
-    permission_class = [permissions.AllowAny]
-    serializer_class = test7Serializer
-
-
-class test7AcceptedViewSet(viewsets.ModelViewSet):
-    queryset = test7Accepted.objects.all()
-    permission_class = [permissions.AllowAny]
-    serializer_class = test7AcceptedSerializer

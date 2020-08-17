@@ -34,7 +34,10 @@ def post_views(request):
         f = open(modelPath, 'a')
         f.write("\n\nclass " + title + "(models.Model):\n")
         f.write("    responseTime = models.DateTimeField(auto_now_add=True)\n")
-
+        f.write("    formStatus = models.BooleanField(default=False)\n")
+        f.write(
+            "    commentRejected = models.CharField(max_length=1000, blank=True)\n"
+        )
         f.close()
         data = CreateForms.objects.all()
         for i in data:
@@ -49,7 +52,9 @@ def post_views(request):
         f.write(
             "    forwardTo = ArrayField(JSONField(null=True),blank=True, default=list)\n"
         )
-
+        f.write(
+            "    commentAccepted = models.CharField(max_length=1000, blank=True)\n"
+        )
         f.close()
         data1 = CreateForms.objects.all()
         for i in data1:

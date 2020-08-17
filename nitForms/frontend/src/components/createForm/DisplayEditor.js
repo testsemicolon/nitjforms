@@ -3,6 +3,9 @@ import { Editor, EditorState, convertFromRaw } from "draft-js";
 import { Button } from "react-bootstrap";
 import { connect } from "react-redux";
 import { putAccepted } from "../../actions/AcceptedResponse";
+import store from "../../store";
+import { createMessage } from "../../actions/Messages";
+import { withRouter } from "react-router-dom";
 
 class DisplayEditor extends React.Component {
   flag = false;
@@ -10,6 +13,7 @@ class DisplayEditor extends React.Component {
   arr = [];
   constructor(props) {
     super(props);
+    console.log(this.props);
     console.log(this.props.key1);
     this.state = {
       editorState: EditorState.createEmpty(),
@@ -33,7 +37,7 @@ class DisplayEditor extends React.Component {
     this.props.AcceptedResponse.map((a) => {
       console.log(a.id, id);
       if (a.id === id) {
-        if (a.comment === "") {
+        if (a.comment === null) {
           const quest = { [key1]: cmnt };
           console.log(quest);
           console.log("if");
@@ -56,6 +60,12 @@ class DisplayEditor extends React.Component {
         }
         console.log(a);
         this.props.putAccepted(a.id, this.props.title, a);
+        store.dispatch(
+          createMessage({ commentAdded: "Comment has been added" })
+        );
+        this.props.history.push(
+          `${this.props.title}Accepted/${this.props.id}/`
+        );
       }
     });
     console.log("asdmhgadkhvdaf");
@@ -76,11 +86,15 @@ class DisplayEditor extends React.Component {
         console.log(id, id1);
         if (id === id1) {
           Object.entries(s1).map(([key, value]) => {
-            if (key !== "comment") {
+            if (
+              (key !== "comment") &
+              (key !== "commentAccepted") &
+              (key !== "responseTime")
+            ) {
               console.log(key, value);
               s.text = s.text.replace("#", "");
               console.log(key, value);
-              s.text = s.text.replaceAll(key, value);
+              s.text = s.text.replace(key, value);
             }
           });
         }
@@ -121,4 +135,6 @@ const mapStateToProps = (state) => ({
   AcceptedResponse: state.AcceptedResponse.AcceptedResponse,
   username: state.Auth.user.username,
 });
-export default connect(mapStateToProps, { putAccepted })(DisplayEditor);
+export default withRouter(
+  connect(mapStateToProps, { putAccepted })(DisplayEditor)
+);

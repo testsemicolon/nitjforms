@@ -8,22 +8,10 @@ admin.site.register(Post)
 admin.site.register(sharedUsers)
 admin.site.register(notingTemplate)
 
+admin.site.register(test2)
+
+admin.site.register(test2Accepted)
+
 admin.site.register(test3)
 
 admin.site.register(test3Accepted)
-
-admin.site.register(test4)
-
-admin.site.register(test4Accepted)
-
-admin.site.register(test5)
-
-admin.site.register(test5Accepted)
-
-admin.site.register(test6)
-
-admin.site.register(test6Accepted)
-
-admin.site.register(test7)
-
-admin.site.register(test7Accepted)

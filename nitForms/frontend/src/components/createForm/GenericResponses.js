@@ -84,21 +84,27 @@ export class GenericResponses extends Component {
                         </td>
 
                         {Object.entries(value).map(([question, answer]) => {
-                          return (
-                            <Fragment key={question}>
-                              <td
-                                style={{
-                                  alignContent: "center",
-                                  alignItems: "center",
-                                  textAlign: "center",
-                                }}
-                              >
-                                <strong>{question.toUpperCase()}</strong>
-                                <br />
-                                {answer}
-                              </td>
-                            </Fragment>
-                          );
+                          if (
+                            (question !== "responseTime") &
+                            (question !== "formStatus") &
+                            (question !== "commentRejected")
+                          ) {
+                            return (
+                              <Fragment key={question}>
+                                <td
+                                  style={{
+                                    alignContent: "center",
+                                    alignItems: "center",
+                                    textAlign: "center",
+                                  }}
+                                >
+                                  <strong>{question.toUpperCase()}</strong>
+                                  <br />
+                                  {answer}
+                                </td>
+                              </Fragment>
+                            );
+                          }
                         })}
                       </tr>
                     </Fragment>

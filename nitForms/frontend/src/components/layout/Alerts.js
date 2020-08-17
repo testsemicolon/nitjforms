@@ -26,6 +26,8 @@ export class Alerts extends Component {
       if (message.sharedUser) alert.success(message.sharedUser);
       if (message.notingPost) alert.success(message.notingPost);
       if (message.formCreated) alert.success(message.formCreated);
+      if (message.commentAdded) alert.success(message.commentAdded);
+      if (message.ResponseRejected) alert.error(message.ResponseRejected);
     }
   }
 

@@ -54,71 +54,35 @@ class notingTemplate(models.Model):
     noting = JSONField()
 
 
+class test2(models.Model):
+    responseTime = models.DateTimeField(auto_now_add=True)
+    formStatus = models.BooleanField(default=False)
+    commentRejected = models.CharField(max_length=1000, blank=True)
+    NAME = models.CharField(max_length=1000)
+    AGE = models.CharField(max_length=1000)
+
+
+class test2Accepted(models.Model):
+    responseTime = models.DateTimeField(auto_now_add=True)
+    comment = JSONField(null=True)
+    forwardTo = ArrayField(JSONField(null=True),blank=True, default=list)
+    commentAccepted = models.CharField(max_length=1000, blank=True)
+    NAME = models.CharField(max_length=1000)
+    AGE = models.CharField(max_length=1000)
+
+
 class test3(models.Model):
     responseTime = models.DateTimeField(auto_now_add=True)
-    Name = models.CharField(max_length=1000)
-    Age = models.CharField(max_length=1000)
+    formStatus = models.BooleanField(default=False)
+    commentRejected = models.CharField(max_length=1000, blank=True)
+    NAME = models.CharField(max_length=1000)
+    AGE = models.CharField(max_length=1000)
 
 
 class test3Accepted(models.Model):
     responseTime = models.DateTimeField(auto_now_add=True)
     comment = JSONField(null=True)
     forwardTo = ArrayField(JSONField(null=True),blank=True, default=list)
-    Name = models.CharField(max_length=1000)
-    Age = models.CharField(max_length=1000)
-
-
-class test4(models.Model):
-    responseTime = models.DateTimeField(auto_now_add=True)
-    ASD = models.CharField(max_length=1000)
-    QWE = models.CharField(max_length=1000)
-
-
-class test4Accepted(models.Model):
-    responseTime = models.DateTimeField(auto_now_add=True)
-    comment = JSONField(null=True)
-    forwardTo = ArrayField(JSONField(null=True),blank=True, default=list)
-    ASD = models.CharField(max_length=1000)
-    QWE = models.CharField(max_length=1000)
-
-
-class test5(models.Model):
-    responseTime = models.DateTimeField(auto_now_add=True)
-    NAME = models.CharField(max_length=1000)
-    AGE = models.CharField(max_length=1000)
-
-
-class test5Accepted(models.Model):
-    responseTime = models.DateTimeField(auto_now_add=True)
-    comment = JSONField(null=True)
-    forwardTo = ArrayField(JSONField(null=True),blank=True, default=list)
-    NAME = models.CharField(max_length=1000)
-    AGE = models.CharField(max_length=1000)
-
-
-class test6(models.Model):
-    responseTime = models.DateTimeField(auto_now_add=True)
-    NAME = models.CharField(max_length=1000)
-    AGE = models.CharField(max_length=1000)
-
-
-class test6Accepted(models.Model):
-    responseTime = models.DateTimeField(auto_now_add=True)
-    comment = JSONField(null=True)
-    forwardTo = ArrayField(JSONField(null=True),blank=True, default=list)
-    NAME = models.CharField(max_length=1000)
-    AGE = models.CharField(max_length=1000)
-
-
-class test7(models.Model):
-    responseTime = models.DateTimeField(auto_now_add=True)
-    NAME = models.CharField(max_length=1000)
-    AGE = models.CharField(max_length=1000)
-
-
-class test7Accepted(models.Model):
-    responseTime = models.DateTimeField(auto_now_add=True)
-    comment = JSONField(null=True)
-    forwardTo = ArrayField(JSONField(null=True),blank=True, default=list)
+    commentAccepted = models.CharField(max_length=1000, blank=True)
     NAME = models.CharField(max_length=1000)
     AGE = models.CharField(max_length=1000)
