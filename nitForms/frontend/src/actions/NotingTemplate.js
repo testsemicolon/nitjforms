@@ -1,6 +1,6 @@
 import axios from "axios";
-import { GET_NOTING_TEMPLATE, POST_FORM, POST_NOTING_TEMPLATE } from "./types";
-
+import { GET_NOTING_TEMPLATE } from "./types";
+import { createMessage } from "./Messages";
 export const getNotingTemplate = () => (dispatch) => {
   axios
     .get("notingTemplate/")
@@ -22,10 +22,16 @@ export const postNotingTemplate = (quest, quest1) => (dispatch) => {
       }
       quest1["notingLink"].push(res.data.key);
       console.log(quest1);
-
+      var msg = "Noting has been submitted ";
       axios
         .put(`name/${quest1.id}/`, quest1)
-        .then((res1) => console.log(res1))
+        .then((res1) =>
+          dispatch(
+            createMessage({
+              notingPost: msg,
+            })
+          )
+        )
         .catch((err) => console.log(err));
     })
     .catch((err) => console.log(err));

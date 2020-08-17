@@ -38,42 +38,6 @@ class notingTemplateSerializer(serializers.ModelSerializer):
         fields = '__all__'
 
 
-class test1Serializer(serializers.ModelSerializer):
-    class Meta:
-        model = test1
-        fields = '__all__'
-
-
-class test1AcceptedSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = test1Accepted
-        fields = '__all__'
-
-
-class paymentform1Serializer(serializers.ModelSerializer):
-    class Meta:
-        model = paymentform1
-        fields = '__all__'
-
-
-class paymentform1AcceptedSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = paymentform1Accepted
-        fields = '__all__'
-
-
-class test2Serializer(serializers.ModelSerializer):
-    class Meta:
-        model = test2
-        fields = '__all__'
-
-
-class test2AcceptedSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = test2Accepted
-        fields = '__all__'
-
-
 class test3Serializer(serializers.ModelSerializer):
     class Meta:
         model = test3
@@ -83,4 +47,52 @@ class test3Serializer(serializers.ModelSerializer):
 class test3AcceptedSerializer(serializers.ModelSerializer):
     class Meta:
         model = test3Accepted
+        fields = '__all__'
+
+
+class test4Serializer(serializers.ModelSerializer):
+    class Meta:
+        model = test4
+        fields = '__all__'
+
+
+class test4AcceptedSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = test4Accepted
+        fields = '__all__'
+
+
+class test5Serializer(serializers.ModelSerializer):
+    class Meta:
+        model = test5
+        fields = '__all__'
+
+
+class test5AcceptedSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = test5Accepted
+        fields = '__all__'
+
+
+class test6Serializer(serializers.ModelSerializer):
+    class Meta:
+        model = test6
+        fields = '__all__'
+
+
+class test6AcceptedSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = test6Accepted
+        fields = '__all__'
+
+
+class test7Serializer(serializers.ModelSerializer):
+    class Meta:
+        model = test7
+        fields = '__all__'
+
+
+class test7AcceptedSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = test7Accepted
         fields = '__all__'

@@ -8,6 +8,7 @@ import { Link } from "react-router-dom";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import FileUpload from "./FileUpload";
+import { withRouter } from "react-router-dom";
 
 import {
   putSharedUser,
@@ -107,6 +108,8 @@ export class GenericForm extends Component {
     );
     var title = this.props.title;
     this.props.formSubmit(quest, title);
+    this.props.history.push(`/${this.props.title}`);
+    console.log("hello");
   };
 
   render() {
@@ -613,10 +616,12 @@ const mapStateToProps = (state) => ({
   FormName: state.FormName.FormName,
 });
 
-export default connect(mapStateToProps, {
-  formSubmit,
-  getFormView,
-  putSharedUser,
-  postSharedUser,
-  getSharedUser,
-})(GenericForm);
+export default withRouter(
+  connect(mapStateToProps, {
+    formSubmit,
+    getFormView,
+    putSharedUser,
+    postSharedUser,
+    getSharedUser,
+  })(GenericForm)
+);

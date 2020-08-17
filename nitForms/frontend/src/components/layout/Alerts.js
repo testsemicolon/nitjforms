@@ -23,6 +23,9 @@ export class Alerts extends Component {
       if (message.fieldAdd) alert.success(message.fieldAdd);
       if (message.passwordsNotMatch) alert.error(message.passwordsNotMatch);
       if (message.submitForm) alert.success(message.submitForm);
+      if (message.sharedUser) alert.success(message.sharedUser);
+      if (message.notingPost) alert.success(message.notingPost);
+      if (message.formCreated) alert.success(message.formCreated);
     }
   }
 

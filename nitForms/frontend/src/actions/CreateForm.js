@@ -55,7 +55,9 @@ export const deleteField = (id) => (dispatch, getState) => {
 };
 
 export const submitForm = () => (dispatch) => {
-  axios.post("post/");
+  axios
+    .post("post/")
+    .then(dispatch(createMessage({ formCreated: "Form has been created" })));
 };
 
 export const getFormField = () => (dispatch, getState) => {

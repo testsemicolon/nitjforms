@@ -17,30 +17,36 @@ urlpatterns += [
 ]
 
 
-router.register('test1', test1ViewSet, 'test1')
-
-
-router.register('test1Accepted', test1AcceptedViewSet, 'test1Accepted')
-urlpatterns += router.urls
-
-
-router.register('paymentform1', paymentform1ViewSet, 'paymentform1')
-
-
-router.register('paymentform1Accepted',
-                paymentform1AcceptedViewSet, 'paymentform1Accepted')
-urlpatterns += router.urls
-
-
-router.register('test2', test2ViewSet, 'test2')
-
-
-router.register('test2Accepted', test2AcceptedViewSet, 'test2Accepted')
-urlpatterns += router.urls
-
-
 router.register('test3', test3ViewSet, 'test3')
 
 
 router.register('test3Accepted', test3AcceptedViewSet, 'test3Accepted')
+urlpatterns += router.urls
+
+
+router.register('test4', test4ViewSet, 'test4')
+
+
+router.register('test4Accepted', test4AcceptedViewSet, 'test4Accepted')
+urlpatterns += router.urls
+
+
+router.register('test5', test5ViewSet, 'test5')
+
+
+router.register('test5Accepted', test5AcceptedViewSet, 'test5Accepted')
+urlpatterns += router.urls
+
+
+router.register('test6', test6ViewSet, 'test6')
+
+
+router.register('test6Accepted', test6AcceptedViewSet, 'test6Accepted')
+urlpatterns += router.urls
+
+
+router.register('test7', test7ViewSet, 'test7')
+
+
+router.register('test7Accepted', test7AcceptedViewSet, 'test7Accepted')
 urlpatterns += router.urls

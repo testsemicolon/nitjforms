@@ -80,7 +80,7 @@ class DisplayEditor extends React.Component {
               console.log(key, value);
               s.text = s.text.replace("#", "");
               console.log(key, value);
-              s.text = s.text.replace(key, value);
+              s.text = s.text.replaceAll(key, value);
             }
           });
         }

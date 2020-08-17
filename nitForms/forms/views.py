@@ -33,6 +33,7 @@ def post_views(request):
         # Writing Models.py
         f = open(modelPath, 'a')
         f.write("\n\nclass " + title + "(models.Model):\n")
+        f.write("    responseTime = models.DateTimeField(auto_now_add=True)\n")
 
         f.close()
         data = CreateForms.objects.all()
@@ -43,6 +44,7 @@ def post_views(request):
 
         f = open(modelPath, 'a')
         f.write("\n\nclass " + title + "Accepted(models.Model):\n")
+        f.write("    responseTime = models.DateTimeField(auto_now_add=True)\n")
         f.write("    comment = JSONField(null=True)\n")
         f.write(
             "    forwardTo = ArrayField(JSONField(null=True),blank=True, default=list)\n"
