@@ -95,7 +95,7 @@ export class FormName extends Component {
 }
 
 const btnStyle = {
-  background: "orange",
+  background: "#66a3ff",
   boxShadow: ".3vw .3vw .3vw grey",
   color: "#fff",
   padding: ".4rem",

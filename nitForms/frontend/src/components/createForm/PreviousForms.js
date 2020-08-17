@@ -68,7 +68,7 @@ class PreviousForms extends Component {
                           position: "relative",
                           marginBottom: "1vw",
                           backgroundColor: "red",
-                          boxShadow: ".1vw .1vw .1vw .1vw silver",
+                          boxShadow: ".3vw .3vw .3vw lightgray",
                           border: 0,
                         }}
                         onClick={() => {
@@ -87,7 +87,7 @@ class PreviousForms extends Component {
                           position: "relative",
                           marginBottom: "1vw",
                           backgroundColor: "green",
-                          boxShadow: ".1vw .1vw .1vw .1vw silver",
+                          boxShadow: ".3vw .3vw .3vw lightgray ",
                           border: 0,
                         }}
                         onClick={() => {
@@ -117,8 +117,8 @@ class PreviousForms extends Component {
                     <Button
                       style={{
                         marginRight: "1vw",
-                        backgroundColor: "orange",
-                        boxShadow: ".1vw .1vw .1vw .1vw silver",
+                        backgroundColor: "#66a3ff",
+                        boxShadow: ".3vw .3vw .3vw lightgray",
                         borderWidth: 0,
                       }}
                     >
@@ -130,9 +130,9 @@ class PreviousForms extends Component {
                       style={{
                         marginRight: "2vw",
                         backgroundColor: "white",
-                        color: "orange",
-                        border: " 0.06vw solid orange",
-                        boxShadow: ".1vw .1vw .1vw .1vw silver",
+                        color: "#66a3ff",
+                        border: " 0.06vw solid #66a3ff",
+                        boxShadow: ".3vw .3vw .3vw lightgray",
                       }}
                     >
                       Responses

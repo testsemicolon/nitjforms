@@ -10,7 +10,7 @@ export class CombinedView extends Component {
   state = { obj: {} };
   componentDidMount() {
     console.log(this.props);
-    var id = parseInt(this.props.match.params.id);
+    var id = parseInt(this.props.id);
     this.props.AcceptedResponse.map((a) => {
       console.log(typeof a.id);
       console.log(a.id, id);
@@ -53,13 +53,13 @@ export class CombinedView extends Component {
                           background: "white",
 
                           padding: ".5vw",
-                          boxShadow: ".3vw .3vw .5vw grey",
+                          boxShadow: ".3vw .3vw .3vw silver",
                           marginBottom: 0,
                           paddingBottom: 0,
                           wordWrap: "break-word",
                         }}
                         iconStyle={{
-                          background: "orange",
+                          background: "#66a3ff",
                           width: "2vw",
                           height: "2vw",
                           margin: ".5vw",
@@ -81,7 +81,7 @@ export class CombinedView extends Component {
             })}
           </VerticalTimeline>
         </div>
-        <div
+        {/* <div
           style={{
             width: "35vw",
             height: "30vw",
@@ -90,12 +90,12 @@ export class CombinedView extends Component {
             borderRadius: "1vw",
             backgroundColor: "white",
             marginTop: "1vw",
-            boxShadow: ".3vw .3vw .5vw #009999",
+            boxShadow: ".3vw .3vw .3vw #009999",
             padding: "2vw",
           }}
         >
           {console.log(this.obj1)}
-        </div>
+        </div> */}
       </div>
     );
   }

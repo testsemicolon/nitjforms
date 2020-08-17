@@ -26,3 +26,17 @@ body {
 .MuiStepIcon-root.MuiStepIcon-active {
   color: orange !important;
 }
+.dropdown-toggle .btn .btn-light {
+  float: right;
+  position: relative;
+  align-items: flex-end;
+  margin-right: 0;
+}
+.searchbar {
+  width: 5vw;
+  -webkit-transition: width 0.4s ease-in-out;
+  transition: width 0.4s ease-in-out;
+}
+.searchbar:focus {
+  width: 30vw;
+}
