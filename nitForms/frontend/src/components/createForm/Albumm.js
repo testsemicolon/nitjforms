@@ -19,7 +19,7 @@ import $ from "jquery";
 
 class Albumm extends Component {
   state = {
-    users: true,
+    users: false,
     customers: false,
   };
   render() {
@@ -53,7 +53,7 @@ class Albumm extends Component {
               float: "left",
               position: "relative",
               marginRight: "4vw",
-              marginLeft: "4vw",
+              marginLeft: "2vw",
             }}
           >
             <span style={{ fontSize: "5vw" }} class="material-icons">
@@ -154,7 +154,7 @@ class Albumm extends Component {
         >
           <Button
             onClick={() => {
-              this.setState({ users: true });
+              this.setState({ users: !this.state.users });
               this.setState({ customers: false });
             }}
             style={{
@@ -171,7 +171,6 @@ class Albumm extends Component {
                 "0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) ",
             }}
           >
-            {console.log(this.state.users)}
             USERS
             <br />
             <h3>
@@ -180,7 +179,7 @@ class Albumm extends Component {
           </Button>
           <Button
             onClick={() => {
-              this.setState({ customers: true });
+              this.setState({ customers: !this.state.customers });
               this.setState({ users: false });
             }}
             style={{
@@ -307,41 +306,263 @@ class Albumm extends Component {
             </h3>
           </Button>
         </div>
-        <div
-          style={{
-            display: "flex",
-            flexWrap: "wrap",
-            justifyContent: "space-evenly",
-            marginTop: "1vw",
-          }}
-        >
+
+        {this.state.users === true ? (
           <div
             style={{
-              //   width: "17vw",
-
-              //   backgroundImage:
-              //     "linear-gradient(rgba(179, 204, 37, .5),rgba(51, 204, 37, .5))",
-              //   marginLeft: "1vw",
-              //   marginRight: "1vw",
-              textAlign: "center",
-              flexBasis: "32%",
-              minHeight: "18vw",
-              borderRadius: ".5vw",
-              backgroundColor: "white",
-              padding: "1.5vw",
-              color: "grey",
-              // border: ".01vw solid red",
-              boxShadow:
-                ".4vw .4vw .5vw lightgrey, 0 0 .1vw rgba(0, 0, 0, 0.1) inset",
-
-              // WebkitBoxShadow:
-              //   "0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) ",
-              // MozBoxShadow:
-              //   "0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) ",
-              //        box-shadow:0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset,
+              display: "flex",
+              flexWrap: "wrap",
+              justifyContent: "space-evenly",
+              marginTop: "1vw",
             }}
           >
-            {this.state.customers === true ? (
+            <div
+              style={{
+                //   width: "17vw",
+
+                //   backgroundImage:
+                //     "linear-gradient(rgba(179, 204, 37, .5),rgba(51, 204, 37, .5))",
+                //   marginLeft: "1vw",
+                //   marginRight: "1vw",
+                textAlign: "center",
+                flexBasis: "32%",
+                minHeight: "18vw",
+                borderRadius: ".5vw",
+                backgroundColor: "white",
+                padding: "1.5vw",
+                color: "grey",
+                // border: ".01vw solid red",
+                boxShadow:
+                  ".4vw .4vw .5vw lightgrey, 0 0 .1vw rgba(0, 0, 0, 0.1) inset",
+
+                // WebkitBoxShadow:
+                //   "0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) ",
+                // MozBoxShadow:
+                //   "0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) ",
+                //        box-shadow:0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset,
+              }}
+            >
+              <div>
+                ONLINE users
+                <br />
+                <table
+                  style={{
+                    width: "100%",
+                    marginTop: "1vw",
+                    // boxShadow: "0.1vw 0.2vw 0.1vw grey",
+                    // backgroundImage: "linear-gradient(pink,white)",
+                    backgroundColor: "white",
+                    borderRadius: ".4vw",
+                    padding: ".5vw",
+                  }}
+                >
+                  <thead>
+                    <tr>
+                      <th>ID</th>
+                      <th>USERNAME</th>
+                      <th>EMAIL </th>
+                      <th>STATUS</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>1</td>
+                      <td>abc</td>
+                      <td>abc@gmail.com</td>
+                      <td>
+                        <Button
+                          style={{
+                            backgroundColor: "green",
+                            padding: ".1vw",
+                            color: "white",
+                          }}
+                        >
+                          Online
+                        </Button>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>2</td>
+                      <td>efg</td>
+                      <td>abc@gmail.com</td>
+                      <td>
+                        <Button
+                          style={{
+                            backgroundColor: "green",
+                            padding: ".1vw",
+                            color: "white",
+                          }}
+                        >
+                          Online
+                        </Button>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>3</td>
+                      <td>xyz</td>
+                      <td>abc@gmail.com</td>
+                      <td>
+                        <Button
+                          style={{
+                            backgroundColor: "red",
+                            padding: ".1vw",
+                            color: "white",
+                          }}
+                        >
+                          Active Today
+                        </Button>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+
+            <div
+              style={{
+                //   width: "17vw",
+
+                //   backgroundImage:
+                //     "linear-gradient(rgba(179, 204, 37, .5),rgba(51, 204, 37, .5))",
+                //   marginLeft: "1vw",
+                //   marginRight: "1vw",
+                textAlign: "center",
+                flexBasis: "32%",
+                minHeight: "18vw",
+                borderRadius: ".5vw",
+                backgroundColor: "white",
+                boxShadow:
+                  ".4vw .4vw .5vw lightgrey, 0 0 .1vw rgba(0, 0, 0, 0.1) inset",
+
+                padding: "1.5vw",
+                color: "grey",
+                // border: ".01vw solid red",
+                // boxShadow:
+                //   ".2vw .1vw .4vw purple, 0 0 .1vw rgba(0, 0, 0, 0.1) inset",
+
+                // WebkitBoxShadow:
+                //   "0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) ",
+                // MozBoxShadow:
+                //   "0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) ",
+                //        box-shadow:0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset,
+              }}
+            >
+              USERS
+              <br />
+              <h3>graph</h3>
+            </div>
+            <div
+              style={{
+                //   width: "17vw",
+
+                //   backgroundImage:
+                //     "linear-gradient(rgba(179, 204, 37, .5),rgba(51, 204, 37, .5))",
+                //   marginLeft: "1vw",
+                //   marginRight: "1vw",
+                textAlign: "center",
+                boxShadow:
+                  ".4vw .4vw .5vw lightgrey, 0 0 .1vw rgba(0, 0, 0, 0.1) inset",
+
+                flexBasis: "32%",
+                minHeight: "18vw",
+                borderRadius: ".5vw",
+                backgroundColor: "white",
+                padding: "1.5vw",
+                color: "grey",
+                // border: ".01vw solid red",
+                // boxShadow:
+                //   ".2vw .1vw .4vw green, 0 0 .1vw rgba(0, 0, 0, 0.1) inset",
+
+                // WebkitBoxShadow:
+                //   "0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) ",
+                // MozBoxShadow:
+                //   "0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) ",
+                //        box-shadow:0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset,
+              }}
+            >
+              <div>
+                RECENT POSTS users
+                <br />
+                <table
+                  rules="all"
+                  style={{
+                    width: "100%",
+                    marginTop: "1vw",
+                    border: ".1vw solid grey",
+                    backgroundColor: "white",
+                    borderSpacing: "1vw",
+                    // boxShadow: "0.1vw 0.2vw 0.1vw grey",
+                    // backgroundImage: "linear-gradient(lightgreen,white)",
+                  }}
+                >
+                  <tbody>
+                    <tr>
+                      <td>12-03-2020</td>
+                      <td>Test1</td>
+                    </tr>
+                    <tr>
+                      <td>2-04-2020</td>
+                      <td>Test2</td>
+                    </tr>
+                    <tr>
+                      <td>19-07-2020</td>
+                      <td>Test3</td>
+                    </tr>
+                    <tr>
+                      <td>12-03-2020</td>
+                      <td>Test4</td>
+                    </tr>
+                    <tr>
+                      <td>2-04-2020</td>
+                      <td>Test5</td>
+                    </tr>
+                    <tr>
+                      <td>19-07-2020</td>
+                      <td>Test6</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        ) : (
+          <div></div>
+        )}
+        {this.state.customers === true ? (
+          <div
+            style={{
+              display: "flex",
+              flexWrap: "wrap",
+              justifyContent: "space-evenly",
+              marginTop: "1vw",
+            }}
+          >
+            <div
+              style={{
+                //   width: "17vw",
+
+                //   backgroundImage:
+                //     "linear-gradient(rgba(179, 204, 37, .5),rgba(51, 204, 37, .5))",
+                //   marginLeft: "1vw",
+                //   marginRight: "1vw",
+                textAlign: "center",
+                flexBasis: "32%",
+                minHeight: "18vw",
+                borderRadius: ".5vw",
+                backgroundColor: "white",
+                padding: "1.5vw",
+                color: "grey",
+                // border: ".01vw solid red",
+                boxShadow:
+                  ".4vw .4vw .5vw lightgrey, 0 0 .1vw rgba(0, 0, 0, 0.1) inset",
+
+                // WebkitBoxShadow:
+                //   "0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) ",
+                // MozBoxShadow:
+                //   "0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) ",
+                //        box-shadow:0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset,
+              }}
+            >
               <div>
                 ONLINE customers
                 <br />
@@ -416,208 +637,70 @@ class Albumm extends Component {
                   </tbody>
                 </table>
               </div>
-            ) : (
-              <div></div>
-            )}
+            </div>
 
-            {this.state.users === true ? (
-              <div>
-                ONLINE USERS
-                <br />
-                <table
-                  style={{
-                    width: "100%",
-                    marginTop: "1vw",
-                    // boxShadow: "0.1vw 0.2vw 0.1vw grey",
-                    // backgroundImage: "linear-gradient(pink,white)",
-                    backgroundColor: "white",
-                    borderRadius: ".4vw",
-                    padding: ".5vw",
-                  }}
-                >
-                  <thead>
-                    <tr>
-                      <th>ID</th>
-                      <th>USERNAME</th>
-                      <th>EMAIL </th>
-                      <th>STATUS</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <tr>
-                      <td>1</td>
-                      <td>abc</td>
-                      <td>abc@gmail.com</td>
-                      <td>
-                        <Button
-                          style={{
-                            backgroundColor: "green",
-                            padding: ".1vw",
-                            color: "white",
-                          }}
-                        >
-                          Online
-                        </Button>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td>2</td>
-                      <td>efg</td>
-                      <td>abc@gmail.com</td>
-                      <td>
-                        <Button
-                          style={{
-                            backgroundColor: "green",
-                            padding: ".1vw",
-                            color: "white",
-                          }}
-                        >
-                          Online
-                        </Button>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td>3</td>
-                      <td>xyz</td>
-                      <td>abc@gmail.com</td>
-                      <td>
-                        <Button
-                          style={{
-                            backgroundColor: "red",
-                            padding: ".1vw",
-                            color: "white",
-                          }}
-                        >
-                          Active Today
-                        </Button>
-                      </td>
-                    </tr>
-                  </tbody>
-                </table>
-              </div>
-            ) : (
-              <div></div>
-            )}
-          </div>
+            <div
+              style={{
+                //   width: "17vw",
 
-          <div
-            style={{
-              //   width: "17vw",
+                //   backgroundImage:
+                //     "linear-gradient(rgba(179, 204, 37, .5),rgba(51, 204, 37, .5))",
+                //   marginLeft: "1vw",
+                //   marginRight: "1vw",
+                textAlign: "center",
+                flexBasis: "32%",
+                minHeight: "18vw",
+                borderRadius: ".5vw",
+                backgroundColor: "white",
+                boxShadow:
+                  ".4vw .4vw .5vw lightgrey, 0 0 .1vw rgba(0, 0, 0, 0.1) inset",
 
-              //   backgroundImage:
-              //     "linear-gradient(rgba(179, 204, 37, .5),rgba(51, 204, 37, .5))",
-              //   marginLeft: "1vw",
-              //   marginRight: "1vw",
-              textAlign: "center",
-              flexBasis: "32%",
-              minHeight: "18vw",
-              borderRadius: ".5vw",
-              backgroundColor: "white",
-              boxShadow:
-                ".4vw .4vw .5vw lightgrey, 0 0 .1vw rgba(0, 0, 0, 0.1) inset",
+                padding: "1.5vw",
+                color: "grey",
+                // border: ".01vw solid red",
+                // boxShadow:
+                //   ".2vw .1vw .4vw purple, 0 0 .1vw rgba(0, 0, 0, 0.1) inset",
 
-              padding: "1.5vw",
-              color: "grey",
-              // border: ".01vw solid red",
-              // boxShadow:
-              //   ".2vw .1vw .4vw purple, 0 0 .1vw rgba(0, 0, 0, 0.1) inset",
+                // WebkitBoxShadow:
+                //   "0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) ",
+                // MozBoxShadow:
+                //   "0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) ",
+                //        box-shadow:0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset,
+              }}
+            >
+              USERS
+              <br />
+              <h3>graph</h3>
+            </div>
+            <div
+              style={{
+                //   width: "17vw",
 
-              // WebkitBoxShadow:
-              //   "0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) ",
-              // MozBoxShadow:
-              //   "0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) ",
-              //        box-shadow:0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset,
-            }}
-          >
-            USERS
-            <br />
-            <h3>graph</h3>
-          </div>
-          <div
-            style={{
-              //   width: "17vw",
+                //   backgroundImage:
+                //     "linear-gradient(rgba(179, 204, 37, .5),rgba(51, 204, 37, .5))",
+                //   marginLeft: "1vw",
+                //   marginRight: "1vw",
+                textAlign: "center",
+                boxShadow:
+                  ".4vw .4vw .5vw lightgrey, 0 0 .1vw rgba(0, 0, 0, 0.1) inset",
 
-              //   backgroundImage:
-              //     "linear-gradient(rgba(179, 204, 37, .5),rgba(51, 204, 37, .5))",
-              //   marginLeft: "1vw",
-              //   marginRight: "1vw",
-              textAlign: "center",
-              boxShadow:
-                ".4vw .4vw .5vw lightgrey, 0 0 .1vw rgba(0, 0, 0, 0.1) inset",
+                flexBasis: "32%",
+                minHeight: "18vw",
+                borderRadius: ".5vw",
+                backgroundColor: "white",
+                padding: "1.5vw",
+                color: "grey",
+                // border: ".01vw solid red",
+                // boxShadow:
+                //   ".2vw .1vw .4vw green, 0 0 .1vw rgba(0, 0, 0, 0.1) inset",
 
-              flexBasis: "32%",
-              minHeight: "18vw",
-              borderRadius: ".5vw",
-              backgroundColor: "white",
-              padding: "1.5vw",
-              color: "grey",
-              // border: ".01vw solid red",
-              // boxShadow:
-              //   ".2vw .1vw .4vw green, 0 0 .1vw rgba(0, 0, 0, 0.1) inset",
-
-              // WebkitBoxShadow:
-              //   "0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) ",
-              // MozBoxShadow:
-              //   "0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) ",
-              //        box-shadow:0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset,
-            }}
-          >
-            {this.state.users ? (
-              <div>
-                RECENT POSTS USERS
-                <br />
-                <table
-                  rules="all"
-                  style={{
-                    width: "100%",
-                    marginTop: "1vw",
-                    border: ".1vw solid grey",
-                    backgroundColor: "white",
-                    borderSpacing: "1vw",
-                    // boxShadow: "0.1vw 0.2vw 0.1vw grey",
-                    // backgroundImage: "linear-gradient(lightgreen,white)",
-                  }}
-                >
-                  {/* <thead>
-                <tr>
-                  <th>DATE</th>
-                  <th></th>
-                 
-                </tr>
-              </thead> */}
-                  <tbody>
-                    <tr>
-                      <td>12-03-2020</td>
-                      <td>Test1</td>
-                    </tr>
-                    <tr>
-                      <td>2-04-2020</td>
-                      <td>Test2</td>
-                    </tr>
-                    <tr>
-                      <td>19-07-2020</td>
-                      <td>Test3</td>
-                    </tr>
-                    <tr>
-                      <td>12-03-2020</td>
-                      <td>Test4</td>
-                    </tr>
-                    <tr>
-                      <td>2-04-2020</td>
-                      <td>Test5</td>
-                    </tr>
-                    <tr>
-                      <td>19-07-2020</td>
-                      <td>Test6</td>
-                    </tr>
-                  </tbody>
-                </table>
-              </div>
-            ) : (
-              <div></div>
-            )}
-
-            {this.state.customers ? (
+                // WebkitBoxShadow:
+                //   "0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) ",
+                // MozBoxShadow:
+                //   "0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) ",
+                //        box-shadow:0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset,
+              }}
+            >
               <div>
                 RECENT POSTS CUSTOMERS
                 <br />
@@ -633,13 +716,6 @@ class Albumm extends Component {
                     // backgroundImage: "linear-gradient(lightgreen,white)",
                   }}
                 >
-                  {/* <thead>
-                <tr>
-                  <th>DATE</th>
-                  <th></th>
-                 
-                </tr>
-              </thead> */}
                   <tbody>
                     <tr>
                       <td>12-03-2020</td>
@@ -668,12 +744,11 @@ class Albumm extends Component {
                   </tbody>
                 </table>
               </div>
-            ) : (
-              <div></div>
-            )}
+            </div>
           </div>
-        </div>
-        {/* <Features /> */}
+        ) : (
+          <div></div>
+        )}
 
         <OldForms />
         <Features />

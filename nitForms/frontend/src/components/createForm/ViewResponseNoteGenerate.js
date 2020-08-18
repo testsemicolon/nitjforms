@@ -377,7 +377,7 @@ export class ViewResponseNoteGenerate extends Component {
             float: "left",
             marginBottom: "1vw",
             marginTop: "4vw",
-            marginLeft: "5vw",
+            marginLeft: "1vw",
             marginRight: "7vw",
           }}
         >

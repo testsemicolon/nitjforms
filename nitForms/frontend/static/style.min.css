@@ -3,7 +3,7 @@
 }
 .vertical-timeline {
   width: 95%;
-  background: white;
+  background: #eeeeee;
 
   max-width: 1170px;
   margin: 0 auto;
@@ -23,7 +23,7 @@
   left: 18px;
   height: 100%;
   width: 4px;
-  background: orange;
+  background: #009999;
 }
 
 .vertical-timeline-element {

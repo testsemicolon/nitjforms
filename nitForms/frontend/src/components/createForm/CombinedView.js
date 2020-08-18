@@ -38,14 +38,16 @@ export class CombinedView extends Component {
               width: "35vw",
               float: "left",
               position: "relative",
-              backgroundColor: "white",
+              backgroundColor: "#eeeeee",
+              borderRadius: ".5vw",
+              boxShadow: ".3vw .3vw .3vw silver",
               marginLeft: "5vw",
             }}
           >
             <VerticalTimeline
               layout={"1-column"}
               position={"right"}
-              backgroundColor="white"
+              backgroundColor="#eeeeee"
             >
               {this.arr.map((value1) => {
                 return (
@@ -64,7 +66,7 @@ export class CombinedView extends Component {
                         wordWrap: "break-word",
                       }}
                       iconStyle={{
-                        background: "#66a3ff",
+                        background: "#009999",
                         width: "2vw",
                         height: "2vw",
                         margin: ".5vw",
@@ -73,32 +75,17 @@ export class CombinedView extends Component {
                       }}
                     >
                       <h5 style={{ color: "black" }}>{value1}</h5>
-                      {/*<h6
-                        style={{ color: "darkgrey" }}
-                        className="vertical-timeline-element-subtitle"
-                      ></h6>
-                      <p style={{ color: "#009999" }}>{value1}</p>*/}
+                      {/* <h6
+                          style={{ color: "darkgrey" }}
+                          className="vertical-timeline-element-subtitle"
+                        ></h6>
+                        <p style={{ color: "#009999" }}>{value1}</p> */}
                     </VerticalTimelineElement>
                   </Fragment>
                 );
               })}
             </VerticalTimeline>
           </div>
-          {/* <div
-          style={{
-            width: "35vw",
-            height: "30vw",
-            float: "right",
-            position: "relative",
-            borderRadius: "1vw",
-            backgroundColor: "white",
-            marginTop: "1vw",
-            boxShadow: ".3vw .3vw .3vw #009999",
-            padding: "2vw",
-          }}
-        >
-          {console.log(this.obj1)}
-        </div> */}
         </div>
       );
     } else {

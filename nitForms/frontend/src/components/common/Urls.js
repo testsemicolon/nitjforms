@@ -20,7 +20,7 @@ import ViewIndividualResponse from "../createForm/ViewIndividualResponse";
 import AcceptedResponses from "../createForm/AcceptedResponses";
 import Steps from "../createForm/Steps";
 import AlbumUser from "../createForm/AlbumUser";
-import TimeLine from "../createForm/TimeLine";
+import TimeLine from "../createForm/UserTimeLine";
 import AlbumSource from "../createForm/AlbumSource";
 import NotingSlate from "../createForm/NotingSlate";
 import AdminSuperSteps from "../createForm/AdminSuperSteps";
