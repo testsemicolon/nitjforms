@@ -1,6 +1,7 @@
 import axios from "axios";
 import { tokenConfig } from "./Auth";
 import { GET_SHARED_USERS } from "./types";
+import { createMessage } from "./Messages";
 
 export const getSharedUser = () => (dispatch) => {
   axios
@@ -14,14 +15,26 @@ export const getSharedUser = () => (dispatch) => {
     .catch((err) => console.log(err));
 };
 
-export const putSharedUser = (id, quest) => () => {
-  axios.put(`/sharedUser/${id}/`, quest);
+export const putSharedUser = (id, quest) => (dispatch) => {
+  var msg = `Form ${quest.formName} has been with ${quest.userName} `;
+  axios.put(`/sharedUser/${id}/`, quest).then((res) => {
+    dispatch((res) => {
+      createMessage({
+        sharedUser: msg,
+      });
+    });
+  });
 };
-export const postSharedUser = (quest) => () => {
+export const postSharedUser = (quest) => (dispatch) => {
+  var msg = `Form ${quest.formName} has been with ${quest.userName} `;
   axios
     .post("/sharedUser/", quest)
     .then((res) => {
-      console.log(res);
+      dispatch(
+        createMessage({
+          sharedUser: msg,
+        })
+      );
     })
     .catch((err) => console.log(err));
 };

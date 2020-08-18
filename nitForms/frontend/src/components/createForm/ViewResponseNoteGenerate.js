@@ -10,6 +10,9 @@ import { Link } from "react-router-dom";
 import NotingIndivdiual from "./NotingIndivdiual";
 import { putAccepted } from "../../actions/AcceptedResponse";
 import { CombinedView } from "./CombinedView";
+import { withRouter } from "react-router-dom";
+import store from "../../store";
+import { createMessage } from "../../actions/Messages";
 
 export class ViewResponseNoteGenerate extends Component {
   state = {
@@ -18,6 +21,8 @@ export class ViewResponseNoteGenerate extends Component {
     toggleforward: false,
     forwardTo: "",
   };
+  username = "";
+  description = "";
   obj = {};
   constructor(props) {
     super(props);
@@ -32,7 +37,12 @@ export class ViewResponseNoteGenerate extends Component {
         }
       });
     }
-    console.log(this.obj);
+    this.props.FormName.map((a) => {
+      if (a.formName === this.props.match.params.title) {
+        this.username = a.username;
+        this.description = a.description;
+      }
+    });
   }
   onclick2 = (e) => {
     e.preventDefault();
@@ -48,11 +58,24 @@ export class ViewResponseNoteGenerate extends Component {
     arr.push(name);
     quest["forwardTo"] = arr;
     console.log(quest);
+    var notify = [];
+    notify = quest["notification"];
+    var notifyCmnt = `${this.props.created_by1} FORWARD TO ${this.state.forwardTo}`;
+    notify.push(notifyCmnt);
+    quest["notification"] = notify;
     this.props.putAccepted(
       this.props.match.params.id,
       this.props.match.params.title,
       quest
     );
+    store.dispatch(
+      createMessage({
+        forwardMessage: `${this.props.created_by1} FORWARD NOTING TO ${this.state.forwardTo}`,
+      })
+    );
+
+    this.props.history.push(this.props.match.url);
+    console.log(this.props.match.url);
   };
 
   onChange = (e) => {
@@ -153,7 +176,13 @@ export class ViewResponseNoteGenerate extends Component {
               >
                 <Fragment>
                   {Object.entries(this.obj).map(([question, answer]) => {
-                    if ((question !== "comment") & (question !== "forwardTo")) {
+                    if (
+                      (question !== "comment") &
+                      (question !== "forwardTo") &
+                      (question !== "responseTime") &
+                      (question !== "commentAccepted") &
+                      (question !== "notification")
+                    ) {
                       return (
                         <Fragment key={question}>
                           <Card
@@ -277,61 +306,66 @@ export class ViewResponseNoteGenerate extends Component {
                     id={this.props.match.params.id}
                   />
                   <br />
-                  <div>
-                    <Button
-                      style={{
-                        marginBottom: "2vw",
-                        marginRight: "2vw",
-                        backgroundColor: "white",
-                        color: "#009999",
-                        border: " 0.06vw solid #009999",
-                        boxShadow: ".1vw .1vw .1vw .1vw silver",
-                      }}
-                      onClick={this.onclick2}
-                    >
-                      Forward to
-                    </Button>
-                    {this.state.toggleforward === true ? (
-                      <div style={{ textAlign: "center" }}>
-                        <input
-                          name="forwardTo"
-                          value={this.state.forwardTo}
-                          onChange={this.onChange}
-                          type="text"
-                          placeholder="Enter Username"
-                        />{" "}
-                        <Button
-                          style={{
-                            marginRight: "2vw",
-                            backgroundColor: "white",
-                            color: "#009999",
-                            border: " 0.06vw solid #009999",
-                            boxShadow: ".1vw .1vw .1vw .1vw silver",
-                            marginBottom: "1vw",
-                          }}
-                          onClick={this.onClick3}
-                        >
-                          Forward
-                        </Button>
-                      </div>
-                    ) : null}
-                    {/* 
-                    <Link to={"/combine/" + this.props.match.params.id}>
-                      <Button
-                        style={{
-                          marginBottom: "2vw",
-                          marginRight: "2vw",
-                          backgroundColor: "white",
-                          color: "#009999",
-                          border: " 0.06vw solid #009999",
-                          boxShadow: ".1vw .1vw .1vw .1vw silver",
-                        }}
-                      >
-                        View timeline
-                      </Button>
-                    </Link> */}
-                  </div>
                 </div>
+              </div>
+            </Tab>
+            <Tab
+              eventKey="Forward To"
+              style={{ color: "blue" }}
+              title="Forward To"
+            >
+              <div>
+                <Button
+                  style={{
+                    marginBottom: "2vw",
+                    marginRight: "2vw",
+                    backgroundColor: "white",
+                    color: "#009999",
+                    border: " 0.06vw solid #009999",
+                    boxShadow: ".1vw .1vw .1vw .1vw silver",
+                  }}
+                >
+                  Forward to
+                </Button>
+
+                <div style={{ textAlign: "center" }}>
+                  <input
+                    name="forwardTo"
+                    value={this.state.forwardTo}
+                    onChange={this.onChange}
+                    type="text"
+                    placeholder="Enter Username"
+                  />{" "}
+                  <Button
+                    style={{
+                      marginRight: "2vw",
+                      backgroundColor: "white",
+                      color: "#009999",
+                      border: " 0.06vw solid #009999",
+                      boxShadow: ".1vw .1vw .1vw .1vw silver",
+                      marginBottom: "1vw",
+                    }}
+                    onClick={this.onClick3}
+                  >
+                    Forward
+                  </Button>
+                </div>
+
+                {/* 
+            <Link to={"/combine/" + this.props.match.params.id}>
+              <Button
+                style={{
+                  marginBottom: "2vw",
+                  marginRight: "2vw",
+                  backgroundColor: "white",
+                  color: "#009999",
+                  border: " 0.06vw solid #009999",
+                  boxShadow: ".1vw .1vw .1vw .1vw silver",
+                }}
+              >
+                View timeline
+              </Button>
+            </Link> */}
               </div>
             </Tab>
           </Tabs>
@@ -352,6 +386,13 @@ export class ViewResponseNoteGenerate extends Component {
             AcceptedResponse={this.props.AcceptedResponse}
           />
         </div>
+        <div>
+          {console.log(
+            this.username,
+            this.description,
+            this.props.match.params.title
+          )}
+        </div>
       </Fragment>
     );
   }
@@ -363,6 +404,6 @@ const mapStateToProps = (state) => ({
   FormName: state.FormName.FormName,
 });
 
-export default connect(mapStateToProps, { putAccepted })(
-  ViewResponseNoteGenerate
+export default withRouter(
+  connect(mapStateToProps, { putAccepted })(ViewResponseNoteGenerate)
 );

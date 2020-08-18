@@ -28,7 +28,6 @@ export class FormName extends Component {
   render() {
     const { title, description } = this.state;
     if (this.state.flag) {
-      console.log(this.props);
       return <Dashboard title={this.state.title} />;
     }
 

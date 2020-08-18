@@ -14,6 +14,8 @@ import CardMedia from "@material-ui/core/CardMedia";
 import Grid from "@material-ui/core/Grid";
 import Typography from "@material-ui/core/Typography";
 import Container from "@material-ui/core/Container";
+import store from "../../store";
+import { createMessage } from "../../actions/Messages";
 
 export class NotingIndividual extends Component {
   arr = [];
@@ -40,6 +42,10 @@ export class NotingIndividual extends Component {
       console.log(a);
     });
   }
+
+  onClickGenerate = () => {
+    store.dispatch(createMessage({ generateNoting: "Noitng Generated" }));
+  };
 
   render() {
     return (
@@ -127,6 +133,7 @@ export class NotingIndividual extends Component {
 
                           alignSelf: "center",
                         }}
+                        onClick={this.onClickGenerate}
                       >
                         GENERATE
                       </Button>

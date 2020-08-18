@@ -3,6 +3,9 @@ import { Editor, EditorState, convertFromRaw } from "draft-js";
 import { Button } from "react-bootstrap";
 import { connect } from "react-redux";
 import { putAccepted } from "../../actions/AcceptedResponse";
+import store from "../../store";
+import { createMessage } from "../../actions/Messages";
+import { withRouter } from "react-router-dom";
 
 class DisplayEditor extends React.Component {
   flag = false;
@@ -10,6 +13,7 @@ class DisplayEditor extends React.Component {
   arr = [];
   constructor(props) {
     super(props);
+    console.log(this.props);
     console.log(this.props.key1);
     this.state = {
       editorState: EditorState.createEmpty(),
@@ -25,6 +29,12 @@ class DisplayEditor extends React.Component {
   };
   onClick = () => {
     var key1 = this.props.key1;
+    var name = "";
+    this.props.NotingTemplate.map((a) => {
+      if (key1 === a.key) {
+        name = a.name;
+      }
+    });
     var cmnt = [];
     var cmntAuthor = {};
     cmntAuthor[this.props.username] = this.state.comment;
@@ -33,8 +43,8 @@ class DisplayEditor extends React.Component {
     this.props.AcceptedResponse.map((a) => {
       console.log(a.id, id);
       if (a.id === id) {
-        if (a.comment === "") {
-          const quest = { [key1]: cmnt };
+        if (a.comment === null) {
+          const quest = { [name]: cmnt };
           console.log(quest);
           console.log("if");
           a["comment"] = quest;
@@ -45,17 +55,28 @@ class DisplayEditor extends React.Component {
               console.log(key, value);
               value.push(cmntAuthor);
               // const quest = { [key1]: value };
-              a["comment"][key1] = value;
+              a["comment"][name] = value;
               // console.log(quest);
               this.flag = true;
             }
           });
           if (this.flag === false) {
-            a["comment"][key1] = cmnt;
+            a["comment"][name] = cmnt;
           }
         }
         console.log(a);
+        var notify = [];
+        notify = a["notification"];
+        var notifyCmnt = `${this.props.username} commented on noting ${name}`;
+        notify.push(notifyCmnt);
+        a["notification"] = notify;
         this.props.putAccepted(a.id, this.props.title, a);
+        store.dispatch(
+          createMessage({ commentAdded: `Comment has been added to ${name}` })
+        );
+        this.props.history.push(
+          `${this.props.title}Accepted/${this.props.id}/`
+        );
       }
     });
     console.log("asdmhgadkhvdaf");
@@ -76,7 +97,11 @@ class DisplayEditor extends React.Component {
         console.log(id, id1);
         if (id === id1) {
           Object.entries(s1).map(([key, value]) => {
-            if (key !== "comment") {
+            if (
+              (key !== "comment") &
+              (key !== "commentAccepted") &
+              (key !== "responseTime")
+            ) {
               console.log(key, value);
               s.text = s.text.replace("#", "");
               console.log(key, value);
@@ -120,5 +145,8 @@ class DisplayEditor extends React.Component {
 const mapStateToProps = (state) => ({
   AcceptedResponse: state.AcceptedResponse.AcceptedResponse,
   username: state.Auth.user.username,
+  NotingTemplate: state.NotingTemplate.NotingTemplate,
 });
-export default connect(mapStateToProps, { putAccepted })(DisplayEditor);
+export default withRouter(
+  connect(mapStateToProps, { putAccepted })(DisplayEditor)
+);

@@ -54,47 +54,58 @@ class notingTemplate(models.Model):
     noting = JSONField()
 
 
-class test1(models.Model):
-    what_is_your_name = models.CharField(max_length=1000)
-    sasasa = models.CharField(max_length=1000)
+
+class test12(models.Model):
+    responseTime = models.DateTimeField(auto_now_add=True)
+    formStatus = models.BooleanField(default=False)
+    commentRejected = models.CharField(max_length=1000, blank=True)
+    userName = models.CharField(max_length=1000, blank=True)
+    NAME = models.CharField(max_length=1000)
+    AGE = models.CharField(max_length=1000)
 
 
-class test1Accepted(models.Model):
+class test12Accepted(models.Model):
+    responseTime = models.DateTimeField(auto_now_add=True)
     comment = JSONField(null=True)
-    forwardTo = ArrayField(models.CharField(
-        max_length=100), blank=True, default=list)
-    what_is_your_name = models.CharField(max_length=1000)
-    sasasa = models.CharField(max_length=1000)
-
-
-class paymentform1(models.Model):
-    fields = models.CharField(max_length=1000)
-    sasa = models.CharField(max_length=1000)
-
-
-class paymentform1Accepted(models.Model):
-    comment = JSONField(null=True)
-    forwardTo = ArrayField(models.CharField(
-        max_length=100), blank=True, default=list)
-    fields = models.CharField(max_length=1000)
-    sasa = models.CharField(max_length=1000)
-
-
-class test2(models.Model):
-    sasa = models.CharField(max_length=1000)
-
-
-class test2Accepted(models.Model):
-    comment = JSONField(null=True)
-    forwardTo = ArrayField(JSONField(null=True), blank=True, default=list)
-    sasa = models.CharField(max_length=1000)
+    forwardTo = ArrayField(JSONField(null=True),blank=True, default=list)
+    commentAccepted = models.CharField(max_length=1000, blank=True)
+    NAME = models.CharField(max_length=1000)
+    AGE = models.CharField(max_length=1000)
 
 
 class test3(models.Model):
-    what_is_your_name = models.CharField(max_length=1000)
+    responseTime = models.DateTimeField(auto_now_add=True)
+    formStatus = models.BooleanField(default=False)
+    commentRejected = models.CharField(max_length=1000, blank=True)
+    userName = models.CharField(max_length=1000, blank=True)
+    NAME = models.CharField(max_length=1000)
+    AGE = models.CharField(max_length=1000)
 
 
 class test3Accepted(models.Model):
+    responseTime = models.DateTimeField(auto_now_add=True)
     comment = JSONField(null=True)
     forwardTo = ArrayField(JSONField(null=True),blank=True, default=list)
-    what_is_your_name = models.CharField(max_length=1000)
+    commentAccepted = models.CharField(max_length=1000, blank=True)
+    notification = ArrayField(models.CharField(max_length=1000),blank=True, default=list)
+    NAME = models.CharField(max_length=1000)
+    AGE = models.CharField(max_length=1000)
+
+
+class test4(models.Model):
+    responseTime = models.DateTimeField(auto_now_add=True)
+    formStatus = models.BooleanField(default=False)
+    commentRejected = models.CharField(max_length=1000, blank=True)
+    userName = models.CharField(max_length=1000, blank=True)
+    NAME = models.CharField(max_length=1000)
+    AGE = models.CharField(max_length=1000)
+
+
+class test4Accepted(models.Model):
+    responseTime = models.DateTimeField(auto_now_add=True)
+    comment = JSONField(null=True)
+    forwardTo = ArrayField(JSONField(null=True),blank=True, default=list)
+    commentAccepted = models.CharField(max_length=1000, blank=True)
+    notification = ArrayField(models.CharField(max_length=1000),blank=True, default=list)
+    NAME = models.CharField(max_length=1000)
+    AGE = models.CharField(max_length=1000)

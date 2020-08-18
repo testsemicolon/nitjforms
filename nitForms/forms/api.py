@@ -62,43 +62,19 @@ class notingTemplateViewSet(viewsets.ModelViewSet):
     serializer_class = notingTemplateSerializer
 
 
-class test1ViewSet(viewsets.ModelViewSet):
-    queryset = test1.objects.all()
+
+
+class test12ViewSet(viewsets.ModelViewSet):
+    queryset = test12.objects.all()
     parser_class = (MultiPartParser, FormParser)
     permission_class = [permissions.AllowAny]
-    serializer_class = test1Serializer
+    serializer_class = test12Serializer
 
 
-class test1AcceptedViewSet(viewsets.ModelViewSet):
-    queryset = test1Accepted.objects.all()
+class test12AcceptedViewSet(viewsets.ModelViewSet):
+    queryset = test12Accepted.objects.all()
     permission_class = [permissions.AllowAny]
-    serializer_class = test1AcceptedSerializer
-
-
-class paymentform1ViewSet(viewsets.ModelViewSet):
-    queryset = paymentform1.objects.all()
-    parser_class = (MultiPartParser, FormParser)
-    permission_class = [permissions.AllowAny]
-    serializer_class = paymentform1Serializer
-
-
-class paymentform1AcceptedViewSet(viewsets.ModelViewSet):
-    queryset = paymentform1Accepted.objects.all()
-    permission_class = [permissions.AllowAny]
-    serializer_class = paymentform1AcceptedSerializer
-
-
-class test2ViewSet(viewsets.ModelViewSet):
-    queryset = test2.objects.all()
-    parser_class = (MultiPartParser, FormParser)
-    permission_class = [permissions.AllowAny]
-    serializer_class = test2Serializer
-
-
-class test2AcceptedViewSet(viewsets.ModelViewSet):
-    queryset = test2Accepted.objects.all()
-    permission_class = [permissions.AllowAny]
-    serializer_class = test2AcceptedSerializer
+    serializer_class = test12AcceptedSerializer
 
 
 class test3ViewSet(viewsets.ModelViewSet):
@@ -112,3 +88,16 @@ class test3AcceptedViewSet(viewsets.ModelViewSet):
     queryset = test3Accepted.objects.all()
     permission_class = [permissions.AllowAny]
     serializer_class = test3AcceptedSerializer
+
+
+class test4ViewSet(viewsets.ModelViewSet):
+    queryset = test4.objects.all()
+    parser_class = (MultiPartParser, FormParser)
+    permission_class = [permissions.AllowAny]
+    serializer_class = test4Serializer
+
+
+class test4AcceptedViewSet(viewsets.ModelViewSet):
+    queryset = test4Accepted.objects.all()
+    permission_class = [permissions.AllowAny]
+    serializer_class = test4AcceptedSerializer

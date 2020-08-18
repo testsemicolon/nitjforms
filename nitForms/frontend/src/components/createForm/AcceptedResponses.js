@@ -135,7 +135,8 @@ export class AcceptedResponses extends Component {
                           {Object.entries(value).map(([question, answer]) => {
                             if (
                               (question !== "comment") &
-                              (question !== "forwardTo")
+                              (question !== "forwardTo") &
+                              (question !== "responseTime")
                             ) {
                               return (
                                 <Fragment key={question}>
