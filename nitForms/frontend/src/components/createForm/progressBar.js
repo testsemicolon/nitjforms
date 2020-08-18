@@ -9,6 +9,7 @@ import Dashboard from "./Dashboard";
 import FormName from "./FormName";
 import NotingSlate from "./NotingSlate";
 import NotingTemplatePayement from "./NotingTemplatePayement";
+import PaymentType from "./PaymentType";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -50,7 +51,7 @@ function getStepContent(step) {
     case 3:
       return <NotingSlate />;
     case 4:
-      return "Payement Type";
+      return <PaymentType />;
 
     default:
       return "Unknown step";
@@ -195,7 +196,7 @@ export default function HorizontalNonLinearAlternativeLabelStepper() {
               <Button
                 style={{
                   background: "#66a3ff",
-                  boxShadow: ".3vw .3vw .3vw grey",
+                  boxShadow: ".3vw .3vw .3vw lightgray",
                   color: "white",
                 }}
                 disabled={activeStep === 0}
@@ -207,7 +208,7 @@ export default function HorizontalNonLinearAlternativeLabelStepper() {
               <Button
                 style={{
                   background: "#66a3ff",
-                  boxShadow: ".3vw .3vw .3vw grey",
+                  boxShadow: ".3vw .3vw .3vw lightgray",
                   color: "white",
                 }}
                 onClick={handleNext}
@@ -219,7 +220,7 @@ export default function HorizontalNonLinearAlternativeLabelStepper() {
                 <Button
                   style={{
                     background: "#66a3ff",
-                    boxShadow: ".3vw .3vw .3vw grey",
+                    boxShadow: ".3vw .3vw .3vw lightgray",
                     color: "white",
                   }}
                   onClick={handleSkip}
@@ -238,7 +239,7 @@ export default function HorizontalNonLinearAlternativeLabelStepper() {
                   <Button
                     style={{
                       background: "#66a3ff",
-                      boxShadow: ".3vw .3vw .3vw grey",
+                      boxShadow: ".3vw .3vw .3vw lightgray",
                       color: "white",
                     }}
                     onClick={handleComplete}

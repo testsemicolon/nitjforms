@@ -90,3 +90,21 @@ class test2Accepted(models.Model):
     notification = ArrayField(models.CharField(max_length=1000),blank=True, default=list)
     userName = models.CharField(max_length=1000, blank=True)
     sasasa = models.CharField(max_length=1000)
+
+
+class test3(models.Model):
+    responseTime = models.DateTimeField(auto_now_add=True)
+    formStatus = models.BooleanField(default=False)
+    commentRejected = models.CharField(max_length=1000, blank=True)
+    userName = models.CharField(max_length=1000, blank=True)
+    what_is_your_name = models.CharField(max_length=1000)
+
+
+class test3Accepted(models.Model):
+    responseTime = models.DateTimeField(auto_now_add=True)
+    comment = JSONField(null=True)
+    forwardTo = ArrayField(JSONField(null=True),blank=True, default=list)
+    commentAccepted = models.CharField(max_length=1000, blank=True)
+    notification = ArrayField(models.CharField(max_length=1000),blank=True, default=list)
+    userName = models.CharField(max_length=1000, blank=True)
+    what_is_your_name = models.CharField(max_length=1000)

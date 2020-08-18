@@ -24,7 +24,7 @@ body {
   opacity: 93%;
 }
 .MuiStepIcon-root.MuiStepIcon-active {
-  color: orange !important;
+  color: #66a3ff !important;
 }
 .dropdown-toggle .btn .btn-light {
   float: right;

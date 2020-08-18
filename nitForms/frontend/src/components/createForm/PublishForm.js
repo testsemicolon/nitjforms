@@ -65,73 +65,100 @@ export class PublishForm extends Component {
       <Fragment>
         <div
           style={{
-            fontSize: "2rem",
+            width: "34vw",
+            marginTop: "2vw",
+            justifyContent: "center",
             textAlign: "center",
-            border: ".1vw solid lightgrey",
-            padding: "2vw",
+            //backgroundImage: "linear-gradient(to right,#009999,#00e7e7",
+            backgroundImage:
+              "linear-gradient(to right,rgba(0, 153, 153, 0.5),rgba(0, 231, 231, 0.5)",
+            paddingTop: "1vw",
+            marginBottom: "1.5vw",
+            // backgroundColor: "#00a3a3",
+            boxShadow: ".3vw .3vw .5vw silver",
+            borderRadius: ".3vw",
+            color: "white",
+            marginLeft: "auto",
+            marginRight: "auto",
+            paddingRight: "1vw",
+            // paddingBottom: "1vw",
           }}
         >
-          Title: {this.ftitle}
-          {/* <Link to={`/response/${this.ftitle}`}>
-            <button
-              style={{
-                fontSize: "1.5rem",
-                justifyContent: "center",
-                color: "black",
-                marginLeft: "45rem",
-              }}
-            >
-              response
-            </button>
-          </Link> */}
-          <div
+          <h4 style={{ color: "white" }}> Title: {this.ftitle}</h4>
+          <hr
             style={{
-              fontSize: "1rem",
-              justifyContent: "center",
-              color: "grey",
-              border: ".1vw solid lightgrey",
+              width: "20vw",
             }}
-          >
-            <hr
-              style={{
-                width: "20vw",
-              }}
-            />
-            Description: {this.fdescription}
-          </div>
-          <hr />
+          />
+          <h5>Description: {this.fdescription}</h5>
         </div>
+
         <div
           style={{
-            display: "flex",
-            justifyContent: "center",
-            marginTop: "2rem",
-            marginBottom: "2rem",
+            postion: "relative",
+            width: "34vw",
 
-            alignItems: "center",
+            textAlign: "center",
+            marginLeft: "auto",
+            marginRight: "auto",
+            paddingLeft: "2vw",
+            paddingRight: "2vw",
+            // display: "flex",
+            // justifyContent: "center",
+            paddingTop: "1vw",
+            paddingBottom: "1vw",
+            marginBottom: "4vw",
+            backgroundColor: "#EEEEEE",
+            boxShadow: ".3vw .3vw .5vw silver",
+            borderRadius: ".3vw",
           }}
         >
-          Your form has been created!
+          Form has been created
         </div>
         <br />
-        <div style={{ textAlign: "center", alignItems: "center" }}>
+        <div
+          style={{
+            marginLeft: "auto",
+            marginRight: "auto",
+            textAlign: "center",
+            alignContent: "center",
+          }}
+        >
           <Link to={`/${this.ftitle}`}>
-            <Button variant="outline-warning">Go to form</Button>
+            <Button
+              style={{
+                background: "#66a3ff",
+                boxShadow: ".3vw .3vw .3vw lightgray",
+                color: "#fff",
+                flex: "1",
+                padding: "5px",
+                borderRadius: ".3rem",
+                borderWidth: "0rem",
+                marginRight: "2vw",
+                display: "flex",
+              }}
+            >
+              Go to form
+            </Button>
           </Link>
-          <Button
-            style={{
-              width: "2vw",
-              backgroundColor: "transparent",
-              borderWidth: 0,
-            }}
-          >
-            {" "}
-          </Button>
+
           <CopyToClipboard
             text={`localhost:8000/#/${this.ftitle}`}
             onCopy={() => this.setState({ copied: true })}
           >
-            <Button variant="outline-success" style={{ textAlign: "center" }}>
+            <Button
+              style={{
+                background: "white",
+                boxShadow: ".3vw .3vw .3vw lightgray",
+                color: "#66a3ff",
+                flex: "1",
+                border: ".01vw solid #66a3ff",
+                padding: "5px",
+                borderRadius: ".3rem",
+
+                display: "flex",
+              }}
+            >
               Copy to clipboard
             </Button>
           </CopyToClipboard>

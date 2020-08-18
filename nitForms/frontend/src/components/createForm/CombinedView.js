@@ -71,7 +71,7 @@ export class CombinedView extends Component {
                         height: "2vw",
                         margin: ".5vw",
                         color: "#fff",
-                        marginTop: "2vw",
+                        marginTop: "1vw",
                       }}
                     >
                       <h5 style={{ color: "black" }}>{value1}</h5>

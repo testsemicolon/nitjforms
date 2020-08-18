@@ -122,6 +122,44 @@ export class ViewResponseNoteGenerate extends Component {
       <Fragment>
         <div
           style={{
+            // backgroundColor: "#ffb266",
+            backgroundColor: "#66a3ff",
+            marginTop: "1vw",
+
+            minHeight: "3vw",
+            borderRadius: ".3vw",
+            padding: "1vw",
+            color: "white",
+            marginLeft: "5vw",
+            marginRight: "5vw",
+            fontSize: "1.2vw",
+          }}
+        >
+          <table style={{ paddingLeft: "2vw", paddingRight: "2vw" }}>
+            <tr>
+              <td style={{ paddingLeft: "2vw", paddingRight: "2vw" }}>
+                <font style={{ color: "black" }}>NAME:</font>
+                {this.name}{" "}
+              </td>
+              <td style={{ paddingLeft: "2vw", paddingRight: "2vw" }}>
+                <font style={{ color: "black" }}>TITLE:</font>
+                {this.props.match.params.title}
+              </td>
+              <td style={{ paddingLeft: "2vw", paddingRight: "2vw" }}>
+                <font style={{ color: "black" }}>DESCRIPTION:</font>
+
+                {this.description}
+              </td>
+              <td>
+                {" "}
+                <font style={{ color: "black" }}>TIME:</font>
+                {this.time}
+              </td>
+            </tr>
+          </table>
+        </div>
+        <div
+          style={{
             position: "relative",
             width: "36vw",
             float: "right",
@@ -131,16 +169,16 @@ export class ViewResponseNoteGenerate extends Component {
           }}
         >
           <Tabs
-            style={{
-              margin: "1vw",
-            }}
-            defaultActiveKey="Accepted Responses"
+            // style={{
+            //   margin: "1vw",
+            // }}
+            defaultActiveKey="Show Response"
             id="uncontrolled-tab-example"
           >
             <Tab
-              eventKey="Accepted Responses"
-              style={{ color: "blue" }}
-              title="Accepted Responses"
+              eventKey="Show Response"
+              style={{ color: "blue", padding: 0 }}
+              title="Show Response"
             >
               <div
                 style={{
@@ -266,7 +304,7 @@ export class ViewResponseNoteGenerate extends Component {
             </Tab>
             <Tab
               eventKey="Linked Notings"
-              style={{ color: "blue" }}
+              style={{ color: "blue", padding: 0 }}
               title="Linked Notings"
             >
               <div>
@@ -320,7 +358,7 @@ export class ViewResponseNoteGenerate extends Component {
             </Tab>
             <Tab
               eventKey="Forward To"
-              style={{ color: "blue" }}
+              style={{ color: "blue", padding: 0 }}
               title="Forward To"
             >
               <div
@@ -405,8 +443,16 @@ export class ViewResponseNoteGenerate extends Component {
             </Link> */}
               </div>
             </Tab>
+            <Tab
+              eventKey=" BackTrack Response"
+              style={{ color: "blue", padding: 0 }}
+              title=" BackTrack Response"
+            >
+              BackTrack Response
+            </Tab>
           </Tabs>
         </div>
+
         <div
           style={{
             position: "relative",
@@ -418,6 +464,28 @@ export class ViewResponseNoteGenerate extends Component {
             marginRight: "7vw",
           }}
         >
+          <div
+            style={{
+              width: "35vw",
+
+              justifyContent: "center",
+              textAlign: "center",
+              marginLeft: "5vw",
+              paddingBottom: ".3vw",
+              paddingTop: "1vw",
+              marginBottom: "1.5vw",
+              // backgroundColor: "#009999",
+              // backgroundImage: "linear-gradient(to right,#009999,#00e7e7",
+              // backgroundImage:
+              //   "linear-gradient(to right,rgba(0, 153, 153, 0.5),rgba(0, 231, 231, 0.5)",
+              backgroundImage:
+                "linear-gradient(to right,rgba(0, 153, 153, 0.5),rgba(0, 231, 231, 0.5)",
+              boxShadow: ".3vw .3vw .5vw silver",
+              borderRadius: ".3vw",
+            }}
+          >
+            <h4 style={{ color: "white" }}>Timeline</h4>
+          </div>
           <CombinedView
             id={this.props.match.params.id}
             AcceptedResponse={this.props.AcceptedResponse}

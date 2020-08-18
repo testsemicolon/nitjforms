@@ -65,12 +65,12 @@ const btnStyle = {
   float: "right",
 
   background: "#66a3ff",
-  boxShadow: ".3vw .3vw .3vw grey",
+  boxShadow: ".3vw .3vw .3vw lightgray",
   color: "white",
 
   flex: "1",
   // padding: "5px",
-  borderRadius: ".3vw",
+  borderRadius: 0,
 };
 
 const mapStateToProps = (state) => ({
