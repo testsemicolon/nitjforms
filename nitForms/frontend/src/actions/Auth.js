@@ -87,7 +87,7 @@ export const register = ({
     can_make_noting,
     userType,
   });
-
+  console.log(body);
   // LOGIN
   axios
     .post("api/auth/register", body, config)

@@ -9,7 +9,7 @@ class UserSerializer(serializers.ModelSerializer):
     class Meta:
         model = User
         fields = ("id", "username", "email", "can_generate_form",
-                  "can_generate_template", "can_make_noting")
+                  "can_generate_template", "can_make_noting","userType")
 
 
 # Register Serializer
@@ -17,7 +17,7 @@ class RegisterSerializer(serializers.ModelSerializer):
     class Meta:
         model = User
         fields = ("id", "username", "email", "password", "can_generate_form",
-                  "can_generate_template", "can_make_noting")
+                  "can_generate_template", "can_make_noting", "userType")
         extra_kwargs = {"password": {"write_only": True}}
 
     def create(self, validated_data):
@@ -27,7 +27,8 @@ class RegisterSerializer(serializers.ModelSerializer):
             validated_data["password"],
             can_make_noting=validated_data["can_make_noting"],
             can_generate_template=validated_data["can_generate_template"],
-            can_generate_form=validated_data["can_generate_form"])
+            can_generate_form=validated_data["can_generate_form"],
+            userType=validated_data["userType"])
         return user
 
 
