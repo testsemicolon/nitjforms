@@ -67,7 +67,7 @@ export default class AlbumUser extends Component {
           </h4>
           NAME:{this.props.username}
           <br />
-          USERTYPE:ADMIN <br />
+          USERTYPE:USER <br />
           <form style={{ float: "right" }}>
             <input
               type="text"

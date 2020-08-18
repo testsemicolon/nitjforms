@@ -136,7 +136,8 @@ export class AcceptedResponses extends Component {
                             if (
                               (question !== "comment") &
                               (question !== "forwardTo") &
-                              (question !== "responseTime")
+                              (question !== "responseTime") &
+                              (question !== "notification")
                             ) {
                               return (
                                 <Fragment key={question}>

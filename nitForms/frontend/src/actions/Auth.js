@@ -68,6 +68,7 @@ export const register = ({
   can_generate_form,
   can_generate_template,
   can_make_noting,
+  userType,
 }) => (dispatch) => {
   //Headers
   const config = {
@@ -84,6 +85,7 @@ export const register = ({
     can_generate_form,
     can_generate_template,
     can_make_noting,
+    userType,
   });
 
   // LOGIN

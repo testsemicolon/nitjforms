@@ -49,6 +49,22 @@ export class Register extends Component {
     if (password !== password2) {
       this.props.createMessage({ passwordsNotMatch: "Passwords do not match" });
     } else {
+      var userType = "";
+      if (
+        (can_generate_form === true) &
+        (can_generate_template === true) &
+        (can_make_noting === true)
+      ) {
+        userType = "Super Admin";
+      } else if (
+        (can_generate_form === false) &
+        (can_generate_template === false) &
+        (can_make_noting === true)
+      ) {
+        userType = "Admin";
+      } else {
+        userType = "User";
+      }
       const newUser = {
         username,
         password,
@@ -56,22 +72,8 @@ export class Register extends Component {
         can_generate_form,
         can_generate_template,
         can_make_noting,
+        userType,
       };
-      if (
-        (can_generate_form === true) &
-        (can_generate_template === true) &
-        (can_make_noting === true)
-      ) {
-        newUser["userType"] = "Super Admin";
-      } else if (
-        (can_generate_form === false) &
-        (can_generate_template === false) &
-        (can_make_noting === true)
-      ) {
-        newUser["userType"] = "Admin";
-      } else {
-        newUser["userType"] = "User";
-      }
 
       console.log(newUser);
       this.props.register(newUser);

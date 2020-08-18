@@ -21,8 +21,9 @@ export class ViewResponseNoteGenerate extends Component {
     toggleforward: false,
     forwardTo: "",
   };
-  username = "";
+  name = "";
   description = "";
+  time = "";
   obj = {};
   constructor(props) {
     super(props);
@@ -32,17 +33,25 @@ export class ViewResponseNoteGenerate extends Component {
     {
       Object.entries(this.props.AcceptedResponse).map(([key, value]) => {
         if (key === this.props.match.params.value) {
+          console.log(value);
           this.obj = value;
+          this.name = value.userName;
+          this.time = value.responseTime;
           this.setState({ obj1: value });
         }
       });
     }
     this.props.FormName.map((a) => {
       if (a.formName === this.props.match.params.title) {
-        this.username = a.username;
         this.description = a.description;
       }
     });
+    console.log(
+      this.name,
+      this.description,
+      this.props.match.params.title,
+      this.time
+    );
   }
   onclick2 = (e) => {
     e.preventDefault();
@@ -149,7 +158,7 @@ export class ViewResponseNoteGenerate extends Component {
                   //   "linear-gradient(to right,rgba(0, 153, 153, 0.5),rgba(0, 231, 231, 0.5)",
                   backgroundImage:
                     "linear-gradient(to right,rgba(0, 153, 153, 0.5),rgba(0, 231, 231, 0.5)",
-                  boxShadow: ".3vw .3vw .5vw grey",
+                  boxShadow: ".3vw .3vw .5vw silver",
                   borderRadius: ".3vw",
                   paddingRight: "1vw",
                 }}
@@ -273,7 +282,7 @@ export class ViewResponseNoteGenerate extends Component {
                     paddingTop: "1vw",
                     marginBottom: "1.5vw",
                     // backgroundColor: "#00a3a3",
-                    boxShadow: ".3vw .3vw .5vw grey",
+                    boxShadow: ".3vw .3vw .5vw silver",
                     borderRadius: ".3vw",
                     paddingRight: "1vw",
                   }}
@@ -296,7 +305,7 @@ export class ViewResponseNoteGenerate extends Component {
                     paddingBottom: "1vw",
                     marginBottom: "4vw",
                     backgroundColor: "#EEEEEE",
-                    boxShadow: ".3vw .3vw .5vw grey",
+                    boxShadow: ".3vw .3vw .5vw silver",
                     borderRadius: ".3vw",
                   }}
                 >
@@ -314,20 +323,48 @@ export class ViewResponseNoteGenerate extends Component {
               style={{ color: "blue" }}
               title="Forward To"
             >
-              <div>
-                <Button
-                  style={{
-                    marginBottom: "2vw",
-                    marginRight: "2vw",
-                    backgroundColor: "white",
-                    color: "#009999",
-                    border: " 0.06vw solid #009999",
-                    boxShadow: ".1vw .1vw .1vw .1vw silver",
-                  }}
-                >
-                  Forward to
-                </Button>
+              <div
+                style={{
+                  width: "34vw",
 
+                  justifyContent: "center",
+                  textAlign: "center",
+                  //backgroundImage: "linear-gradient(to right,#009999,#00e7e7",
+                  backgroundImage:
+                    "linear-gradient(to right,rgba(0, 153, 153, 0.5),rgba(0, 231, 231, 0.5)",
+                  paddingTop: "1vw",
+                  marginBottom: "1.5vw",
+                  // backgroundColor: "#00a3a3",
+                  boxShadow: ".3vw .3vw .5vw silver",
+                  borderRadius: ".3vw",
+                  color: "white",
+                  paddingRight: "1vw",
+                  // paddingBottom: "1vw",
+                }}
+              >
+                <h4 style={{ color: "white" }}> Enter UserName</h4>
+              </div>
+
+              <div
+                style={{
+                  float: "left",
+                  postion: "relative",
+                  width: "34vw",
+
+                  textAlign: "center",
+
+                  paddingLeft: "2vw",
+                  paddingRight: "2vw",
+                  // display: "flex",
+                  // justifyContent: "center",
+                  paddingTop: "1vw",
+                  paddingBottom: "1vw",
+                  marginBottom: "4vw",
+                  backgroundColor: "#EEEEEE",
+                  boxShadow: ".3vw .3vw .5vw silver",
+                  borderRadius: ".3vw",
+                }}
+              >
                 <div style={{ textAlign: "center" }}>
                   <input
                     name="forwardTo"
@@ -342,7 +379,7 @@ export class ViewResponseNoteGenerate extends Component {
                       backgroundColor: "white",
                       color: "#009999",
                       border: " 0.06vw solid #009999",
-                      boxShadow: ".1vw .1vw .1vw .1vw silver",
+                      boxShadow: ".1vw .1vw .1vw .1vw lightgray",
                       marginBottom: "1vw",
                     }}
                     onClick={this.onClick3}
@@ -385,13 +422,6 @@ export class ViewResponseNoteGenerate extends Component {
             id={this.props.match.params.id}
             AcceptedResponse={this.props.AcceptedResponse}
           />
-        </div>
-        <div>
-          {console.log(
-            this.username,
-            this.description,
-            this.props.match.params.title
-          )}
         </div>
       </Fragment>
     );
