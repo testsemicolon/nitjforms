@@ -87,7 +87,8 @@ export class GenericResponses extends Component {
                           if (
                             (question !== "responseTime") &
                             (question !== "formStatus") &
-                            (question !== "commentRejected")
+                            (question !== "commentRejected") &
+                            (question !== "userName")
                           ) {
                             return (
                               <Fragment key={question}>

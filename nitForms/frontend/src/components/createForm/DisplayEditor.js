@@ -29,6 +29,12 @@ class DisplayEditor extends React.Component {
   };
   onClick = () => {
     var key1 = this.props.key1;
+    var name = "";
+    this.props.NotingTemplate.map((a) => {
+      if (key1 === a.key) {
+        name = a.name;
+      }
+    });
     var cmnt = [];
     var cmntAuthor = {};
     cmntAuthor[this.props.username] = this.state.comment;
@@ -38,7 +44,7 @@ class DisplayEditor extends React.Component {
       console.log(a.id, id);
       if (a.id === id) {
         if (a.comment === null) {
-          const quest = { [key1]: cmnt };
+          const quest = { [name]: cmnt };
           console.log(quest);
           console.log("if");
           a["comment"] = quest;
@@ -49,19 +55,24 @@ class DisplayEditor extends React.Component {
               console.log(key, value);
               value.push(cmntAuthor);
               // const quest = { [key1]: value };
-              a["comment"][key1] = value;
+              a["comment"][name] = value;
               // console.log(quest);
               this.flag = true;
             }
           });
           if (this.flag === false) {
-            a["comment"][key1] = cmnt;
+            a["comment"][name] = cmnt;
           }
         }
         console.log(a);
+        var notify = [];
+        notify = a["notification"];
+        var notifyCmnt = `${this.props.username} commented on noting ${name}`;
+        notify.push(notifyCmnt);
+        a["notification"] = notify;
         this.props.putAccepted(a.id, this.props.title, a);
         store.dispatch(
-          createMessage({ commentAdded: "Comment has been added" })
+          createMessage({ commentAdded: `Comment has been added to ${name}` })
         );
         this.props.history.push(
           `${this.props.title}Accepted/${this.props.id}/`
@@ -134,6 +145,7 @@ class DisplayEditor extends React.Component {
 const mapStateToProps = (state) => ({
   AcceptedResponse: state.AcceptedResponse.AcceptedResponse,
   username: state.Auth.user.username,
+  NotingTemplate: state.NotingTemplate.NotingTemplate,
 });
 export default withRouter(
   connect(mapStateToProps, { putAccepted })(DisplayEditor)

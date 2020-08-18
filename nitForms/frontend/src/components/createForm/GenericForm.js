@@ -106,6 +106,7 @@ export class GenericForm extends Component {
     Object.keys(quest).map((obj) =>
       renameKey(quest, obj, obj.replace(/[ ]/g, "_"))
     );
+    quest["userName"] = this.props.username;
     var title = this.props.title;
     this.props.formSubmit(quest, title);
     this.props.history.push(`/${this.props.title}`);
@@ -138,111 +139,115 @@ export class GenericForm extends Component {
               <h5>Description: {this.props.description}</h5>
               <hr />
             </div>
-            <div
-              style={{
-                position: "relative",
-                width: "50vw",
-                justifyContent: "center",
-                textAlign: "center",
-                marginLeft: "auto",
-                marginRight: "auto",
-                paddingTop: "1vw",
-                backgroundImage:
-                  "linear-gradient(to right,rgba(0, 153, 153, 0.5),rgba(0, 231, 231, 0.5)",
-                // backgroundColor: "#00a3a3",
-                boxShadow: ".3vw .3vw .3vw silver",
-                borderRadius: "1vw",
-                paddingRight: "1vw",
-              }}
-            >
-              <Link to={"/accepted/" + this.props.title}>
-                <Button
-                  style={{
-                    color: "#009999",
-                    // padding: "0.4vw",
-                    borderRadius: ".3vw",
-                    border: "0.06vw solid #009999",
-                    marginBottom: "1.5vw",
-                    marginRight: "1vw",
-                    fontSize: "1vw",
-                    // float: "right",
-                    position: "relative",
-                    backgroundColor: "white",
-                    // boxShadow: ".1vw .1vw .1vw .1vw silver",
-                  }}
-                >
-                  Accepted responses
-                </Button>
-              </Link>{" "}
-              <Link to={`/response/${this.props.title}`}>
-                <Button
-                  style={{
-                    fontSize: "1vw",
-                    // float: "right",
-                    // position: "relative",
-                    background: "white",
-                    color: "#009999",
-                    marginBottom: "1.5vw",
-                    // padding: "0.4vw",
-                    marginRight: "1vw",
-                    borderRadius: ".3vw",
-                    borderColor: "#009999",
-                    borderWidth: "0.06vw",
-                    width: "10vw",
-                    // boxShadow: ".1vw .1vw .1vw .1vw silver",
-                  }}
-                >
-                  Responses
-                </Button>
-              </Link>
-              {this.props.username == this.created_by ? (
-                <Popup
-                  contentStyle={{
-                    width: "20%",
-                    height: "65%",
-                    border: ".1vw solid grey",
-                  }}
-                  modal
-                  trigger={
-                    <Button
-                      style={{
-                        fontSize: "1vw",
-                        // float: "right",
-                        // position: "relative",
-                        backgroundColor: "white",
-                        color: "#009999",
+            {this.flag === true || this.props.username === this.created_by ? (
+              <div
+                style={{
+                  position: "relative",
+                  width: "50vw",
+                  justifyContent: "center",
+                  textAlign: "center",
+                  marginLeft: "auto",
+                  marginRight: "auto",
+                  paddingTop: "1vw",
+                  backgroundImage:
+                    "linear-gradient(to right,rgba(0, 153, 153, 0.5),rgba(0, 231, 231, 0.5)",
+                  // backgroundColor: "#00a3a3",
+                  boxShadow: ".3vw .3vw .3vw silver",
+                  borderRadius: "1vw",
+                  paddingRight: "1vw",
+                }}
+              >
+                <Link to={"/accepted/" + this.props.title}>
+                  <Button
+                    style={{
+                      color: "#009999",
+                      // padding: "0.4vw",
+                      borderRadius: ".3vw",
+                      border: "0.06vw solid #009999",
+                      marginBottom: "1.5vw",
+                      marginRight: "1vw",
+                      fontSize: "1vw",
+                      // float: "right",
+                      position: "relative",
+                      backgroundColor: "white",
+                      // boxShadow: ".1vw .1vw .1vw .1vw silver",
+                    }}
+                  >
+                    Accepted responses
+                  </Button>
+                </Link>{" "}
+                <Link to={`/response/${this.props.title}`}>
+                  <Button
+                    style={{
+                      fontSize: "1vw",
+                      // float: "right",
+                      // position: "relative",
+                      background: "white",
+                      color: "#009999",
+                      marginBottom: "1.5vw",
+                      // padding: "0.4vw",
+                      marginRight: "1vw",
+                      borderRadius: ".3vw",
+                      borderColor: "#009999",
+                      borderWidth: "0.06vw",
+                      width: "10vw",
+                      // boxShadow: ".1vw .1vw .1vw .1vw silver",
+                    }}
+                  >
+                    Responses
+                  </Button>
+                </Link>
+                {this.props.username === this.created_by ? (
+                  <Popup
+                    contentStyle={{
+                      width: "20%",
+                      height: "65%",
+                      border: ".1vw solid grey",
+                    }}
+                    modal
+                    trigger={
+                      <Button
+                        style={{
+                          fontSize: "1vw",
+                          // float: "right",
+                          // position: "relative",
+                          backgroundColor: "white",
+                          color: "#009999",
 
-                        paddingBottom: ".01vw",
-                        marginRight: "1vw",
-                        borderRadius: ".3vw",
-                        border: ".01vw solid #009999",
-                        width: "10vw",
-                        marginBottom: "1.5vw",
-                        // boxShadow: ".1vw .1vw .1vw .1vw silver",
-                      }}
-                    >
-                      <span class="material-icons">share</span>
-                    </Button>
-                  }
-                  position="right center"
-                >
-                  {this.toggleshare === true ? (
-                    <form>
-                      <input
-                        type="text"
-                        name={this.toShareWith}
-                        onChange={this.onChangeUser}
-                      />
-                      <Button onClick={this.onSubmitUser}>Submit</Button>
-                    </form>
-                  ) : (
-                    "NO PERMISSION TO SHARE"
-                  )}{" "}
-                </Popup>
-              ) : (
-                "NO PERMISSION TO SHARE"
-              )}
-            </div>
+                          paddingBottom: ".01vw",
+                          marginRight: "1vw",
+                          borderRadius: ".3vw",
+                          border: ".01vw solid #009999",
+                          width: "10vw",
+                          marginBottom: "1.5vw",
+                          // boxShadow: ".1vw .1vw .1vw .1vw silver",
+                        }}
+                      >
+                        <span class="material-icons">share</span>
+                      </Button>
+                    }
+                    position="right center"
+                  >
+                    {this.toggleshare === true ? (
+                      <form>
+                        <input
+                          type="text"
+                          name={this.toShareWith}
+                          onChange={this.onChangeUser}
+                        />
+                        <Button onClick={this.onSubmitUser}>Submit</Button>
+                      </form>
+                    ) : (
+                      "NO PERMISSION TO SHARE"
+                    )}{" "}
+                  </Popup>
+                ) : (
+                  "NO PERMISSION TO SHARE"
+                )}
+              </div>
+            ) : (
+              <Fragment />
+            )}
 
             <div
               style={{

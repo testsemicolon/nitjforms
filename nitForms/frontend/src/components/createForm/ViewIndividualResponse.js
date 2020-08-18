@@ -77,7 +77,8 @@ export class ViewIndividualResponse extends Component {
                   if (
                     (question !== "responseTime") &
                     (question !== "formStatus") &
-                    (question !== "commentRejected")
+                    (question !== "commentRejected") &
+                    (question !== "userName")
                   ) {
                     return (
                       <Fragment key={question}>

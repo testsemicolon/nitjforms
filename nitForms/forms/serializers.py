@@ -38,15 +38,16 @@ class notingTemplateSerializer(serializers.ModelSerializer):
         fields = '__all__'
 
 
-class test2Serializer(serializers.ModelSerializer):
+
+class test12Serializer(serializers.ModelSerializer):
     class Meta:
-        model = test2
+        model = test12
         fields = '__all__'
 
 
-class test2AcceptedSerializer(serializers.ModelSerializer):
+class test12AcceptedSerializer(serializers.ModelSerializer):
     class Meta:
-        model = test2Accepted
+        model = test12Accepted
         fields = '__all__'
 
 
@@ -59,4 +60,16 @@ class test3Serializer(serializers.ModelSerializer):
 class test3AcceptedSerializer(serializers.ModelSerializer):
     class Meta:
         model = test3Accepted
+        fields = '__all__'
+
+
+class test4Serializer(serializers.ModelSerializer):
+    class Meta:
+        model = test4
+        fields = '__all__'
+
+
+class test4AcceptedSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = test4Accepted
         fields = '__all__'

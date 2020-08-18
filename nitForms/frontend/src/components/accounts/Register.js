@@ -25,15 +25,12 @@ export class Register extends Component {
     this.setState({ [e.target.name]: e.target.value });
   };
   toggleChange1 = () => {
-    console.log("asdasd1");
     this.setState({ can_generate_form: !this.state.can_generate_form });
   };
   toggleChange2 = () => {
-    console.log("asdasd2");
     this.setState({ can_generate_template: !this.state.can_generate_template });
   };
   toggleChange3 = () => {
-    console.log("asdasd3");
     this.setState({ can_make_noting: !this.state.can_make_noting });
   };
 
@@ -60,6 +57,22 @@ export class Register extends Component {
         can_generate_template,
         can_make_noting,
       };
+      if (
+        (can_generate_form === true) &
+        (can_generate_template === true) &
+        (can_make_noting === true)
+      ) {
+        newUser["userType"] = "Super Admin";
+      } else if (
+        (can_generate_form === false) &
+        (can_generate_template === false) &
+        (can_make_noting === true)
+      ) {
+        newUser["userType"] = "Admin";
+      } else {
+        newUser["userType"] = "User";
+      }
+
       console.log(newUser);
       this.props.register(newUser);
     }

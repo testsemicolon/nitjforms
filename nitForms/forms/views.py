@@ -38,6 +38,8 @@ def post_views(request):
         f.write(
             "    commentRejected = models.CharField(max_length=1000, blank=True)\n"
         )
+        f.write(
+            "    userName = models.CharField(max_length=1000, blank=True)\n")
         f.close()
         data = CreateForms.objects.all()
         for i in data:
@@ -54,6 +56,9 @@ def post_views(request):
         )
         f.write(
             "    commentAccepted = models.CharField(max_length=1000, blank=True)\n"
+        )
+        f.write(
+            "    notification = ArrayField(models.CharField(max_length=1000),blank=True, default=list)\n"
         )
         f.close()
         data1 = CreateForms.objects.all()

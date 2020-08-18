@@ -28,6 +28,8 @@ export class Alerts extends Component {
       if (message.formCreated) alert.success(message.formCreated);
       if (message.commentAdded) alert.success(message.commentAdded);
       if (message.ResponseRejected) alert.error(message.ResponseRejected);
+      if (message.generateNoting) alert.success(message.generateNoting);
+      if (message.forwardMessage) alert.success(message.forwardMessage);
     }
   }
 
