@@ -30,14 +30,16 @@ export class CombinedView extends Component {
             width: "35vw",
             float: "left",
             position: "relative",
-            backgroundColor: "white",
+            backgroundColor: "#eeeeee",
+            borderRadius: ".5vw",
+            boxShadow: ".3vw .3vw .3vw silver",
             marginLeft: "5vw",
           }}
         >
           <VerticalTimeline
             layout={"1-column"}
             position={"right"}
-            backgroundColor="white"
+            backgroundColor="#eeeeee"
           >
             {Object.entries(this.obj1).map(([key, value]) => {
               return value.map((a) => {
@@ -59,7 +61,7 @@ export class CombinedView extends Component {
                           wordWrap: "break-word",
                         }}
                         iconStyle={{
-                          background: "#66a3ff",
+                          background: "#009999",
                           width: "2vw",
                           height: "2vw",
                           margin: ".5vw",
