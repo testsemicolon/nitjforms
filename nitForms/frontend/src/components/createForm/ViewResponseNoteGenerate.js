@@ -314,6 +314,7 @@ export class ViewResponseNoteGenerate extends Component {
                   // backgroundColor: "#00a3a3",
                   boxShadow: ".3vw .3vw .5vw silver",
                   borderRadius: ".3vw",
+                  paddingBottom: ".3vw",
                   paddingRight: "1vw",
                 }}
               >
@@ -367,6 +368,7 @@ export class ViewResponseNoteGenerate extends Component {
                   boxShadow: ".3vw .3vw .5vw silver",
                   borderRadius: ".3vw",
                   color: "white",
+                  paddingBottom: ".3vw",
                   paddingRight: "1vw",
                   // paddingBottom: "1vw",
                 }}

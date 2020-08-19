@@ -73,7 +73,7 @@ export class NotingIndividual extends Component {
               >
                 <CardMedia
                   style={{ paddingTop: "56.25%" }}
-                  image="https://source.unsplash.com/random"
+                  image="static/form.jpg"
                   title="Image title"
                 />
                 <CardContent style={{ flexGrow: 1 }}>
