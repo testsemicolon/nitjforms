@@ -29,6 +29,7 @@ export default class TimeLine extends Component {
               color: "#009999",
               border: 0,
               fontSize: "1.2VW",
+              fontFamily: "Times New Roman",
             }}
             onClick={this.onclick2}
           >

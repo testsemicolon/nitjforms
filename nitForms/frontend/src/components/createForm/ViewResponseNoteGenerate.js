@@ -20,6 +20,10 @@ export class ViewResponseNoteGenerate extends Component {
     content: "",
     toggleforward: false,
     forwardTo: "",
+    showresponse: true,
+    linkednotings: false,
+    backtrack: false,
+    forwardtoggle: false,
   };
   name = "";
   description = "";
@@ -123,7 +127,7 @@ export class ViewResponseNoteGenerate extends Component {
         <div
           style={{
             // backgroundColor: "#ffb266",
-            backgroundColor: "#66a3ff",
+            backgroundColor: "rgba(0, 153, 153, 0.5)",
             marginTop: "1vw",
 
             minHeight: "3vw",
@@ -168,18 +172,8 @@ export class ViewResponseNoteGenerate extends Component {
             marginRight: "7vw",
           }}
         >
-          <Tabs
-            // style={{
-            //   margin: "1vw",
-            // }}
-            defaultActiveKey="Show Response"
-            id="uncontrolled-tab-example"
-          >
-            <Tab
-              eventKey="Show Response"
-              style={{ color: "blue", padding: 0 }}
-              title="Show Response"
-            >
+          {this.state.showresponse ? (
+            <div>
               <div
                 style={{
                   position: "relative",
@@ -187,16 +181,15 @@ export class ViewResponseNoteGenerate extends Component {
                   float: "right",
                   justifyContent: "center",
                   textAlign: "center",
-
+                  paddingBottom: ".3vw",
                   paddingTop: "1vw",
                   marginBottom: "1.5vw",
                   // backgroundColor: "#009999",
                   // backgroundImage: "linear-gradient(to right,#009999,#00e7e7",
                   // backgroundImage:
                   //   "linear-gradient(to right,rgba(0, 153, 153, 0.5),rgba(0, 231, 231, 0.5)",
-                  backgroundImage:
-                    "linear-gradient(to right,rgba(0, 153, 153, 0.5),rgba(0, 231, 231, 0.5)",
-                  boxShadow: ".3vw .3vw .5vw silver",
+                  backgroundColor: "rgba(0, 153, 153, 0.5)",
+                  boxShadow: ".3vw .3vw .3vw silver",
                   borderRadius: ".3vw",
                   paddingRight: "1vw",
                 }}
@@ -216,7 +209,7 @@ export class ViewResponseNoteGenerate extends Component {
                   paddingBottom: "1vw",
                   marginBottom: "4vw",
                   backgroundColor: "#EEEEEE",
-                  boxShadow: ".3vw .3vw .5vw grey",
+                  boxShadow: ".3vw .3vw .3vw silver",
                   borderRadius: ".3vw",
                   //  border: ".2vw solid silver",
                 }}
@@ -301,66 +294,13 @@ export class ViewResponseNoteGenerate extends Component {
                   })}
                 </Fragment>
               </div>
-            </Tab>
-            <Tab
-              eventKey="Linked Notings"
-              style={{ color: "blue", padding: 0 }}
-              title="Linked Notings"
-            >
-              <div>
-                <div
-                  style={{
-                    width: "34vw",
+            </div>
+          ) : (
+            <div></div>
+          )}
 
-                    justifyContent: "center",
-                    textAlign: "center",
-                    //backgroundImage: "linear-gradient(to right,#009999,#00e7e7",
-                    backgroundImage:
-                      "linear-gradient(to right,rgba(0, 153, 153, 0.5),rgba(0, 231, 231, 0.5)",
-                    paddingTop: "1vw",
-                    marginBottom: "1.5vw",
-                    // backgroundColor: "#00a3a3",
-                    boxShadow: ".3vw .3vw .5vw silver",
-                    borderRadius: ".3vw",
-                    paddingRight: "1vw",
-                  }}
-                >
-                  <h4 style={{ color: "white" }}> Linked Notings</h4>
-                </div>
-                <div
-                  style={{
-                    float: "left",
-                    postion: "relative",
-                    width: "34vw",
-
-                    textAlign: "center",
-
-                    paddingLeft: "2vw",
-                    paddingRight: "2vw",
-                    // display: "flex",
-                    // justifyContent: "center",
-                    paddingTop: "1vw",
-                    paddingBottom: "1vw",
-                    marginBottom: "4vw",
-                    backgroundColor: "#EEEEEE",
-                    boxShadow: ".3vw .3vw .5vw silver",
-                    borderRadius: ".3vw",
-                  }}
-                >
-                  <NotingIndivdiual
-                    title={this.props.match.params.title}
-                    value={this.props.match.params.value}
-                    id={this.props.match.params.id}
-                  />
-                  <br />
-                </div>
-              </div>
-            </Tab>
-            <Tab
-              eventKey="Forward To"
-              style={{ color: "blue", padding: 0 }}
-              title="Forward To"
-            >
+          {this.state.linkednotings ? (
+            <div>
               <div
                 style={{
                   width: "34vw",
@@ -368,8 +308,59 @@ export class ViewResponseNoteGenerate extends Component {
                   justifyContent: "center",
                   textAlign: "center",
                   //backgroundImage: "linear-gradient(to right,#009999,#00e7e7",
-                  backgroundImage:
-                    "linear-gradient(to right,rgba(0, 153, 153, 0.5),rgba(0, 231, 231, 0.5)",
+                  backgroundColor: "rgba(0, 153, 153, 0.5)",
+                  paddingTop: "1vw",
+                  marginBottom: "1.5vw",
+                  // backgroundColor: "#00a3a3",
+                  boxShadow: ".3vw .3vw .5vw silver",
+                  borderRadius: ".3vw",
+                  paddingRight: "1vw",
+                }}
+              >
+                <h4 style={{ color: "white" }}> Linked Notings</h4>
+              </div>
+              <div
+                style={{
+                  float: "left",
+                  postion: "relative",
+                  width: "34vw",
+
+                  textAlign: "center",
+
+                  paddingLeft: "2vw",
+                  paddingRight: "2vw",
+                  // display: "flex",
+                  // justifyContent: "center",
+                  paddingTop: "1vw",
+                  paddingBottom: "1vw",
+                  marginBottom: "4vw",
+                  backgroundColor: "#EEEEEE",
+                  boxShadow: ".3vw .3vw .5vw silver",
+                  borderRadius: ".3vw",
+                }}
+              >
+                <NotingIndivdiual
+                  title={this.props.match.params.title}
+                  value={this.props.match.params.value}
+                  id={this.props.match.params.id}
+                />
+                <br />
+              </div>
+            </div>
+          ) : (
+            <div></div>
+          )}
+
+          {this.state.forwardtoggle ? (
+            <div>
+              <div
+                style={{
+                  width: "34vw",
+
+                  justifyContent: "center",
+                  textAlign: "center",
+                  //backgroundImage: "linear-gradient(to right,#009999,#00e7e7",
+                  backgroundColor: "rgba(0, 153, 153, 0.5)",
                   paddingTop: "1vw",
                   marginBottom: "1.5vw",
                   // backgroundColor: "#00a3a3",
@@ -419,38 +410,20 @@ export class ViewResponseNoteGenerate extends Component {
                       border: " 0.06vw solid #009999",
                       boxShadow: ".1vw .1vw .1vw .1vw lightgray",
                       marginBottom: "1vw",
+                      fontFamily: "Times New Roman",
                     }}
                     onClick={this.onClick3}
                   >
                     Forward
                   </Button>
                 </div>
-
-                {/* 
-            <Link to={"/combine/" + this.props.match.params.id}>
-              <Button
-                style={{
-                  marginBottom: "2vw",
-                  marginRight: "2vw",
-                  backgroundColor: "white",
-                  color: "#009999",
-                  border: " 0.06vw solid #009999",
-                  boxShadow: ".1vw .1vw .1vw .1vw silver",
-                }}
-              >
-                View timeline
-              </Button>
-            </Link> */}
               </div>
-            </Tab>
-            <Tab
-              eventKey=" BackTrack Response"
-              style={{ color: "blue", padding: 0 }}
-              title=" BackTrack Response"
-            >
-              BackTrack Response
-            </Tab>
-          </Tabs>
+            </div>
+          ) : (
+            <div></div>
+          )}
+
+          {this.state.backtrack ? <div>backtracking</div> : <div></div>}
         </div>
 
         <div
@@ -459,7 +432,7 @@ export class ViewResponseNoteGenerate extends Component {
             width: "30vw",
             float: "left",
             marginBottom: "1vw",
-            marginTop: "4vw",
+            marginTop: "2vw",
             marginLeft: "1vw",
             marginRight: "7vw",
           }}
@@ -478,13 +451,100 @@ export class ViewResponseNoteGenerate extends Component {
               // backgroundImage: "linear-gradient(to right,#009999,#00e7e7",
               // backgroundImage:
               //   "linear-gradient(to right,rgba(0, 153, 153, 0.5),rgba(0, 231, 231, 0.5)",
-              backgroundImage:
-                "linear-gradient(to right,rgba(0, 153, 153, 0.5),rgba(0, 231, 231, 0.5)",
+              backgroundColor: "rgba(0, 153, 153, 0.5)",
               boxShadow: ".3vw .3vw .5vw silver",
               borderRadius: ".3vw",
             }}
           >
             <h4 style={{ color: "white" }}>Timeline</h4>
+          </div>
+          <div
+            style={{
+              width: "35vw",
+
+              justifyContent: "center",
+              textAlign: "center",
+              marginLeft: "5vw",
+              paddingBottom: "1vw",
+              paddingTop: "1vw",
+              marginBottom: "1.5vw",
+              // backgroundColor: "#009999",
+              // backgroundImage: "linear-gradient(to right,#009999,#00e7e7",
+              // backgroundImage:
+              //   "linear-gradient(to right,rgba(0, 153, 153, 0.5),rgba(0, 231, 231, 0.5)",
+              backgroundColor: "rgba(0, 153, 153, 0.5)",
+              boxShadow: ".3vw .3vw .5vw silver",
+              borderRadius: ".3vw",
+            }}
+          >
+            <Button
+              onClick={() => {
+                this.setState({ showresponse: true });
+                this.setState({ linkednotings: false });
+                this.setState({ forwardtoggle: false });
+                this.setState({ backtrack: false });
+              }}
+              style={{
+                backgroundColor: "white",
+                color: "#009999",
+                borderWidth: 0,
+                boxShadow: ".3VW .3VW .3VW lightgray",
+                fontFamily: "Times New Roman",
+              }}
+            >
+              Show Response
+            </Button>
+            <Button
+              onClick={() => {
+                this.setState({ showresponse: false });
+                this.setState({ linkednotings: true });
+                this.setState({ forwardtoggle: false });
+                this.setState({ backtrack: false });
+              }}
+              style={{
+                backgroundColor: "white",
+                color: "#009999",
+                borderWidth: 0,
+                fontFamily: "Times New Roman",
+                boxShadow: ".3VW .3VW .3VW lightgray",
+              }}
+            >
+              Linked Notings
+            </Button>
+            <Button
+              onClick={() => {
+                this.setState({ showresponse: false });
+                this.setState({ linkednotings: false });
+                this.setState({ forwardtoggle: true });
+                this.setState({ backtrack: false });
+              }}
+              style={{
+                backgroundColor: "white",
+                color: "#009999",
+                borderWidth: 0,
+                boxShadow: ".3VW .3VW .3VW lightgray",
+                fontFamily: "Times New Roman",
+              }}
+            >
+              Forward to
+            </Button>
+            <Button
+              onClick={() => {
+                this.setState({ showresponse: false });
+                this.setState({ linkednotings: false });
+                this.setState({ forwardtoggle: false });
+                this.setState({ backtrack: true });
+              }}
+              style={{
+                backgroundColor: "white",
+                color: "#009999",
+                borderWidth: 0,
+                boxShadow: ".3VW .3VW .3VW lightgray",
+                fontFamily: "Times New Roman",
+              }}
+            >
+              Backtrack Form
+            </Button>
           </div>
           <CombinedView
             id={this.props.match.params.id}

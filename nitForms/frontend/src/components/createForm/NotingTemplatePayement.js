@@ -142,7 +142,11 @@ export default class NotingTemplatePayement extends Component {
               marginTop: "2vw",
             }}
           >
-            <Button variant="outline-success" type="submit">
+            <Button
+              variant="outline-success"
+              type="submit"
+              style={{ fontFamily: "Times New Roman" }}
+            >
               <DownloadLink
                 style={{ font: "white" }}
                 label="SUBMIT AND DOWNLOAD"

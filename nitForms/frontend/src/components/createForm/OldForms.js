@@ -51,14 +51,22 @@ export class OldForms extends Component {
                   >
                     <CardMedia
                       style={{ paddingTop: "56.25%" }}
-                      image="https://source.unsplash.com/random"
+                      image="static/form.jpg"
                       title="Image title"
                     />
                     <CardContent style={{ flexGrow: 1 }}>
-                      <Typography gutterBottom variant="h5" component="h2">
+                      <Typography
+                        style={{ fontFamily: "Times New Roman" }}
+                        gutterBottom
+                        variant="h5"
+                        component="h2"
+                      >
                         {card.title}
                       </Typography>
-                      <Typography>{card.description}</Typography>
+                      <Typography style={{ fontFamily: "Times New Roman" }}>
+                        {" "}
+                        {card.description}
+                      </Typography>
                     </CardContent>
                     <CardActions
                       style={{
@@ -76,6 +84,7 @@ export class OldForms extends Component {
                               color: "white",
                               border: 0,
                               marginRight: "1vw",
+                              fontFamily: "Times New Roman",
 
                               boxShadow: ".3vw .3vw .3vw lightgray",
                             }}
@@ -92,6 +101,7 @@ export class OldForms extends Component {
                               color: "#66a3ff",
                               border: "0.01vw solid #66a3ff",
                               boxShadow: ".3vw .3vw .3vw lightgray",
+                              fontFamily: "Times New Roman",
                             }}
                             size="small"
                             color="primary"

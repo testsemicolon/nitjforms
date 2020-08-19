@@ -152,6 +152,7 @@ export class ViewIndividualResponse extends Component {
               backgroundColor: "green",
               width: "10vw",
               fontSize: ".95vw",
+              fontFamily: "Times New Roman",
             }}
             onClick={this.onClick}
           >
@@ -160,7 +161,11 @@ export class ViewIndividualResponse extends Component {
           {"  "}{" "}
           <Button
             variant="danger"
-            style={{ width: "10vw", fontSize: ".95vw" }}
+            style={{
+              width: "10vw",
+              fontSize: ".95vw",
+              fontFamily: "Times New Roman",
+            }}
             onClick={this.onClickReject}
           >
             Reject Response

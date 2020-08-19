@@ -99,6 +99,7 @@ export class NotingIndividual extends Component {
                           marginLeft: "auto",
                           marginRight: "auto",
                           borderWidth: 0,
+                          fontFamily: "Times New Roman",
                         }}
                       >
                         View

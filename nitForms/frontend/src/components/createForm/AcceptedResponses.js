@@ -56,35 +56,6 @@ export class AcceptedResponses extends Component {
       const title1 = this.props.match.params.title;
       return (
         <Fragment>
-          {/* <div
-            style={{
-              position: "relative",
-              float: "left",
-              width: "35vw",
-            }}
-          >
-            <h3 style={{ textAlign: "center" }}>Noting Template Generation</h3>
-            <hr />
-            <form onSubmit={this.onSubmit}>
-              <div
-                style={{
-                  alignItems: "center",
-                  textAlign: "center",
-                  marginTop: "2vw",
-                }}
-              >
-                <DisplayEditor />
-                <Button variant="outline-success" type="submit">
-                  <DownloadLink
-                    style={{ font: "white" }}
-                    label="SUBMIT AND DOWNLOAD"
-                    filename="myfile.html"
-                    exportFile={() => this.state.content}
-                  />
-                </Button>
-              </div>
-            </form>
-          </div> */}
           <div
             style={{
               // position: "relative",
@@ -126,6 +97,7 @@ export class AcceptedResponses extends Component {
                                   color: "white",
                                   boxShadow: ".3vw .3vw .3vw lightgray",
                                   borderWidth: 0,
+                                  fontFamily: "Times New Roman",
                                 }}
                               >
                                 View

@@ -27,7 +27,7 @@ export class AlbumAdminStaff extends Component {
         <div
           style={{
             // backgroundColor: "#ffb266",
-            backgroundImage: "linear-gradient(to right,#66a3ff,white)",
+            backgroundColor: "#66a3ff",
             marginTop: "1vw",
 
             minHeight: "7vw",
@@ -93,6 +93,7 @@ export class AlbumAdminStaff extends Component {
               minHeight: "8vw",
               borderRadius: ".5vw",
               padding: "1.5vw",
+              fontFamily: "Times New Roman",
               color: "grey",
               boxShadow:
                 ".2vw .1vw .4vw rgba(179, 204, 37, .5), 0 0 .1vw rgba(0, 0, 0, 0.1) inset",
@@ -113,7 +114,7 @@ export class AlbumAdminStaff extends Component {
             }}
             style={{
               //   width: "17vw",
-
+              fontFamily: "Times New Roman",
               backgroundImage: "linear-gradient(pink,white)",
               //   marginLeft: "1vw",
               //   marginRight: "1vw",
@@ -158,6 +159,7 @@ export class AlbumAdminStaff extends Component {
               // border: ".01vw solid red",
               boxShadow:
                 ".2vw .1vw .4vw lightblue, 0 0 .1vw rgba(0, 0, 0, 0.1) inset",
+              fontFamily: "Times New Roman",
 
               // WebkitBoxShadow:
               //   "0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) ",
@@ -194,6 +196,7 @@ export class AlbumAdminStaff extends Component {
               //   "0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) ",
               MozBoxShadow:
                 "0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) ",
+              fontFamily: "Times New Roman",
               //        box-shadow:0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset,
             }}
           >
@@ -226,6 +229,7 @@ export class AlbumAdminStaff extends Component {
               MozBoxShadow:
                 "0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) ",
               //        box-shadow:0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset,
+              fontFamily: "Times New Roman",
             }}
           >
             DUES
@@ -304,6 +308,7 @@ export class AlbumAdminStaff extends Component {
                             backgroundColor: "green",
                             padding: ".1vw",
                             color: "white",
+                            fontFamily: "Times New Roman",
                           }}
                         >
                           Online
@@ -320,6 +325,7 @@ export class AlbumAdminStaff extends Component {
                             backgroundColor: "green",
                             padding: ".1vw",
                             color: "white",
+                            fontFamily: "Times New Roman",
                           }}
                         >
                           Online
@@ -336,6 +342,7 @@ export class AlbumAdminStaff extends Component {
                             backgroundColor: "red",
                             padding: ".1vw",
                             color: "white",
+                            fontFamily: "Times New Roman",
                           }}
                         >
                           Active Today
@@ -376,9 +383,10 @@ export class AlbumAdminStaff extends Component {
                 //        box-shadow:0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset,
               }}
             >
-              USERS
-              <br />
-              <h3>graph</h3>
+              <img
+                src="static/graph.JPG"
+                style={{ height: "17vw", width: "26vw" }}
+              />
             </div>
             <div
               style={{
@@ -525,6 +533,7 @@ export class AlbumAdminStaff extends Component {
                             backgroundColor: "green",
                             padding: ".1vw",
                             color: "white",
+                            fontFamily: "Times New Roman",
                           }}
                         >
                           Online
@@ -541,6 +550,7 @@ export class AlbumAdminStaff extends Component {
                             backgroundColor: "green",
                             padding: ".1vw",
                             color: "white",
+                            fontFamily: "Times New Roman",
                           }}
                         >
                           Online
@@ -557,6 +567,7 @@ export class AlbumAdminStaff extends Component {
                             backgroundColor: "red",
                             padding: ".1vw",
                             color: "white",
+                            fontFamily: "Times New Roman",
                           }}
                         >
                           Active Today
@@ -597,8 +608,10 @@ export class AlbumAdminStaff extends Component {
                 //        box-shadow:0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset,
               }}
             >
-              USERS
-              <br />
+              <img
+                src="static/graph.JPG"
+                style={{ height: "17vw", width: "26vw" }}
+              />
               <h3>graph</h3>
             </div>
             <div

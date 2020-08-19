@@ -170,6 +170,7 @@ export class GenericForm extends Component {
                       // float: "right",
                       position: "relative",
                       backgroundColor: "white",
+                      boxShadow: ".3vw .3vw .3vw lightgray",
                       // boxShadow: ".1vw .1vw .1vw .1vw silver",
                     }}
                   >
@@ -191,6 +192,8 @@ export class GenericForm extends Component {
                       borderColor: "#009999",
                       borderWidth: "0.06vw",
                       width: "10vw",
+                      boxShadow: ".3vw .3vw .3vw lightgray",
+                      fontFamily: "Times New Roman",
                       // boxShadow: ".1vw .1vw .1vw .1vw silver",
                     }}
                   >
@@ -220,7 +223,8 @@ export class GenericForm extends Component {
                           border: ".01vw solid #009999",
                           width: "10vw",
                           marginBottom: "1.5vw",
-                          // boxShadow: ".1vw .1vw .1vw .1vw silver",
+                          boxShadow: ".3vw .3vw .3vw lightgray",
+                          fontFamily: "Times New Roman",
                         }}
                       >
                         <span class="material-icons">share</span>
@@ -584,6 +588,7 @@ export class GenericForm extends Component {
                       width: "12rem",
                       marginBottom: "2vw",
                       boxShadow: ".3vw .3vw .3vw lightgray",
+                      fontFamily: "Times New Roman",
                       // marginLeft: "auto",
                       // marginRight: "auto",
                     }}

@@ -34,7 +34,7 @@ export default class AlbumUser extends Component {
         <div
           style={{
             // backgroundColor: "#ffb266",
-            backgroundImage: "linear-gradient(to right,#66a3ff,white)",
+            backgroundColor: "#66a3ff",
             marginTop: "1vw",
             marginLeft: "1vw",
             marginRight: "1vw",
@@ -93,7 +93,7 @@ export default class AlbumUser extends Component {
                 border: "0.07vw solid #DCDCDC",
                 padding: "1vw",
                 textAlign: "center",
-                marginLeft: "1vw",
+                marginLeft: "auto",
                 borderRadius: ".5vw",
                 backgroundImage:
                   "linear-gradient(to right,rgba(0, 153, 153, 0.5),rgba(0, 231, 231, 0.5)",
@@ -105,6 +105,8 @@ export default class AlbumUser extends Component {
                   backgroundColor: "white",
                   color: "#009999",
                   border: 0,
+                  fontFamily: "Times New Roman",
+                  boxShadow: ".3vw .3vw .3vw lightgray",
                 }}
                 onClick={this.onclick}
               >
@@ -113,24 +115,24 @@ export default class AlbumUser extends Component {
               </Button>
 
               {this.state.show ? (
-                <div style={{ marginLeft: "auto", marginRight: "auto" }}>
+                <div style={{ marginLeft: "6vw", marginRight: "auto" }}>
                   <MDBContainer className="grey darken-3 p-3">
                     <MDBNotification
                       iconClassName="text-primary"
                       show
                       fade
-                      title="Bootstrap"
-                      message="Hello, world! This is a toast message."
-                      text="11 mins ago"
+                      title="Test 1"
+                      message="Your form has been accepted"
+                      text="1 min ago"
                       zindex="9999"
                     />
                     <MDBNotification
                       iconClassName="text-primary"
                       show
                       fade
-                      title="Bootstrap"
-                      message="Hello, world! This is a toast message."
-                      text="11 mins ago"
+                      title="Test 2"
+                      message="Your form has been rejected"
+                      text="11 hrs ago"
                     />
                   </MDBContainer>
                 </div>
@@ -156,6 +158,8 @@ export default class AlbumUser extends Component {
                   backgroundColor: "white",
                   color: "#009999",
                   border: 0,
+                  fontFamily: "Times New Roman",
+                  boxShadow: ".3vw .3vw .3vw lightgray",
                 }}
                 onClick={this.onclick2}
               >
@@ -172,8 +176,8 @@ export default class AlbumUser extends Component {
                       iconClassName="text-primary"
                       show
                       fade
-                      title="FormName"
-                      message="status:pending"
+                      title="Test 1"
+                      message="status:pending , Your form will be reviewed soon"
                       text={
                         <Link to={"/timeline/"}>
                           <Button
@@ -184,6 +188,7 @@ export default class AlbumUser extends Component {
                               border: 0,
                               paddingLeft: ".3vw",
                               paddingRight: ".3vw",
+                              fontFamily: "Times New Roman",
                             }}
                           >
                             View timeline
@@ -195,8 +200,8 @@ export default class AlbumUser extends Component {
                       iconClassName="text-primary"
                       show
                       fade
-                      title="FormName"
-                      message="status:pending"
+                      title="Test 3"
+                      message="status:pending , Your form will be reviewed soon"
                       text={
                         <Button
                           style={{
@@ -206,6 +211,7 @@ export default class AlbumUser extends Component {
                             paddingRight: ".3vw",
                             backgroundColor: "#009999",
                             border: 0,
+                            fontFamily: "Times New Roman",
                           }}
                         >
                           View timeline
@@ -233,11 +239,17 @@ export default class AlbumUser extends Component {
             color: "white",
           }}
         >
-          <Typography variant="h6" align="center" gutterBottom>
+          <Typography
+            style={{ fontFamily: "Times New Roman" }}
+            variant="h6"
+            align="center"
+            gutterBottom
+          >
             {" "}
             Dr. B.R Ambedkar National Institute of Technology
           </Typography>
           <Typography
+            style={{ fontFamily: "Times New Roman" }}
             variant="subtitle1"
             align="center"
             color="cream"

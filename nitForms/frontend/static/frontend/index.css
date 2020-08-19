@@ -5,9 +5,6 @@
   margin-left: 2vw;
   margin-right: 2vw;
 }
-body {
-  background-color: red;
-}
 
 .loginbackground {
   background-image: url(/static/nit.png);
@@ -39,4 +36,7 @@ body {
 }
 .searchbar:focus {
   width: 30vw;
+}
+Button {
+  font-family: "Times New Roman", Times, serif !important;
 }

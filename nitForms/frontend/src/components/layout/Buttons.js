@@ -21,10 +21,7 @@ export class Buttons extends Component {
           paddingRight: 0,
           float: "right",
           position: "relative",
-          display: "flex",
-          textAlign: "right",
-          alignContent: "right",
-          alignItems: "right",
+          marginLeft: "34vw",
         }}
       >
         <DropdownButton
@@ -46,12 +43,12 @@ export class Buttons extends Component {
       </div>
     );
     const guestLinks = (
-      <div style={{ float: "right", position: "relative" }}>
+      <div style={{ float: "right", position: "relative", marginLeft: "34vw" }}>
         <Link to="/register">Register</Link> | <Link to="/login">Login</Link>
       </div>
     );
     return (
-      <div className="container" style={{ marginLeft: 0, marginRight: 0 }}>
+      <div style={{ marginLeft: 0, marginRight: 0 }}>
         {isAuthenticated ? authLinks : guestLinks}
       </div>
     );

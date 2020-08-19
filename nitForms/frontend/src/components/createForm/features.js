@@ -22,6 +22,7 @@ export default class Features extends Component {
           <span style={{ fontSize: "4vw" }} class="material-icons">
             description
           </span>
+          <br />
           Dynamic Forms
         </div>
         <div
@@ -42,6 +43,7 @@ export default class Features extends Component {
           <span style={{ fontSize: "4vw" }} class="material-icons">
             payment
           </span>
+          <br />
           Payment Forms
         </div>
         <div
@@ -62,6 +64,7 @@ export default class Features extends Component {
           <span style={{ fontSize: "4vw" }} class="material-icons">
             notifications_active
           </span>
+          <br />
           Notifications
         </div>
         <div
@@ -101,6 +104,7 @@ export default class Features extends Component {
           <span style={{ fontSize: "4vw" }} class="material-icons">
             description
           </span>
+          <br />
           Dynamic Forms
         </div>
         <div
@@ -121,6 +125,7 @@ export default class Features extends Component {
           <span style={{ fontSize: "4vw" }} class="material-icons">
             notifications_active
           </span>
+          <br />
           Notifications
         </div>
         <div
@@ -141,6 +146,7 @@ export default class Features extends Component {
           <span style={{ fontSize: "4vw" }} class="material-icons">
             notifications_active
           </span>
+          <br />
           Notifications
         </div>
         <div

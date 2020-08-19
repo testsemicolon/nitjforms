@@ -132,6 +132,7 @@ class DisplayEditor extends React.Component {
             backgroundColor: "#66a3ff",
             borderWidth: 0,
             boxShadow: ".3vw .3vw .3vw lightgray",
+            fontFamily: "Times New Roman",
           }}
           type="submit"
           onClick={this.onClick}

@@ -136,6 +136,7 @@ export class PublishForm extends Component {
                 borderWidth: "0rem",
                 marginRight: "2vw",
                 display: "flex",
+                fontFamily: "Times New Roman",
               }}
             >
               Go to form
@@ -155,7 +156,7 @@ export class PublishForm extends Component {
                 border: ".01vw solid #66a3ff",
                 padding: "5px",
                 borderRadius: ".3rem",
-
+                fontFamily: "Times New Roman",
                 display: "flex",
               }}
             >

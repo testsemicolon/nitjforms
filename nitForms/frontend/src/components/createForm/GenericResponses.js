@@ -76,6 +76,7 @@ export class GenericResponses extends Component {
                                 color: "white",
                                 boxShadow: ".3vw .3vw .3vw grey",
                                 borderWidth: 0,
+                                fontFamily: "Times New Roman",
                               }}
                             >
                               View

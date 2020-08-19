@@ -70,6 +70,7 @@ class PreviousForms extends Component {
                           backgroundColor: "red",
                           boxShadow: ".3vw .3vw .3vw lightgray",
                           border: 0,
+                          fontFamily: "Times New Roman",
                         }}
                         onClick={() => {
                           card.activationStatus = !card.activationStatus;
@@ -89,6 +90,7 @@ class PreviousForms extends Component {
                           backgroundColor: "green",
                           boxShadow: ".3vw .3vw .3vw lightgray ",
                           border: 0,
+                          fontFamily: "Times New Roman",
                         }}
                         onClick={() => {
                           card.activationStatus = !card.activationStatus;
@@ -120,6 +122,7 @@ class PreviousForms extends Component {
                         backgroundColor: "#66a3ff",
                         boxShadow: ".3vw .3vw .3vw lightgray",
                         borderWidth: 0,
+                        fontFamily: "Times New Roman",
                       }}
                     >
                       View
@@ -133,6 +136,7 @@ class PreviousForms extends Component {
                         color: "#66a3ff",
                         border: " 0.06vw solid #66a3ff",
                         boxShadow: ".3vw .3vw .3vw lightgray",
+                        fontFamily: "Times New Roman",
                       }}
                     >
                       Responses

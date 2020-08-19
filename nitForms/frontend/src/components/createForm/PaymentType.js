@@ -22,8 +22,8 @@ export class PaymentType extends Component {
             paddingTop: "1vw",
             paddingBottom: "1vw",
             marginBottom: "4vw",
-            backgroundColor: "#EEEEEE",
-            boxShadow: ".3vw .3vw .5vw silver",
+            backgroundColor: "white",
+            // boxShadow: ".3vw .3vw .5vw silver",
             borderRadius: ".3vw",
           }}
         >
@@ -43,6 +43,7 @@ export class PaymentType extends Component {
                 padding: "5px",
                 borderRadius: ".3rem",
                 borderWidth: "0rem",
+                fontFamily: "Times New Roman",
                 display: "flex",
                 //   marginLeft: "auto",
               }}

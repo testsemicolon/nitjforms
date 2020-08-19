@@ -129,16 +129,18 @@ export default function PersistentDrawerLeft() {
           <Link to="/">
             <img
               src="static/Logo.png"
-              style={{ width: "3.5vw", heigth: "3.5vw", marginRight: "1vw" }}
+              style={{ width: "4vw", heigth: "4vw", marginRight: "1vw" }}
             />
           </Link>
           {"  "}
-          <h2 style={{ fontSize: "1vw", color: "white", marginTop: ".8vw" }}>
+          <h2 style={{ fontSize: "1.2vw", color: "white", marginTop: ".8vw" }}>
             DR. B.R AMBEDKAR
             <br />
             {/* </h2>
           <h2 style={{ fontSize: "1vw", color: "white", marginTop: ".1vw" }}> */}
-            NATIONAL INSTITUTE OF TECHNOLOGY
+            <font style={{ fontSize: "1.5vw" }}>
+              NATIONAL INSTITUTE OF TECHNOLOGY,JALANDHAR
+            </font>
           </h2>
 
           <Buttons />

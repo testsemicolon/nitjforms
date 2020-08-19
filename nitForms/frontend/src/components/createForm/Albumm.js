@@ -9,7 +9,7 @@ import { Link as Link1 } from "react-router-dom";
 import { RiAccountCircleLine } from "react-icons/fa";
 import SearchBar from "material-ui-search-bar";
 import Features from "./features";
-import DashBox from "./DashBox";
+
 import { connect } from "react-redux";
 import { getName, updateName } from "../../actions/FormName";
 import { getDefaultKeyBinding } from "draft-js";
@@ -25,7 +25,6 @@ class Albumm extends Component {
   render() {
     return (
       <Fragment>
-        {/* <Header /> */}
         {/* <SearchBar
           onChange={() => console.log("onChange")}
           onRequestSearch={() => console.log("onRequestSearch")}
@@ -37,7 +36,7 @@ class Albumm extends Component {
         <div
           style={{
             // backgroundColor: "#ffb266",
-            backgroundImage: "linear-gradient(to right,#66a3ff,white)",
+            backgroundColor: "#66a3ff",
             marginTop: "1vw",
 
             minHeight: "7vw",
@@ -52,13 +51,24 @@ class Albumm extends Component {
               width: "5vw",
               float: "left",
               position: "relative",
-              marginRight: "4vw",
+              marginRight: "1vw",
               marginLeft: "2vw",
             }}
           >
-            <span style={{ fontSize: "5vw" }} class="material-icons">
-              account_circle
-            </span>
+            <table style={{ width: "25vw" }}>
+              <tr>
+                <td>
+                  <span style={{ fontSize: "5vw" }} class="material-icons">
+                    account_circle
+                  </span>
+                </td>
+                <td style={{ width: "25vw" }}>
+                  NAME:{this.props.username}
+                  <br />
+                  USERTYPE:SUPER ADMIN <br />
+                </td>
+              </tr>
+            </table>
           </div>
           {/* <div
             style={{ float: "right", position: "relative", marginLeft: "9vw" }}
@@ -67,10 +77,9 @@ class Albumm extends Component {
             {" "}
             <Clock format={"dddd, MMMM Do, YYYY, h:mm:ss A"} ticking={true} />
           </h4>
-          NAME:{this.props.username}
           <br />
-          USERTYPE:SUPER ADMIN <br />
-          <form style={{ float: "right" }}>
+          <br />
+          <form style={{ float: "right", marginLeft: "30vw" }}>
             <input
               type="text"
               className="searchbar"
@@ -98,6 +107,7 @@ class Albumm extends Component {
             align="center"
             color="textPrimary"
             gutterBottom
+            style={{ fontFamily: "Times New Roman" }}
           >
             FORMS
           </Typography>
@@ -107,6 +117,7 @@ class Albumm extends Component {
             align="center"
             color="textSecondary"
             paragraph
+            style={{ fontFamily: "Times New Roman" }}
           >
             LET'S CREATE A NEW FORM
           </Typography>
@@ -119,6 +130,7 @@ class Albumm extends Component {
                       backgroundColor: "#66a3ff",
                       color: "white",
                       boxShadow: ".3vw .3vw .3vw lightgray",
+                      fontFamily: "Times New Roman",
                     }}
                   >
                     CREATE A NEW FORM
@@ -132,6 +144,7 @@ class Albumm extends Component {
                     color: "#66a3ff",
                     border: ".1vw solid #66a3ff",
                     boxShadow: ".3vw .3vw .3vw lightgray",
+                    fontFamily: "Times New Roman",
                   }}
                 >
                   VIEW PREVIOUS FORMS
@@ -169,6 +182,7 @@ class Albumm extends Component {
                 ".2vw .1vw .4vw rgba(179, 204, 37, .5), 0 0 .1vw rgba(0, 0, 0, 0.1) inset",
               MozBoxShadow:
                 "0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) ",
+              fontFamily: "Times New Roman",
             }}
           >
             USERS
@@ -204,6 +218,7 @@ class Albumm extends Component {
               MozBoxShadow:
                 "0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) ",
               //        box-shadow:0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset,
+              fontFamily: "Times New Roman",
             }}
           >
             CUSTOMERS
@@ -235,6 +250,7 @@ class Albumm extends Component {
               MozBoxShadow:
                 "0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) ",
               //        box-shadow:0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset,
+              fontFamily: "Times New Roman",
             }}
           >
             NOTINGS
@@ -266,6 +282,7 @@ class Albumm extends Component {
               MozBoxShadow:
                 "0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) ",
               //        box-shadow:0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset,
+              fontFamily: "Times New Roman",
             }}
           >
             FORMS
@@ -297,6 +314,7 @@ class Albumm extends Component {
               MozBoxShadow:
                 "0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) ",
               //        box-shadow:0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset,
+              fontFamily: "Times New Roman",
             }}
           >
             DUES
@@ -375,6 +393,7 @@ class Albumm extends Component {
                             backgroundColor: "green",
                             padding: ".1vw",
                             color: "white",
+                            fontFamily: "Times New Roman",
                           }}
                         >
                           Online
@@ -391,6 +410,7 @@ class Albumm extends Component {
                             backgroundColor: "green",
                             padding: ".1vw",
                             color: "white",
+                            fontFamily: "Times New Roman",
                           }}
                         >
                           Online
@@ -407,6 +427,7 @@ class Albumm extends Component {
                             backgroundColor: "red",
                             padding: ".1vw",
                             color: "white",
+                            fontFamily: "Times New Roman",
                           }}
                         >
                           Active Today
@@ -447,9 +468,10 @@ class Albumm extends Component {
                 //        box-shadow:0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset,
               }}
             >
-              USERS
-              <br />
-              <h3>graph</h3>
+              <img
+                src="static/graph.JPG"
+                style={{ height: "17vw", width: "26vw" }}
+              />
             </div>
             <div
               style={{
@@ -596,6 +618,7 @@ class Albumm extends Component {
                             backgroundColor: "green",
                             padding: ".1vw",
                             color: "white",
+                            fontFamily: "Times New Roman",
                           }}
                         >
                           Online
@@ -612,6 +635,7 @@ class Albumm extends Component {
                             backgroundColor: "green",
                             padding: ".1vw",
                             color: "white",
+                            fontFamily: "Times New Roman",
                           }}
                         >
                           Online
@@ -628,6 +652,7 @@ class Albumm extends Component {
                             backgroundColor: "red",
                             padding: ".1vw",
                             color: "white",
+                            fontFamily: "Times New Roman",
                           }}
                         >
                           Active Today
@@ -668,9 +693,10 @@ class Albumm extends Component {
                 //        box-shadow:0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset,
               }}
             >
-              USERS
-              <br />
-              <h3>graph</h3>
+              <img
+                src="static/graph.JPG"
+                style={{ height: "17vw", width: "26vw" }}
+              />
             </div>
             <div
               style={{
@@ -761,7 +787,12 @@ class Albumm extends Component {
             color: "white",
           }}
         >
-          <Typography variant="h6" align="center" gutterBottom>
+          <Typography
+            variant="h6"
+            align="center"
+            style={{ fontFamily: "Times New Roman" }}
+            gutterBottom
+          >
             {" "}
             Dr. B.R Ambedkar National Institute of Technology
           </Typography>
@@ -769,6 +800,7 @@ class Albumm extends Component {
             variant="subtitle1"
             align="center"
             color="cream"
+            style={{ fontFamily: "Times New Roman" }}
             component="p"
           >
             Jalandhar
