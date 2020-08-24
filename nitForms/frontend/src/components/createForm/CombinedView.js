@@ -9,8 +9,10 @@ export class CombinedView extends Component {
   obj1 = {};
   notifyObj = {};
   arr = [];
+  name = "";
+
+  time = "";
   componentDidMount() {
-    console.log("helloooooo");
     console.log(this.props);
     var id = parseInt(this.props.id);
     this.props.AcceptedResponse.map((a) => {
@@ -84,6 +86,39 @@ export class CombinedView extends Component {
                   </Fragment>
                 );
               })}
+              <VerticalTimelineElement
+                // className="vertical-timeline-element--work"
+                contentStyle={{
+                  border: ".2vw solid #009999",
+                  borderRadius: "1vw",
+                  background: "white",
+
+                  padding: ".5vw",
+                  boxShadow: ".3vw .3vw .3vw silver",
+                  marginBottom: 0,
+                  paddingBottom: 0,
+                  wordWrap: "break-word",
+                }}
+                iconStyle={{
+                  background: "#009999",
+                  width: "2vw",
+                  height: "2vw",
+                  margin: ".5vw",
+                  color: "#fff",
+                  marginTop: "1vw",
+                }}
+              >
+                <h5 style={{ color: "black" }}>
+                  FILLED BY : {this.props.user}
+                </h5>
+                <h6
+                  style={{ color: "darkgrey" }}
+                  className="vertical-timeline-element-subtitle"
+                ></h6>
+                <p style={{ color: "#009999" }}>
+                  TIME AND DATE : {this.props.time2}
+                </p>
+              </VerticalTimelineElement>
             </VerticalTimeline>
           </div>
         </div>

@@ -32,6 +32,17 @@ export class ViewResponseNoteGenerate extends Component {
   constructor(props) {
     super(props);
     console.log(this.props);
+    {
+      Object.entries(this.props.AcceptedResponse).map(([key, value]) => {
+        if (key === this.props.match.params.value) {
+          console.log(value);
+          this.obj = value;
+          this.name = value.userName;
+          this.time = value.responseTime;
+          this.setState({ obj1: value });
+        }
+      });
+    }
   }
   componentDidMount() {
     {
@@ -548,9 +559,13 @@ export class ViewResponseNoteGenerate extends Component {
               Backtrack Form
             </Button>
           </div>
+          {console.log(this.time)}
           <CombinedView
             id={this.props.match.params.id}
             AcceptedResponse={this.props.AcceptedResponse}
+            time2={this.time}
+            user={this.name}
+           
           />
         </div>
       </Fragment>
