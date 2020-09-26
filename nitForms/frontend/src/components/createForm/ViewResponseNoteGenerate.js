@@ -13,6 +13,7 @@ import { CombinedView } from "./CombinedView";
 import { withRouter } from "react-router-dom";
 import store from "../../store";
 import { createMessage } from "../../actions/Messages";
+import { postNotification } from "../../actions/Notification";
 
 export class ViewResponseNoteGenerate extends Component {
   state = {
@@ -82,6 +83,10 @@ export class ViewResponseNoteGenerate extends Component {
         forwardMessage: `${this.props.created_by1} FORWARD NOTING TO ${this.state.forwardTo}`,
       })
     );
+    const questNotify = {};
+    questNotify["sender"] = `${this.props.username}`;
+    questNotify["notify"] = notifyCmnt;
+    this.props.postNotification(questNotify);
 
     this.props.history.push(this.props.match.url);
     console.log(this.props.match.url);
@@ -503,5 +508,7 @@ const mapStateToProps = (state) => ({
 });
 
 export default withRouter(
-  connect(mapStateToProps, { putAccepted })(ViewResponseNoteGenerate)
+  connect(mapStateToProps, { putAccepted, postNotification })(
+    ViewResponseNoteGenerate
+  )
 );

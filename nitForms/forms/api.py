@@ -62,6 +62,17 @@ class notingTemplateViewSet(viewsets.ModelViewSet):
     serializer_class = notingTemplateSerializer
 
 
+class userNotificationsViewSet(viewsets.ModelViewSet):
+    queryset = userNotifications.objects.all()
+    permission_class = [permissions.AllowAny]
+    serializer_class = userNotificationsSerializer
+
+
+class formIndexViewSet(viewsets.ModelViewSet):
+    queryset = formIndex.objects.all()
+    permission_class = [permissions.AllowAny]
+    serializer_class = formIndexSerializer
+
 class test1ViewSet(viewsets.ModelViewSet):
     queryset = test1.objects.all()
     parser_class = (MultiPartParser, FormParser)
@@ -86,16 +97,3 @@ class test2AcceptedViewSet(viewsets.ModelViewSet):
     queryset = test2Accepted.objects.all()
     permission_class = [permissions.AllowAny]
     serializer_class = test2AcceptedSerializer
-
-
-class test3ViewSet(viewsets.ModelViewSet):
-    queryset = test3.objects.all()
-    parser_class = (MultiPartParser, FormParser)
-    permission_class = [permissions.AllowAny]
-    serializer_class = test3Serializer
-
-
-class test3AcceptedViewSet(viewsets.ModelViewSet):
-    queryset = test3Accepted.objects.all()
-    permission_class = [permissions.AllowAny]
-    serializer_class = test3AcceptedSerializer

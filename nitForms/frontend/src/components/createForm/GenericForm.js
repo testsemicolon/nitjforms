@@ -16,7 +16,7 @@ import {
   deleteSharedUsers,
   getSharedUser,
 } from "../../actions/common";
-
+import { postFormStatus, putFormStatus } from "../../actions/FormStatus";
 import Popup from "reactjs-popup";
 
 export class GenericForm extends Component {
@@ -90,6 +90,7 @@ export class GenericForm extends Component {
 
   onSubmit = (e) => {
     e.preventDefault();
+    var flag = false;
     const quest = this.state;
 
     function renameKey(obj, old_key, new_key) {
@@ -109,6 +110,26 @@ export class GenericForm extends Component {
     quest["userName"] = this.props.username;
     var title = this.props.title;
     this.props.formSubmit(quest, title);
+    this.props.FormStatus.map((a) => {
+      if (a.userName === this.props.username) {
+        var arr = a["formName"];
+        arr.push(this.props.title);
+        a["formName"] = arr;
+        a["userName"] = this.props.username;
+        this.props.putFormStatus(a, a.id);
+        flag = true;
+        console.log("put");
+      }
+    });
+    if (flag === false) {
+      console.log("post");
+      var arr = [];
+      arr.push(this.props.title);
+      const a = {};
+      a["formName"] = arr;
+      a["userName"] = this.props.username;
+      this.props.postFormStatus(a);
+    }
     this.props.history.push(`/${this.props.title}`);
     console.log("hello");
   };
@@ -619,6 +640,7 @@ const mapStateToProps = (state) => ({
   SharedUsers: state.SharedUsers.SharedUsers,
   username: state.Auth.user.username,
   FormName: state.FormName.FormName,
+  FormStatus: state.FormStatus.FormStatus,
 });
 
 export default withRouter(
@@ -628,5 +650,7 @@ export default withRouter(
     putSharedUser,
     postSharedUser,
     getSharedUser,
+    postFormStatus,
+    putFormStatus,
   })(GenericForm)
 );

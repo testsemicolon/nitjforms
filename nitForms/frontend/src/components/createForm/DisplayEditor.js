@@ -6,6 +6,7 @@ import { putAccepted } from "../../actions/AcceptedResponse";
 import store from "../../store";
 import { createMessage } from "../../actions/Messages";
 import { withRouter } from "react-router-dom";
+import { postNotification } from "../../actions/Notification";
 
 class DisplayEditor extends React.Component {
   flag = false;
@@ -30,6 +31,7 @@ class DisplayEditor extends React.Component {
   onClick = () => {
     var key1 = this.props.key1;
     var name = "";
+
     this.props.NotingTemplate.map((a) => {
       if (key1 === a.key) {
         name = a.name;
@@ -71,11 +73,17 @@ class DisplayEditor extends React.Component {
         notify.push(notifyCmnt);
         a["notification"] = notify;
         this.props.putAccepted(a.id, this.props.title, a);
+        const questNotify = {};
+        var reciever = a.userName;
+        questNotify["sender"] = `${this.props.username}`;
+        questNotify["reciever"] = `${reciever}`;
+        questNotify["notify"] = notifyCmnt;
+        this.props.postNotification(questNotify);
         store.dispatch(
           createMessage({ commentAdded: `Comment has been added to ${name}` })
         );
         this.props.history.push(
-          `${this.props.title}Accepted/${this.props.id}/`
+          `/viewresponsenotegenerate/${this.props.match.params.value}/${this.props.match.params.title}/${this.props.match.params.id}/`
         );
       }
     });
@@ -146,7 +154,8 @@ const mapStateToProps = (state) => ({
   AcceptedResponse: state.AcceptedResponse.AcceptedResponse,
   username: state.Auth.user.username,
   NotingTemplate: state.NotingTemplate.NotingTemplate,
+  FormName: state.FormName.FormName,
 });
 export default withRouter(
-  connect(mapStateToProps, { putAccepted })(DisplayEditor)
+  connect(mapStateToProps, { putAccepted, postNotification })(DisplayEditor)
 );

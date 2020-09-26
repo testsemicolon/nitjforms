@@ -32,9 +32,21 @@ class sharedUsersSerializer(serializers.ModelSerializer):
         fields = '__all__'
 
 
+class userNotificationsSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = userNotifications
+        fields = '__all__'
+
+
 class notingTemplateSerializer(serializers.ModelSerializer):
     class Meta:
         model = notingTemplate
+        fields = '__all__'
+
+
+class formIndexSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = formIndex
         fields = '__all__'
 
 
@@ -59,16 +71,4 @@ class test2Serializer(serializers.ModelSerializer):
 class test2AcceptedSerializer(serializers.ModelSerializer):
     class Meta:
         model = test2Accepted
-        fields = '__all__'
-
-
-class test3Serializer(serializers.ModelSerializer):
-    class Meta:
-        model = test3
-        fields = '__all__'
-
-
-class test3AcceptedSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = test3Accepted
         fields = '__all__'

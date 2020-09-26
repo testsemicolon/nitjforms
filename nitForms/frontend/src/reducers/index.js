@@ -7,6 +7,9 @@ import Messages from "./Messages";
 import AcceptedResponse from "./AcceptedResponse";
 import SharedUsers from "./Common";
 import NotingTemplate from "./NotingTemplate";
+import Notification from "./Notification";
+import FormStatus from "./FormStatus";
+import Status from "./Status";
 
 export default combineReducers({
   Forms: Forms,
@@ -17,4 +20,7 @@ export default combineReducers({
   AcceptedResponse: AcceptedResponse,
   SharedUsers: SharedUsers,
   NotingTemplate: NotingTemplate,
+  Notification: Notification,
+  FormStatus: FormStatus,
+  Status: Status,
 });

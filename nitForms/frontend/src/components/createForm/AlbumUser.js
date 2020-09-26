@@ -7,15 +7,33 @@ import Features from "./features";
 import Clock from "react-live-clock";
 import CountUp from "react-countup";
 import Typography from "@material-ui/core/Typography";
+import { getNotification } from "../../actions/Notification";
+import { connect } from "react-redux";
+import { getFormStatus } from "../../actions/FormStatus";
+import { getStatus } from "../../actions/Status";
 
-export default class AlbumUser extends Component {
-  constructor() {
-    super();
-
+export class AlbumUser extends Component {
+  arr = [];
+  constructor(props) {
+    super(props);
+    this.props.getNotification(this.props.username);
+    this.props.getFormStatus();
     this.state = {
       show: false,
       show2: false,
     };
+  }
+  componentDidMount() {
+    console.log(this.props.FormStatus);
+    {
+      Object.entries(this.props.FormStatus).map(([key, value]) => {
+        console.log(key, value);
+        if (this.props.username === key) {
+          console.log("helloo");
+          this.props.getStatus(value, key);
+        }
+      });
+    }
   }
 
   onclick = (e) => {
@@ -115,23 +133,19 @@ export default class AlbumUser extends Component {
               {this.state.show ? (
                 <div style={{ marginLeft: "auto", marginRight: "auto" }}>
                   <MDBContainer className="grey darken-3 p-3">
-                    <MDBNotification
-                      iconClassName="text-primary"
-                      show
-                      fade
-                      title="Bootstrap"
-                      message="Hello, world! This is a toast message."
-                      text="11 mins ago"
-                      zindex="9999"
-                    />
-                    <MDBNotification
-                      iconClassName="text-primary"
-                      show
-                      fade
-                      title="Bootstrap"
-                      message="Hello, world! This is a toast message."
-                      text="11 mins ago"
-                    />
+                    {this.props.Notification.map((nfy) => {
+                      return (
+                        <MDBNotification
+                          iconClassName="text-primary"
+                          show
+                          fade
+                          title="Bootstrap"
+                          message={nfy.notify}
+                          text="11 mins ago"
+                          zindex="9999"
+                        />
+                      );
+                    })}
                   </MDBContainer>
                 </div>
               ) : null}
@@ -191,27 +205,6 @@ export default class AlbumUser extends Component {
                         </Link>
                       }
                     />
-                    <MDBNotification
-                      iconClassName="text-primary"
-                      show
-                      fade
-                      title="FormName"
-                      message="status:pending"
-                      text={
-                        <Button
-                          style={{
-                            padding: "0.1vw",
-                            fontSize: ".8vw",
-                            paddingLeft: ".3vw",
-                            paddingRight: ".3vw",
-                            backgroundColor: "#009999",
-                            border: 0,
-                          }}
-                        >
-                          View timeline
-                        </Button>
-                      }
-                    />
                   </MDBContainer>
                 </div>
               ) : null}
@@ -252,3 +245,16 @@ export default class AlbumUser extends Component {
     );
   }
 }
+
+const mapStateToProps = (state) => ({
+  Notification: state.Notification.Notification,
+  username: state.Auth.user.username,
+  FormStatus: state.FormStatus.FormStatus,
+  Status: state.Status.Status,
+});
+
+export default connect(mapStateToProps, {
+  getNotification,
+  getFormStatus,
+  getStatus,
+})(AlbumUser);
