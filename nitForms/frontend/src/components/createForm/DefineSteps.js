@@ -76,7 +76,6 @@ export default class DefineSteps extends Component {
           </div>
         </div>
         <div>
-          {/* <Button onClick={this.onClick}>Click to generate steps</Button> */}
           Selected values:
           {console.log(this.state.selectValues)}
           {JSON.stringify(this.state.selectValues)}

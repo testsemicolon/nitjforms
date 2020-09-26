@@ -44,10 +44,14 @@ class notingTemplateSerializer(serializers.ModelSerializer):
         fields = '__all__'
 
 
+<<<<<<< HEAD
 class formIndexSerializer(serializers.ModelSerializer):
     class Meta:
         model = formIndex
         fields = '__all__'
+=======
+
+>>>>>>> 35757ff2d55dd6c0fa1adf8c1fa6b3ea693a0a86
 
 
 class test1Serializer(serializers.ModelSerializer):
@@ -62,6 +66,7 @@ class test1AcceptedSerializer(serializers.ModelSerializer):
         fields = '__all__'
 
 
+<<<<<<< HEAD
 class test2Serializer(serializers.ModelSerializer):
     class Meta:
         model = test2
@@ -71,4 +76,15 @@ class test2Serializer(serializers.ModelSerializer):
 class test2AcceptedSerializer(serializers.ModelSerializer):
     class Meta:
         model = test2Accepted
+=======
+class payment_form_1Serializer(serializers.ModelSerializer):
+    class Meta:
+        model = payment_form_1
+        fields = '__all__'
+
+
+class payment_form_1AcceptedSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = payment_form_1Accepted
+>>>>>>> 35757ff2d55dd6c0fa1adf8c1fa6b3ea693a0a86
         fields = '__all__'

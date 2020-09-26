@@ -106,6 +106,7 @@ const btnStyle = {
   display: "flex",
   justifyContent: "center",
   marginLeft: "auto",
+  fontFamily: "Times New Roman",
 };
 
 const mapStateToProps = (state) => ({

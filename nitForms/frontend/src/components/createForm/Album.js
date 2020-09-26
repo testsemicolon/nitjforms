@@ -72,7 +72,13 @@ export default class Album extends Component {
       <Fragment>
         <Header />
         <div>
-          <div style={{ width: "20vw", backgroundColor: "pink" }}>
+          <div
+            style={{
+              width: "20vw",
+              backgroundColor: "pink",
+              fontFamily: "Times",
+            }}
+          >
             abcdckfhvgf
           </div>
           <div style={{ width: "20vw", backgroundColor: "pink" }}>
@@ -89,6 +95,7 @@ export default class Album extends Component {
             color="textPrimary"
             gutterBottom
           >
+            {" "}
             FORMS
           </Typography>
 
@@ -104,7 +111,7 @@ export default class Album extends Component {
             <Grid container spacing={2} justify="center">
               <Grid item>
                 <Link1 to="/definingsteps">
-                  <Button variant="contained" color="primary">
+                  <Button sty variant="contained" color="primary">
                     CREATE A NEW FORM
                   </Button>
                 </Link1>

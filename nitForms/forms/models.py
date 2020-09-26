@@ -59,11 +59,23 @@ class userNotifications(models.Model):
     notify = models.CharField(max_length=1000)
     flag = models.BooleanField(default=True)
 
+<<<<<<< HEAD
+=======
+class test1(models.Model):
+    responseTime = models.DateTimeField(auto_now_add=True)
+    formStatus = models.BooleanField(default=False)
+    commentRejected = models.CharField(max_length=1000, blank=True)
+    userName = models.CharField(max_length=1000, blank=True)
+    father_name = models.CharField(max_length=1000)
+    your_name = models.CharField(max_length=1000)
+    mother_name = models.CharField(max_length=1000)
+>>>>>>> 35757ff2d55dd6c0fa1adf8c1fa6b3ea693a0a86
 
 class formIndex(models.Model):
     userName = models.CharField(max_length=1000)
     formName = ArrayField(models.CharField(max_length=1000),blank=True, default=list)
 
+<<<<<<< HEAD
 class test1(models.Model):
     responseTime = models.DateTimeField(auto_now_add=True)
     formStatus = models.BooleanField(default=False)
@@ -85,20 +97,50 @@ class test1Accepted(models.Model):
 
 
 class test2(models.Model):
+=======
+class test1Accepted(models.Model):
+    responseTime = models.DateTimeField(auto_now_add=True)
+    comment = JSONField(null=True)
+    forwardTo = ArrayField(JSONField(null=True), blank=True, default=list)
+    commentAccepted = models.CharField(max_length=1000, blank=True)
+    notification = ArrayField(models.CharField(
+        max_length=1000), blank=True, default=list)
+    userName = models.CharField(max_length=1000, blank=True)
+    father_name = models.CharField(max_length=1000)
+    your_name = models.CharField(max_length=1000)
+    mother_name = models.CharField(max_length=1000)
+
+
+class payment_form_1(models.Model):
+>>>>>>> 35757ff2d55dd6c0fa1adf8c1fa6b3ea693a0a86
     responseTime = models.DateTimeField(auto_now_add=True)
     formStatus = models.BooleanField(default=False)
     commentRejected = models.CharField(max_length=1000, blank=True)
     userName = models.CharField(max_length=1000, blank=True)
+<<<<<<< HEAD
     NAME = models.CharField(max_length=1000)
     AGE = models.CharField(max_length=1000)
 
 
 class test2Accepted(models.Model):
+=======
+    amount = models.CharField(max_length=1000)
+    enter_total = models.CharField(max_length=1000)
+
+
+class payment_form_1Accepted(models.Model):
+>>>>>>> 35757ff2d55dd6c0fa1adf8c1fa6b3ea693a0a86
     responseTime = models.DateTimeField(auto_now_add=True)
     comment = JSONField(null=True)
-    forwardTo = ArrayField(JSONField(null=True),blank=True, default=list)
+    forwardTo = ArrayField(JSONField(null=True), blank=True, default=list)
     commentAccepted = models.CharField(max_length=1000, blank=True)
-    notification = ArrayField(models.CharField(max_length=1000),blank=True, default=list)
+    notification = ArrayField(models.CharField(
+        max_length=1000), blank=True, default=list)
     userName = models.CharField(max_length=1000, blank=True)
+<<<<<<< HEAD
     NAME = models.CharField(max_length=1000)
     AGE = models.CharField(max_length=1000)
+=======
+    amount = models.CharField(max_length=1000)
+    enter_total = models.CharField(max_length=1000)
+>>>>>>> 35757ff2d55dd6c0fa1adf8c1fa6b3ea693a0a86

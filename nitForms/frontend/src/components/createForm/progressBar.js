@@ -160,7 +160,12 @@ export default function HorizontalNonLinearAlternativeLabelStepper() {
           const buttonProps = {};
           if (isStepOptional(index)) {
             buttonProps.optional = (
-              <Typography variant="caption">Optional</Typography>
+              <Typography
+                style={{ fontFamily: "Times New Roman" }}
+                variant="caption"
+              >
+                Optional
+              </Typography>
             );
           }
           if (isStepSkipped(index)) {
@@ -182,14 +187,25 @@ export default function HorizontalNonLinearAlternativeLabelStepper() {
       <div>
         {allStepsCompleted() ? (
           <div>
-            <Typography className={classes.instructions}>
+            <Typography
+              style={{ fontFamily: "Times New Roman" }}
+              className={classes.instructions}
+            >
               All steps completed - you&apos;re finished
             </Typography>
-            <Button onClick={handleReset}>Reset</Button>
+            <Button
+              style={{ fontFamily: "Times New Roman" }}
+              onClick={handleReset}
+            >
+              Reset
+            </Button>
           </div>
         ) : (
           <div>
-            <Typography className={classes.instructions}>
+            <Typography
+              style={{ fontFamily: "Times New Roman" }}
+              className={classes.instructions}
+            >
               {getStepContent(activeStep)}
             </Typography>
             <div>
@@ -198,6 +214,7 @@ export default function HorizontalNonLinearAlternativeLabelStepper() {
                   background: "#66a3ff",
                   boxShadow: ".3vw .3vw .3vw lightgray",
                   color: "white",
+                  fontFamily: "Times New Roman",
                 }}
                 disabled={activeStep === 0}
                 onClick={handleBack}
@@ -210,6 +227,7 @@ export default function HorizontalNonLinearAlternativeLabelStepper() {
                   background: "#66a3ff",
                   boxShadow: ".3vw .3vw .3vw lightgray",
                   color: "white",
+                  fontFamily: "Times New Roman",
                 }}
                 onClick={handleNext}
                 className={classes.button}
@@ -222,6 +240,7 @@ export default function HorizontalNonLinearAlternativeLabelStepper() {
                     background: "#66a3ff",
                     boxShadow: ".3vw .3vw .3vw lightgray",
                     color: "white",
+                    fontFamily: "Times New Roman",
                   }}
                   onClick={handleSkip}
                   className={classes.button}
@@ -232,7 +251,11 @@ export default function HorizontalNonLinearAlternativeLabelStepper() {
 
               {activeStep !== steps.length &&
                 (completed.has(activeStep) ? (
-                  <Typography variant="caption" className={classes.completed}>
+                  <Typography
+                    style={{ fontFamily: "Times New Roman" }}
+                    variant="caption"
+                    className={classes.completed}
+                  >
                     Step {activeStep + 1} already completed
                   </Typography>
                 ) : (
@@ -241,6 +264,7 @@ export default function HorizontalNonLinearAlternativeLabelStepper() {
                       background: "#66a3ff",
                       boxShadow: ".3vw .3vw .3vw lightgray",
                       color: "white",
+                      fontFamily: "Times New Roman",
                     }}
                     onClick={handleComplete}
                   >

@@ -61,11 +61,16 @@ export class NotingSlate extends Component {
                     >
                       <CardMedia
                         style={{ paddingTop: "56.25%" }}
-                        image="https://source.unsplash.com/random"
+                        image="static/form.jpg"
                         title="Image title"
                       />
                       <CardContent style={{ flexGrow: 1 }}>
-                        <Typography gutterBottom variant="h5" component="h2">
+                        <Typography
+                          style={{ fontFamily: "Times New Roman" }}
+                          gutterBottom
+                          variant="h5"
+                          component="h2"
+                        >
                           {a.name}
                         </Typography>
                       </CardContent>
@@ -86,6 +91,7 @@ export class NotingSlate extends Component {
                                 boxShadow: ".3vw .3vw .3vw  grey",
                                 padding: ".17vw",
                                 color: "white",
+                                fontFamily: "Times New Roman",
                               }}
                             >
                               View
@@ -107,6 +113,7 @@ export class NotingSlate extends Component {
                             border: " 0.06vw solid #66a3ff",
                             boxShadow: ".3vw .3vw .3vw  grey",
                             padding: ".17vw",
+                            fontFamily: "Times New Roman",
                           }}
                         >
                           Use

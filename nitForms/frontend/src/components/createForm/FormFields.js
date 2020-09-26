@@ -56,6 +56,7 @@ export class FormItems extends Component {
                   <button
                     onClick={this.props.deleteField.bind(this, Form.id)}
                     className="btn btn-danger btn-sm"
+                    style={{ fontFamily: "Times New Roman" }}
                   >
                     DELETE
                   </button>
@@ -84,6 +85,7 @@ const btnStyle = {
   borderWidth: "0rem",
   display: "flex",
   marginLeft: "auto",
+  fontFamily: "Times New Roman",
 };
 
 const mapStateToProps = (state) => ({

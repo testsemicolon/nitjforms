@@ -62,6 +62,7 @@ class notingTemplateViewSet(viewsets.ModelViewSet):
     serializer_class = notingTemplateSerializer
 
 
+<<<<<<< HEAD
 class userNotificationsViewSet(viewsets.ModelViewSet):
     queryset = userNotifications.objects.all()
     permission_class = [permissions.AllowAny]
@@ -72,6 +73,10 @@ class formIndexViewSet(viewsets.ModelViewSet):
     queryset = formIndex.objects.all()
     permission_class = [permissions.AllowAny]
     serializer_class = formIndexSerializer
+=======
+
+
+>>>>>>> 35757ff2d55dd6c0fa1adf8c1fa6b3ea693a0a86
 
 class test1ViewSet(viewsets.ModelViewSet):
     queryset = test1.objects.all()
@@ -86,6 +91,7 @@ class test1AcceptedViewSet(viewsets.ModelViewSet):
     serializer_class = test1AcceptedSerializer
 
 
+<<<<<<< HEAD
 class test2ViewSet(viewsets.ModelViewSet):
     queryset = test2.objects.all()
     parser_class = (MultiPartParser, FormParser)
@@ -97,3 +103,16 @@ class test2AcceptedViewSet(viewsets.ModelViewSet):
     queryset = test2Accepted.objects.all()
     permission_class = [permissions.AllowAny]
     serializer_class = test2AcceptedSerializer
+=======
+class payment_form_1ViewSet(viewsets.ModelViewSet):
+    queryset = payment_form_1.objects.all()
+    parser_class = (MultiPartParser, FormParser)
+    permission_class = [permissions.AllowAny]
+    serializer_class = payment_form_1Serializer
+
+
+class payment_form_1AcceptedViewSet(viewsets.ModelViewSet):
+    queryset = payment_form_1Accepted.objects.all()
+    permission_class = [permissions.AllowAny]
+    serializer_class = payment_form_1AcceptedSerializer
+>>>>>>> 35757ff2d55dd6c0fa1adf8c1fa6b3ea693a0a86

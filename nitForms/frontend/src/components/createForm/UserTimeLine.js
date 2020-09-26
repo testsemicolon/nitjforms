@@ -29,6 +29,7 @@ export default class TimeLine extends Component {
               color: "#009999",
               border: 0,
               fontSize: "1.2VW",
+              fontFamily: "Times New Roman",
             }}
             onClick={this.onclick2}
           >
@@ -75,7 +76,7 @@ export default class TimeLine extends Component {
                 marginTop: "2vw",
               }}
             >
-              <h5 style={{ color: "black" }}>admin dash dash dash</h5>
+              <h5 style={{ color: "black" }}>admin </h5>
               <h6
                 style={{ color: "darkgrey" }}
                 className="vertical-timeline-element-subtitle"
