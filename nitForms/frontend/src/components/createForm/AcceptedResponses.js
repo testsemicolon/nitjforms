@@ -19,7 +19,7 @@ export class AcceptedResponses extends Component {
   created_by2 = "";
   constructor(props) {
     super(props);
-    console.log(this.props.match.params.title);
+
     this.props.getAccepted(this.props.match.params.title);
     this.props.getNotingTemplate();
 
@@ -28,7 +28,6 @@ export class AcceptedResponses extends Component {
         this.created_by2 = a.created_by;
       });
     }
-    console.log(this.created_by2, this.props.created_by1);
   }
 
   componentDidMount() {
@@ -45,7 +44,6 @@ export class AcceptedResponses extends Component {
 
   onSubmit = (e) => {
     e.preventDefault();
-    console.log(this.state.content);
   };
 
   render() {
@@ -76,7 +74,6 @@ export class AcceptedResponses extends Component {
               <tbody>
                 {Object.entries(this.props.AcceptedResponse).map(
                   ([key, value]) => {
-                    console.log(value);
                     return (
                       <Fragment key={key}>
                         <tr>

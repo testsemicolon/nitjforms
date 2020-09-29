@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { Component, Fragment } from "react";
 import { MDBContainer, MDBNotification } from "mdbreact";
 import { Button } from "react-bootstrap";
 import { Link } from "react-router-dom";
@@ -135,7 +135,6 @@ export class AlbumUser extends Component {
               {this.state.show ? (
                 <div style={{ marginLeft: "6vw", marginRight: "auto" }}>
                   <MDBContainer className="grey darken-3 p-3">
-<<<<<<< HEAD
                     {this.props.Notification.map((nfy) => {
                       return (
                         <MDBNotification
@@ -149,25 +148,6 @@ export class AlbumUser extends Component {
                         />
                       );
                     })}
-=======
-                    <MDBNotification
-                      iconClassName="text-primary"
-                      show
-                      fade
-                      title="Test 1"
-                      message="Your form has been accepted"
-                      text="1 min ago"
-                      zindex="9999"
-                    />
-                    <MDBNotification
-                      iconClassName="text-primary"
-                      show
-                      fade
-                      title="Test 2"
-                      message="Your form has been rejected"
-                      text="11 hrs ago"
-                    />
->>>>>>> 35757ff2d55dd6c0fa1adf8c1fa6b3ea693a0a86
                   </MDBContainer>
                 </div>
               ) : null}
@@ -230,31 +210,6 @@ export class AlbumUser extends Component {
                         </Link>
                       }
                     />
-<<<<<<< HEAD
-=======
-                    <MDBNotification
-                      iconClassName="text-primary"
-                      show
-                      fade
-                      title="Test 3"
-                      message="status:pending , Your form will be reviewed soon"
-                      text={
-                        <Button
-                          style={{
-                            padding: "0.1vw",
-                            fontSize: ".8vw",
-                            paddingLeft: ".3vw",
-                            paddingRight: ".3vw",
-                            backgroundColor: "#009999",
-                            border: 0,
-                            fontFamily: "Times New Roman",
-                          }}
-                        >
-                          View timeline
-                        </Button>
-                      }
-                    />
->>>>>>> 35757ff2d55dd6c0fa1adf8c1fa6b3ea693a0a86
                   </MDBContainer>
                 </div>
               ) : null}

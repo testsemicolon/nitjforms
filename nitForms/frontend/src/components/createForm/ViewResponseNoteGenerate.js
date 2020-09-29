@@ -13,7 +13,7 @@ import { CombinedView } from "./CombinedView";
 import { withRouter } from "react-router-dom";
 import store from "../../store";
 import { createMessage } from "../../actions/Messages";
-import { postNotification } from "../../actions/Notification";
+import { postNotification, getNotification } from "../../actions/Notification";
 
 export class ViewResponseNoteGenerate extends Component {
   state = {
@@ -30,8 +30,10 @@ export class ViewResponseNoteGenerate extends Component {
   description = "";
   time = "";
   obj = {};
+  data = "";
   constructor(props) {
     super(props);
+    this.props.getNotification(this.props.created_by1);
     console.log(this.props);
     {
       Object.entries(this.props.AcceptedResponse).map(([key, value]) => {
@@ -53,7 +55,7 @@ export class ViewResponseNoteGenerate extends Component {
           this.obj = value;
           this.name = value.userName;
           this.time = value.responseTime;
-          this.setState({ obj1: value });
+          this.data = this.setState({ obj1: value });
         }
       });
     }
@@ -93,6 +95,7 @@ export class ViewResponseNoteGenerate extends Component {
       this.props.match.params.title,
       quest
     );
+    console.log();
     store.dispatch(
       createMessage({
         forwardMessage: `${this.props.created_by1} FORWARD NOTING TO ${this.state.forwardTo}`,
@@ -570,7 +573,6 @@ export class ViewResponseNoteGenerate extends Component {
             AcceptedResponse={this.props.AcceptedResponse}
             time2={this.time}
             user={this.name}
-           
           />
         </div>
       </Fragment>
@@ -585,7 +587,7 @@ const mapStateToProps = (state) => ({
 });
 
 export default withRouter(
-  connect(mapStateToProps, { putAccepted, postNotification })(
+  connect(mapStateToProps, { putAccepted, postNotification, getNotification })(
     ViewResponseNoteGenerate
   )
 );

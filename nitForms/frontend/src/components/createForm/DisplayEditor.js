@@ -10,12 +10,10 @@ import { postNotification } from "../../actions/Notification";
 
 class DisplayEditor extends React.Component {
   flag = false;
-  eg = "hellooooo";
   arr = [];
   constructor(props) {
     super(props);
-    console.log(this.props);
-    console.log(this.props.key1);
+
     this.state = {
       editorState: EditorState.createEmpty(),
       comment: "",
@@ -37,36 +35,41 @@ class DisplayEditor extends React.Component {
         name = a.name;
       }
     });
-    var cmnt = [];
+    console.log(name);
+    var cmnt = "";
+
     var cmntAuthor = {};
-    cmntAuthor[this.props.username] = this.state.comment;
-    cmnt.push(cmntAuthor);
+    // cmntAuthor[this.props.username] = this.state.comment;
+    // cmnt.push(cmntAuthor);
     var id = parseInt(this.props.id);
     this.props.AcceptedResponse.map((a) => {
-      console.log(a.id, id);
       if (a.id === id) {
-        if (a.comment === null) {
-          const quest = { [name]: cmnt };
-          console.log(quest);
-          console.log("if");
-          a["comment"] = quest;
-        } else {
-          console.log("else");
-          Object.entries(a.comment).map(([key, value]) => {
-            if (key1 === key) {
-              console.log(key, value);
-              value.push(cmntAuthor);
-              // const quest = { [key1]: value };
-              a["comment"][name] = value;
-              // console.log(quest);
-              this.flag = true;
-            }
-          });
-          if (this.flag === false) {
-            a["comment"][name] = cmnt;
-          }
+        var arr = a["comment"];
+        if (arr == null) {
+          arr = [];
         }
-        console.log(a);
+        console.log(arr);
+        arr.push([name, this.state.comment, this.props.username]);
+        a["comment"] = arr;
+        // if (a.comment === null) {s
+        //   const quest = { [name]: cmnt };
+        //   a["comment"] = quest;
+        // } else {
+        //   Object.entries(a.comment).map(([key, value]) => {
+        //     console.log(name, key);
+        //     if (name === key) {
+        //       value.push(cmntAuthor);
+        //       // const quest = { [key1]: value };
+        //       a["comment"][name] = value;
+        //       // console.log(quest);
+        //       this.flag = true;
+        //     }
+        //   });
+        //   if (this.flag === false) {
+        //     a["comment"][name] = cmnt;
+        //   }
+        // }
+
         var notify = [];
         notify = a["notification"];
         var notifyCmnt = `${this.props.username} commented on noting ${name}`;
@@ -87,7 +90,6 @@ class DisplayEditor extends React.Component {
         );
       }
     });
-    console.log("asdmhgadkhvdaf");
   };
   loadContent() {
     const savedData = this.props.noting;
@@ -95,14 +97,13 @@ class DisplayEditor extends React.Component {
   }
   setEditorContent() {
     const rawEditorData = this.loadContent();
-    console.log("hello");
+
     rawEditorData.blocks.map((s) => {});
     rawEditorData.blocks.map((s) => {
       this.props.AcceptedResponse.map((s1) => {
-        console.log("12");
         var id = parseInt(this.props.id);
         var id1 = parseInt(s1.id);
-        console.log(id, id1);
+
         if (id === id1) {
           Object.entries(s1).map(([key, value]) => {
             if (
@@ -110,15 +111,13 @@ class DisplayEditor extends React.Component {
               (key !== "commentAccepted") &
               (key !== "responseTime")
             ) {
-              console.log(key, value);
               s.text = s.text.replace("#", "");
-              console.log(key, value);
+
               s.text = s.text.replace(key, value);
             }
           });
         }
       });
-      console.log(s.text);
     });
     rawEditorData.blocks.map((s) => console.log(s.text));
     if (rawEditorData !== null) {
