@@ -70,11 +70,16 @@ class DisplayEditor extends React.Component {
         //   }
         // }
 
-        var notify = [];
-        notify = a["notification"];
+        var notify = a["notification"];
+        if (notify === null) {
+          notify = [];
+        }
         var notifyCmnt = `${this.props.username} commented on noting ${name}`;
-        notify.push(notifyCmnt);
+        var date = new Date();
+        console.log(date);
+        notify.push([notifyCmnt, date]);
         a["notification"] = notify;
+        console.log(a);
         this.props.putAccepted(a.id, this.props.title, a);
         const questNotify = {};
         var reciever = a.userName;

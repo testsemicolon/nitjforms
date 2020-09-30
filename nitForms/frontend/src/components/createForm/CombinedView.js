@@ -21,10 +21,12 @@ export class CombinedView extends Component {
         this.notifyObj = a.notification;
       }
     });
-    {
-      Object.entries(this.notifyObj).map(([key, value]) => {
-        this.arr.push(value);
-      });
+    if (this.notifyObj !== null) {
+      {
+        Object.entries(this.notifyObj).map(([key, value]) => {
+          this.arr.push(value);
+        });
+      }
     }
     if (this.obj1 !== null) {
       this.obj1.map((value) => {
@@ -34,7 +36,6 @@ export class CombinedView extends Component {
 
     this.arr = this.arr.reverse();
     this.arr1 = this.arr1.reverse();
-    console.log(this.arr, this.arr1);
   }
   render() {
     return (
@@ -85,7 +86,7 @@ export class CombinedView extends Component {
                       style={{ color: "darkgrey" }}
                       className="vertical-timeline-element-subtitle"
                     ></h6>
-                    {value1.includes("commented ") ? (
+                    {value1[0].includes("commented ") ? (
                       <div>
                         <p style={{ color: "#009999" }}>
                           {this.arr1[this.itr++]}

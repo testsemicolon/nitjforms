@@ -22,6 +22,7 @@ export class AlbumUser extends Component {
       show: false,
       show2: false,
     };
+    console.log(this.props);
   }
   componentDidMount() {
     console.log(this.props.FormStatus);
@@ -135,19 +136,23 @@ export class AlbumUser extends Component {
               {this.state.show ? (
                 <div style={{ marginLeft: "6vw", marginRight: "auto" }}>
                   <MDBContainer className="grey darken-3 p-3">
-                    {this.props.Notification.map((nfy) => {
-                      return (
-                        <MDBNotification
-                          iconClassName="text-primary"
-                          show
-                          fade
-                          title="Bootstrap"
-                          message={nfy.notify}
-                          text="11 mins ago"
-                          zindex="9999"
-                        />
-                      );
-                    })}
+                    {this.props.Notification !== null ? (
+                      this.props.Notification.map((nfy) => {
+                        return (
+                          <MDBNotification
+                            iconClassName="text-primary"
+                            show
+                            fade
+                            title="Bootstrap"
+                            message={nfy.notify}
+                            text="11 mins ago"
+                            zindex="9999"
+                          />
+                        );
+                      })
+                    ) : (
+                      <div></div>
+                    )}
                   </MDBContainer>
                 </div>
               ) : null}

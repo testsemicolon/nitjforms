@@ -63,4 +63,3 @@ class userNotifications(models.Model):
 class formIndex(models.Model):
     userName = models.CharField(max_length=1000)
     formName = ArrayField(models.CharField(max_length=1000),blank=True, default=list)
-

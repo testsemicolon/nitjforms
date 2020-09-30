@@ -9,7 +9,8 @@ export const getNotification = (username) => (dispatch) => {
       console.log(res);
       dispatch({
         type: GET_NOTIFICATION,
-        payload: res,
+        payload: res.data,
+        userName: username,
       });
     })
     .catch((err) => console.log(err));

@@ -73,6 +73,3 @@ class formIndexViewSet(viewsets.ModelViewSet):
     permission_class = [permissions.AllowAny]
     serializer_class = formIndexSerializer
 
-
-
-

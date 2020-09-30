@@ -49,4 +49,3 @@ class formIndexSerializer(serializers.ModelSerializer):
         model = formIndex
         fields = '__all__'
 
-

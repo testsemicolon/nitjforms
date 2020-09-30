@@ -64,12 +64,6 @@ export class ViewResponseNoteGenerate extends Component {
         this.description = a.description;
       }
     });
-    console.log(
-      this.name,
-      this.description,
-      this.props.match.params.title,
-      this.time
-    );
   }
   onclick2 = (e) => {
     e.preventDefault();
@@ -85,25 +79,32 @@ export class ViewResponseNoteGenerate extends Component {
     arr.push(name);
     quest["forwardTo"] = arr;
     console.log(quest);
-    var notify = [];
-    notify = quest["notification"];
+    var notify = quest["notification"];
+    if (notify === null) {
+      notify = [];
+    }
+    var date = new Date();
+    console.log(date);
     var notifyCmnt = `${this.props.created_by1} FORWARD TO ${this.state.forwardTo}`;
-    notify.push(notifyCmnt);
+    notify.push([notifyCmnt, date]);
     quest["notification"] = notify;
     this.props.putAccepted(
       this.props.match.params.id,
       this.props.match.params.title,
       quest
     );
-    console.log();
     store.dispatch(
       createMessage({
         forwardMessage: `${this.props.created_by1} FORWARD NOTING TO ${this.state.forwardTo}`,
       })
     );
     const questNotify = {};
-    questNotify["sender"] = `${this.props.username}`;
+    questNotify["sender"] = `${this.props.created_by1}`;
+    questNotify["reciever"] = `${this.obj.userName}`;
+    console.log("Hello");
+    console.log(this.props.created_by1, this.obj.userName);
     questNotify["notify"] = notifyCmnt;
+    console.log(questNotify);
     this.props.postNotification(questNotify);
 
     this.props.history.push(this.props.match.url);

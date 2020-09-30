@@ -58,7 +58,7 @@ def post_views(request):
             "    commentAccepted = models.CharField(max_length=1000, blank=True)\n"
         )
         f.write(
-            "    notification = ArrayField(models.CharField(max_length=1000),blank=True, default=list)\n"
+            "    notification = notification = JSONField(null=True)\n"
         )
         f.write(
             "    userName = models.CharField(max_length=1000, blank=True)\n"

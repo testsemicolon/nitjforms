@@ -9,4 +9,3 @@ admin.site.register(sharedUsers)
 admin.site.register(notingTemplate)
 admin.site.register(userNotifications)
 admin.site.register(formIndex)
-
