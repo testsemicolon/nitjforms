@@ -53,7 +53,7 @@ export class AlbumUser extends Component {
         <div
           style={{
             // backgroundColor: "#ffb266",
-            backgroundColor: "#66a3ff",
+            backgroundColor: "#e0777d",
             marginTop: "1vw",
             marginLeft: "1vw",
             marginRight: "1vw",
@@ -96,132 +96,171 @@ export class AlbumUser extends Component {
             />
           </form>
         </div>
-        <div
-          style={{
-            marginBottom: "2vw",
-            marginTop: "2vw",
-            minHeight: "1vw",
-          }}
-        >
-          <div>
-            <div
-              style={{
-                width: "40vw",
-                position: "relative",
-                float: "left",
-                border: "0.07vw solid #DCDCDC",
-                padding: "1vw",
-                textAlign: "center",
-                marginLeft: "auto",
-                borderRadius: ".5vw",
-                backgroundImage:
-                  "linear-gradient(to right,rgba(0, 153, 153, 0.5),rgba(0, 231, 231, 0.5)",
-              }}
-              className="test"
-            >
-              <Button
-                style={{
-                  backgroundColor: "white",
-                  color: "#009999",
-                  border: 0,
-                  fontFamily: "Times New Roman",
-                  boxShadow: ".3vw .3vw .3vw lightgray",
-                }}
-                onClick={this.onclick}
-              >
-                {this.state.show ? "Hide " : "Show "}
-                Notifications
-              </Button>
-
-              {this.state.show ? (
-                <div style={{ marginLeft: "6vw", marginRight: "auto" }}>
-                  <MDBContainer className="grey darken-3 p-3">
-                    {this.props.Notification !== null ? (
-                      this.props.Notification.map((nfy) => {
-                        return (
-                          <MDBNotification
-                            iconClassName="text-primary"
-                            show
-                            fade
-                            title="Bootstrap"
-                            message={nfy.notify}
-                            text="11 mins ago"
-                            zindex="9999"
-                          />
-                        );
-                      })
-                    ) : (
-                      <div></div>
-                    )}
-                  </MDBContainer>
-                </div>
-              ) : null}
-            </div>
-
-            <div
-              style={{
-                width: "39vw",
-                position: "relative",
-                float: "right",
-                border: "0.07vw solid #DCDCDC",
-                padding: "1vw",
-                textAlign: "center",
-                borderRadius: ".5vw",
-                marginRight: "1vw",
-                backgroundImage:
-                  "linear-gradient(to right,rgba(0, 153, 153, 0.5),rgba(0, 231, 231, 0.5)",
-              }}
-            >
-              <Button
-                style={{
-                  backgroundColor: "white",
-                  color: "#009999",
-                  border: 0,
-                  fontFamily: "Times New Roman",
-                  boxShadow: ".3vw .3vw .3vw lightgray",
-                }}
-                onClick={this.onclick2}
-              >
-                Detailed status of previous forms
-              </Button>
-
-              {this.state.show2 ? (
-                <div>
-                  <MDBContainer
-                    style={{ marginLeft: "6vw", marginRight: "auto" }}
-                    className="grey darken-3 p-3"
-                  >
-                    <MDBNotification
-                      iconClassName="text-primary"
-                      show
-                      fade
-                      title="Test 1"
-                      message="status:pending , Your form will be reviewed soon"
-                      text={
-                        <Link to={"/timeline/"}>
-                          <Button
-                            style={{
-                              padding: "0.1vw",
-                              fontSize: ".8vw",
-                              backgroundColor: "#009999",
-                              border: 0,
-                              paddingLeft: ".3vw",
-                              paddingRight: ".3vw",
-                              fontFamily: "Times New Roman",
-                            }}
-                          >
-                            View timeline
-                          </Button>
-                        </Link>
-                      }
-                    />
-                  </MDBContainer>
-                </div>
-              ) : null}
-            </div>
-          </div>
-        </div>
         <br />
+        <div
+          style={{ marginLeft: " auto", marginRight: "auto", display: "table" }}
+        >
+          <Button
+            style={{
+              backgroundColor: "white",
+              color: "#e0777d",
+              // border: 0,
+              //float: "right",
+              position: "relative",
+              //zIndex: "9999",
+              fontFamily: "Times New Roman",
+              boxShadow: ".3vw .3vw .3vw lightgray",
+              border: ".01vw solid #e0777d",
+            }}
+            onClick={this.onclick}
+          >
+            {this.state.show ? "Hide " : "Show "}
+            Notifications
+          </Button>
+          {this.state.show ? (
+            <div
+              style={{
+                backgroundColor: "#d7d7d7",
+                opacity: ".92",
+                height: "20vw",
+                overflowY: "scroll",
+                zIndex: "9999",
+                margin: ".5vw",
+                marginLeft: "-12vw",
+                borderRadius: ".5vw",
+                position: "absolute",
+                // border: "0.1vw solid grey",
+              }}
+            >
+              <MDBContainer
+                style={{
+                  zIndex: "9999",
+                }}
+                className="grey darken-3 p-3"
+              >
+                {this.props.Notification !== null ? (
+                  this.props.Notification.map((nfy) => {
+                    return (
+                      <div
+                        style={{
+                          backgroundColor: "#e7e7de",
+                          marginBottom: "1vw",
+                          marginTop: 0,
+                          paddingTop: 0,
+                        }}
+                      >
+                        <MDBNotification
+                          iconClassName="text-primary"
+                          show
+                          fade
+                          title="Bootstrap"
+                          message={nfy.notify}
+                          text="11 mins ago"
+                          zindex="9999"
+                          style={{ marginBottom: 0 }}
+                        />
+                        <table style={{ width: "100%" }}>
+                          <tr>
+                            <td style={{ width: "50%" }}>
+                              <Button
+                                style={{
+                                  // backgroundColor: "transparent",
+                                  width: "100%",
+                                  textAlign: "center",
+                                }}
+                              >
+                                View
+                              </Button>
+                            </td>
+
+                            <td style={{ width: "50%" }}>
+                              <Button
+                                style={{
+                                  //backgroundColor: "transparent",
+                                  width: "100%",
+                                  textAlign: "center",
+                                }}
+                              >
+                                Mark as Read
+                              </Button>
+                            </td>
+                          </tr>
+                        </table>
+                      </div>
+                    );
+                  })
+                ) : (
+                  <div></div>
+                )}
+              </MDBContainer>
+            </div>
+          ) : null}
+          <Button
+            style={{
+              backgroundColor: "#e0777d",
+              color: "white",
+              border: 0,
+              fontFamily: "Times New Roman",
+              boxShadow: ".3vw .3vw .3vw lightgray",
+              position: "relative",
+              //border: ".01vw solid #e0777d",
+            }}
+            onClick={this.onclick2}
+          >
+            Detailed status of previous forms
+          </Button>
+
+          {this.state.show2 ? (
+            <div
+              style={{
+                zIndex: "9999",
+                position: "absolute",
+                backgroundColor: "#d7d7d7",
+                opacity: ".92",
+                overflowY: "scroll",
+                marginLeft: "10vw",
+                borderRadius: ".5vw",
+                marginTop: "0.5vw",
+                //border: "0.1vw solid grey",
+              }}
+            >
+              <MDBContainer
+                style={{
+                  marginLeft: "auto",
+                  marginRight: "auto",
+                  //marginTop: 0,
+                  zIndex: "9999",
+                }}
+                className="grey darken-3 p-3"
+              >
+                <MDBNotification
+                  iconClassName="text-primary"
+                  show
+                  fade
+                  title="Test 1"
+                  message="status:pending , Your form will be reviewed soon"
+                  text={
+                    <Link to={"/timeline/"}>
+                      <Button
+                        style={{
+                          padding: "0.1vw",
+                          fontSize: ".8vw",
+                          backgroundColor: "#009999",
+                          border: 0,
+                          paddingLeft: ".3vw",
+                          paddingRight: ".3vw",
+                          fontFamily: "Times New Roman",
+                        }}
+                      >
+                        View timeline
+                      </Button>
+                    </Link>
+                  }
+                />
+              </MDBContainer>
+            </div>
+          ) : null}
+        </div>
         <br />
         <div style={{ backgroundColor: "white" }}>
           <OldForms />
@@ -229,7 +268,7 @@ export class AlbumUser extends Component {
         <Features />
         <footer
           style={{
-            backgroundColor: "#12a6a3",
+            backgroundColor: "#0A5C5A",
             marginLeft: "-6vw",
             marginRight: "-6vw",
             padding: "2vw",

@@ -15,23 +15,10 @@ export class Buttons extends Component {
     const { isAuthenticated, user } = this.props.auth;
 
     const authLinks = (
-      <div
-        style={{
-          marginRight: 0,
-          paddingRight: 0,
-          float: "right",
-          position: "relative",
-          marginLeft: "34vw",
-        }}
-      >
+      <div>
         <DropdownButton
           variant="light"
           style={{
-            float: "right",
-            marginRight: 0,
-            paddingRight: 0,
-            alignItems: "right",
-            position: "relative",
             size: "2vw",
             fontSize: "1vw",
           }}
@@ -48,7 +35,7 @@ export class Buttons extends Component {
       </div>
     );
     return (
-      <div style={{ marginLeft: 0, marginRight: 0 }}>
+      <div style={{ marginLeft: "auto", marginRight: "3vw" }}>
         {isAuthenticated ? authLinks : guestLinks}
       </div>
     );
@@ -59,4 +46,6 @@ const mapStateToProps = (state) => ({
   auth: state.Auth,
 });
 
-export default connect(mapStateToProps, { logout })(Buttons);
+export default connect(mapStateToProps, {
+  logout,
+})(Buttons);

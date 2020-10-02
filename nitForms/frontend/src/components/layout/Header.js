@@ -27,7 +27,7 @@ import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import Buttons from "./Buttons";
 
-const drawerWidth = 100;
+const drawerWidth = 250;
 
 const useStyles = makeStyles((Theme) =>
   createStyles({
@@ -111,7 +111,7 @@ export default function PersistentDrawerLeft() {
       >
         <Toolbar
           style={{
-            backgroundColor: "#12a6a3",
+            backgroundColor: "#0A5C5A",
             color: "white",
           }}
         >
@@ -165,7 +165,7 @@ export default function PersistentDrawerLeft() {
           </IconButton>
         </div>
         <Divider />
-        <List>
+        <List style={{ fontSize: "1.5vw" }}>
           <ListItem>Create</ListItem>
           <ListItem>Edit/Delete</ListItem>
           <Link to="/previousforms">

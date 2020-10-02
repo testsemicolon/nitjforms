@@ -64,7 +64,7 @@ export class AddField extends Component {
 const btnStyle = {
   float: "right",
 
-  background: "#66a3ff",
+  background: "#e0777d",
   boxShadow: ".3vw .3vw .3vw lightgray",
   color: "white",
 

@@ -36,7 +36,7 @@ export class PaymentType extends Component {
             <br />
             <Button
               style={{
-                background: "#66a3ff",
+                background: "#e0777d",
                 boxShadow: ".3vw .3vw .3vw lightgray",
                 color: "#fff",
                 flex: "1",

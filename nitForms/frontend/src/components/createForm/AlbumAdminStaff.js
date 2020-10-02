@@ -1,17 +1,39 @@
 import React, { Component, Fragment } from "react";
 import Clock from "react-live-clock";
 import Button from "@material-ui/core/Button";
+import { Button as ButtonB } from "react-bootstrap";
 import CountUp from "react-countup";
 import Features from "./features";
 import Typography from "@material-ui/core/Typography";
 import OldForms from "./OldForms";
+import { getNotification } from "../../actions/Notification";
 import { connect } from "react-redux";
+import { getFormStatus } from "../../actions/FormStatus";
+import { getStatus } from "../../actions/Status";
+import { MDBContainer, MDBNotification } from "mdbreact";
+import { Link } from "react-router-dom";
 
 export class AlbumAdminStaff extends Component {
-  state = {
-    users: false,
-    customers: false,
+  constructor(props) {
+    super(props);
+    this.props.getNotification(this.props.username);
+    this.props.getFormStatus();
+    this.state = {
+      show: false,
+      show2: false,
+    };
+  }
+  state = { users: false, customers: false };
+  onclick = (e) => {
+    e.preventDefault();
+    this.setState({ show: !this.state.show });
   };
+
+  onclick2 = (e) => {
+    e.preventDefault();
+    this.setState({ show2: !this.state.show2 });
+  };
+
   render() {
     return (
       <Fragment>
@@ -27,7 +49,7 @@ export class AlbumAdminStaff extends Component {
         <div
           style={{
             // backgroundColor: "#ffb266",
-            backgroundColor: "#66a3ff",
+            backgroundColor: "#e0777d",
             marginTop: "1vw",
 
             minHeight: "7vw",
@@ -69,7 +91,174 @@ export class AlbumAdminStaff extends Component {
             />
           </form>
         </div>
+        <div
+          style={{
+            marginLeft: " auto",
+            marginRight: "auto",
+            display: "table",
+            marginTop: "1vw",
+          }}
+        >
+          <ButtonB
+            style={{
+              backgroundColor: "white",
+              color: "#e0777d",
+              // border: 0,
+              //float: "right",
+              position: "relative",
+              //zIndex: "9999",
+              fontFamily: "Times New Roman",
+              boxShadow: ".3vw .3vw .3vw lightgray",
+              border: ".01vw solid #e0777d",
+            }}
+            onClick={this.onclick}
+          >
+            {this.state.show ? "Hide " : "Show "}
+            Notifications
+          </ButtonB>
+          {this.state.show ? (
+            <div
+              style={{
+                backgroundColor: "#d7d7d7",
+                opacity: ".92",
+                height: "20vw",
+                overflowY: "scroll",
+                zIndex: "9999",
+                margin: ".5vw",
+                marginLeft: "-12vw",
+                borderRadius: ".5vw",
+                position: "absolute",
+                // border: "0.1vw solid grey",
+              }}
+            >
+              <MDBContainer
+                style={{
+                  zIndex: "9999",
+                }}
+                className="grey darken-3 p-3"
+              >
+                {this.props.Notification !== null ? (
+                  this.props.Notification.map((nfy) => {
+                    return (
+                      <div
+                        style={{
+                          backgroundColor: "#e7e7de",
+                          marginBottom: "1vw",
+                          marginTop: 0,
+                          paddingTop: 0,
+                        }}
+                      >
+                        <MDBNotification
+                          iconClassName="text-primary"
+                          show
+                          fade
+                          title="Bootstrap"
+                          message={nfy.notify}
+                          text="11 mins ago"
+                          zindex="9999"
+                          style={{ marginBottom: 0 }}
+                        />
+                        <table style={{ width: "100%" }}>
+                          <tr>
+                            <td style={{ width: "50%" }}>
+                              <ButtonB
+                                style={{
+                                  // backgroundColor: "transparent",
+                                  width: "100%",
+                                  textAlign: "center",
+                                }}
+                              >
+                                View
+                              </ButtonB>
+                            </td>
 
+                            <td style={{ width: "50%" }}>
+                              <ButtonB
+                                style={{
+                                  //backgroundColor: "transparent",
+                                  width: "100%",
+                                  textAlign: "center",
+                                }}
+                              >
+                                Mark as Read
+                              </ButtonB>
+                            </td>
+                          </tr>
+                        </table>
+                      </div>
+                    );
+                  })
+                ) : (
+                  <div></div>
+                )}
+              </MDBContainer>
+            </div>
+          ) : null}{" "}
+          <ButtonB
+            style={{
+              backgroundColor: "#e0777d",
+              color: "white",
+              border: 0,
+              fontFamily: "Times New Roman",
+              boxShadow: ".3vw .3vw .3vw lightgray",
+              position: "relative",
+              //border: ".01vw solid #e0777d",
+            }}
+            onClick={this.onclick2}
+          >
+            Detailed status of previous forms
+          </ButtonB>
+          {this.state.show2 ? (
+            <div
+              style={{
+                zIndex: "9999",
+                position: "absolute",
+                backgroundColor: "#d7d7d7",
+                opacity: ".92",
+                overflowY: "scroll",
+                marginLeft: "10vw",
+                borderRadius: ".5vw",
+                marginTop: "0.5vw",
+                //border: "0.1vw solid grey",
+              }}
+            >
+              <MDBContainer
+                style={{
+                  marginLeft: "auto",
+                  marginRight: "auto",
+                  //marginTop: 0,
+                  zIndex: "9999",
+                }}
+                className="grey darken-3 p-3"
+              >
+                <MDBNotification
+                  iconClassName="text-primary"
+                  show
+                  fade
+                  title="Test 1"
+                  message="status:pending , Your form will be reviewed soon"
+                  text={
+                    <Link to={"/timeline/"}>
+                      <ButtonB
+                        style={{
+                          padding: "0.1vw",
+                          fontSize: ".8vw",
+                          backgroundColor: "#009999",
+                          border: 0,
+                          paddingLeft: ".3vw",
+                          paddingRight: ".3vw",
+                          fontFamily: "Times New Roman",
+                        }}
+                      >
+                        View timeline
+                      </ButtonB>
+                    </Link>
+                  }
+                />
+              </MDBContainer>
+            </div>
+          ) : null}
+        </div>
         <div
           style={{
             display: "flex",
@@ -87,7 +276,8 @@ export class AlbumAdminStaff extends Component {
               this.setState({ customers: false });
             }}
             style={{
-              backgroundImage: "linear-gradient(rgba(179, 204, 37, .5),white",
+              //backgroundImage: "linear-gradient(rgba(179, 204, 37, .5),white",
+              backgroundColor: "white",
               textAlign: "center",
               flexBasis: "19.2%",
               minHeight: "8vw",
@@ -96,7 +286,7 @@ export class AlbumAdminStaff extends Component {
               fontFamily: "Times New Roman",
               color: "grey",
               boxShadow:
-                ".2vw .1vw .4vw rgba(179, 204, 37, .5), 0 0 .1vw rgba(0, 0, 0, 0.1) inset",
+                ".2vw .1vw .4vw #0A5C5A, 0 0 .1vw rgba(0, 0, 0, 0.1) inset",
               MozBoxShadow:
                 "0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) ",
             }}
@@ -115,9 +305,10 @@ export class AlbumAdminStaff extends Component {
             style={{
               //   width: "17vw",
               fontFamily: "Times New Roman",
-              backgroundImage: "linear-gradient(pink,white)",
+              //backgroundImage: "linear-gradient(pink,white)",
               //   marginLeft: "1vw",
               //   marginRight: "1vw",
+              backgroundColor: "white",
               textAlign: "center",
               flexBasis: "19.2%",
               minHeight: "8vw",
@@ -127,7 +318,7 @@ export class AlbumAdminStaff extends Component {
               color: "grey",
               // border: ".01vw solid red",
               boxShadow:
-                ".2vw .1vw .4vw pink, 0 0 .1vw rgba(0, 0, 0, 0.1) inset",
+                ".2vw .1vw .4vw #0A5C5A, 0 0 .1vw rgba(0, 0, 0, 0.1) inset",
 
               // WebkitBoxShadow:
               //   "0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) ",
@@ -146,9 +337,10 @@ export class AlbumAdminStaff extends Component {
             style={{
               //   width: "17vw",
 
-              backgroundImage: "linear-gradient(lightblue,white)",
+              // backgroundImage: "linear-gradient(lightblue,white)",
               //   marginLeft: "1vw",
               //   marginRight: "1vw",
+              backgroundColor: "white",
               textAlign: "center",
               flexBasis: "19.2%",
               minHeight: "8vw",
@@ -158,7 +350,7 @@ export class AlbumAdminStaff extends Component {
               color: "grey",
               // border: ".01vw solid red",
               boxShadow:
-                ".2vw .1vw .4vw lightblue, 0 0 .1vw rgba(0, 0, 0, 0.1) inset",
+                ".2vw .1vw .4vw #0A5C5A, 0 0 .1vw rgba(0, 0, 0, 0.1) inset",
               fontFamily: "Times New Roman",
 
               // WebkitBoxShadow:
@@ -178,9 +370,10 @@ export class AlbumAdminStaff extends Component {
             style={{
               //   width: "17vw",
 
-              backgroundImage: "linear-gradient(#ffcc99,white)",
+              //backgroundImage: "linear-gradient(#ffcc99,white)",
               //   marginLeft: "1vw",
               //   marginRight: "1vw",
+              backgroundColor: "white",
               textAlign: "center",
               flexBasis: "19.2%",
               minHeight: "8vw",
@@ -190,7 +383,7 @@ export class AlbumAdminStaff extends Component {
               color: "grey",
               // border: ".01vw solid red",
               boxShadow:
-                ".2vw .1vw .4vw #ffcc99, 0 0 .1vw rgba(0, 0, 0, 0.1) inset",
+                ".2vw .1vw .4vw #0A5C5A, 0 0 .1vw rgba(0, 0, 0, 0.1) inset",
 
               // WebkitBoxShadow:
               //   "0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) ",
@@ -210,9 +403,10 @@ export class AlbumAdminStaff extends Component {
             style={{
               //   width: "17vw",
 
-              backgroundImage: "linear-gradient(#cc99ff,white",
+              //backgroundImage: "linear-gradient(#cc99ff,white",
               //   marginLeft: "1vw",
               //   marginRight: "1vw",
+              backgroundColor: "white",
               textAlign: "center",
               flexBasis: "19.2%",
               minHeight: "8vw",
@@ -222,7 +416,7 @@ export class AlbumAdminStaff extends Component {
               color: "grey",
               // border: ".01vw solid red",
               boxShadow:
-                ".2vw .1vw .4vw #cc99ff, 0 0 .1vw rgba(0, 0, 0, 0.1) inset",
+                ".2vw .1vw .4vw #0A5C5A, 0 0 .1vw rgba(0, 0, 0, 0.1) inset",
 
               // WebkitBoxShadow:
               //   "0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) ",
@@ -695,7 +889,7 @@ export class AlbumAdminStaff extends Component {
         <Features />
         <footer
           style={{
-            backgroundColor: "#12a6a3",
+            backgroundColor: "#0A5C5A",
             marginLeft: "-6vw",
             marginRight: "-6vw",
             padding: "2vw",
@@ -723,6 +917,13 @@ export class AlbumAdminStaff extends Component {
 }
 const mapStateToProps = (state) => ({
   username: state.Auth.user.username,
+  Notification: state.Notification.Notification,
+  FormStatus: state.FormStatus.FormStatus,
+  Status: state.Status.Status,
 });
 
-export default connect(mapStateToProps)(AlbumAdminStaff);
+export default connect(mapStateToProps, {
+  getNotification,
+  getFormStatus,
+  getStatus,
+})(AlbumAdminStaff);
