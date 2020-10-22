@@ -9,7 +9,7 @@ import { Link as Link1 } from "react-router-dom";
 import { RiAccountCircleLine } from "react-icons/fa";
 import SearchBar from "material-ui-search-bar";
 import Features from "./features";
-
+import { Modal } from "react-responsive-modal";
 import { connect } from "react-redux";
 import { getName, updateName } from "../../actions/FormName";
 import { getDefaultKeyBinding } from "draft-js";
@@ -17,25 +17,60 @@ import Clock from "react-live-clock";
 import CountUp from "react-countup";
 import $ from "jquery";
 
-class Albumm extends Component {
+class Director extends Component {
   state = {
-    users: false,
+    users: true,
     customers: false,
+    open: false,
   };
+
+  onOpenModal = () => {
+    this.setState({ open: true });
+  };
+
+  onCloseModal = () => {
+    this.setState({ open: false });
+  };
+
   render() {
+    const { open } = this.state;
     return (
       <Fragment>
-        {/* <SearchBar
-          onChange={() => console.log("onChange")}
-          onRequestSearch={() => console.log("onRequestSearch")}
+        {/* <div
           style={{
-            margin: "0 auto",
-            maxWidth: 800,
+            position: "fixed",
+            bottom: "3.4vw",
+            right: "5.7vw",
+            paddingLeft: "3vw",
+            paddingRight: "3vw",
+            zIndex: "9999",
+            backgroundPosition: "top",
           }}
-        /> */}
-       
-
-
+          class="dropup"
+        >
+          <button
+            class="btn btn-primary dropdown-toggle"
+            type="button"
+            id="about-us"
+            data-toggle="dropdown"
+            aria-haspopup="true"
+            aria-expanded="false"
+          >
+            About Us
+            <span class="caret"></span>
+          </button>
+          <ul aria-labelledby="about-us">
+            <li>
+              <a href="#">Our Story</a>
+            </li>
+            <li>
+              <a href="#">Our Team</a>
+            </li>
+            <li>
+              <a href="#">Contact Us</a>
+            </li>
+          </ul>
+        </div> */}
         <div
           style={{
             // backgroundColor: "#ffb266",
@@ -73,9 +108,6 @@ class Albumm extends Component {
               </tr>
             </table>
           </div>
-          {/* <div
-            style={{ float: "right", position: "relative", marginLeft: "9vw" }}
-          ></div> */}
           <h4 style={{ float: "right", color: "black" }}>
             {" "}
             <Clock format={"dddd, MMMM Do, YYYY, h:mm:ss A"} ticking={true} />
@@ -91,7 +123,7 @@ class Albumm extends Component {
             />
           </form>
         </div>
-        <div
+        {/* <div
           style={{
             // backgroundImage: "linear-gradient(#fffeaa,#e0777d)",
             padding: "4vw",
@@ -155,7 +187,7 @@ class Albumm extends Component {
               </Grid>
             </Grid>
           </div>
-        </div>
+        </div> */}
 
         <div
           style={{
@@ -320,13 +352,22 @@ class Albumm extends Component {
               //        box-shadow:0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset,
               fontFamily: "Times New Roman",
             }}
+            onClick={this.onOpenModal}
           >
-            DUES
+            CREATE
             <br />
-            <h3>
+            {/* <h3>
               <CountUp end={10} duration={5} />
-            </h3>
+            </h3> */}
           </Button>
+          {/* <Modal open={open} onClose={this.onCloseModal}>
+            <h2>Simple centered modal</h2>
+            <p>
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam
+              pulvinar risus non risus hendrerit venenatis. Pellentesque sit
+              amet hendrerit risus, sed porttitor quam.
+            </p>
+          </Modal> */}
         </div>
 
         {this.state.users === true ? (
@@ -472,6 +513,18 @@ class Albumm extends Component {
                 //        box-shadow:0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset,
               }}
             >
+              <Button
+                style={{
+                  backgroundColor: "#0A5C5A",
+                  float: "right",
+                  padding: ".03vw",
+                  paddingLeft: ".3vw",
+                  paddingRight: "0.3vw",
+                  color: "white",
+                }}
+              >
+                Generate Report
+              </Button>
               <img
                 src="static/graph.JPG"
                 style={{ height: "17vw", width: "26vw" }}
@@ -507,14 +560,15 @@ class Albumm extends Component {
               }}
             >
               <div>
-                RECENT POSTS users
+                Create
                 <br />
                 <table
-                  rules="all"
+                  //rules="all"
                   style={{
                     width: "100%",
                     marginTop: "1vw",
-                    border: ".1vw solid grey",
+                    // border: ".1vw solid grey",
+
                     backgroundColor: "white",
                     borderSpacing: "1vw",
                     // boxShadow: "0.1vw 0.2vw 0.1vw grey",
@@ -523,14 +577,48 @@ class Albumm extends Component {
                 >
                   <tbody>
                     <tr>
-                      <td>12-03-2020</td>
-                      <td>Test1</td>
+                      <td>SuperAdmin</td>
+                      <td>
+                        <input type="text" />
+                      </td>
+                      <td>
+                        {" "}
+                        <Button
+                          style={{
+                            backgroundColor: "#0a5c5a",
+                            color: "white",
+                            padding: ".03vw",
+                          }}
+                        >
+                          Add
+                        </Button>
+                      </td>
                     </tr>
                     <tr>
-                      <td>2-04-2020</td>
-                      <td>Test2</td>
+                      <td>
+                        <br />
+                      </td>
                     </tr>
                     <tr>
+                      <td>Admin</td>
+                      <td>
+                        <input type="text" />
+                      </td>
+                      <td>
+                        {" "}
+                        <Button
+                          style={{
+                            backgroundColor: "#0a5c5a",
+                            color: "white",
+                            padding: ".03vw",
+                          }}
+                        >
+                          Add
+                        </Button>
+                      </td>
+                    </tr>
+
+                    {/* <tr>
                       <td>19-07-2020</td>
                       <td>Test3</td>
                     </tr>
@@ -545,7 +633,7 @@ class Albumm extends Component {
                     <tr>
                       <td>19-07-2020</td>
                       <td>Test6</td>
-                    </tr>
+                    </tr> */}
                   </tbody>
                 </table>
               </div>
@@ -780,7 +868,7 @@ class Albumm extends Component {
           <div></div>
         )}
 
-        <OldForms />
+        {/* <OldForms /> */}
         <Features />
         <footer
           style={{
@@ -817,9 +905,8 @@ class Albumm extends Component {
   }
 }
 
-
 const mapStateToProps = (state) => ({
   username: state.Auth.user.username,
 });
 
-export default connect(mapStateToProps, { getName })(Albumm);
+export default connect(mapStateToProps, { getName })(Director);

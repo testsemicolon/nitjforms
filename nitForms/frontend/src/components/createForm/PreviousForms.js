@@ -28,6 +28,8 @@ class PreviousForms extends Component {
   render() {
     return (
       <Fragment>
+        <Button onClick={()=>window.history.back()} className="previous" 
+         style={{borderRadius:".5vw", backgroundColor:"#0a5c5a",marginBottom:"1vw", boxShadow: ".3vw .3vw .5vw silver",}}>&laquo; Back</Button>
         {this.props.FormName.map((card) => {
           if (this.props.username === card.created_by) {
             return (

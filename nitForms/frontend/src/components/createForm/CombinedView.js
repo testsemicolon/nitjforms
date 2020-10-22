@@ -40,6 +40,8 @@ export class CombinedView extends Component {
   render() {
     return (
       <div style={{ marginLeft: 0 }}>
+        <Button onClick={()=>window.history.back()} className="previous" 
+         style={{borderRadius:".5vw", boxShadow: ".3vw .3vw .5vw silver", backgroundColor:"#0a5c5a",marginBottom:"1vw"}}>&laquo; Back</Button>
         <div
           style={{
             width: "35vw",
