@@ -45,7 +45,7 @@ export class GenericResponses extends Component {
             sheet={this.props.title}
             buttonText="Download as XLS"
             style={{
-              backgroundColor: "#66a3ff",
+              backgroundColor: "#e0777d",
               color: "white",
               boxShadow: ".3vw .3vw .3vw grey",
             }}
@@ -72,7 +72,7 @@ export class GenericResponses extends Component {
                           >
                             <Button
                               style={{
-                                backgroundColor: "#66a3ff",
+                                backgroundColor: "#e0777d",
                                 color: "white",
                                 boxShadow: ".3vw .3vw .3vw grey",
                                 borderWidth: 0,

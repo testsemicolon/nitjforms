@@ -49,3 +49,14 @@ class formIndexSerializer(serializers.ModelSerializer):
         model = formIndex
         fields = '__all__'
 
+
+class test101Serializer(serializers.ModelSerializer):
+    class Meta:
+        model = test101
+        fields = '__all__'
+
+
+class test101AcceptedSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = test101Accepted
+        fields = '__all__'

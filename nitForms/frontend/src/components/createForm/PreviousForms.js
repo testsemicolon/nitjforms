@@ -28,6 +28,8 @@ class PreviousForms extends Component {
   render() {
     return (
       <Fragment>
+        <Button onClick={()=>window.history.back()} className="previous" 
+         style={{borderRadius:".5vw", backgroundColor:"#0a5c5a",marginBottom:"1vw", boxShadow: ".3vw .3vw .5vw silver",}}>&laquo; Back</Button>
         {this.props.FormName.map((card) => {
           if (this.props.username === card.created_by) {
             return (
@@ -119,7 +121,7 @@ class PreviousForms extends Component {
                     <Button
                       style={{
                         marginRight: "1vw",
-                        backgroundColor: "#66a3ff",
+                        backgroundColor: "#e0777d",
                         boxShadow: ".3vw .3vw .3vw lightgray",
                         borderWidth: 0,
                         fontFamily: "Times New Roman",
@@ -131,10 +133,10 @@ class PreviousForms extends Component {
                   <Link to={`/response/${card.title}`}>
                     <Button
                       style={{
-                        marginRight: "2vw",
+                        marginRight: "1vw",
                         backgroundColor: "white",
-                        color: "#66a3ff",
-                        border: " 0.06vw solid #66a3ff",
+                        color: "#e0777d",
+                        border: " 0.06vw solid #e0777d",
                         boxShadow: ".3vw .3vw .3vw lightgray",
                         fontFamily: "Times New Roman",
                       }}
@@ -142,6 +144,19 @@ class PreviousForms extends Component {
                       Responses
                     </Button>
                   </Link>{" "}
+                  <Link to={`/${card.title}`}>
+                    <Button
+                      style={{
+                        marginRight: "1vw",
+                        backgroundColor: "#e0777d",
+                        boxShadow: ".3vw .3vw .3vw lightgray",
+                        borderWidth: 0,
+                        fontFamily: "Times New Roman",
+                      }}
+                    >
+                      Edit
+                    </Button>
+                  </Link>
                 </div>
               </div>
             );

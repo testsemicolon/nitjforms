@@ -94,7 +94,7 @@ export class NotingIndividual extends Component {
                       <Button
                         size="small"
                         style={{
-                          backgroundColor: "#66a3ff",
+                          backgroundColor: "#e0777d",
                           boxShadow: ".3vw .3vw .3vw grey",
                           marginLeft: "auto",
                           marginRight: "auto",
@@ -126,7 +126,7 @@ export class NotingIndividual extends Component {
                       <Button
                         style={{
                           // marginTop: "23vw",
-                          backgroundColor: "#66a3ff",
+                          backgroundColor: "#e0777d",
                           boxShadow: ".1vw .1vw .1vw .1vw silver",
                           marginLeft: "auto",
                           marginRight: "auto",

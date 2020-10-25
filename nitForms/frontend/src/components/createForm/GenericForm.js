@@ -170,9 +170,9 @@ export class GenericForm extends Component {
                   marginLeft: "auto",
                   marginRight: "auto",
                   paddingTop: "1vw",
-                  backgroundImage:
-                    "linear-gradient(to right,rgba(0, 153, 153, 0.5),rgba(0, 231, 231, 0.5)",
-                  // backgroundColor: "#00a3a3",
+                  //backgroundImage:
+                  //"linear-gradient(to right,rgba(0, 153, 153, 0.5),rgba(0, 231, 231, 0.5)",
+                  backgroundColor: "#e0777d",
                   boxShadow: ".3vw .3vw .3vw silver",
                   borderRadius: "1vw",
                   paddingRight: "1vw",
@@ -181,17 +181,18 @@ export class GenericForm extends Component {
                 <Link to={"/accepted/" + this.props.title}>
                   <Button
                     style={{
-                      color: "#009999",
+                      color: "#e0777d",
                       // padding: "0.4vw",
                       borderRadius: ".3vw",
-                      border: "0.06vw solid #009999",
+                      //border: "0.06vw solid #e0777d",
+                      borderWidth: 0,
                       marginBottom: "1.5vw",
                       marginRight: "1vw",
                       fontSize: "1vw",
                       // float: "right",
                       position: "relative",
                       backgroundColor: "white",
-                      boxShadow: ".3vw .3vw .3vw lightgray",
+                      boxShadow: ".1vw .1vw .1vw lightgray",
                       // boxShadow: ".1vw .1vw .1vw .1vw silver",
                     }}
                   >
@@ -205,15 +206,15 @@ export class GenericForm extends Component {
                       // float: "right",
                       // position: "relative",
                       background: "white",
-                      color: "#009999",
+                      color: "#e0777d",
                       marginBottom: "1.5vw",
                       // padding: "0.4vw",
                       marginRight: "1vw",
                       borderRadius: ".3vw",
-                      borderColor: "#009999",
-                      borderWidth: "0.06vw",
+                      //borderColor: "#e0777d",
+                      borderWidth: 0,
                       width: "10vw",
-                      boxShadow: ".3vw .3vw .3vw lightgray",
+                      boxShadow: ".1vw .1vw .1vw lightgray",
                       fontFamily: "Times New Roman",
                       // boxShadow: ".1vw .1vw .1vw .1vw silver",
                     }}
@@ -236,15 +237,16 @@ export class GenericForm extends Component {
                           // float: "right",
                           // position: "relative",
                           backgroundColor: "white",
-                          color: "#009999",
+                          color: "#e0777d",
 
                           paddingBottom: ".01vw",
                           marginRight: "1vw",
                           borderRadius: ".3vw",
-                          border: ".01vw solid #009999",
+                          //border: "0 solid #e0777d",
+                          borderWidth: 0,
                           width: "10vw",
                           marginBottom: "1.5vw",
-                          boxShadow: ".3vw .3vw .3vw lightgray",
+                          boxShadow: ".1vw .1vw .1vw lightgray",
                           fontFamily: "Times New Roman",
                         }}
                       >
@@ -283,7 +285,7 @@ export class GenericForm extends Component {
                 backgroundColor: "#EEEEEE",
                 boxShadow: ".3vw .3vw .3vw silver",
                 borderRadius: "1vw",
-                //  border: ".2vw solid silver",
+                border: "0 solid silver",
 
                 width: "50vw",
                 marginLeft: "auto",
@@ -600,7 +602,7 @@ export class GenericForm extends Component {
                     type="submit"
                     style={{
                       marginTop: "1.5rem",
-                      background: "#009999",
+                      background: "#e0777d",
                       color: "#fff",
                       padding: ".4rem",
                       borderRadius: ".3rem",

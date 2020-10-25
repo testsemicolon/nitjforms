@@ -141,7 +141,7 @@ class DisplayEditor extends React.Component {
         <input onChange={this.onChange} type="text" />{" "}
         <Button
           style={{
-            backgroundColor: "#66a3ff",
+            backgroundColor: "#e0777d",
             borderWidth: 0,
             boxShadow: ".3vw .3vw .3vw lightgray",
             fontFamily: "Times New Roman",

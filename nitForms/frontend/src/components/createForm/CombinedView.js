@@ -40,6 +40,8 @@ export class CombinedView extends Component {
   render() {
     return (
       <div style={{ marginLeft: 0 }}>
+        <Button onClick={()=>window.history.back()} className="previous" 
+         style={{borderRadius:".5vw", boxShadow: ".3vw .3vw .5vw silver", backgroundColor:"#0a5c5a",marginBottom:"1vw"}}>&laquo; Back</Button>
         <div
           style={{
             width: "35vw",
@@ -55,46 +57,42 @@ export class CombinedView extends Component {
             layout={"1-column"}
             position={"right"}
             backgroundColor="#eeeeee"
+            style={{ minHeight: "1vw" }}
           >
             {this.arr.map((value1) => {
               return (
                 <Fragment key={value1}>
                   <VerticalTimelineElement
-                    // className="vertical-timeline-element--work"
                     contentStyle={{
                       border: ".2vw solid #009999",
                       borderRadius: "1vw",
                       background: "white",
-
                       padding: ".5vw",
                       boxShadow: ".3vw .3vw .3vw silver",
                       marginBottom: 0,
                       paddingBottom: 0,
+                      lineHeight: ".5vw",
                       wordWrap: "break-word",
                     }}
                     iconStyle={{
                       background: "#009999",
-                      width: "2vw",
-                      height: "2vw",
+                      width: "1.5vw",
+                      height: "1.5vw",
                       margin: ".5vw",
                       color: "#fff",
                       marginTop: "1vw",
                     }}
                   >
-                    <h5 style={{ color: "black" }}>{value1}</h5>
-                    <h6
-                      style={{ color: "darkgrey" }}
-                      className="vertical-timeline-element-subtitle"
-                    ></h6>
-                    {value1[0].includes("commented ") ? (
-                      <div>
-                        <p style={{ color: "#009999" }}>
+                    <h6 style={{ color: "black" }}>
+                      {value1}
+                      {value1[0].includes("commented ") ? (
+                        <h6 style={{ color: "#009999" }}>
                           {this.arr1[this.itr++]}
-                        </p>
-                      </div>
-                    ) : (
-                      <div></div>
-                    )}
+                        </h6>
+                      ) : (
+                        <div></div>
+                      )}
+                    </h6>
                   </VerticalTimelineElement>
                 </Fragment>
               );
@@ -114,21 +112,17 @@ export class CombinedView extends Component {
               }}
               iconStyle={{
                 background: "#009999",
-                width: "2vw",
-                height: "2vw",
+                width: "1.5vw",
+                height: "1.5vw",
                 margin: ".5vw",
                 color: "#fff",
                 marginTop: "1vw",
               }}
             >
-              <h5 style={{ color: "black" }}>FILLED BY : {this.props.user}</h5>
-              <h6
-                style={{ color: "darkgrey" }}
-                className="vertical-timeline-element-subtitle"
-              ></h6>
-              <p style={{ color: "#009999" }}>
-                TIME AND DATE : {this.props.time2}
-              </p>
+              <h6 style={{ color: "black" }}>
+                FILLED BY {this.props.user}{" "}
+                <font style={{ color: "#009999" }}>at {this.props.time2}</font>
+              </h6>
             </VerticalTimelineElement>
           </VerticalTimeline>
         </div>

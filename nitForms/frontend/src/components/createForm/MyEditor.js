@@ -211,7 +211,7 @@ class MyEditor extends React.Component {
         >
           <Button
             style={{
-              backgroundColor: "#66a3ff",
+              backgroundColor: "#e0777d",
               color: "white",
               borderWidth: 0,
               boxShadow: ".3vw .3vw .3vw grey",
@@ -223,8 +223,8 @@ class MyEditor extends React.Component {
           <Button
             style={{
               backgroundColor: "white",
-              color: "#66a3ff",
-              border: ".01vw solid #66a3ff",
+              color: "#e0777d",
+              border: ".01vw solid #e0777d",
               boxShadow: ".3vw .3vw .3vw grey",
             }}
             onClick={this.setEditorContent.bind(this)}

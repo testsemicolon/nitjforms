@@ -33,10 +33,13 @@ class Albumm extends Component {
             maxWidth: 800,
           }}
         /> */}
+       
+
+
         <div
           style={{
             // backgroundColor: "#ffb266",
-            backgroundColor: "#66a3ff",
+            backgroundColor: "#E17A7F",
             marginTop: "1vw",
 
             minHeight: "7vw",
@@ -90,14 +93,14 @@ class Albumm extends Component {
         </div>
         <div
           style={{
-            // backgroundImage: "linear-gradient(#fffeaa,#66a3ff)",
+            // backgroundImage: "linear-gradient(#fffeaa,#e0777d)",
             padding: "4vw",
             marginTop: "1vw",
             borderRadius: ".3vw",
 
             backgroundColor: "white",
-            // border: ".1vw solid #66a3ff",
-            boxShadow: ".2vw .3vw .7vw .01vw #66a3ff",
+            // border: ".1vw solid #e0777d",
+            boxShadow: ".2vw .3vw .7vw .01vw lightgray",
             // height: "15vw",
           }}
         >
@@ -127,7 +130,7 @@ class Albumm extends Component {
                 <Link1 to="/definingsteps">
                   <Button
                     style={{
-                      backgroundColor: "#66a3ff",
+                      backgroundColor: "#e0777d",
                       color: "white",
                       boxShadow: ".3vw .3vw .3vw lightgray",
                       fontFamily: "Times New Roman",
@@ -141,8 +144,8 @@ class Albumm extends Component {
                 <Button
                   style={{
                     backgroundColor: "white",
-                    color: "#66a3ff",
-                    border: ".1vw solid #66a3ff",
+                    color: "#e0777d",
+                    border: ".1vw solid #e0777d",
                     boxShadow: ".3vw .3vw .3vw lightgray",
                     fontFamily: "Times New Roman",
                   }}
@@ -171,15 +174,16 @@ class Albumm extends Component {
               this.setState({ customers: false });
             }}
             style={{
-              backgroundImage: "linear-gradient(rgba(179, 204, 37, .5),white",
+              //backgroundImage: "linear-gradient(rgba(179, 204, 37, .5),white",
               textAlign: "center",
               flexBasis: "19%",
               minHeight: "8vw",
+              backgroundColor: "white",
               borderRadius: ".5vw",
               padding: "1.5vw",
               color: "grey",
               boxShadow:
-                ".2vw .1vw .4vw rgba(179, 204, 37, .5), 0 0 .1vw rgba(0, 0, 0, 0.1) inset",
+                ".2vw .1vw .4vw #0A5C5A, 0 0 .1vw rgba(0, 0, 0, 0.1) inset",
               MozBoxShadow:
                 "0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) ",
               fontFamily: "Times New Roman",
@@ -199,19 +203,19 @@ class Albumm extends Component {
             style={{
               //   width: "17vw",
 
-              backgroundImage: "linear-gradient(pink,white)",
+              //backgroundImage: "linear-gradient(pink,white)",
               //   marginLeft: "1vw",
               //   marginRight: "1vw",
               textAlign: "center",
               flexBasis: "19%",
               minHeight: "8vw",
               borderRadius: ".5vw",
-              // backgroundColor: "white",
+              backgroundColor: "white",
               padding: "1.5vw",
               color: "grey",
               // border: ".01vw solid red",
               boxShadow:
-                ".2vw .1vw .4vw pink, 0 0 .1vw rgba(0, 0, 0, 0.1) inset",
+                ".2vw .1vw .4vw #0A5C5A, 0 0 .1vw rgba(0, 0, 0, 0.1) inset",
 
               // WebkitBoxShadow:
               //   "0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) ",
@@ -231,19 +235,19 @@ class Albumm extends Component {
             style={{
               //   width: "17vw",
 
-              backgroundImage: "linear-gradient(lightblue,white)",
+              // backgroundImage: "linear-gradient(lightblue,white)",
               //   marginLeft: "1vw",
               //   marginRight: "1vw",
               textAlign: "center",
               flexBasis: "19%",
               minHeight: "8vw",
               borderRadius: ".5vw",
-              // backgroundColor: "white",
+              backgroundColor: "white",
               padding: "1.5vw",
               color: "grey",
               // border: ".01vw solid red",
               boxShadow:
-                ".2vw .1vw .4vw lightblue, 0 0 .1vw rgba(0, 0, 0, 0.1) inset",
+                ".2vw .1vw .4vw #0A5C5A, 0 0 .1vw rgba(0, 0, 0, 0.1) inset",
 
               // WebkitBoxShadow:
               //   "0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) ",
@@ -263,7 +267,7 @@ class Albumm extends Component {
             style={{
               //   width: "17vw",
 
-              backgroundImage: "linear-gradient(#ffcc99,white)",
+              //backgroundImage: "linear-gradient(#ffcc99,white)",
               //   marginLeft: "1vw",
               //   marginRight: "1vw",
               textAlign: "center",
@@ -275,7 +279,7 @@ class Albumm extends Component {
               color: "grey",
               // border: ".01vw solid red",
               boxShadow:
-                ".2vw .1vw .4vw #ffcc99, 0 0 .1vw rgba(0, 0, 0, 0.1) inset",
+                ".2vw .1vw .4vw #0A5C5A, 0 0 .1vw rgba(0, 0, 0, 0.1) inset",
 
               // WebkitBoxShadow:
               //   "0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) ",
@@ -295,7 +299,7 @@ class Albumm extends Component {
             style={{
               //   width: "17vw",
 
-              backgroundImage: "linear-gradient(#cc99ff,white",
+              //backgroundImage: "linear-gradient(#cc99ff,white",
               //   marginLeft: "1vw",
               //   marginRight: "1vw",
               textAlign: "center",
@@ -305,9 +309,9 @@ class Albumm extends Component {
               backgroundColor: "white",
               padding: "1.5vw",
               color: "grey",
-              // border: ".01vw solid red",
+              // border: ".01vw solid #0A5C5A",
               boxShadow:
-                ".2vw .1vw .4vw #cc99ff, 0 0 .1vw rgba(0, 0, 0, 0.1) inset",
+                ".2vw .1vw .4vw #0A5C5A, 0 0 .1vw rgba(0, 0, 0, 0.1) inset",
 
               // WebkitBoxShadow:
               //   "0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) ",
@@ -351,7 +355,7 @@ class Albumm extends Component {
                 color: "grey",
                 // border: ".01vw solid red",
                 boxShadow:
-                  ".4vw .4vw .5vw lightgrey, 0 0 .1vw rgba(0, 0, 0, 0.1) inset",
+                  ".4vw .4vw .5vw lightgray, 0 0 .1vw rgba(0, 0, 0, 0.1) inset",
 
                 // WebkitBoxShadow:
                 //   "0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) ",
@@ -780,7 +784,7 @@ class Albumm extends Component {
         <Features />
         <footer
           style={{
-            backgroundColor: "#12a6a3",
+            backgroundColor: "#0A5C5A",
             marginLeft: "-6vw",
             marginRight: "-6vw",
             padding: "2vw",
@@ -812,6 +816,7 @@ class Albumm extends Component {
     );
   }
 }
+
 
 const mapStateToProps = (state) => ({
   username: state.Auth.user.username,

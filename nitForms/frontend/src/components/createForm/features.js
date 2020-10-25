@@ -6,7 +6,7 @@ export default class Features extends Component {
       <div style={{ display: "flex", marginTop: "3vw", marginBottom: "3vw" }}>
         <div
           style={{
-            backgroundColor: "#66a3ff",
+            backgroundColor: "#e0777d",
             boxShadow: ".3vw .7vw 2vw silver",
             flexBasis: "12%",
             borderRadius: ".5vw",
@@ -27,7 +27,7 @@ export default class Features extends Component {
         </div>
         <div
           style={{
-            backgroundColor: "#66a3ff",
+            backgroundColor: "#e0777d",
             boxShadow: ".3vw .7vw 2vw silver",
             flexBasis: "12%",
             margin: ".5vw",
@@ -48,7 +48,7 @@ export default class Features extends Component {
         </div>
         <div
           style={{
-            backgroundColor: "#66a3ff",
+            backgroundColor: "#e0777d",
             boxShadow: ".3vw .7vw 2vw silver",
             flexBasis: "12%",
             margin: ".5vw",
@@ -69,7 +69,7 @@ export default class Features extends Component {
         </div>
         <div
           style={{
-            backgroundColor: "#66a3ff",
+            backgroundColor: "#e0777d",
             boxShadow: ".3vw .7vw 2vw silver",
             flexBasis: "12%",
             margin: ".5vw",
@@ -89,7 +89,7 @@ export default class Features extends Component {
         </div>
         <div
           style={{
-            backgroundColor: "#66a3ff",
+            backgroundColor: "#e0777d",
             boxShadow: ".3vw .7vw 2vw silver",
             flexBasis: "12%",
             margin: ".5vw",
@@ -109,7 +109,7 @@ export default class Features extends Component {
         </div>
         <div
           style={{
-            backgroundColor: "#66a3ff",
+            backgroundColor: "#e0777d",
             boxShadow: ".3vw .7vw 2vw silver",
             flexBasis: "12%",
             margin: ".5vw",
@@ -130,7 +130,7 @@ export default class Features extends Component {
         </div>
         <div
           style={{
-            backgroundColor: "#66a3ff",
+            backgroundColor: "#e0777d",
             boxShadow: ".3vw .7vw 2vw silver",
             flexBasis: "12%",
             margin: ".5vw",
@@ -151,7 +151,7 @@ export default class Features extends Component {
         </div>
         <div
           style={{
-            backgroundColor: "#66a3ff",
+            backgroundColor: "#e0777d",
             boxShadow: ".3vw .7vw 2vw silver",
             flexBasis: "12%",
             margin: ".5vw",

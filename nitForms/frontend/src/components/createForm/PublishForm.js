@@ -127,7 +127,7 @@ export class PublishForm extends Component {
           <Link to={`/${this.ftitle}`}>
             <Button
               style={{
-                background: "#66a3ff",
+                background: "#e0777d",
                 boxShadow: ".3vw .3vw .3vw lightgray",
                 color: "#fff",
                 flex: "1",
@@ -151,9 +151,9 @@ export class PublishForm extends Component {
               style={{
                 background: "white",
                 boxShadow: ".3vw .3vw .3vw lightgray",
-                color: "#66a3ff",
+                color: "#e0777d",
                 flex: "1",
-                border: ".01vw solid #66a3ff",
+                border: ".01vw solid #e0777d",
                 padding: "5px",
                 borderRadius: ".3rem",
                 fontFamily: "Times New Roman",

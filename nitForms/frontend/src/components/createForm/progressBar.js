@@ -211,7 +211,7 @@ export default function HorizontalNonLinearAlternativeLabelStepper() {
             <div>
               <Button
                 style={{
-                  background: "#66a3ff",
+                  background: "#e0777d",
                   boxShadow: ".3vw .3vw .3vw lightgray",
                   color: "white",
                   fontFamily: "Times New Roman",
@@ -224,7 +224,7 @@ export default function HorizontalNonLinearAlternativeLabelStepper() {
               </Button>
               <Button
                 style={{
-                  background: "#66a3ff",
+                  background: "#e0777d",
                   boxShadow: ".3vw .3vw .3vw lightgray",
                   color: "white",
                   fontFamily: "Times New Roman",
@@ -237,7 +237,7 @@ export default function HorizontalNonLinearAlternativeLabelStepper() {
               {isStepOptional(activeStep) && !completed.has(activeStep) && (
                 <Button
                   style={{
-                    background: "#66a3ff",
+                    background: "#e0777d",
                     boxShadow: ".3vw .3vw .3vw lightgray",
                     color: "white",
                     fontFamily: "Times New Roman",
@@ -261,7 +261,7 @@ export default function HorizontalNonLinearAlternativeLabelStepper() {
                 ) : (
                   <Button
                     style={{
-                      background: "#66a3ff",
+                      background: "#e0777d",
                       boxShadow: ".3vw .3vw .3vw lightgray",
                       color: "white",
                       fontFamily: "Times New Roman",

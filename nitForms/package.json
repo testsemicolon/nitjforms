@@ -61,6 +61,7 @@
     "react-live-clock": "^4.0.5",
     "react-notifications-component": "^2.4.0",
     "react-redux": "^7.2.0",
+    "react-responsive-modal": "^5.1.1",
     "react-router-dom": "^5.1.2",
     "react-splitter-layout": "^4.0.0",
     "react-textarea-autosize": "^8.0.1",
