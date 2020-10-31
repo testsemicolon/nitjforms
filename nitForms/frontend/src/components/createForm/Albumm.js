@@ -16,6 +16,7 @@ import { getDefaultKeyBinding } from "draft-js";
 import Clock from "react-live-clock";
 import CountUp from "react-countup";
 import $ from "jquery";
+import Notifications  from "./Notifications";
 
 class Albumm extends Component {
   state = {
@@ -69,6 +70,9 @@ class Albumm extends Component {
                   NAME:{this.props.username}
                   <br />
                   USERTYPE:SUPER ADMIN <br />
+                </td>
+                <td>
+                  <Notifications/>
                 </td>
               </tr>
             </table>

@@ -16,6 +16,15 @@ import { getDefaultKeyBinding } from "draft-js";
 import Clock from "react-live-clock";
 import CountUp from "react-countup";
 import $ from "jquery";
+import { DatePicker } from "rsuite";
+import { DateRangePicker } from 'rsuite';
+import UsersOverview from "./DirectorDashboard/UsersOverview";
+import Discussions from "./DirectorDashboard/Discussions";
+import SmallStats from "./DirectorDashboard/SmallStats";
+import { Container, Row, Col } from "shards-react";
+import SmallCharts from "./DirectorDashboard/SmallCharts";
+// import 'rsuite/lib/styles/index.less';
+
 
 class Director extends Component {
   state = {
@@ -36,41 +45,9 @@ class Director extends Component {
     const { open } = this.state;
     return (
       <Fragment>
-        {/* <div
-          style={{
-            position: "fixed",
-            bottom: "3.4vw",
-            right: "5.7vw",
-            paddingLeft: "3vw",
-            paddingRight: "3vw",
-            zIndex: "9999",
-            backgroundPosition: "top",
-          }}
-          class="dropup"
-        >
-          <button
-            class="btn btn-primary dropdown-toggle"
-            type="button"
-            id="about-us"
-            data-toggle="dropdown"
-            aria-haspopup="true"
-            aria-expanded="false"
-          >
-            About Us
-            <span class="caret"></span>
-          </button>
-          <ul aria-labelledby="about-us">
-            <li>
-              <a href="#">Our Story</a>
-            </li>
-            <li>
-              <a href="#">Our Team</a>
-            </li>
-            <li>
-              <a href="#">Contact Us</a>
-            </li>
-          </ul>
-        </div> */}
+      
+        
+       
         <div
           style={{
             // backgroundColor: "#ffb266",
@@ -103,7 +80,7 @@ class Director extends Component {
                 <td style={{ width: "25vw" }}>
                   NAME:{this.props.username}
                   <br />
-                  USERTYPE:SUPER ADMIN <br />
+                  Director<br />
                 </td>
               </tr>
             </table>
@@ -123,71 +100,10 @@ class Director extends Component {
             />
           </form>
         </div>
-        {/* <div
-          style={{
-            // backgroundImage: "linear-gradient(#fffeaa,#e0777d)",
-            padding: "4vw",
-            marginTop: "1vw",
-            borderRadius: ".3vw",
-
-            backgroundColor: "white",
-            // border: ".1vw solid #e0777d",
-            boxShadow: ".2vw .3vw .7vw .01vw lightgray",
-            // height: "15vw",
-          }}
-        >
-          <Typography
-            component="h1"
-            variant="h2"
-            align="center"
-            color="textPrimary"
-            gutterBottom
-            style={{ fontFamily: "Times New Roman" }}
-          >
-            FORMS
-          </Typography>
-
-          <Typography
-            variant="h5"
-            align="center"
-            color="textSecondary"
-            paragraph
-            style={{ fontFamily: "Times New Roman" }}
-          >
-            LET'S CREATE A NEW FORM
-          </Typography>
-          <div>
-            <Grid container spacing={2} justify="center">
-              <Grid item>
-                <Link1 to="/definingsteps">
-                  <Button
-                    style={{
-                      backgroundColor: "#e0777d",
-                      color: "white",
-                      boxShadow: ".3vw .3vw .3vw lightgray",
-                      fontFamily: "Times New Roman",
-                    }}
-                  >
-                    CREATE A NEW FORM
-                  </Button>
-                </Link1>
-              </Grid>
-              <Grid item>
-                <Button
-                  style={{
-                    backgroundColor: "white",
-                    color: "#e0777d",
-                    border: ".1vw solid #e0777d",
-                    boxShadow: ".3vw .3vw .3vw lightgray",
-                    fontFamily: "Times New Roman",
-                  }}
-                >
-                  VIEW PREVIOUS FORMS
-                </Button>
-              </Grid>
-            </Grid>
-          </div>
-        </div> */}
+        <div style={{marginTop:"2vw"}}>
+       <SmallCharts/>
+        </div>
+      
 
         <div
           style={{
@@ -215,7 +131,7 @@ class Director extends Component {
               padding: "1.5vw",
               color: "grey",
               boxShadow:
-                ".2vw .1vw .4vw #0A5C5A, 0 0 .1vw rgba(0, 0, 0, 0.1) inset",
+                ".2vw .1vw .4vw silver, 0 0 .1vw rgba(0, 0, 0, 0.1) inset",
               MozBoxShadow:
                 "0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) ",
               fontFamily: "Times New Roman",
@@ -247,7 +163,7 @@ class Director extends Component {
               color: "grey",
               // border: ".01vw solid red",
               boxShadow:
-                ".2vw .1vw .4vw #0A5C5A, 0 0 .1vw rgba(0, 0, 0, 0.1) inset",
+                ".2vw .1vw .4vw silver, 0 0 .1vw rgba(0, 0, 0, 0.1) inset",
 
               // WebkitBoxShadow:
               //   "0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) ",
@@ -279,7 +195,7 @@ class Director extends Component {
               color: "grey",
               // border: ".01vw solid red",
               boxShadow:
-                ".2vw .1vw .4vw #0A5C5A, 0 0 .1vw rgba(0, 0, 0, 0.1) inset",
+                ".2vw .1vw .4vw silver, 0 0 .1vw rgba(0, 0, 0, 0.1) inset",
 
               // WebkitBoxShadow:
               //   "0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) ",
@@ -311,7 +227,7 @@ class Director extends Component {
               color: "grey",
               // border: ".01vw solid red",
               boxShadow:
-                ".2vw .1vw .4vw #0A5C5A, 0 0 .1vw rgba(0, 0, 0, 0.1) inset",
+                ".2vw .1vw .4vw silver, 0 0 .1vw rgba(0, 0, 0, 0.1) inset",
 
               // WebkitBoxShadow:
               //   "0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) ",
@@ -329,11 +245,7 @@ class Director extends Component {
           </Button>
           <Button
             style={{
-              //   width: "17vw",
-
-              //backgroundImage: "linear-gradient(#cc99ff,white",
-              //   marginLeft: "1vw",
-              //   marginRight: "1vw",
+        
               textAlign: "center",
               flexBasis: "19%",
               minHeight: "8vw",
@@ -343,7 +255,7 @@ class Director extends Component {
               color: "grey",
               // border: ".01vw solid #0A5C5A",
               boxShadow:
-                ".2vw .1vw .4vw #0A5C5A, 0 0 .1vw rgba(0, 0, 0, 0.1) inset",
+                ".2vw .1vw .4vw silver, 0 0 .1vw rgba(0, 0, 0, 0.1) inset",
 
               // WebkitBoxShadow:
               //   "0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) ",
@@ -356,18 +268,10 @@ class Director extends Component {
           >
             CREATE
             <br />
-            {/* <h3>
-              <CountUp end={10} duration={5} />
-            </h3> */}
+
+      
           </Button>
-          {/* <Modal open={open} onClose={this.onCloseModal}>
-            <h2>Simple centered modal</h2>
-            <p>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam
-              pulvinar risus non risus hendrerit venenatis. Pellentesque sit
-              amet hendrerit risus, sed porttitor quam.
-            </p>
-          </Modal> */}
+  
         </div>
 
         {this.state.users === true ? (
@@ -379,14 +283,9 @@ class Director extends Component {
               marginTop: "1vw",
             }}
           >
-            <div
+            {/* <div
               style={{
-                //   width: "17vw",
-
-                //   backgroundImage:
-                //     "linear-gradient(rgba(179, 204, 37, .5),rgba(51, 204, 37, .5))",
-                //   marginLeft: "1vw",
-                //   marginRight: "1vw",
+         
                 textAlign: "center",
                 flexBasis: "32%",
                 minHeight: "18vw",
@@ -398,11 +297,6 @@ class Director extends Component {
                 boxShadow:
                   ".4vw .4vw .5vw lightgray, 0 0 .1vw rgba(0, 0, 0, 0.1) inset",
 
-                // WebkitBoxShadow:
-                //   "0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) ",
-                // MozBoxShadow:
-                //   "0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) ",
-                //        box-shadow:0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset,
               }}
             >
               <div>
@@ -482,18 +376,12 @@ class Director extends Component {
                   </tbody>
                 </table>
               </div>
-            </div>
+            </div> */}
 
             <div
               style={{
-                //   width: "17vw",
-
-                //   backgroundImage:
-                //     "linear-gradient(rgba(179, 204, 37, .5),rgba(51, 204, 37, .5))",
-                //   marginLeft: "1vw",
-                //   marginRight: "1vw",
                 textAlign: "center",
-                flexBasis: "32%",
+                flexBasis: "64%",
                 minHeight: "18vw",
                 borderRadius: ".5vw",
                 backgroundColor: "white",
@@ -502,33 +390,11 @@ class Director extends Component {
 
                 padding: "1.5vw",
                 color: "grey",
-                // border: ".01vw solid red",
-                // boxShadow:
-                //   ".2vw .1vw .4vw purple, 0 0 .1vw rgba(0, 0, 0, 0.1) inset",
-
-                // WebkitBoxShadow:
-                //   "0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) ",
-                // MozBoxShadow:
-                //   "0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) ",
-                //        box-shadow:0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset,
+   
               }}
             >
-              <Button
-                style={{
-                  backgroundColor: "#0A5C5A",
-                  float: "right",
-                  padding: ".03vw",
-                  paddingLeft: ".3vw",
-                  paddingRight: "0.3vw",
-                  color: "white",
-                }}
-              >
-                Generate Report
-              </Button>
-              <img
-                src="static/graph.JPG"
-                style={{ height: "17vw", width: "26vw" }}
-              />
+    
+           <UsersOverview />
             </div>
             <div
               style={{
@@ -548,21 +414,12 @@ class Director extends Component {
                 backgroundColor: "white",
                 padding: "1.5vw",
                 color: "grey",
-                // border: ".01vw solid red",
-                // boxShadow:
-                //   ".2vw .1vw .4vw green, 0 0 .1vw rgba(0, 0, 0, 0.1) inset",
-
-                // WebkitBoxShadow:
-                //   "0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) ",
-                // MozBoxShadow:
-                //   "0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) ",
-                //        box-shadow:0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset,
+                
               }}
             >
               <div>
-                Create
-                <br />
-                <table
+                
+                {/* <table
                   //rules="all"
                   style={{
                     width: "100%",
@@ -617,25 +474,9 @@ class Director extends Component {
                         </Button>
                       </td>
                     </tr>
-
-                    {/* <tr>
-                      <td>19-07-2020</td>
-                      <td>Test3</td>
-                    </tr>
-                    <tr>
-                      <td>12-03-2020</td>
-                      <td>Test4</td>
-                    </tr>
-                    <tr>
-                      <td>2-04-2020</td>
-                      <td>Test5</td>
-                    </tr>
-                    <tr>
-                      <td>19-07-2020</td>
-                      <td>Test6</td>
-                    </tr> */}
                   </tbody>
-                </table>
+                </table> */}
+                <Discussions />
               </div>
             </div>
           </div>
@@ -653,12 +494,7 @@ class Director extends Component {
           >
             <div
               style={{
-                //   width: "17vw",
-
-                //   backgroundImage:
-                //     "linear-gradient(rgba(179, 204, 37, .5),rgba(51, 204, 37, .5))",
-                //   marginLeft: "1vw",
-                //   marginRight: "1vw",
+     
                 textAlign: "center",
                 flexBasis: "32%",
                 minHeight: "18vw",
@@ -669,12 +505,6 @@ class Director extends Component {
                 // border: ".01vw solid red",
                 boxShadow:
                   ".4vw .4vw .5vw lightgrey, 0 0 .1vw rgba(0, 0, 0, 0.1) inset",
-
-                // WebkitBoxShadow:
-                //   "0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) ",
-                // MozBoxShadow:
-                //   "0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) ",
-                //        box-shadow:0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset,
               }}
             >
               <div>
@@ -774,15 +604,6 @@ class Director extends Component {
 
                 padding: "1.5vw",
                 color: "grey",
-                // border: ".01vw solid red",
-                // boxShadow:
-                //   ".2vw .1vw .4vw purple, 0 0 .1vw rgba(0, 0, 0, 0.1) inset",
-
-                // WebkitBoxShadow:
-                //   "0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) ",
-                // MozBoxShadow:
-                //   "0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) ",
-                //        box-shadow:0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset,
               }}
             >
               <img
@@ -792,12 +613,7 @@ class Director extends Component {
             </div>
             <div
               style={{
-                //   width: "17vw",
-
-                //   backgroundImage:
-                //     "linear-gradient(rgba(179, 204, 37, .5),rgba(51, 204, 37, .5))",
-                //   marginLeft: "1vw",
-                //   marginRight: "1vw",
+            
                 textAlign: "center",
                 boxShadow:
                   ".4vw .4vw .5vw lightgrey, 0 0 .1vw rgba(0, 0, 0, 0.1) inset",
@@ -808,15 +624,6 @@ class Director extends Component {
                 backgroundColor: "white",
                 padding: "1.5vw",
                 color: "grey",
-                // border: ".01vw solid red",
-                // boxShadow:
-                //   ".2vw .1vw .4vw green, 0 0 .1vw rgba(0, 0, 0, 0.1) inset",
-
-                // WebkitBoxShadow:
-                //   "0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) ",
-                // MozBoxShadow:
-                //   "0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) ",
-                //        box-shadow:0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset,
               }}
             >
               <div>
@@ -830,8 +637,6 @@ class Director extends Component {
                     border: ".1vw solid grey",
                     backgroundColor: "white",
                     borderSpacing: "1vw",
-                    // boxShadow: "0.1vw 0.2vw 0.1vw grey",
-                    // backgroundImage: "linear-gradient(lightgreen,white)",
                   }}
                 >
                   <tbody>
@@ -882,6 +687,7 @@ class Director extends Component {
           <Typography
             variant="h6"
             align="center"
+            color="cream"
             style={{ fontFamily: "Times New Roman" }}
             gutterBottom
           >

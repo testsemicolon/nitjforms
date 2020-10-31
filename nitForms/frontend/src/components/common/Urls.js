@@ -29,6 +29,7 @@ import CombinedView from "../createForm/CombinedView";
 import DefineSteps from "../createForm/DefineSteps";
 import PreviousForms from "../createForm/PreviousForms";
 import ViewResponseNoteGenerate from "../createForm/ViewResponseNoteGenerate";
+import Director from "../createForm/Director";
 export class Urls extends Component {
   constructor(props) {
     super(props);
@@ -50,6 +51,7 @@ export class Urls extends Component {
         <PrivateRoute path="/steps" component={Steps} />
         <PrivateRoute path="/old" component={OldForms} />
         <PrivateRoute path="/slate" component={NotingSlate} />
+        <PrivateRoute path="/director" component={Director} />
         <PrivateRoute path="/posts" component={FileUpload} />
         <PrivateRoute path="/accepted/:title" component={AcceptedResponses} />
         <PrivateRoute

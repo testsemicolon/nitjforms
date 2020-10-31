@@ -1,9 +1,10 @@
-import React, { Component } from "react";
+import React, { Component, Fragment } from "react";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 import { logout } from "../../actions/Auth";
 import PropTypes from "prop-types";
 import { DropdownButton, Dropdown } from "react-bootstrap";
+import Notifications from "../createForm/Notifications";
 
 export class Buttons extends Component {
   static propTypes = {
@@ -15,7 +16,8 @@ export class Buttons extends Component {
     const { isAuthenticated, user } = this.props.auth;
 
     const authLinks = (
-      <div>
+       
+        <Fragment>
         <DropdownButton
           variant="light"
           style={{
@@ -27,7 +29,7 @@ export class Buttons extends Component {
         >
           <Dropdown.Item onClick={this.props.logout}>Logout</Dropdown.Item>
         </DropdownButton>
-      </div>
+        </Fragment>
     );
     const guestLinks = (
       <div style={{ float: "right", position: "relative", marginLeft: "34vw" }}>
@@ -35,8 +37,8 @@ export class Buttons extends Component {
       </div>
     );
     return (
-      <div style={{ marginLeft: "auto", marginRight: "3vw" }}>
-        {isAuthenticated ? authLinks : guestLinks}
+      <div style={{marginLeft:"auto",marginRight:"3vw"}}>
+        {isAuthenticated ? ( authLinks ): guestLinks}
       </div>
     );
   }

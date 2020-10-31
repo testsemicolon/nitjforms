@@ -26,6 +26,7 @@ import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import Buttons from "./Buttons";
+import Notifications from "../createForm/Notifications"
 
 const drawerWidth = 250;
 
@@ -142,7 +143,9 @@ export default function PersistentDrawerLeft() {
               NATIONAL INSTITUTE OF TECHNOLOGY,JALANDHAR
             </font>
           </h2>
-
+          {/* <stylee style={{marginRight:"auto"}}><Notifications/></stylee> */}
+          {/* <Notifications/> */}
+          
           <Buttons />
         </Toolbar>
       </AppBar>
