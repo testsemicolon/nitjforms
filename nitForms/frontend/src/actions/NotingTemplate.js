@@ -36,3 +36,19 @@ export const postNotingTemplate = (quest, quest1) => (dispatch) => {
     })
     .catch((err) => console.log(err));
 };
+
+
+export const addNoting = (quest1) => (dispatch) => {
+  var msg = "Noting has been added ";
+  console.log(msg)
+  axios
+    .put(`name/${quest1.id}/`, quest1)
+    .then((res1) =>
+      dispatch(
+        createMessage({
+          notingPost: msg,
+        })
+      )
+    )
+    .catch((err) => console.log(err));
+}

@@ -11,7 +11,10 @@ import {
 } from "../../actions/CreateForm";
 import PropTypes from "prop-types";
 
+
+
 export class FormItems extends Component {
+
   static propTypes = {
     Forms: PropTypes.array.isRequired,
     getField: PropTypes.func.isRequired,

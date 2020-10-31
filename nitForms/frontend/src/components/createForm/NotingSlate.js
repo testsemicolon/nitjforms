@@ -14,9 +14,26 @@ import CardMedia from "@material-ui/core/CardMedia";
 import Grid from "@material-ui/core/Grid";
 import Typography from "@material-ui/core/Typography";
 import Container from "@material-ui/core/Container";
+import { addNoting } from "../../actions/NotingTemplate";
 import { Editor } from "draft-js";
 
 export class NotingSlate extends Component {
+  quest1 = {}
+  arr = []
+  componentDidMount(){
+    this.props.FormName.map(name => {
+      this.quest1 = name;
+      this.arr = name.notingLink;
+    })
+  }
+
+  onClick = (key) => {
+    console.log("hello0");
+    this.quest1.notingLink.push(key);
+    console.log(this.quest1);
+    this.props.addNoting(this.quest1);
+  }
+
   render() {
     return (
       <div
@@ -115,6 +132,7 @@ export class NotingSlate extends Component {
                             padding: ".17vw",
                             fontFamily: "Times New Roman",
                           }}
+                          onClick={()=>{this.onClick(a.key)}}
                         >
                           Use
                         </Button>
@@ -136,6 +154,7 @@ export class NotingSlate extends Component {
 }
 const mapStateToProps = (state) => ({
   NotingTemplate: state.NotingTemplate.NotingTemplate,
+  FormName: state.FormName.FormName
 });
 
-export default connect(mapStateToProps)(NotingSlate);
+export default connect(mapStateToProps, { addNoting })(NotingSlate);

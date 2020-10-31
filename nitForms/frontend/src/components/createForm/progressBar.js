@@ -43,7 +43,7 @@ function getSteps() {
 function getStepContent(step) {
   switch (step) {
     case 0:
-      return <FormName />;
+      return <FormName/>;
     case 1:
       return <NotingSlate />;
     case 2:

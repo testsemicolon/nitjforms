@@ -72,16 +72,3 @@ class formIndexViewSet(viewsets.ModelViewSet):
     queryset = formIndex.objects.all()
     permission_class = [permissions.AllowAny]
     serializer_class = formIndexSerializer
-
-
-class test101ViewSet(viewsets.ModelViewSet):
-    queryset = test101.objects.all()
-    parser_class = (MultiPartParser, FormParser)
-    permission_class = [permissions.AllowAny]
-    serializer_class = test101Serializer
-
-
-class test101AcceptedViewSet(viewsets.ModelViewSet):
-    queryset = test101Accepted.objects.all()
-    permission_class = [permissions.AllowAny]
-    serializer_class = test101AcceptedSerializer

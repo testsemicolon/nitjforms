@@ -3,6 +3,7 @@ import {
   VerticalTimeline,
   VerticalTimelineElement,
 } from "react-vertical-timeline-component";
+import { Button } from "react-bootstrap";
 import { connect } from "react-redux";
 
 export class CombinedView extends Component {
