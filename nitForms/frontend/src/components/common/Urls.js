@@ -30,6 +30,7 @@ import DefineSteps from "../createForm/DefineSteps";
 import PreviousForms from "../createForm/PreviousForms";
 import ViewResponseNoteGenerate from "../createForm/ViewResponseNoteGenerate";
 import Director from "../createForm/Director";
+import Outbox from "../createForm/outbox";
 export class Urls extends Component {
   constructor(props) {
     super(props);
@@ -47,6 +48,7 @@ export class Urls extends Component {
         <PrivateRoute path="/combine/:id" component={CombinedView} />
         <Route path="/login" component={Login} />
         <PrivateRoute path="/publish" component={PublishForm} />
+        <PrivateRoute path="/outbox" component={Outbox} />
         <PrivateRoute path="/card" component={CardForm} />
         <PrivateRoute path="/steps" component={Steps} />
         <PrivateRoute path="/old" component={OldForms} />

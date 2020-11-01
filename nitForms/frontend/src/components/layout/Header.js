@@ -175,8 +175,14 @@ export default function PersistentDrawerLeft() {
             <ListItem>View Previous</ListItem>
           </Link>
           <ListItem>Drafts</ListItem>
-        </List>
+          </List>
         <Divider />
+        <List style={{ fontSize: "1.5vw" }}>
+        <Link to="/outbox"><ListItem>OutBox</ListItem></Link>
+        </List>
+          
+          
+          <Divider/>
       </Drawer>
       <main
         className={clsx(classes.content, {

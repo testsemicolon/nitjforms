@@ -23,6 +23,7 @@ import Discussions from "./DirectorDashboard/Discussions";
 import SmallStats from "./DirectorDashboard/SmallStats";
 import { Container, Row, Col } from "shards-react";
 import SmallCharts from "./DirectorDashboard/SmallCharts";
+import FundsAllot from "./DirectorDashboard/FundsAllot";
 // import 'rsuite/lib/styles/index.less';
 
 
@@ -672,7 +673,7 @@ class Director extends Component {
         ) : (
           <div></div>
         )}
-
+<FundsAllot />
         {/* <OldForms /> */}
         <Features />
         <footer
