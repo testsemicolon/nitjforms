@@ -5,6 +5,7 @@ import { Button } from "react-bootstrap";
 import TextareaAutosize from "react-textarea-autosize";
 import { Card } from "react-bootstrap";
 import { responseReject } from "../../actions/SubmitPage";
+import { sendMail } from "../../actions/Email";
 
 export class ViewIndividualResponse extends Component {
   state = {
@@ -24,11 +25,15 @@ export class ViewIndividualResponse extends Component {
     let value1 = this.props.match.params.value;
     let title1 = this.props.match.params.title;
     const quest = {};
-
+    const questMail = {};
+    var recieverMail = "";
     {
       Object.entries(this.props.Forms).map(([key, value]) => {
         if (key === value1) {
           Object.entries(value).map(([question, answer]) => {
+            if (question === "userMail") {
+              recieverMail = answer;
+            } 
             if (question !== "id") {
               quest[question] = answer;
             }
@@ -36,9 +41,14 @@ export class ViewIndividualResponse extends Component {
         }
       });
     }
+    questMail["senderEmail"] = this.props.email;
+    questMail["recieverEmail"] = recieverMail;
+    questMail["content"] = "Your response has been submitted.";
     console.log(this.state.content);
     quest["commentAccepted"] = this.state.content;
     this.props.addAccepted(quest, title1);
+    console.log(questMail);
+    this.props.sendMail(questMail);
   };
 
   onClickReject = () => {
@@ -214,8 +224,9 @@ export class ViewIndividualResponse extends Component {
 const mapStateToProps = (state) => ({
   Forms: state.Forms.Forms,
   created_by1: state.Auth.user.username,
+  email: state.Auth.user.email,
 });
 
-export default connect(mapStateToProps, { addAccepted, responseReject })(
+export default connect(mapStateToProps, { addAccepted, responseReject, sendMail })(
   ViewIndividualResponse
 );

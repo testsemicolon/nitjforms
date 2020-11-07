@@ -108,16 +108,20 @@ class DisplayEditor extends React.Component {
       this.props.AcceptedResponse.map((s1) => {
         var id = parseInt(this.props.id);
         var id1 = parseInt(s1.id);
-
+        console.log("Hello");
+        console.log(id, id1);
         if (id === id1) {
+          console.log("entry");
           Object.entries(s1).map(([key, value]) => {
+            console.log("entry2");
             if (
               (key !== "comment") &
               (key !== "commentAccepted") &
-              (key !== "responseTime")
+              (key !== "responseTime") &
+              (key !== "userMail")
             ) {
               s.text = s.text.replace("#", "");
-
+              console.log(key, value);
               s.text = s.text.replace(key, value);
             }
           });

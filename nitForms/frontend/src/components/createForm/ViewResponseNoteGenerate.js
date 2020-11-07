@@ -101,12 +101,9 @@ export class ViewResponseNoteGenerate extends Component {
     const questNotify = {};
     questNotify["sender"] = `${this.props.created_by1}`;
     questNotify["reciever"] = `${this.obj.userName}`;
-    console.log("Hello");
-    console.log(this.props.created_by1, this.obj.userName);
     questNotify["notify"] = notifyCmnt;
     console.log(questNotify);
     this.props.postNotification(questNotify);
-
     this.props.history.push(this.props.match.url);
     console.log(this.props.match.url);
   };

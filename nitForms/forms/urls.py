@@ -14,7 +14,29 @@ router.register("notingTemplate", notingTemplateViewSet, "notingTemplate")
 router.register("userNotifications", userNotificationsViewSet,
                 "userNotifications")
 router.register("formIndex", formIndexViewSet, "formIndex")
+router.register("EmailIndex", EmailIndexViewSet, "EmailIndex")
 urlpatterns = router.urls
 urlpatterns += [
     path('posts/', api.PostView.as_view(), name='posts_list'),
 ]
+
+
+router.register('test1', test1ViewSet, 'test1')
+
+
+router.register('test1Accepted', test1AcceptedViewSet, 'test1Accepted')
+urlpatterns += router.urls
+
+
+router.register('test2', test2ViewSet, 'test2')
+
+
+router.register('test2Accepted', test2AcceptedViewSet, 'test2Accepted')
+urlpatterns += router.urls
+
+
+router.register('test5', test5ViewSet, 'test5')
+
+
+router.register('test5Accepted', test5AcceptedViewSet, 'test5Accepted')
+urlpatterns += router.urls

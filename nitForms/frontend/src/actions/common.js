@@ -16,8 +16,9 @@ export const getSharedUser = () => (dispatch) => {
 };
 
 export const putSharedUser = (id, quest) => (dispatch) => {
-  var msg = `Form ${quest.formName} has been with ${quest.userName} `;
-  axios.put(`/sharedUser/${id}/`, quest).then((res) => {
+  var msg = `Form ${quest.formName} has been shared with ${quest.userName} `;
+  axios
+    .put(`/sharedUser/${id}/`, quest).then((res) => {
     dispatch((res) => {
       createMessage({
         sharedUser: msg,
@@ -26,7 +27,7 @@ export const putSharedUser = (id, quest) => (dispatch) => {
   });
 };
 export const postSharedUser = (quest) => (dispatch) => {
-  var msg = `Form ${quest.formName} has been with ${quest.userName} `;
+  var msg = `Form ${quest.formName} has been shared with ${quest.userName} `;
   axios
     .post("/sharedUser/", quest)
     .then((res) => {

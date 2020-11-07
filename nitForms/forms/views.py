@@ -1,8 +1,8 @@
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from django.views.decorators.csrf import csrf_exempt
-from .models import FormName, CreateForms
-
+from .models import *
+import smtplib
 import os
 import subprocess
 
@@ -40,6 +40,8 @@ def post_views(request):
         )
         f.write(
             "    userName = models.CharField(max_length=1000, blank=True)\n")
+        f.write(
+            "    userMail = models.EmailField(max_length=1000)\n")
         f.close()
         data = CreateForms.objects.all()
         for i in data:
@@ -143,3 +145,27 @@ def modelFunc(modelPath, question1, inputType):
     else:
         pass
     f.close()
+
+
+@csrf_exempt
+def sendMail_views(request):
+    mail = EmailIndex.objects.all().last()
+    sender1 = mail.senderEmail
+    receivers1 = mail.recieverEmail
+    message1 = mail.content
+    print(sender1, receivers1, message1)
+    # creates SMTP session 
+    s = smtplib.SMTP('smtp.gmail.com', 587) 
+    # start TLS for security 
+    s.starttls() 
+    sender = "team3852@gmail.com"
+    password = "Nitjforms@3852"
+    # Authentication 
+    s.login(sender, password) 
+    # message to be sent 
+    message = "Message_you_need_to_send"
+    # sending the mail 
+    s.sendmail(sender, "raghav.wadhwa.rw@gmail.com", message)    
+    # terminating the session 
+    s.quit() 
+    print("Mail sent successfully")

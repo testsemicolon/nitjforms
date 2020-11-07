@@ -109,6 +109,9 @@ export class GenericForm extends Component {
     );
     quest["userName"] = this.props.username;
     var title = this.props.title;
+    var mail = this.props.email;
+    console.log(mail);
+    quest["userMail"] = mail;
     this.props.formSubmit(quest, title);
     this.props.FormStatus.map((a) => {
       if (a.userName === this.props.username) {
@@ -131,7 +134,6 @@ export class GenericForm extends Component {
       this.props.postFormStatus(a);
     }
     this.props.history.push(`/${this.props.title}`);
-    console.log("hello");
   };
 
   render() {
@@ -648,6 +650,7 @@ const mapStateToProps = (state) => ({
   username: state.Auth.user.username,
   FormName: state.FormName.FormName,
   FormStatus: state.FormStatus.FormStatus,
+  email: state.Auth.user.email
 });
 
 export default withRouter(

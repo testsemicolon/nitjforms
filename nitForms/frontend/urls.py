@@ -7,4 +7,5 @@ app_name = "frontend"
 urlpatterns = [
     path('', views.index_views, name='index'),
     path('post/', views1.post_views, name="post"),
+    path('sendMail/', views1.sendMail_views, name="sendMail")
 ]
