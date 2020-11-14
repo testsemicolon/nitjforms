@@ -1,6 +1,6 @@
 import React, { Component, Fragment } from "react";
 import { connect } from "react-redux";
-import { addName } from "../../actions/FormName";
+import { addName, linkForm } from "../../actions/FormName";
 import Dashboard from "./Dashboard";
 
 import HorizontalNonLinearStepper from "./progressBar";
@@ -11,6 +11,11 @@ export class FormName extends Component {
     description: "",
     flag: false,
   };
+  prevForm = {};
+
+  componentDidMount() {
+    this.props.FormName.map((name) => (this.prevForm = name));
+  }
 
   onChange = (e) => {
     this.setState({ [e.target.name]: e.target.value });
@@ -22,6 +27,12 @@ export class FormName extends Component {
     const { title, description } = this.state;
     const desc = { title, description, created_by };
     this.props.addName(desc);
+    if (this.props.Forms.length !== 0) {
+      console.log(typeof this.props.Forms);
+      this.prevForm.linkedForms.push(title);
+      console.log(this.prevForm);
+      this.props.linkForm(this.prevForm.id, this.prevForm);
+    }
     this.setState({ flag: true });
   };
 
@@ -112,6 +123,8 @@ const btnStyle = {
 const mapStateToProps = (state) => ({
   canGenerateForm: state.Auth.user.can_generate_form,
   created_by: state.Auth.user.username,
+  Forms: state.Forms.Forms,
+  FormName: state.FormName.FormName,
 });
 
-export default connect(mapStateToProps, { addName })(FormName);
+export default connect(mapStateToProps, { addName, linkForm })(FormName);

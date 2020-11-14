@@ -2,7 +2,7 @@ import { ADD_NAME, GET_NAME } from "./types";
 import axios from "axios";
 import { tokenConfig } from "./Auth";
 
-export const addName = (desc) => (dispatch, getState) => {
+export const addName = (desc) => (dispatch) => {
   axios.post("name/", desc).then((res) => {
     dispatch({
       type: ADD_NAME,
@@ -11,7 +11,7 @@ export const addName = (desc) => (dispatch, getState) => {
   });
 };
 
-export const getName = () => (dispatch, getState) => {
+export const getName = () => (dispatch) => {
   axios.get("name/").then((res) => {
     dispatch({
       type: GET_NAME,
@@ -20,6 +20,10 @@ export const getName = () => (dispatch, getState) => {
   });
 };
 
-export const updateName = (id, quest) => (dispatch) => {
+export const updateName = (id, quest) => () => {
   axios.put(`name/${id}/`, quest);
+};
+
+export const linkForm = (id, formObj) => () => {
+  axios.put(`name/${id}/`, formObj).catch((err) => console.log(err));
 };

@@ -28,7 +28,6 @@ export class NotingSlate extends Component {
   }
 
   onClick = (key) => {
-    console.log("hello0");
     this.quest1.notingLink.push(key);
     console.log(this.quest1);
     this.props.addNoting(this.quest1);
