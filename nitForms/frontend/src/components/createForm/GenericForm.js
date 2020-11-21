@@ -228,7 +228,7 @@ export class GenericForm extends Component {
                   <Popup
                     contentStyle={{
                       width: "20%",
-                      height: "65%",
+                      height: "%",
                       border: ".1vw solid grey",
                     }}
                     modal
@@ -349,15 +349,6 @@ export class GenericForm extends Component {
                                 margin: 0,
                               }}
                             >
-                              {/* <Card.Title
-                                style={{
-                                  fontSize: ".93vw",
-                                  marginBottom: ".5vw",
-                                  color: "black",
-                                }}
-                              >
-                                {form.question}
-                              </Card.Title> */}
                               <Card.Text>
                                 <TextareaAutosize
                                   name={form.question}
@@ -383,30 +374,33 @@ export class GenericForm extends Component {
                           borderRadius: "5rem",
                           borderWidth: ".5rem",
                           borderColor: "grey",
+
                           marginTop: "2rem",
                         }}
                       >
                         <Card
                           style={{
                             borderRadius: ".95vw",
-                            borderWidth: ".2vw",
-                            borderColor: "lightgrey",
+                            borderWidth: 0,
+                            // border: ".2vw solid #ed6a5a",
                             marginTop: "2vw",
-                            width: "40.37vw",
+                            width: "40.33vw",
+                            color: "#009999",
                             marginLeft: "auto",
                             marginRight: "auto",
                             height: "auto",
+                            boxShadow: ".3vw .3vw .3vw  silver",
                           }}
                         >
                           <div>
                             <Card.Header
                               style={{
-                                backgroundColor: "#A2B8FB ",
+                                backgroundColor: "white",
                                 borderRadius: ".75vw .75vw 0 0",
                                 width: "40vw",
                                 height: "2.5vw",
-                                fontSize: "1vw",
-
+                                fontSize: "1.2vw",
+                                color: "#009999",
                                 margin: 0,
                                 padding: "0.6vw",
                               }}
@@ -415,7 +409,7 @@ export class GenericForm extends Component {
                             </Card.Header>
                             <Card.Body
                               style={{
-                                backgroundColor: "#EEF0F7 ",
+                                backgroundColor: "white",
                                 borderRadius: " 0 0 .75vw .75vw",
                                 width: "40vw",
                                 fontSize: "0.93vw",
@@ -538,24 +532,26 @@ export class GenericForm extends Component {
                         <Card
                           style={{
                             borderRadius: ".95vw",
-                            borderWidth: ".2vw",
-                            borderColor: "lightgrey",
+                            borderWidth: 0,
+                            // border: ".2vw solid #ed6a5a",
                             marginTop: "2vw",
-                            width: "40.37vw",
+                            width: "40.33vw",
+                            color: "#009999",
                             marginLeft: "auto",
                             marginRight: "auto",
                             height: "auto",
+                            boxShadow: ".3vw .3vw .3vw  silver",
                           }}
                         >
                           <div>
                             <Card.Header
                               style={{
-                                backgroundColor: "#A2B8FB ",
+                                backgroundColor: "white",
                                 borderRadius: ".75vw .75vw 0 0",
                                 width: "40vw",
                                 height: "2.5vw",
-                                fontSize: "1vw",
-
+                                fontSize: "1.2vw",
+                                color: "#009999",
                                 margin: 0,
                                 padding: "0.6vw",
                               }}
@@ -564,7 +560,7 @@ export class GenericForm extends Component {
                             </Card.Header>
                             <Card.Body
                               style={{
-                                backgroundColor: "#EEF0F7 ",
+                                backgroundColor: "white",
                                 borderRadius: " 0 0 .75vw .75vw",
                                 width: "40vw",
                                 fontSize: "0.93vw",
@@ -650,7 +646,7 @@ const mapStateToProps = (state) => ({
   username: state.Auth.user.username,
   FormName: state.FormName.FormName,
   FormStatus: state.FormStatus.FormStatus,
-  email: state.Auth.user.email
+  email: state.Auth.user.email,
 });
 
 export default withRouter(

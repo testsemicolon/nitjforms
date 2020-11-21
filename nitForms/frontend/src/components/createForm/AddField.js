@@ -46,7 +46,6 @@ export class AddField extends Component {
             onChange={this.handleChange}
             style={{ flex: "3", padding: "5px", marginRight: ".5vw" }}
           >
-      
             <option value="Short Answer">Short Answer</option>
             <option value="Paragraph">Paragraph</option>
             <option value="Multiple Choice">Multiple Choice</option>
@@ -70,8 +69,9 @@ const btnStyle = {
   color: "white",
 
   flex: "1",
+  borderWidth: 0,
   // padding: "5px",
-  borderRadius: 0,
+  borderRadius: ".3rem",
 };
 
 const mapStateToProps = (state) => ({

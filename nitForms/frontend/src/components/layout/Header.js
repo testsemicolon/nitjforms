@@ -26,7 +26,7 @@ import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import Buttons from "./Buttons";
-import Notifications from "../createForm/Notifications"
+import Notifications from "../createForm/Notifications";
 
 const drawerWidth = 250;
 
@@ -145,7 +145,7 @@ export default function PersistentDrawerLeft() {
           </h2>
           {/* <stylee style={{marginRight:"auto"}}><Notifications/></stylee> */}
           {/* <Notifications/> */}
-          
+
           <Buttons />
         </Toolbar>
       </AppBar>
@@ -167,6 +167,37 @@ export default function PersistentDrawerLeft() {
             )}
           </IconButton>
         </div>
+        <List
+          style={{
+            fontSize: "1.5vw",
+            marginLeft: "auto",
+            marginRight: "auto",
+          }}
+        >
+          {/* <ListItem style={{ fontSize: "1.5vw" }}>Account Details</ListItem> */}
+          <ListItem>
+            <img
+              src="../../../static/avtar.png"
+              style={{ borderRadius: "50%" }}
+            />
+          </ListItem>
+          <ListItem
+            style={{ fontSize: "1vw", marginLeft: "auto", marginRight: "auto" }}
+          >
+            Email:abc@gmail.com
+          </ListItem>
+          <ListItem
+            style={{
+              fontSize: "1vw",
+              marginLeft: "auto",
+              marginRight: "auto",
+            }}
+          >
+            Phone no
+          </ListItem>
+          <ListItem style={{ fontSize: "1vw" }}>Department</ListItem>
+        </List>
+
         <Divider />
         <List style={{ fontSize: "1.5vw" }}>
           <ListItem>Create</ListItem>
@@ -175,14 +206,15 @@ export default function PersistentDrawerLeft() {
             <ListItem>View Previous</ListItem>
           </Link>
           <ListItem>Drafts</ListItem>
-          </List>
+        </List>
         <Divider />
         <List style={{ fontSize: "1.5vw" }}>
-        <Link to="/outbox"><ListItem>OutBox</ListItem></Link>
+          <Link to="/outbox">
+            <ListItem>OutBox</ListItem>
+          </Link>
         </List>
-          
-          
-          <Divider/>
+
+        <Divider />
       </Drawer>
       <main
         className={clsx(classes.content, {
