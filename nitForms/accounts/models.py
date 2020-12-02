@@ -7,3 +7,4 @@ class CustomUser(AbstractUser):
     can_generate_template = models.BooleanField(default=False)
     can_make_noting = models.BooleanField(default=False)
     userType = models.CharField(max_length=1000)
+    department = models.CharField(max_length=1000, null=False)

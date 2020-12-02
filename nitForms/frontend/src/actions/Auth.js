@@ -69,6 +69,7 @@ export const register = ({
   can_generate_template,
   can_make_noting,
   userType,
+  department,
 }) => (dispatch) => {
   //Headers
   const config = {
@@ -86,12 +87,14 @@ export const register = ({
     can_generate_template,
     can_make_noting,
     userType,
+    department,
   });
   console.log(body);
   // LOGIN
   axios
     .post("api/auth/register", body, config)
     .then((res) => {
+      console.log(res.data);
       dispatch({
         type: REGISTER_SUCCESS,
         payload: res.data,

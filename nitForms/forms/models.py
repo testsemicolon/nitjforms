@@ -21,6 +21,7 @@ class FormName(models.Model):
     description = models.CharField(max_length=100)
     created_by = models.CharField(max_length=100)
     created_at = models.DateTimeField(auto_now_add=True)
+    department = models.CharField(max_length=1000)
     activationStatus = models.BooleanField(default=True)
     notingLink = ArrayField(models.CharField(max_length=1000),
                             blank=True,
@@ -74,3 +75,4 @@ class EmailIndex(models.Model):
     recieverEmail = models.EmailField(max_length=1000)
     content = models.CharField(max_length=1000)
     sentDate = models.DateTimeField(auto_now_add=True)
+

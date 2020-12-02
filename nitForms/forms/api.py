@@ -78,4 +78,3 @@ class EmailIndexViewSet(viewsets.ModelViewSet):
     queryset = EmailIndex.objects.all()
     permission_class = [permissions.AllowAny]
     serializer_class = EmailIndexSerializer
-
