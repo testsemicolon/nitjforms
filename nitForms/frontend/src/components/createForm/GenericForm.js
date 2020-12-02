@@ -18,6 +18,7 @@ import {
 } from "../../actions/common";
 import { postFormStatus, putFormStatus } from "../../actions/FormStatus";
 import Popup from "reactjs-popup";
+import ShareForm from "./ShareForm";
 
 export class GenericForm extends Component {
   state = {};
@@ -230,6 +231,7 @@ export class GenericForm extends Component {
                       width: "20%",
                       height: "%",
                       border: ".1vw solid grey",
+                      borderRadius: ".5vw",
                     }}
                     modal
                     trigger={
@@ -258,14 +260,40 @@ export class GenericForm extends Component {
                     position="right center"
                   >
                     {this.toggleshare === true ? (
-                      <form>
-                        <input
-                          type="text"
-                          name={this.toShareWith}
-                          onChange={this.onChangeUser}
-                        />
-                        <Button onClick={this.onSubmitUser}>Submit</Button>
-                      </form>
+                      <div style={{ borderRadius: ".3vw" }}>
+                        <h4>Share with</h4>
+                        <form>
+                          <input
+                            type="text"
+                            name={this.toShareWith}
+                            onChange={this.onChangeUser}
+                            placeholder="Add people"
+                            style={{
+                              borderRadius: ".5vw",
+                              border: ".05vw solid grey",
+                              padding: ".4vw",
+                            }}
+                          />
+                          <Button
+                            style={{
+                              background: "#e0777d",
+                              color: "#fff",
+                              paddingTop: ".2vw",
+                              paddingBottom: ".1vw",
+                              marginLeft: ".6vw",
+                              borderRadius: ".3rem",
+                              borderColor: "black",
+                              borderWidth: "0rem",
+                              boxShadow: ".3vw .3vw .3vw lightgray",
+                              fontFamily: "Times New Roman",
+                            }}
+                            onClick={this.onSubmitUser}
+                          >
+                            <h5>Done</h5>
+                          </Button>
+                        </form>
+                        {/* <ShareForm /> */}
+                      </div>
                     ) : (
                       "NO PERMISSION TO SHARE"
                     )}{" "}
