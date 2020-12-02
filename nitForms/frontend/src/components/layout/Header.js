@@ -176,10 +176,13 @@ export default function PersistentDrawerLeft() {
         >
           {/* <ListItem style={{ fontSize: "1.5vw" }}>Account Details</ListItem> */}
           <ListItem>
-            <img
-              src="../../../static/avtar.png"
-              style={{ borderRadius: "50%" }}
-            />
+            <Link to="/profilepage">
+              {" "}
+              <img
+                src="../../../static/avtar.png"
+                style={{ borderRadius: "50%" }}
+              />
+            </Link>
           </ListItem>
           <ListItem
             style={{ fontSize: "1vw", marginLeft: "auto", marginRight: "auto" }}

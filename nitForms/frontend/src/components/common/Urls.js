@@ -31,6 +31,7 @@ import PreviousForms from "../createForm/PreviousForms";
 import ViewResponseNoteGenerate from "../createForm/ViewResponseNoteGenerate";
 import Director from "../createForm/Director";
 import Outbox from "../createForm/outbox";
+import ProfilePage from "../createForm/ProfilePage";
 export class Urls extends Component {
   constructor(props) {
     super(props);
@@ -64,7 +65,7 @@ export class Urls extends Component {
           path="/viewresponsenotegenerate/:value/:title/:id"
           component={ViewResponseNoteGenerate}
         />
-
+        <PrivateRoute path="/profilepage" component={ProfilePage} />
         {this.props.FormName.map((formname) => (
           <PrivateRoute
             key={formname.id}

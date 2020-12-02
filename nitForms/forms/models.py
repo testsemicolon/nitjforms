@@ -76,3 +76,6 @@ class EmailIndex(models.Model):
     content = models.CharField(max_length=1000)
     sentDate = models.DateTimeField(auto_now_add=True)
 
+
+
+
