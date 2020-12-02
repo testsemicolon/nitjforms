@@ -11,5 +11,3 @@ admin.site.register(userNotifications)
 admin.site.register(formIndex)
 admin.site.register(EmailIndex)
 
-
-

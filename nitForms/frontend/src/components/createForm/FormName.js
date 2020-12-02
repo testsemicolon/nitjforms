@@ -23,9 +23,10 @@ export class FormName extends Component {
 
   onSubmit = (e) => {
     e.preventDefault();
+    var department = this.props.Department;
     const created_by = this.props.created_by;
     const { title, description } = this.state;
-    const desc = { title, description, created_by };
+    const desc = { title, description, created_by, department };
     this.props.addName(desc);
     if (this.props.Forms.length !== 0) {
       console.log(typeof this.props.Forms);
@@ -125,6 +126,7 @@ const mapStateToProps = (state) => ({
   created_by: state.Auth.user.username,
   Forms: state.Forms.Forms,
   FormName: state.FormName.FormName,
+  Department: state.Auth.user.department,
 });
 
 export default connect(mapStateToProps, { addName, linkForm })(FormName);

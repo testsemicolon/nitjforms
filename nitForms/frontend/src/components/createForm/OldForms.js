@@ -39,81 +39,86 @@ export class OldForms extends Component {
           >
             {/* End hero unit */}
             <Grid container spacing={4}>
-              {this.props.FormName.map((card) => (
-                <Grid item key={card.id} xs={12} sm={6} md={3}>
-                  <Card
-                    key={card.id}
-                    style={{
-                      height: "100%",
-                      display: "flex",
-                      flexDirection: "column",
-                    }}
-                  >
-                    <CardMedia
-                      style={{ paddingTop: "56.25%" }}
-                      image="static/form.jpg"
-                      title="Image title"
-                    />
-                    <CardContent style={{ flexGrow: 1 }}>
-                      <Typography
-                        style={{ fontFamily: "Times New Roman" }}
-                        gutterBottom
-                        variant="h5"
-                        component="h2"
+              {this.props.FormName.map((card) => {
+                console.log(card.department, this.props.Department);
+                if (card.department == this.props.Department) {
+                  return (
+                    <Grid item key={card.id} xs={12} sm={6} md={3}>
+                      <Card
+                        key={card.id}
+                        style={{
+                          height: "100%",
+                          display: "flex",
+                          flexDirection: "column",
+                        }}
                       >
-                        {card.title}
-                      </Typography>
-                      <Typography style={{ fontFamily: "Times New Roman" }}>
-                        {" "}
-                        {card.description}
-                      </Typography>
-                    </CardContent>
-                    <CardActions
-                      style={{
-                        textAlign: "center",
-                        alignContent: "center",
-                        alignItems: "center",
-                        alignSelf: "center",
-                      }}
-                    >
-                      <div>
-                        <Link to={`/${card.title}`}>
-                          <Button
-                            style={{
-                              backgroundColor: "#e0777d",
-                              color: "white",
-                              border: 0,
-                              marginRight: "1vw",
-                              fontFamily: "Times New Roman",
+                        <CardMedia
+                          style={{ paddingTop: "56.25%" }}
+                          image="static/form.jpg"
+                          title="Image title"
+                        />
+                        <CardContent style={{ flexGrow: 1 }}>
+                          <Typography
+                            style={{ fontFamily: "Times New Roman" }}
+                            gutterBottom
+                            variant="h5"
+                            component="h2"
+                          >
+                            {card.title}
+                          </Typography>
+                          <Typography style={{ fontFamily: "Times New Roman" }}>
+                            {" "}
+                            {card.description}
+                          </Typography>
+                        </CardContent>
+                        <CardActions
+                          style={{
+                            textAlign: "center",
+                            alignContent: "center",
+                            alignItems: "center",
+                            alignSelf: "center",
+                          }}
+                        >
+                          <div>
+                            <Link to={`/${card.title}`}>
+                              <Button
+                                style={{
+                                  backgroundColor: "#e0777d",
+                                  color: "white",
+                                  border: 0,
+                                  marginRight: "1vw",
+                                  fontFamily: "Times New Roman",
 
-                              boxShadow: ".3vw .3vw .3vw lightgray",
-                            }}
-                            size="small"
-                            color="primary"
-                          >
-                            View
-                          </Button>
-                        </Link>
-                        <Link to={`/response/${card.title}`}>
-                          <Button
-                            style={{
-                              backgroundColor: "white",
-                              color: "#e0777d",
-                              border: "0.01vw solid #e0777d",
-                              boxShadow: ".3vw .3vw .3vw lightgray",
-                              fontFamily: "Times New Roman",
-                            }}
-                            size="small"
-                            color="primary"
-                          >
-                            Responses
-                          </Button>
-                        </Link>
-                      </div>
-                    </CardActions>
-                  </Card>
-                </Grid>
-              ))}
+                                  boxShadow: ".3vw .3vw .3vw lightgray",
+                                }}
+                                size="small"
+                                color="primary"
+                              >
+                                View
+                              </Button>
+                            </Link>
+                            <Link to={`/response/${card.title}`}>
+                              <Button
+                                style={{
+                                  backgroundColor: "white",
+                                  color: "#e0777d",
+                                  border: "0.01vw solid #e0777d",
+                                  boxShadow: ".3vw .3vw .3vw lightgray",
+                                  fontFamily: "Times New Roman",
+                                }}
+                                size="small"
+                                color="primary"
+                              >
+                                Responses
+                              </Button>
+                            </Link>
+                          </div>
+                        </CardActions>
+                      </Card>
+                    </Grid>
+                  );
+                }
+              })}
             </Grid>
           </div>
         </Fragment>
@@ -124,6 +129,7 @@ export class OldForms extends Component {
 
 const mapStateToProps = (state) => ({
   FormName: state.FormName.FormName,
+  Department: state.Auth.user.department,
 });
 
 export default connect(mapStateToProps, { getName, getSharedUser })(OldForms);

@@ -4,6 +4,8 @@ import { connect } from "react-redux";
 import { register } from "../../actions/Auth";
 import PropTypes from "prop-types";
 import { createMessage } from "../../actions/Messages";
+// import Dropdown from "react-dropdown";
+import { DropdownButton, Dropdown } from "react-bootstrap";
 
 export class Register extends Component {
   static propTypes = {
@@ -19,10 +21,15 @@ export class Register extends Component {
     can_generate_form: false,
     can_generate_template: false,
     can_make_noting: false,
+    department: "",
   };
-
+  // options = ["one", "two", "three"];
+  // defaultOption = this.options[0];
   onChange = (e) => {
     this.setState({ [e.target.name]: e.target.value });
+  };
+  onChangeDept = (e) => {
+    this.setState({ department: e });
   };
   toggleChange1 = () => {
     this.setState({ can_generate_form: !this.state.can_generate_form });
@@ -36,7 +43,6 @@ export class Register extends Component {
 
   onSubmit = (e) => {
     e.preventDefault();
-    console.log("asdasd");
     const {
       username,
       email,
@@ -45,6 +51,7 @@ export class Register extends Component {
       can_generate_form,
       can_generate_template,
       can_make_noting,
+      department,
     } = this.state;
     if (password !== password2) {
       this.props.createMessage({ passwordsNotMatch: "Passwords do not match" });
@@ -73,6 +80,7 @@ export class Register extends Component {
         can_generate_template,
         can_make_noting,
         userType,
+        department,
       };
 
       console.log(newUser);
@@ -92,6 +100,7 @@ export class Register extends Component {
       can_generate_form,
       can_generate_template,
       can_make_noting,
+      department,
     } = this.state;
     return (
       <div className="col-md-6 m-auto">
@@ -162,6 +171,29 @@ export class Register extends Component {
             />
             <label>Can Make Noting</label>
             <br />
+            {/*<Dropdown
+              options={this.options}
+              onChange={this.onChange}
+              name="department"
+              value={this.defaultOption}
+              placeholder="Select an option"
+             />*/}
+            <DropdownButton
+              variant="light"
+              style={{
+                size: "2vw",
+                fontSize: "1vw",
+              }}
+              id="dropdown-basic-button"
+              title={department}
+              value={department}
+              name="department"
+              onSelect={this.onChangeDept}
+            >
+              <Dropdown.Item eventKey="Dept1">Dept 1</Dropdown.Item>
+              <Dropdown.Item eventKey="Dept2">Dept 2</Dropdown.Item>
+              <Dropdown.Item eventKey="Dept3">Dept 3</Dropdown.Item>
+            </DropdownButton>
             <div className="form-group">
               <button type="submit" className="btn btn-primary">
                 Register
