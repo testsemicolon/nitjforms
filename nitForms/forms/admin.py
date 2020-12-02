@@ -12,10 +12,4 @@ admin.site.register(formIndex)
 admin.site.register(EmailIndex)
 
 
-admin.site.register(testttt)
 
-admin.site.register(testtttAccepted)
-
-admin.site.register(testttttttttttttttt)
-
-admin.site.register(testtttttttttttttttAccepted)

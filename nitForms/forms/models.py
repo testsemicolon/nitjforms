@@ -77,49 +77,5 @@ class EmailIndex(models.Model):
 
 
 
-class testttt(models.Model):
-    responseTime = models.DateTimeField(auto_now_add=True)
-    formStatus = models.BooleanField(default=False)
-    commentRejected = models.CharField(max_length=1000, blank=True)
-    userName = models.CharField(max_length=1000, blank=True)
-    userMail = models.EmailField(max_length=1000)
 
 
-class testttt(models.Model):
-    responseTime = models.DateTimeField(auto_now_add=True)
-    formStatus = models.BooleanField(default=False)
-    commentRejected = models.CharField(max_length=1000, blank=True)
-    userName = models.CharField(max_length=1000, blank=True)
-    userMail = models.EmailField(max_length=1000)
-    what_is_your_name = models.CharField(max_length=1000)
-
-
-class testtttAccepted(models.Model):
-    responseTime = models.DateTimeField(auto_now_add=True)
-    comment = JSONField(null=True)
-    forwardTo = ArrayField(JSONField(null=True),blank=True, default=list)
-    commentAccepted = models.CharField(max_length=1000, blank=True)
-    notification = notification = JSONField(null=True)
-    userName = models.CharField(max_length=1000, blank=True)
-    what_is_your_name = models.CharField(max_length=1000)
-
-
-class testttttttttttttttt(models.Model):
-    responseTime = models.DateTimeField(auto_now_add=True)
-    formStatus = models.BooleanField(default=False)
-    commentRejected = models.CharField(max_length=1000, blank=True)
-    userName = models.CharField(max_length=1000, blank=True)
-    userMail = models.EmailField(max_length=1000)
-    sasasa = models.TextField()
-    what_is_your_name = models.CharField(max_length=1000)
-
-
-class testtttttttttttttttAccepted(models.Model):
-    responseTime = models.DateTimeField(auto_now_add=True)
-    comment = JSONField(null=True)
-    forwardTo = ArrayField(JSONField(null=True),blank=True, default=list)
-    commentAccepted = models.CharField(max_length=1000, blank=True)
-    notification = notification = JSONField(null=True)
-    userName = models.CharField(max_length=1000, blank=True)
-    sasasa = models.TextField()
-    what_is_your_name = models.CharField(max_length=1000)

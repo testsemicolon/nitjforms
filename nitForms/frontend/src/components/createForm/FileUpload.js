@@ -40,8 +40,30 @@ export class FileUpload extends Component {
               onChange={this.handleImageChange}
               required
             />
+
+            <button
+              onClick={this.handleSubmit}
+              style={{
+                background: "#e0777d",
+                boxShadow: ".3vw .3vw .3vw lightgray",
+                color: "#fff",
+                flex: "1",
+                // paddingLeft: ".5vw",
+                // paddingRight: ".5vw",
+                paddingLeft: "1.3vw",
+                paddingRight: "1.3vw",
+                paddingTop: ".4vw",
+                paddingBottom: ".4vw",
+                borderRadius: ".3rem",
+                borderWidth: "0rem",
+                display: "flex",
+                marginLeft: "auto",
+                fontFamily: "Times New Roman",
+              }}
+            >
+              Upload
+            </button>
           </p>
-          <button onClick={this.handleSubmit}>Submit</button>
         </form>
       </div>
     );

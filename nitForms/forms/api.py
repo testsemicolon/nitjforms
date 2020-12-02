@@ -82,27 +82,6 @@ class EmailIndexViewSet(viewsets.ModelViewSet):
 
 
 
-class testtttViewSet(viewsets.ModelViewSet):
-    queryset = testttt.objects.all()
-    parser_class = (MultiPartParser, FormParser)
-    permission_class = [permissions.AllowAny]
-    serializer_class = testtttSerializer
 
 
-class testtttAcceptedViewSet(viewsets.ModelViewSet):
-    queryset = testtttAccepted.objects.all()
-    permission_class = [permissions.AllowAny]
-    serializer_class = testtttAcceptedSerializer
 
-
-class testtttttttttttttttViewSet(viewsets.ModelViewSet):
-    queryset = testttttttttttttttt.objects.all()
-    parser_class = (MultiPartParser, FormParser)
-    permission_class = [permissions.AllowAny]
-    serializer_class = testtttttttttttttttSerializer
-
-
-class testtttttttttttttttAcceptedViewSet(viewsets.ModelViewSet):
-    queryset = testtttttttttttttttAccepted.objects.all()
-    permission_class = [permissions.AllowAny]
-    serializer_class = testtttttttttttttttAcceptedSerializer

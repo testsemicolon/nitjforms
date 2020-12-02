@@ -9,6 +9,7 @@ import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import FileUpload from "./FileUpload";
 import { withRouter } from "react-router-dom";
+import styled from "@emotion/styled";
 
 import {
   putSharedUser,
@@ -19,6 +20,20 @@ import {
 import { postFormStatus, putFormStatus } from "../../actions/FormStatus";
 import Popup from "reactjs-popup";
 import ShareForm from "./ShareForm";
+import Select from "react-dropdown-select";
+
+const options = [
+  {
+    id: 1,
+    name: "Create Form",
+    username: "Create Form",
+  },
+  {
+    id: 2,
+    name: "Choose/Create Noting",
+    username: "Choose/Create Noting",
+  },
+];
 
 export class GenericForm extends Component {
   state = {};
@@ -30,6 +45,23 @@ export class GenericForm extends Component {
   flag = false;
   status = false;
   toggleshare = true;
+  constructor(props) {
+    super(props);
+    this.state = {
+      multi: true,
+      selectValues: [],
+      handle: true,
+      addPlaceholder: "+ click to add",
+      labelField: "username",
+      valueField: "name",
+      color: "#0074D9",
+      keepSelectedInList: false,
+      closeOnSelect: true,
+    };
+  }
+
+  setValues = (selectValues) => this.setState({ selectValues });
+
   componentDidMount() {
     this.props.getSharedUser();
     this.props.getFormView(this.props.title);
@@ -262,6 +294,7 @@ export class GenericForm extends Component {
                     {this.toggleshare === true ? (
                       <div style={{ borderRadius: ".3vw" }}>
                         <h4>Share with</h4>
+
                         <form>
                           <input
                             type="text"
@@ -273,6 +306,11 @@ export class GenericForm extends Component {
                               border: ".05vw solid grey",
                               padding: ".4vw",
                             }}
+                            // values={[
+                            //   options.find(
+                            //     (opt) => opt.username === "Create Form"
+                            //   ),
+                            // ]}
                           />
                           <Button
                             style={{
@@ -293,6 +331,18 @@ export class GenericForm extends Component {
                           </Button>
                         </form>
                         {/* <ShareForm /> */}
+                        {/* <StyledSelect
+                          placeholder="Select steps"
+                          multi={this.state.multi}
+                          labelField={this.state.labelField}
+                          valueField={this.state.valueField}
+                          options={options}
+                          dropdownGap={5}
+                          name={this.toShareWith}
+                          onChange={this.onChangeUser}
+                          keepSelectedInList={this.state.keepSelectedInList}
+                          // onChange={(values) => this.setValues(values)}
+                        /> */}
                       </div>
                     ) : (
                       "NO PERMISSION TO SHARE"
@@ -433,7 +483,7 @@ export class GenericForm extends Component {
                                 padding: "0.6vw",
                               }}
                             >
-                              QUESTION
+                              <strong>{form.question}</strong>
                             </Card.Header>
                             <Card.Body
                               style={{
@@ -446,14 +496,6 @@ export class GenericForm extends Component {
                                 margin: 0,
                               }}
                             >
-                              <Card.Title
-                                style={{
-                                  fontSize: ".93vw",
-                                  marginBottom: ".5vw",
-                                }}
-                              >
-                                {form.question}
-                              </Card.Title>
                               <Card.Text>
                                 <FileUpload
                                   name={form.question}
@@ -480,33 +522,35 @@ export class GenericForm extends Component {
                         <Card
                           style={{
                             borderRadius: ".95vw",
-                            borderWidth: ".2vw",
-                            borderColor: "lightgrey",
+                            borderWidth: 0,
+                            // border: ".2vw solid #ed6a5a",
                             marginTop: "2vw",
-                            width: "40.37vw",
+                            width: "40.33vw",
+                            color: "#009999",
                             marginLeft: "auto",
                             marginRight: "auto",
                             height: "auto",
+                            boxShadow: ".3vw .3vw .3vw  silver",
                           }}
                         >
                           <div>
                             <Card.Header
                               style={{
-                                backgroundColor: "#A2B8FB ",
+                                backgroundColor: "white",
                                 borderRadius: ".75vw .75vw 0 0",
                                 width: "40vw",
                                 height: "2.5vw",
-                                fontSize: "1vw",
-
+                                fontSize: "1.2vw",
+                                color: "#009999",
                                 margin: 0,
                                 padding: "0.6vw",
                               }}
                             >
-                              QUESTION
+                              <strong>{form.question}</strong>
                             </Card.Header>
                             <Card.Body
                               style={{
-                                backgroundColor: "#EEF0F7 ",
+                                backgroundColor: "white",
                                 borderRadius: " 0 0 .75vw .75vw",
                                 width: "40vw",
                                 fontSize: "0.93vw",
@@ -515,14 +559,6 @@ export class GenericForm extends Component {
                                 margin: 0,
                               }}
                             >
-                              <Card.Title
-                                style={{
-                                  fontSize: ".93vw",
-                                  marginBottom: ".5vw",
-                                }}
-                              >
-                                {form.question}
-                              </Card.Title>
                               <Card.Text>
                                 {/* <TextareaAutosize
                                   name={form.question}
@@ -538,6 +574,7 @@ export class GenericForm extends Component {
                                   // selected={this.state.startDate}
                                   name={form.question}
                                   onChange={this.onChange}
+                                  style={{ borderWidth: 0 }}
                                 />
                               </Card.Text>
                             </Card.Body>
@@ -584,7 +621,7 @@ export class GenericForm extends Component {
                                 padding: "0.6vw",
                               }}
                             >
-                              QUESTION
+                              <strong>{form.question}</strong>
                             </Card.Header>
                             <Card.Body
                               style={{
@@ -597,14 +634,6 @@ export class GenericForm extends Component {
                                 margin: 0,
                               }}
                             >
-                              <Card.Title
-                                style={{
-                                  fontSize: ".93vw",
-                                  marginBottom: ".5vw",
-                                }}
-                              >
-                                {form.question}
-                              </Card.Title>
                               <Card.Text>
                                 <TextareaAutosize
                                   name={form.question}
@@ -667,6 +696,14 @@ export class GenericForm extends Component {
     );
   }
 }
+const StyledSelect = styled(Select)`
+  ${({ dropdownRenderer }) =>
+    dropdownRenderer &&
+    `.react-dropdown-select-dropdown {
+			overflow: initial;
+		}
+	`}
+`;
 
 const mapStateToProps = (state) => ({
   Forms: state.Forms.Forms,

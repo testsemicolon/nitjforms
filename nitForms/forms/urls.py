@@ -22,15 +22,4 @@ urlpatterns += [
 
 
 
-router.register('testttt', testtttViewSet, 'testttt')
 
-
-router.register('testtttAccepted', testtttAcceptedViewSet, 'testtttAccepted')
-urlpatterns += router.urls
-
-
-router.register('testttttttttttttttt', testtttttttttttttttViewSet, 'testttttttttttttttt')
-
-
-router.register('testtttttttttttttttAccepted', testtttttttttttttttAcceptedViewSet, 'testtttttttttttttttAccepted')
-urlpatterns += router.urls
