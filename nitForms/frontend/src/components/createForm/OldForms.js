@@ -24,7 +24,6 @@ export class OldForms extends Component {
     FormName: PropTypes.array.isRequired,
   };
 
-  // const classes = Styles;
   render() {
     return (
       <div>
@@ -35,9 +34,7 @@ export class OldForms extends Component {
               backgroundColor: "white",
               padding: "3vw",
             }}
-            // maxWidth="md"
           >
-            {/* End hero unit */}
             <Grid container spacing={4}>
               {this.props.FormName.map((card) => {
                 console.log(card.department, this.props.Department);

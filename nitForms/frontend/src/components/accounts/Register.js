@@ -22,6 +22,8 @@ export class Register extends Component {
     can_generate_template: false,
     can_make_noting: false,
     department: "",
+    instituteName: "",
+    userType: "",
   };
   // options = ["one", "two", "three"];
   // defaultOption = this.options[0];
@@ -30,6 +32,12 @@ export class Register extends Component {
   };
   onChangeDept = (e) => {
     this.setState({ department: e });
+  };
+  onChangeType = (e) => {
+    this.setState({ userType: e });
+  };
+  onChangeInstitute = (e) => {
+    this.setState({ instituteName: e });
   };
   toggleChange1 = () => {
     this.setState({ can_generate_form: !this.state.can_generate_form });
@@ -43,7 +51,7 @@ export class Register extends Component {
 
   onSubmit = (e) => {
     e.preventDefault();
-    const {
+    var {
       username,
       email,
       password,
@@ -52,26 +60,27 @@ export class Register extends Component {
       can_generate_template,
       can_make_noting,
       department,
+      instituteName,
+      userType,
     } = this.state;
     if (password !== password2) {
       this.props.createMessage({ passwordsNotMatch: "Passwords do not match" });
     } else {
-      var userType = "";
-      if (
-        (can_generate_form === true) &
-        (can_generate_template === true) &
-        (can_make_noting === true)
-      ) {
-        userType = "Super Admin";
-      } else if (
-        (can_generate_form === false) &
-        (can_generate_template === false) &
-        (can_make_noting === true)
-      ) {
-        userType = "Admin";
-      } else {
-        userType = "User";
+      if (userType === "Super Admin") {
+        console.log("super");
+        can_generate_form = true;
+        can_generate_template = true;
+        can_make_noting = true;
+      } else if (userType === "Admin") {
+        can_generate_form = false;
+        can_generate_template = false;
+        can_make_noting = true;
+      } else if (userType === "User") {
+        can_generate_form = false;
+        can_generate_template = false;
+        can_make_noting = false;
       }
+
       const newUser = {
         username,
         password,
@@ -81,6 +90,7 @@ export class Register extends Component {
         can_make_noting,
         userType,
         department,
+        instituteName,
       };
 
       console.log(newUser);
@@ -101,6 +111,8 @@ export class Register extends Component {
       can_generate_template,
       can_make_noting,
       department,
+      instituteName,
+      userType,
     } = this.state;
     return (
       <div className="col-md-6 m-auto">
@@ -147,30 +159,38 @@ export class Register extends Component {
                 value={password2}
               />
             </div>
-            <input
-              name="can_generate_form"
-              onChange={this.toggleChange1}
-              value={can_generate_form}
-              type="checkbox"
-            />
-            <label>Can Generate Forms</label>
+            <DropdownButton
+              variant="light"
+              style={{
+                size: "2vw",
+                fontSize: "1vw",
+              }}
+              id="dropdown-basic-button"
+              title={userType}
+              value={userType}
+              name="userType"
+              onSelect={this.onChangeType}
+            >
+              <Dropdown.Item eventKey="Super Admin">Super Admin</Dropdown.Item>
+              <Dropdown.Item eventKey="Admin">Admin</Dropdown.Item>
+              <Dropdown.Item eventKey="User">User</Dropdown.Item>
+            </DropdownButton>
             <br />
-            <input
-              name="can_generate_template"
-              onChange={this.toggleChange2}
-              value={can_generate_template}
-              type="checkbox"
-            />
-            <label>Can Generate Template</label>
-            <br />
-            <input
-              name="can_make_noting"
-              onChange={this.toggleChange3}
-              value={can_make_noting}
-              type="checkbox"
-            />
-            <label>Can Make Noting</label>
-            <br />
+            <DropdownButton
+              variant="light"
+              style={{
+                size: "2vw",
+                fontSize: "1vw",
+              }}
+              id="dropdown-basic-button"
+              title={instituteName}
+              value={instituteName}
+              name="instituteName"
+              onSelect={this.onChangeInstitute}
+            >
+              <Dropdown.Item eventKey="NITJ">NITJ</Dropdown.Item>
+              <Dropdown.Item eventKey="THAPAR">THAPAR</Dropdown.Item>
+            </DropdownButton>
             {/*<Dropdown
               options={this.options}
               onChange={this.onChange}
@@ -190,10 +210,12 @@ export class Register extends Component {
               name="department"
               onSelect={this.onChangeDept}
             >
+              <Dropdown.Item eventKey="Director">Director</Dropdown.Item>
               <Dropdown.Item eventKey="Dept1">Dept 1</Dropdown.Item>
               <Dropdown.Item eventKey="Dept2">Dept 2</Dropdown.Item>
               <Dropdown.Item eventKey="Dept3">Dept 3</Dropdown.Item>
             </DropdownButton>
+
             <div className="form-group">
               <button type="submit" className="btn btn-primary">
                 Register

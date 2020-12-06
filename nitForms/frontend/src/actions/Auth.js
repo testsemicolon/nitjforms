@@ -70,6 +70,7 @@ export const register = ({
   can_make_noting,
   userType,
   department,
+  instituteName,
 }) => (dispatch) => {
   //Headers
   const config = {
@@ -88,6 +89,7 @@ export const register = ({
     can_make_noting,
     userType,
     department,
+    instituteName,
   });
   console.log(body);
   // LOGIN

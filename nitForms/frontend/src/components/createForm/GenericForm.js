@@ -91,6 +91,9 @@ export class GenericForm extends Component {
     this.setState({ [e.target.name]: e.target.value });
   };
 
+  onChange1 = (name) => {
+    console.log(name);
+  };
   fileNameHandler = (obj1, obj2) => {
     this.setState({ [obj2]: obj1 });
   };
@@ -573,7 +576,7 @@ export class GenericForm extends Component {
                                 <DatePicker
                                   // selected={this.state.startDate}
                                   name={form.question}
-                                  onChange={this.onChange}
+                                  onSelect={this.onChange1(form.question)}
                                   style={{ borderWidth: 0 }}
                                 />
                               </Card.Text>

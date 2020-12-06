@@ -54,8 +54,3 @@ class EmailIndexSerializer(serializers.ModelSerializer):
     class Meta:
         model = EmailIndex
         fields = '__all__'
-
-
-
-
-

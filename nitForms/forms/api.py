@@ -79,9 +79,3 @@ class EmailIndexViewSet(viewsets.ModelViewSet):
     permission_class = [permissions.AllowAny]
     serializer_class = EmailIndexSerializer
 
-
-
-
-
-
-
