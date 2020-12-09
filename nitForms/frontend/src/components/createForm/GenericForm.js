@@ -10,7 +10,7 @@ import "react-datepicker/dist/react-datepicker.css";
 import FileUpload from "./FileUpload";
 import { withRouter } from "react-router-dom";
 import styled from "@emotion/styled";
-
+import ReactAutocomplete from "react-autocomplete";
 import {
   putSharedUser,
   postSharedUser,
@@ -22,18 +22,18 @@ import Popup from "reactjs-popup";
 import ShareForm from "./ShareForm";
 import Select from "react-dropdown-select";
 
-const options = [
-  {
-    id: 1,
-    name: "Create Form",
-    username: "Create Form",
-  },
-  {
-    id: 2,
-    name: "Choose/Create Noting",
-    username: "Choose/Create Noting",
-  },
-];
+// const options = [
+//   {
+//     id: 1,
+//     name: "Create Form",
+//     username: "Create Form",
+//   },
+//   {
+//     id: 2,
+//     name: "Choose/Create Noting",
+//     username: "Choose/Create Noting",
+//   },
+// ];
 
 export class GenericForm extends Component {
   state = {};
@@ -48,15 +48,7 @@ export class GenericForm extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      multi: true,
-      selectValues: [],
-      handle: true,
-      addPlaceholder: "+ click to add",
-      labelField: "username",
-      valueField: "name",
-      color: "#0074D9",
-      keepSelectedInList: false,
-      closeOnSelect: true,
+      value: "",
     };
   }
 
@@ -102,6 +94,7 @@ export class GenericForm extends Component {
     e.preventDefault();
     console.log(e.target.value);
     this.toShareWith = e.target.value;
+    this.setState({ value: e.target.value });
   };
 
   onSubmitUser = () => {
@@ -299,7 +292,7 @@ export class GenericForm extends Component {
                         <h4>Share with</h4>
 
                         <form>
-                          <input
+                          {/* <input
                             type="text"
                             name={this.toShareWith}
                             onChange={this.onChangeUser}
@@ -314,6 +307,43 @@ export class GenericForm extends Component {
                             //     (opt) => opt.username === "Create Form"
                             //   ),
                             // ]}
+                          /> */}
+                          <ReactAutocomplete
+                            items={[
+                              { id: "foo", label: "foo" },
+                              { id: "bar", label: "bar" },
+                              { id: "baz", label: "baz" },
+                              { id: "bazmm", label: "baz" },
+                            ]}
+                            shouldItemRender={(item, value) =>
+                              item.label
+                                .toLowerCase()
+                                .indexOf(value.toLowerCase()) > -1
+                            }
+                            getItemValue={(item) => item.label}
+                            renderItem={(item, highlighted) => (
+                              <div
+                                key={item.id}
+                                style={{
+                                  backgroundColor: highlighted
+                                    ? "#eee"
+                                    : "transparent",
+                                }}
+                              >
+                                {item.label}
+                              </div>
+                            )}
+                            value={this.toShareWith}
+                            // value={this.state.value}
+                            onChange={this.onChangeUser}
+                            style={{
+                              borderRadius: ".5vw",
+                              border: ".05vw solid grey",
+                              padding: ".4vw",
+                            }}
+                            //onSelect={(value) => this.setState({ value })}
+                            //onSelect={this.onChangeUser}
+                            // onSelect={this.onSubmitUser}
                           />
                           <Button
                             style={{

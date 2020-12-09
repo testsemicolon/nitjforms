@@ -159,38 +159,75 @@ export class Register extends Component {
                 value={password2}
               />
             </div>
-            <DropdownButton
-              variant="light"
-              style={{
-                size: "2vw",
-                fontSize: "1vw",
-              }}
-              id="dropdown-basic-button"
-              title={userType}
-              value={userType}
-              name="userType"
-              onSelect={this.onChangeType}
-            >
-              <Dropdown.Item eventKey="Super Admin">Super Admin</Dropdown.Item>
-              <Dropdown.Item eventKey="Admin">Admin</Dropdown.Item>
-              <Dropdown.Item eventKey="User">User</Dropdown.Item>
-            </DropdownButton>
-            <br />
-            <DropdownButton
-              variant="light"
-              style={{
-                size: "2vw",
-                fontSize: "1vw",
-              }}
-              id="dropdown-basic-button"
-              title={instituteName}
-              value={instituteName}
-              name="instituteName"
-              onSelect={this.onChangeInstitute}
-            >
-              <Dropdown.Item eventKey="NITJ">NITJ</Dropdown.Item>
-              <Dropdown.Item eventKey="THAPAR">THAPAR</Dropdown.Item>
-            </DropdownButton>
+            <table>
+              <tr>
+                <td> Choose the UserType you want to register</td>
+                <td>
+                  {" "}
+                  <DropdownButton
+                    variant="light"
+                    style={{
+                      size: "2vw",
+                      fontSize: "1vw",
+                    }}
+                    id="dropdown-basic-button"
+                    title={userType}
+                    value={userType}
+                    name="userType"
+                    onSelect={this.onChangeType}
+                  >
+                    <Dropdown.Item eventKey="Super Admin">
+                      Super Admin
+                    </Dropdown.Item>
+                    <Dropdown.Item eventKey="Admin">Admin</Dropdown.Item>
+                    <Dropdown.Item eventKey="User">User</Dropdown.Item>
+                  </DropdownButton>
+                </td>
+              </tr>
+
+              <tr>
+                <td>Choose the Institute Name</td>
+                <td>
+                  <DropdownButton
+                    variant="light"
+                    style={{
+                      size: "2vw",
+                      fontSize: "1vw",
+                    }}
+                    id="dropdown-basic-button"
+                    title={instituteName}
+                    value={instituteName}
+                    name="instituteName"
+                    onSelect={this.onChangeInstitute}
+                  >
+                    <Dropdown.Item eventKey="NITJ">NITJ</Dropdown.Item>
+                    <Dropdown.Item eventKey="THAPAR">THAPAR</Dropdown.Item>
+                  </DropdownButton>
+                </td>
+              </tr>
+              <tr>
+                <td>Choose Your Department</td>
+                <td>
+                  <DropdownButton
+                    variant="light"
+                    style={{
+                      size: "2vw",
+                      fontSize: "1vw",
+                    }}
+                    id="dropdown-basic-button"
+                    title={department}
+                    value={department}
+                    name="department"
+                    onSelect={this.onChangeDept}
+                  >
+                    <Dropdown.Item eventKey="Director">Director</Dropdown.Item>
+                    <Dropdown.Item eventKey="Dept1">Dept 1</Dropdown.Item>
+                    <Dropdown.Item eventKey="Dept2">Dept 2</Dropdown.Item>
+                    <Dropdown.Item eventKey="Dept3">Dept 3</Dropdown.Item>
+                  </DropdownButton>
+                </td>
+              </tr>
+            </table>
             {/*<Dropdown
               options={this.options}
               onChange={this.onChange}
@@ -198,23 +235,6 @@ export class Register extends Component {
               value={this.defaultOption}
               placeholder="Select an option"
              />*/}
-            <DropdownButton
-              variant="light"
-              style={{
-                size: "2vw",
-                fontSize: "1vw",
-              }}
-              id="dropdown-basic-button"
-              title={department}
-              value={department}
-              name="department"
-              onSelect={this.onChangeDept}
-            >
-              <Dropdown.Item eventKey="Director">Director</Dropdown.Item>
-              <Dropdown.Item eventKey="Dept1">Dept 1</Dropdown.Item>
-              <Dropdown.Item eventKey="Dept2">Dept 2</Dropdown.Item>
-              <Dropdown.Item eventKey="Dept3">Dept 3</Dropdown.Item>
-            </DropdownButton>
 
             <div className="form-group">
               <button type="submit" className="btn btn-primary">

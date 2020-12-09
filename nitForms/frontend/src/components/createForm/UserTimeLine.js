@@ -13,20 +13,20 @@ export default class TimeLine extends Component {
           style={{
             width: "50vw",
             marginTop: "2vw",
-            border: "0.07vw solid #DCDCDC",
+            //border: "0.07vw solid #0A5C5A",
             padding: "1vw",
             textAlign: "center",
             borderRadius: ".5vw",
             marginRight: "auto",
             marginLeft: "auto",
-            backgroundImage:
-              "linear-gradient(to right,rgba(0, 153, 153, 0.5),rgba(0, 231, 231, 0.5)",
+            backgroundColor: "#E0777D",
+            boxShadow: ".3vw .3vw .3vw lightgray",
           }}
         >
           <Button
             style={{
               backgroundColor: "white",
-              color: "#009999",
+              color: "#E0777D",
               border: 0,
               fontSize: "1.2VW",
               fontFamily: "Times New Roman",
@@ -41,9 +41,10 @@ export default class TimeLine extends Component {
             width: "50vw",
             // float: "left",
             position: "relative",
-            backgroundColor: "#eeeeee",
+            backgroundColor: "#EEEEEE",
             borderRadius: ".5vw",
-            boxShadow: ".3vw .3vw .3vw silver",
+            borderWidth: 0,
+            boxShadow: ".3vw .3vw .3vw LIGHTGRAY",
             marginLeft: "auto",
             marginRight: "auto",
             marginTop: "1vw",
@@ -52,12 +53,12 @@ export default class TimeLine extends Component {
           <VerticalTimeline
             layout={"1-column"}
             position={"right"}
-            backgroundColor="#eeeeee"
+            backgroundColor="#EEEEEE"
           >
             <VerticalTimelineElement
               // className="vertical-timeline-element--work"
               contentStyle={{
-                border: ".2vw solid #009999",
+                border: ".2vw solid #0A5C5A",
                 borderRadius: "1vw",
                 background: "white",
 
@@ -68,7 +69,7 @@ export default class TimeLine extends Component {
                 wordWrap: "break-word",
               }}
               iconStyle={{
-                background: "#009999",
+                background: "#0A5C5A",
                 width: "2vw",
                 height: "2vw",
                 margin: ".5vw",
@@ -81,7 +82,7 @@ export default class TimeLine extends Component {
                 style={{ color: "darkgrey" }}
                 className="vertical-timeline-element-subtitle"
               ></h6>
-              <p style={{ color: "#009999" }}>form has been submitted</p>
+              <p style={{ color: "#0A5C5A" }}>form has been submitted</p>
             </VerticalTimelineElement>
           </VerticalTimeline>
         </div>

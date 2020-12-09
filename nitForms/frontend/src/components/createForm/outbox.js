@@ -7,6 +7,7 @@ const columns = [
   { field: "action", headerName: "Action", width: 130 },
   { field: "to", headerName: "To", width: 130 },
   { field: "date", headerName: "Date", width: 130 },
+  { field: "content", headerName: "Content", width: 130 },
   //   {
   //     field: 'fullName',
   //     headerName: 'Full name',
@@ -25,6 +26,7 @@ const rows = [
     firstName: "Jon",
     action: "forward",
     date: "21-10-2020",
+    content: "hihihi",
   },
   {
     id: 2,
@@ -32,6 +34,7 @@ const rows = [
     firstName: "Cersei",
     action: "reply",
     date: "21-10-2020",
+    content: "hihihi",
   },
   {
     id: 3,
@@ -39,6 +42,7 @@ const rows = [
     firstName: "Jaime",
     action: "forward",
     date: "21-10-2020",
+    content: "hihihi",
   },
   {
     id: 4,
@@ -46,6 +50,7 @@ const rows = [
     firstName: "Arya",
     action: "forward",
     date: "21-10-2020",
+    content: "hihihi",
   },
   {
     id: 5,
@@ -53,6 +58,7 @@ const rows = [
     firstName: "Daenerys",
     action: null,
     date: "21-10-2020",
+    content: "hihihi",
   },
   {
     id: 6,
@@ -60,6 +66,7 @@ const rows = [
     firstName: null,
     action: "forward",
     date: "21-10-2020",
+    content: "hihihi",
   },
   {
     id: 7,
@@ -67,6 +74,7 @@ const rows = [
     firstName: "Ferrara",
     action: "forward",
     date: "21-10-2020",
+    content: "hihihi",
   },
   {
     id: 8,
@@ -74,8 +82,16 @@ const rows = [
     firstName: "Rossini",
     action: null,
     date: "21-10-2020",
+    content: "hihihi",
   },
-  { id: 9, to: "Roxie", firstName: "Harvey", action: null, date: "21-10-2020" },
+  {
+    id: 9,
+    to: "Roxie",
+    firstName: "Harvey",
+    action: null,
+    date: "21-10-2020",
+    content: "hihihi",
+  },
 ];
 
 export default class Outbox extends Component {

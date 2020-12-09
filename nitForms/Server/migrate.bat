@@ -1,1 +1,1 @@
-call "%windir%\System32\cmd.exe "/K" C:\Users\ASUS\Anaconda3\Scripts\activate.bat C:\Users\ASUS\Anaconda3\envs\mydjangoenv & cd /d F:\PROJECTS\nitjforms\nitForms & python manage.py makemigrations & python manage.py migrate & exit"
+call "%windir%\System32\cmd.exe "/K" C:\Users\chahat\Anaconda3\Scripts\activate.bat C:\Users\chahat\Anaconda3\envs\test & cd /d E:\nitj\nitjforms\nitForms & python manage.py makemigrations & python manage.py migrate & exit"

@@ -68,6 +68,12 @@ export default class ProfilePage extends Component {
                 </td>
                 <td>Superadmin</td>
               </tr>
+              <tr>
+                <td>
+                  <strong>DESIGNATION</strong>
+                </td>
+                <td>HOD</td>
+              </tr>
             </table>
           </div>
         </div>

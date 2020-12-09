@@ -184,7 +184,7 @@ export default function PersistentDrawerLeft() {
               />
             </Link>
           </ListItem>
-          <ListItem
+          {/* <ListItem
             style={{ fontSize: "1vw", marginLeft: "auto", marginRight: "auto" }}
           >
             Email:abc@gmail.com
@@ -198,7 +198,7 @@ export default function PersistentDrawerLeft() {
           >
             Phone no
           </ListItem>
-          <ListItem style={{ fontSize: "1vw" }}>Department</ListItem>
+          <ListItem style={{ fontSize: "1vw" }}>Department</ListItem> */}
         </List>
 
         <Divider />

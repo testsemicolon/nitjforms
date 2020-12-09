@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 
-
 export class Autocomplete extends Component {
   static propTypes = {
     options: PropTypes.instanceOf(Array).isRequired,
@@ -118,8 +117,6 @@ export class Autocomplete extends Component {
           <input type="submit" value="" className="search-btn" />
         </div>
         {optionList}
-
-       
       </React.Fragment>
     );
   }

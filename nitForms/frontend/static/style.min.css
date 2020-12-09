@@ -23,7 +23,7 @@
   left: 18px;
   height: 100%;
   width: 4px;
-  background: #009999;
+  background: #0a5c5a;
 }
 
 .vertical-timeline-element {
@@ -150,7 +150,7 @@
 .vertical-timeline-element-content {
   position: relative;
   margin-left: 60px;
-  background: #009999;
+  background: #0a5c5a;
   border-radius: 0.25em;
   border: 1vw;
   padding: 1e;
