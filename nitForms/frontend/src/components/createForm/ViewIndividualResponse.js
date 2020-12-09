@@ -71,11 +71,16 @@ export class ViewIndividualResponse extends Component {
     let value1 = this.props.match.params.value;
     let title1 = this.props.match.params.title;
     var id = "";
+    var reciever = "";
     const quest = {};
     {
       Object.entries(this.props.Forms).map(([key, value]) => {
         if (key === value1) {
           Object.entries(value).map(([question, answer]) => {
+            if (question === "userName") {
+              reciever = answer;
+            }
+
             if (question !== "id") {
               quest[question] = answer;
             } else if (question === "id") {
@@ -88,6 +93,13 @@ export class ViewIndividualResponse extends Component {
     quest["commentRejected"] = this.state.content;
     console.log(quest);
     this.props.responseReject(quest, title1, id);
+    const questNotify = {};
+    var notifyCmnt = "Your response has been rejected.";
+    questNotify["sender"] = `${this.props.created_by1}`;
+    questNotify["reciever"] = `${reciever}`;
+    questNotify["notify"] = notifyCmnt;
+    console.log(questNotify);
+    this.props.postNotification(questNotify);
   };
 
   render() {

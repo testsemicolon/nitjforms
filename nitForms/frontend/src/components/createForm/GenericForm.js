@@ -17,7 +17,11 @@ import {
   deleteSharedUsers,
   getSharedUser,
 } from "../../actions/common";
-import { postFormStatus, putFormStatus } from "../../actions/FormStatus";
+import {
+  postFormStatus,
+  putFormStatus,
+  getFormStatus,
+} from "../../actions/FormStatus";
 import Popup from "reactjs-popup";
 import ShareForm from "./ShareForm";
 import Select from "react-dropdown-select";
@@ -55,6 +59,7 @@ export class GenericForm extends Component {
   setValues = (selectValues) => this.setState({ selectValues });
 
   componentDidMount() {
+    this.props.getFormStatus();
     this.props.getSharedUser();
     this.props.getFormView(this.props.title);
     this.props.SharedUsers.map((a) => {
@@ -756,5 +761,6 @@ export default withRouter(
     getSharedUser,
     postFormStatus,
     putFormStatus,
+    getFormStatus,
   })(GenericForm)
 );

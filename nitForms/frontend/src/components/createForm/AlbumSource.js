@@ -8,19 +8,20 @@ import Director from "./Director";
 
 export class AlbumSource extends Component {
   render() {
-    if (this.props.canGenerateForm && this.props.canMakeNoting) {
+    if (this.props.userType === "Super Admin") {
       return <Albumm />;
-    } else if (this.props.canMakeNoting) {
+    } else if (this.props.userType === "Admin") {
       return <AlbumAdminStaff />;
-    } else {
+    } else if (this.props.userType === "User") {
       return <AlbumUser />;
+    } else if (this.props.userType === "Director") {
+      return <Director />;
     }
   }
 }
 
 const mapStateToProps = (state) => ({
-  canGenerateForm: state.Auth.user.can_generate_form,
-  canMakeNoting: state.Auth.user.can_make_noting,
+  userType: state.Auth.user.userType,
 });
 
 export default connect(mapStateToProps)(AlbumSource);

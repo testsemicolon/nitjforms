@@ -7,7 +7,7 @@ export const getFormStatus = () => (dispatch) => {
     .then((res) => {
       dispatch({
         type: GET_FORM_STATUS,
-        payload: res,
+        payload: res.data,
       });
     })
     .catch((err) => console.log(err));
