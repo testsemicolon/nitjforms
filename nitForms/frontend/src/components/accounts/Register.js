@@ -176,6 +176,7 @@ export class Register extends Component {
                     name="userType"
                     onSelect={this.onChangeType}
                   >
+                    <Dropdown.Item eventKey="Director">Director</Dropdown.Item>
                     <Dropdown.Item eventKey="Super Admin">
                       Super Admin
                     </Dropdown.Item>
@@ -220,7 +221,6 @@ export class Register extends Component {
                     name="department"
                     onSelect={this.onChangeDept}
                   >
-                    <Dropdown.Item eventKey="Director">Director</Dropdown.Item>
                     <Dropdown.Item eventKey="Dept1">Dept 1</Dropdown.Item>
                     <Dropdown.Item eventKey="Dept2">Dept 2</Dropdown.Item>
                     <Dropdown.Item eventKey="Dept3">Dept 3</Dropdown.Item>

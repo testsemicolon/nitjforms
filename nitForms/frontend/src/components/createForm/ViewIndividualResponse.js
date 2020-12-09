@@ -6,6 +6,7 @@ import TextareaAutosize from "react-textarea-autosize";
 import { Card } from "react-bootstrap";
 import { responseReject } from "../../actions/SubmitPage";
 import { sendMail } from "../../actions/Email";
+import { postNotification } from "../../actions/Notification";
 
 export class ViewIndividualResponse extends Component {
   state = {
@@ -22,6 +23,8 @@ export class ViewIndividualResponse extends Component {
   };
 
   onClick = () => {
+    var reciever = "";
+
     let value1 = this.props.match.params.value;
     let title1 = this.props.match.params.title;
     const quest = {};
@@ -31,9 +34,14 @@ export class ViewIndividualResponse extends Component {
       Object.entries(this.props.Forms).map(([key, value]) => {
         if (key === value1) {
           Object.entries(value).map(([question, answer]) => {
+            console.log(question);
+            if (question === "userName") {
+              reciever = answer;
+            }
+
             if (question === "userMail") {
               recieverMail = answer;
-            } 
+            }
             if (question !== "id") {
               quest[question] = answer;
             }
@@ -41,14 +49,22 @@ export class ViewIndividualResponse extends Component {
         }
       });
     }
+
     questMail["senderEmail"] = this.props.email;
     questMail["recieverEmail"] = recieverMail;
-    questMail["content"] = "Your response has been submitted.";
+    questMail["content"] = "Your response has been accepted.";
     console.log(this.state.content);
     quest["commentAccepted"] = this.state.content;
     this.props.addAccepted(quest, title1);
     console.log(questMail);
     this.props.sendMail(questMail);
+    const questNotify = {};
+    var notifyCmnt = "Your response has been accepted.";
+    questNotify["sender"] = `${this.props.created_by1}`;
+    questNotify["reciever"] = `${reciever}`;
+    questNotify["notify"] = notifyCmnt;
+    console.log(questNotify);
+    this.props.postNotification(questNotify);
   };
 
   onClickReject = () => {
@@ -227,6 +243,9 @@ const mapStateToProps = (state) => ({
   email: state.Auth.user.email,
 });
 
-export default connect(mapStateToProps, { addAccepted, responseReject, sendMail })(
-  ViewIndividualResponse
-);
+export default connect(mapStateToProps, {
+  addAccepted,
+  responseReject,
+  sendMail,
+  postNotification,
+})(ViewIndividualResponse);

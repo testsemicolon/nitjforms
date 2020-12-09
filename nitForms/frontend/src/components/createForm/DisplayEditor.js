@@ -86,7 +86,7 @@ class DisplayEditor extends React.Component {
         questNotify["sender"] = `${this.props.username}`;
         questNotify["reciever"] = `${reciever}`;
         questNotify["notify"] = notifyCmnt;
-        this.props.postNotification(questNotify);
+        // this.props.postNotification(questNotify);
         store.dispatch(
           createMessage({ commentAdded: `Comment has been added to ${name}` })
         );
@@ -102,7 +102,6 @@ class DisplayEditor extends React.Component {
   }
   setEditorContent() {
     const rawEditorData = this.loadContent();
-
     rawEditorData.blocks.map((s) => {});
     rawEditorData.blocks.map((s) => {
       this.props.AcceptedResponse.map((s1) => {
