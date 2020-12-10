@@ -1,6 +1,6 @@
 import React, { Component, Fragment } from "react";
 import { connect } from "react-redux";
-import { addAccepted } from "../../actions/AcceptedResponse";
+import { addAccepted, putResponse } from "../../actions/AcceptedResponse";
 import { Button } from "react-bootstrap";
 import TextareaAutosize from "react-textarea-autosize";
 import { Card } from "react-bootstrap";
@@ -12,9 +12,23 @@ export class ViewIndividualResponse extends Component {
   state = {
     content: "",
   };
+  responseObject = {};
+  responseStatusCheckFlag = true;
   constructor(props) {
     super(props);
     console.log(this.props);
+    {
+      Object.entries(this.props.Forms).map(([key, value]) => {
+        if (key === this.props.match.params.value) {
+          this.responseObject = value;
+          Object.entries(value).map(([question, answer]) => {
+            if (question === "responseStatus") {
+              this.responseStatusCheckFlag = answer;
+            }
+          });
+        }
+      });
+    }
   }
 
   onChange = (e) => {
@@ -23,8 +37,10 @@ export class ViewIndividualResponse extends Component {
   };
 
   onClick = () => {
+    this.responseStatusCheckFlag = true;
     var reciever = "";
-
+    var responseObject = this.responseObject;
+    let id1 = "";
     let value1 = this.props.match.params.value;
     let title1 = this.props.match.params.title;
     const quest = {};
@@ -35,6 +51,9 @@ export class ViewIndividualResponse extends Component {
         if (key === value1) {
           Object.entries(value).map(([question, answer]) => {
             console.log(question);
+            if (question === "id") {
+              id1 = answer;
+            }
             if (question === "userName") {
               reciever = answer;
             }
@@ -49,7 +68,10 @@ export class ViewIndividualResponse extends Component {
         }
       });
     }
-
+    responseObject["responseStatus"] = this.responseStatusCheckFlag;
+    console.log(title1);
+    console.log(responseObject);
+    this.props.putResponse(id1, title1, responseObject);
     questMail["senderEmail"] = this.props.email;
     questMail["recieverEmail"] = recieverMail;
     questMail["content"] = "Your response has been accepted.";
@@ -68,6 +90,8 @@ export class ViewIndividualResponse extends Component {
   };
 
   onClickReject = () => {
+    var responseObject = this.responseObject;
+    this.responseStatusCheckFlag = true;
     let value1 = this.props.match.params.value;
     let title1 = this.props.match.params.title;
     var id = "";
@@ -100,6 +124,10 @@ export class ViewIndividualResponse extends Component {
     questNotify["notify"] = notifyCmnt;
     console.log(questNotify);
     this.props.postNotification(questNotify);
+    responseObject["responseStatus"] = this.responseStatusCheckFlag;
+    console.log(title1);
+    console.log(responseObject);
+    this.props.putResponse(id, title1, responseObject);
   };
 
   render() {
@@ -114,7 +142,7 @@ export class ViewIndividualResponse extends Component {
                 {Object.entries(value).map(([question, answer]) => {
                   if (
                     (question !== "responseTime") &
-                    (question !== "formStatus") &
+                    (question !== "responseStatus") &
                     (question !== "commentRejected") &
                     (question !== "userName")
                   ) {
@@ -183,67 +211,73 @@ export class ViewIndividualResponse extends Component {
               </Fragment>
             );
         })}
-        <div style={{ alignItem: "center", textAlign: "center" }}>
-          <br />
-          <Button
-            style={{
-              backgroundColor: "green",
-              width: "10vw",
-              fontSize: ".95vw",
-              fontFamily: "Times New Roman",
-            }}
-            onClick={this.onClick}
-          >
-            Accept Response
-          </Button>
-          {"  "}{" "}
-          <Button
-            variant="danger"
-            style={{
-              width: "10vw",
-              fontSize: ".95vw",
-              fontFamily: "Times New Roman",
-            }}
-            onClick={this.onClickReject}
-          >
-            Reject Response
-          </Button>
-          <br />
-          <br />
-          <br />
-          <div
-            style={{
-              position: "relative",
-              marginLeft: "auto",
-              marginRight: "auto",
-              width: "35vw",
-            }}
-          >
-            <h3>Comment</h3>
-
-            <TextareaAutosize
-              name="content"
-              value={content}
-              style={{
-                width: "37vw",
-                borderColor: "white",
-                fontSize: "1vw",
-              }}
-              onChange={this.onChange}
-            >
-              Enter comment
-            </TextareaAutosize>
+        {this.responseStatusCheckFlag ? (
+          <div>
+            <h1>Response has been handled</h1>
           </div>
-          <br />
-          <br />
-          <br />
-          <br />
-          <br />
-          <br />
-          <br />
-          <br />
-          <br />
-        </div>
+        ) : (
+          <div style={{ alignItem: "center", textAlign: "center" }}>
+            <br />
+            <Button
+              style={{
+                backgroundColor: "green",
+                width: "10vw",
+                fontSize: ".95vw",
+                fontFamily: "Times New Roman",
+              }}
+              onClick={this.onClick}
+            >
+              Accept Response
+            </Button>
+            {"  "}{" "}
+            <Button
+              variant="danger"
+              style={{
+                width: "10vw",
+                fontSize: ".95vw",
+                fontFamily: "Times New Roman",
+              }}
+              onClick={this.onClickReject}
+            >
+              Reject Response
+            </Button>
+            <br />
+            <br />
+            <br />
+            <div
+              style={{
+                position: "relative",
+                marginLeft: "auto",
+                marginRight: "auto",
+                width: "35vw",
+              }}
+            >
+              <h3>Comment</h3>
+
+              <TextareaAutosize
+                name="content"
+                value={content}
+                style={{
+                  width: "37vw",
+                  borderColor: "white",
+                  fontSize: "1vw",
+                }}
+                onChange={this.onChange}
+              >
+                Enter comment
+              </TextareaAutosize>
+            </div>
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
+          </div>
+        )}
       </Fragment>
     );
   }
@@ -260,4 +294,5 @@ export default connect(mapStateToProps, {
   responseReject,
   sendMail,
   postNotification,
+  putResponse,
 })(ViewIndividualResponse);

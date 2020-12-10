@@ -10,8 +10,3 @@ admin.site.register(notingTemplate)
 admin.site.register(userNotifications)
 admin.site.register(formIndex)
 admin.site.register(EmailIndex)
-
-
-admin.site.register(test1)
-
-admin.site.register(test1Accepted)

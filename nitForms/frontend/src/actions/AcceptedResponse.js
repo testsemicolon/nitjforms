@@ -28,8 +28,19 @@ export const getAccepted = (title) => (dispatch, getState) => {
 
 export const putAccepted = (id, title, quest) => () => {
   title = title.replace(/[ ]/g, "_");
+  console.log(title);
+  console.log(quest);
   axios
     .put(`${title}Accepted/${id}/`, quest)
+    .then((res) => console.log(res))
+    .catch((err) => console.log(err));
+};
+
+export const putResponse = (id, title, quest) => () => {
+  console.log(title);
+  console.log(quest);
+  axios
+    .put(`${title}/${id}/`, quest)
     .then((res) => console.log(res))
     .catch((err) => console.log(err));
 };

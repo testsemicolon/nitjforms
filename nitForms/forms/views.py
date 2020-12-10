@@ -34,7 +34,7 @@ def post_views(request):
         f = open(modelPath, 'a')
         f.write("\n\nclass " + title + "(models.Model):\n")
         f.write("    responseTime = models.DateTimeField(auto_now_add=True)\n")
-        f.write("    formStatus = models.BooleanField(default=False)\n")
+        f.write("    responseStatus = models.BooleanField(default=False)\n")
         f.write(
             "    commentRejected = models.CharField(max_length=1000, blank=True)\n"
         )
