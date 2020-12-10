@@ -7,6 +7,7 @@ import { Button } from "react-bootstrap";
 import { Redirect } from "react-router-dom";
 import { Link } from "react-router-dom";
 import ViewIndividualResponse from "./ViewIndividualResponse";
+import { getFormStatus } from "../../actions/FormStatus";
 
 export class GenericResponses extends Component {
   state = {
@@ -15,6 +16,7 @@ export class GenericResponses extends Component {
   constructor(props) {
     super(props);
     this.props.getGeneric(this.props.title);
+    this.props.getFormStatus();
   }
 
   componentDidMount() {
@@ -137,4 +139,6 @@ const mapStateToProps = (state) => ({
   SharedUsers: state.SharedUsers.SharedUsers,
 });
 
-export default connect(mapStateToProps, { getGeneric })(GenericResponses);
+export default connect(mapStateToProps, { getGeneric, getFormStatus })(
+  GenericResponses
+);

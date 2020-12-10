@@ -14,6 +14,7 @@ export const getFormStatus = () => (dispatch) => {
 };
 
 export const postFormStatus = (quest) => (dispatch) => {
+  console.log(quest);
   axios.post("/formIndex/", quest).then((res) => {
     console.log(res);
   });

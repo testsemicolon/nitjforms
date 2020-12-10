@@ -65,10 +65,13 @@ class userNotifications(models.Model):
 
 
 class formIndex(models.Model):
+    responseID = models.CharField(max_length=1000)
     userName = models.CharField(max_length=1000)
-    formName = ArrayField(models.CharField(max_length=1000),
-                          blank=True,
-                          default=list)
+    formName = models.CharField(max_length=1000)
+    commentByAuthor = models.CharField(max_length = 10000, blank=True)
+    responseAcceptedStatus = models.CharField(max_length=1000, blank=True) #response is either rejected or accepted
+    
+
 
 class EmailIndex(models.Model):
     senderEmail = models.EmailField(max_length=1000)
@@ -76,50 +79,3 @@ class EmailIndex(models.Model):
     content = models.CharField(max_length=1000)
     sentDate = models.DateTimeField(auto_now_add=True)
 
-
-
-
-
-
-class test1(models.Model):
-
-    responseTime = models.DateTimeField(auto_now_add=True)
-    responseStatus = models.BooleanField(default=False)
-    commentRejected = models.CharField(max_length=1000, blank=True)
-    userName = models.CharField(max_length=1000, blank=True)
-    userMail = models.EmailField(max_length=1000)
-    name = models.CharField(max_length=1000)
-    age = models.CharField(max_length=1000)
-
-
-class test1Accepted(models.Model):
-
-    responseTime = models.DateTimeField(auto_now_add=True)
-    comment = JSONField(null=True)
-    forwardTo = ArrayField(JSONField(null=True),blank=True, default=list)
-    commentAccepted = models.CharField(max_length=1000, blank=True)
-    notification = notification = JSONField(null=True)
-    userName = models.CharField(max_length=1000, blank=True)
-    name = models.CharField(max_length=1000)
-    age = models.CharField(max_length=1000)
-
-
-class test4(models.Model):
-    responseTime = models.DateTimeField(auto_now_add=True)
-    responseStatus = models.BooleanField(default=False)
-    commentRejected = models.CharField(max_length=1000, blank=True)
-    userName = models.CharField(max_length=1000, blank=True)
-    userMail = models.EmailField(max_length=1000)
-    weight = models.CharField(max_length=1000)
-    height = models.CharField(max_length=1000)
-
-
-class test4Accepted(models.Model):
-    responseTime = models.DateTimeField(auto_now_add=True)
-    comment = JSONField(null=True)
-    forwardTo = ArrayField(JSONField(null=True),blank=True, default=list)
-    commentAccepted = models.CharField(max_length=1000, blank=True)
-    notification = notification = JSONField(null=True)
-    userName = models.CharField(max_length=1000, blank=True)
-    weight = models.CharField(max_length=1000)
-    height = models.CharField(max_length=1000)

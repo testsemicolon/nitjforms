@@ -7,15 +7,19 @@ import { Card } from "react-bootstrap";
 import { responseReject } from "../../actions/SubmitPage";
 import { sendMail } from "../../actions/Email";
 import { postNotification } from "../../actions/Notification";
+import { putFormStatus } from "../../actions/FormStatus";
 
 export class ViewIndividualResponse extends Component {
   state = {
     content: "",
   };
+  responseID = "";
   responseObject = {};
   responseStatusCheckFlag = true;
+  indexResponse = {};
   constructor(props) {
     super(props);
+    let responseID = "";
     console.log(this.props);
     {
       Object.entries(this.props.Forms).map(([key, value]) => {
@@ -25,15 +29,24 @@ export class ViewIndividualResponse extends Component {
             if (question === "responseStatus") {
               this.responseStatusCheckFlag = answer;
             }
+            if (question === "responseID") {
+              console.log("responseID", answer);
+              this.responseID = answer;
+              responseID = answer;
+            }
           });
         }
       });
     }
+    this.props.FormStatus.map((form) => {
+      if (form.responseID === responseID) {
+        this.indexResponse = form;
+      }
+    });
   }
 
   onChange = (e) => {
     this.setState({ [e.target.name]: e.target.value });
-    console.log(e.target.value);
   };
 
   onClick = () => {
@@ -43,6 +56,7 @@ export class ViewIndividualResponse extends Component {
     let id1 = "";
     let value1 = this.props.match.params.value;
     let title1 = this.props.match.params.title;
+    var acceptedResponseID = "";
     const quest = {};
     const questMail = {};
     var recieverMail = "";
@@ -54,10 +68,12 @@ export class ViewIndividualResponse extends Component {
             if (question === "id") {
               id1 = answer;
             }
+            if (question === "responseID") {
+              acceptedResponseID = answer;
+            }
             if (question === "userName") {
               reciever = answer;
             }
-
             if (question === "userMail") {
               recieverMail = answer;
             }
@@ -69,14 +85,18 @@ export class ViewIndividualResponse extends Component {
       });
     }
     responseObject["responseStatus"] = this.responseStatusCheckFlag;
+    console.log("id   ", id1);
     console.log(title1);
     console.log(responseObject);
     this.props.putResponse(id1, title1, responseObject);
     questMail["senderEmail"] = this.props.email;
     questMail["recieverEmail"] = recieverMail;
     questMail["content"] = "Your response has been accepted.";
-    console.log(this.state.content);
-    quest["commentAccepted"] = this.state.content;
+    // console.log(this.state.content);
+    // quest["commentAccepted"] = this.state.content;
+    console.log(acceptedResponseID);
+    quest["acceptedResponseID"] = acceptedResponseID;
+    console.log(quest);
     this.props.addAccepted(quest, title1);
     console.log(questMail);
     this.props.sendMail(questMail);
@@ -85,8 +105,11 @@ export class ViewIndividualResponse extends Component {
     questNotify["sender"] = `${this.props.created_by1}`;
     questNotify["reciever"] = `${reciever}`;
     questNotify["notify"] = notifyCmnt;
-    console.log(questNotify);
     this.props.postNotification(questNotify);
+    var indexResponse = this.indexResponse;
+    indexResponse["commentByAuthor"] = this.state.content;
+    indexResponse["responseAcceptedStatus"] = "Accepted";
+    this.props.putFormStatus(indexResponse, indexResponse.id);
   };
 
   onClickReject = () => {
@@ -128,6 +151,11 @@ export class ViewIndividualResponse extends Component {
     console.log(title1);
     console.log(responseObject);
     this.props.putResponse(id, title1, responseObject);
+
+    var indexResponse = this.indexResponse;
+    indexResponse["commentByAuthor"] = this.state.content;
+    indexResponse["responseAcceptedStatus"] = "Rejected";
+    this.putFormStatus(indexResponse, indexResponse.id);
   };
 
   render() {
@@ -287,6 +315,7 @@ const mapStateToProps = (state) => ({
   Forms: state.Forms.Forms,
   created_by1: state.Auth.user.username,
   email: state.Auth.user.email,
+  FormStatus: state.FormStatus.FormStatus,
 });
 
 export default connect(mapStateToProps, {
@@ -295,4 +324,5 @@ export default connect(mapStateToProps, {
   sendMail,
   postNotification,
   putResponse,
+  putFormStatus,
 })(ViewIndividualResponse);

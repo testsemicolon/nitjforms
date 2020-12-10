@@ -70,7 +70,6 @@ export class GenericForm extends Component {
           this.arr.push(a1);
           if (a1 === this.props.username) {
             this.flag = true;
-            console.log("sahi hai");
           }
         });
       }
@@ -102,8 +101,7 @@ export class GenericForm extends Component {
     this.setState({ value: e.target.value });
   };
 
-  onSubmitUser = () => {
-    console.log("adsas");
+  onSubmitSharedUser = () => {
     var arr1 = [];
     this.arr.push(this.toShareWith);
     this.arr.map((ar) => arr1.push(ar));
@@ -141,31 +139,38 @@ export class GenericForm extends Component {
     Object.keys(quest).map((obj) =>
       renameKey(quest, obj, obj.replace(/[ ]/g, "_"))
     );
-    quest["userName"] = this.props.username;
+    var questFormIndex = {};
     var title = this.props.title;
     var mail = this.props.email;
+    questFormIndex["userName"] = this.props.username;
+    questFormIndex["formName"] = title;
+    quest["userName"] = this.props.username;
+
     console.log(mail);
     quest["userMail"] = mail;
-    this.props.formSubmit(quest, title);
-    this.props.FormStatus.map((a) => {
-      if (a.userName === this.props.username) {
-        var arr = a["formName"];
-        arr.push(this.props.title);
-        a["formName"] = arr;
-        a["userName"] = this.props.username;
-        this.props.putFormStatus(a, a.id);
-        flag = true;
-        console.log("put");
-      }
-    });
-    if (flag === false) {
-      console.log("post");
-      var arr = [];
-      arr.push(this.props.title);
-      const a = {};
-      a["formName"] = arr;
-      a["userName"] = this.props.username;
-      this.props.postFormStatus(a);
+    this.props.formSubmit(quest, title, questFormIndex);
+    {
+      /* 
+    // this.props.FormStatus.map((a) => {
+    //   if (a.userName === this.props.username) {
+    //     var arr = a["formName"];
+    //     arr.push(this.props.title);
+    //     a["formName"] = arr;
+    //     a["userName"] = this.props.username;
+    //     // this.props.putFormStatus(a, a.id);
+    //     flag = true;
+    //     console.log("put");
+    //   }
+    // });
+    // if (flag === false) {
+    //   console.log("post");
+    //   var arr = [];
+    //   arr.push(this.props.title);
+    //   const a = {};
+    //   a["formName"] = arr;
+    //   a["userName"] = this.props.username;
+    //   // this.props.postFormStatus(a);
+    // } */
     }
     this.props.history.push(`/${this.props.title}`);
   };
@@ -363,7 +368,7 @@ export class GenericForm extends Component {
                               boxShadow: ".3vw .3vw .3vw lightgray",
                               fontFamily: "Times New Roman",
                             }}
-                            onClick={this.onSubmitUser}
+                            onClick={this.onSubmitSharedUser}
                           >
                             <h5>Done</h5>
                           </Button>

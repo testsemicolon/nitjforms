@@ -33,11 +33,9 @@ def post_views(request):
         # Writing Models.py
         f = open(modelPath, 'a')
         f.write("\n\nclass " + title + "(models.Model):\n")
+        f.write("    responseID = models.UUIDField(default=uuid.uuid4, editable=False)\n")
         f.write("    responseTime = models.DateTimeField(auto_now_add=True)\n")
         f.write("    responseStatus = models.BooleanField(default=False)\n")
-        f.write(
-            "    commentRejected = models.CharField(max_length=1000, blank=True)\n"
-        )
         f.write(
             "    userName = models.CharField(max_length=1000, blank=True)\n")
         f.write(
@@ -51,16 +49,14 @@ def post_views(request):
 
         f = open(modelPath, 'a')
         f.write("\n\nclass " + title + "Accepted(models.Model):\n")
+        f.write("    acceptedResponseID = models.CharField(max_length=1000)\n")
         f.write("    responseTime = models.DateTimeField(auto_now_add=True)\n")
         f.write("    comment = JSONField(null=True)\n")
         f.write(
             "    forwardTo = ArrayField(JSONField(null=True),blank=True, default=list)\n"
         )
         f.write(
-            "    commentAccepted = models.CharField(max_length=1000, blank=True)\n"
-        )
-        f.write(
-            "    notification = notification = JSONField(null=True)\n"
+            "    notification = JSONField(null=True)\n"
         )
         f.write(
             "    userName = models.CharField(max_length=1000, blank=True)\n"
