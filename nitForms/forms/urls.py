@@ -20,3 +20,18 @@ urlpatterns += [
     path('posts/', api.PostView.as_view(), name='posts_list'),
 ]
 
+
+
+
+router.register('test1', test1ViewSet, 'test1')
+
+
+router.register('test1Accepted', test1AcceptedViewSet, 'test1Accepted')
+urlpatterns += router.urls
+
+
+router.register('test4', test4ViewSet, 'test4')
+
+
+router.register('test4Accepted', test4AcceptedViewSet, 'test4Accepted')
+urlpatterns += router.urls

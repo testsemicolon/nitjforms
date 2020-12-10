@@ -224,40 +224,51 @@ export class AlbumUser extends Component {
                 //border: "0.1vw solid grey",
               }}
             >
-              <MDBContainer
-                style={{
-                  marginLeft: "auto",
-                  marginRight: "auto",
-                  //marginTop: 0,
-                  zIndex: "9999",
-                }}
-                className="grey darken-3 p-3"
-              >
-                <MDBNotification
-                  iconClassName="text-primary"
-                  show
-                  fade
-                  title="Test 1"
-                  message="status:pending , Your form will be reviewed soon"
-                  text={
-                    <Link to={"/timeline/"}>
-                      <Button
-                        style={{
-                          padding: "0.1vw",
-                          fontSize: ".8vw",
-                          backgroundColor: "#009999",
-                          border: 0,
-                          paddingLeft: ".3vw",
-                          paddingRight: ".3vw",
-                          fontFamily: "Times New Roman",
-                        }}
-                      >
-                        View timeline
-                      </Button>
-                    </Link>
-                  }
-                />
-              </MDBContainer>
+              {this.props.FormStatus.map((obj) => {
+                if (obj.userName === this.props.username) {
+                  obj.formName.reverse();
+                  return (
+                    <MDBContainer
+                      style={{
+                        marginLeft: "auto",
+                        marginRight: "auto",
+                        //marginTop: 0,
+                        zIndex: "9999",
+                      }}
+                      className="grey darken-3 p-3"
+                    >
+                      {obj.formName.map((name) => {
+                        return (
+                          <MDBNotification
+                            iconClassName="text-primary"
+                            show
+                            fade
+                            title={name}
+                            message="status:pending , Your form will be reviewed soon"
+                            text={
+                              <Link to={"/timeline/"}>
+                                <Button
+                                  style={{
+                                    padding: "0.1vw",
+                                    fontSize: ".8vw",
+                                    backgroundColor: "#009999",
+                                    border: 0,
+                                    paddingLeft: ".3vw",
+                                    paddingRight: ".3vw",
+                                    fontFamily: "Times New Roman",
+                                  }}
+                                >
+                                  View timeline
+                                </Button>
+                              </Link>
+                            }
+                          />
+                        );
+                      })}
+                    </MDBContainer>
+                  );
+                }
+              })}
             </div>
           ) : null}
         </div>
