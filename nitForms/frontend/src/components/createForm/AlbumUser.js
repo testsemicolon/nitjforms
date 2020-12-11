@@ -11,6 +11,7 @@ import { getNotification } from "../../actions/Notification";
 import { connect } from "react-redux";
 import { getFormStatus } from "../../actions/FormStatus";
 import { getStatus } from "../../actions/Status";
+import { UserTimeLine } from "./UserTimeLine";
 
 export class AlbumUser extends Component {
   arr = [];
@@ -21,6 +22,8 @@ export class AlbumUser extends Component {
     this.state = {
       show: false,
       show2: false,
+      flag: false,
+      object: {},
     };
     console.log(this.props);
   }
@@ -47,7 +50,16 @@ export class AlbumUser extends Component {
     this.setState({ show2: !this.state.show2 });
   };
 
+  viewTimeline = (obj) => {
+    this.setState({ flag: true, object: obj });
+  };
+
   render() {
+    const object = this.state.object;
+    if (this.state.flag) {
+      return <UserTimeLine object={this.state.object} />;
+    }
+    var msg = "";
     return (
       <div>
         <div
@@ -224,51 +236,56 @@ export class AlbumUser extends Component {
                 //border: "0.1vw solid grey",
               }}
             >
-              {this.props.FormStatus.map((obj) => {
-                if (obj.userName === this.props.username) {
-                  obj.formName.reverse();
-                  return (
-                    <MDBContainer
-                      style={{
-                        marginLeft: "auto",
-                        marginRight: "auto",
-                        //marginTop: 0,
-                        zIndex: "9999",
-                      }}
-                      className="grey darken-3 p-3"
-                    >
-                      {obj.formName.map((name) => {
-                        return (
-                          <MDBNotification
-                            iconClassName="text-primary"
-                            show
-                            fade
-                            title={name}
-                            message="status:pending , Your form will be reviewed soon"
-                            text={
-                              <Link to={"/timeline/"}>
-                                <Button
-                                  style={{
-                                    padding: "0.1vw",
-                                    fontSize: ".8vw",
-                                    backgroundColor: "#009999",
-                                    border: 0,
-                                    paddingLeft: ".3vw",
-                                    paddingRight: ".3vw",
-                                    fontFamily: "Times New Roman",
-                                  }}
-                                >
-                                  View timeline
-                                </Button>
-                              </Link>
-                            }
-                          />
-                        );
-                      })}
-                    </MDBContainer>
-                  );
-                }
-              })}
+              <MDBContainer
+                style={{
+                  marginLeft: "auto",
+                  marginRight: "auto",
+                  //marginTop: 0,
+                  zIndex: "9999",
+                }}
+                className="grey darken-3 p-3"
+              >
+                {this.props.FormStatus.map((obj) => {
+                  if (obj.userName === this.props.username) {
+                    {
+                      if (obj.responseAcceptedStatus === "Accepted") {
+                        msg = "You response hsa been accepted";
+                      } else if (obj.responseAcceptedStatus === "Rejected") {
+                        msg = "Your response has been rejected";
+                      } else {
+                        msg = "Status Pending";
+                      }
+                    }
+                    return (
+                      <MDBNotification
+                        iconClassName="text-primary"
+                        show
+                        fade
+                        title={obj.formName}
+                        message={msg}
+                        text={
+                          <Link to={"/timeline/"}>
+                            <Button
+                              onClick={this.viewTimeline(obj)}
+                              style={{
+                                padding: "0.1vw",
+                                fontSize: ".8vw",
+                                backgroundColor: "#009999",
+                                border: 0,
+                                paddingLeft: ".3vw",
+                                paddingRight: ".3vw",
+                                fontFamily: "Times New Roman",
+                              }}
+                            >
+                              View timeline
+                            </Button>
+                          </Link>
+                        }
+                      />
+                    );
+                  }
+                })}
+              </MDBContainer>
             </div>
           ) : null}
         </div>

@@ -56,6 +56,9 @@ def post_views(request):
             "    forwardTo = ArrayField(JSONField(null=True),blank=True, default=list)\n"
         )
         f.write(
+            "    commentByAuthor = models.CharField(max_length = 10000, blank=True)\n"
+        )
+        f.write(
             "    notification = JSONField(null=True)\n"
         )
         f.write(

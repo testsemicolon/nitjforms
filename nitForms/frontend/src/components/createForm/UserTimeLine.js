@@ -4,9 +4,23 @@ import {
 } from "react-vertical-timeline-component";
 import React, { Component } from "react";
 import { Button } from "react-bootstrap";
+import { connect } from "react-redux";
 
-export default class TimeLine extends Component {
+export class UserTimeLine extends Component {
+  msg = "";
+  componentDidMount() {
+    console.log(this.props.object);
+    if (this.props.object.responseAcceptedStatus === "Accepted") {
+      this.msg = "Your response has been accepted";
+    } else if (this.props.object.responseAcceptedStatus === "Rejected") {
+      this.msg = "Your response has been rejected";
+    } else {
+      this.msg = "Status Pending";
+    }
+  }
+
   render() {
+    var msg = "";
     return (
       <div style={{ marginLeft: "auto", marginRight: "auto" }}>
         <div
@@ -84,12 +98,50 @@ export default class TimeLine extends Component {
               ></h6>
               <p style={{ color: "#0A5C5A" }}>form has been submitted</p>
             </VerticalTimelineElement>
+            <VerticalTimelineElement
+              // className="vertical-timeline-element--work"
+              contentStyle={{
+                border: ".2vw solid #0A5C5A",
+                borderRadius: "1vw",
+                background: "white",
+
+                padding: ".5vw",
+                boxShadow: ".3vw .3vw .3vw silver",
+                marginBottom: 0,
+                paddingBottom: 0,
+                wordWrap: "break-word",
+              }}
+              iconStyle={{
+                background: "#0A5C5A",
+                width: "2vw",
+                height: "2vw",
+                margin: ".5vw",
+                color: "#fff",
+                marginTop: "2vw",
+              }}
+            >
+              <h5 style={{ color: "black" }}>admin </h5>
+              <h6
+                style={{ color: "darkgrey" }}
+                className="vertical-timeline-element-subtitle"
+              ></h6>
+              <p style={{ color: "#0A5C5A" }}>form has been submitted</p>
+            </VerticalTimelineElement>
           </VerticalTimeline>
         </div>
       </div>
     );
   }
 }
+
+const mapStateToProps = (state) => ({
+  Notification: state.Notification.Notification,
+  username: state.Auth.user.username,
+  FormStatus: state.FormStatus.FormStatus,
+  Status: state.Status.Status,
+});
+
+export default connect(mapStateToProps, {})(UserTimeLine);
 /**
 .custom-timeline {
   margin-left: 20px;

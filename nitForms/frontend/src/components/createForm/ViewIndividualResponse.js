@@ -96,6 +96,7 @@ export class ViewIndividualResponse extends Component {
     // quest["commentAccepted"] = this.state.content;
     console.log(acceptedResponseID);
     quest["acceptedResponseID"] = acceptedResponseID;
+    quest["commentByAuthor"] = this.state.content;
     console.log(quest);
     this.props.addAccepted(quest, title1);
     console.log(questMail);
@@ -155,7 +156,7 @@ export class ViewIndividualResponse extends Component {
     var indexResponse = this.indexResponse;
     indexResponse["commentByAuthor"] = this.state.content;
     indexResponse["responseAcceptedStatus"] = "Rejected";
-    this.putFormStatus(indexResponse, indexResponse.id);
+    this.props.putFormStatus(indexResponse, indexResponse.id);
   };
 
   render() {
