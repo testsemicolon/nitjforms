@@ -37,7 +37,6 @@ export class OldForms extends Component {
           >
             <Grid container spacing={4}>
               {this.props.FormName.map((card) => {
-                console.log(card.department, this.props.Department);
                 if (card.department == this.props.Department) {
                   return (
                     <Grid item key={card.id} xs={12} sm={6} md={3}>

@@ -8,11 +8,14 @@ import { connect } from "react-redux";
 
 export class UserTimeLine extends Component {
   msg = "";
-  componentDidMount() {
+  rejected = false;
+  constructor(props) {
+    super(props);
     console.log(this.props.object);
     if (this.props.object.responseAcceptedStatus === "Accepted") {
       this.msg = "Your response has been accepted";
     } else if (this.props.object.responseAcceptedStatus === "Rejected") {
+      this.rejected = true;
       this.msg = "Your response has been rejected";
     } else {
       this.msg = "Status Pending";
@@ -20,7 +23,7 @@ export class UserTimeLine extends Component {
   }
 
   render() {
-    var msg = "";
+    console.log(this.msg);
     return (
       <div style={{ marginLeft: "auto", marginRight: "auto" }}>
         <div
@@ -47,7 +50,7 @@ export class UserTimeLine extends Component {
             }}
             onClick={this.onclick2}
           >
-            Form Status
+            Form Status ({this.props.object.formName})
           </Button>
         </div>
         <div
@@ -125,7 +128,12 @@ export class UserTimeLine extends Component {
                 style={{ color: "darkgrey" }}
                 className="vertical-timeline-element-subtitle"
               ></h6>
-              <p style={{ color: "#0A5C5A" }}>form has been submitted</p>
+              <p style={{ color: "#0A5C5A" }}>{this.msg}</p>
+              {this.rejected ? (
+                <div>{this.props.object.commentByAuthor}</div>
+              ) : (
+                <div></div>
+              )}
             </VerticalTimelineElement>
           </VerticalTimeline>
         </div>

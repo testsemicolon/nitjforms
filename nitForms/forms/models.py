@@ -61,6 +61,7 @@ class userNotifications(models.Model):
     sender = models.CharField(max_length=1000)
     reciever = models.CharField(max_length=1000)
     notify = models.CharField(max_length=1000)
+    linkToPage = models.CharField(max_length=1000, blank=True)
     flag = models.BooleanField(default=True)
 
 
@@ -80,77 +81,3 @@ class EmailIndex(models.Model):
     sentDate = models.DateTimeField(auto_now_add=True)
 
 
-
-
-class test111(models.Model):
-    responseID = models.UUIDField(default=uuid.uuid4, editable=False)
-    responseTime = models.DateTimeField(auto_now_add=True)
-    responseStatus = models.BooleanField(default=False)
-    userName = models.CharField(max_length=1000, blank=True)
-    userMail = models.EmailField(max_length=1000)
-    asdad = models.CharField(max_length=1000)
-    asdas = models.CharField(max_length=1000)
-    asdasd = models.CharField(max_length=1000)
-    asdasdfasdf = models.CharField(max_length=1000)
-
-
-class test111Accepted(models.Model):
-    acceptedResponseID = models.CharField(max_length=1000)
-    responseTime = models.DateTimeField(auto_now_add=True)
-    comment = JSONField(null=True)
-    forwardTo = ArrayField(JSONField(null=True),blank=True, default=list)
-    notification = JSONField(null=True)
-    userName = models.CharField(max_length=1000, blank=True)
-    asdad = models.CharField(max_length=1000)
-    asdas = models.CharField(max_length=1000)
-    asdasd = models.CharField(max_length=1000)
-    asdasdfasdf = models.CharField(max_length=1000)
-
-
-class test3(models.Model):
-    responseID = models.UUIDField(default=uuid.uuid4, editable=False)
-    responseTime = models.DateTimeField(auto_now_add=True)
-    responseStatus = models.BooleanField(default=False)
-    userName = models.CharField(max_length=1000, blank=True)
-    userMail = models.EmailField(max_length=1000)
-    namelast = models.CharField(max_length=1000)
-    namefirst = models.CharField(max_length=1000)
-    namemid = models.CharField(max_length=1000)
-    nameend = models.CharField(max_length=1000)
-
-
-class test3Accepted(models.Model):
-    acceptedResponseID = models.CharField(max_length=1000)
-    responseTime = models.DateTimeField(auto_now_add=True)
-    comment = JSONField(null=True)
-    forwardTo = ArrayField(JSONField(null=True),blank=True, default=list)
-    notification = JSONField(null=True)
-    userName = models.CharField(max_length=1000, blank=True)
-    namelast = models.CharField(max_length=1000)
-    namefirst = models.CharField(max_length=1000)
-    namemid = models.CharField(max_length=1000)
-    nameend = models.CharField(max_length=1000)
-
-
-class test43(models.Model):
-    responseID = models.UUIDField(default=uuid.uuid4, editable=False)
-    responseTime = models.DateTimeField(auto_now_add=True)
-    responseStatus = models.BooleanField(default=False)
-    userName = models.CharField(max_length=1000, blank=True)
-    userMail = models.EmailField(max_length=1000)
-    kaun_ho = models.CharField(max_length=1000)
-    kha_ho = models.CharField(max_length=1000)
-    kaisa_ho = models.CharField(max_length=1000)
-
-
-class test43Accepted(models.Model):
-    acceptedResponseID = models.CharField(max_length=1000)
-    responseTime = models.DateTimeField(auto_now_add=True)
-    comment = JSONField(null=True)
-    forwardTo = ArrayField(JSONField(null=True),blank=True, default=list)
-    commentByAuthor = models.CharField(max_length = 10000, blank=True)
-    notification = JSONField(null=True)
-    userName = models.CharField(max_length=1000, blank=True)
-    kaun_ho = models.CharField(max_length=1000)
-    kha_ho = models.CharField(max_length=1000)
-    kaisa_ho = models.CharField(max_length=1000)

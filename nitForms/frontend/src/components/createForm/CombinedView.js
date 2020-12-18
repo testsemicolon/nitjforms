@@ -14,35 +14,49 @@ export class CombinedView extends Component {
   name = "";
   itr = 0;
   time = "";
-  componentDidMount() {
+  componentDidUpdate(prevProps) {
     var id = parseInt(this.props.id);
-    this.props.AcceptedResponse.map((a) => {
-      if (a.id === id) {
-        this.obj1 = a.comment;
-        this.notifyObj = a.notification;
+    if (prevProps.AcceptedResponse !== this.props.AcceptedResponse) {
+      console.log(this.props.AcceptedResponse);
+      this.props.AcceptedResponse.map((a) => {
+        if (a.id === id) {
+          this.obj1 = a.comment;
+          this.notifyObj = a.notification;
+        }
+      });
+      if (this.notifyObj !== null) {
+        {
+          Object.entries(this.notifyObj).map(([key, value]) => {
+            this.arr.push(value);
+          });
+        }
       }
-    });
-    if (this.notifyObj !== null) {
-      {
-        Object.entries(this.notifyObj).map(([key, value]) => {
-          this.arr.push(value);
+      console.log(this.obj1);
+      if (this.obj1 !== null && this.obj1 !== {}) {
+        this.obj1.map((value) => {
+          this.arr1.push(value[1]);
         });
       }
-    }
-    if (this.obj1 !== null) {
-      this.obj1.map((value) => {
-        this.arr1.push(value[1]);
-      });
-    }
 
-    this.arr = this.arr.reverse();
-    this.arr1 = this.arr1.reverse();
+      this.arr = this.arr.reverse();
+      this.arr1 = this.arr1.reverse();
+    }
   }
   render() {
     return (
       <div style={{ marginLeft: 0 }}>
-        <Button onClick={()=>window.history.back()} className="previous" 
-         style={{borderRadius:".5vw", boxShadow: ".3vw .3vw .5vw silver", backgroundColor:"#0a5c5a",marginBottom:"1vw"}}>&laquo; Back</Button>
+        <Button
+          onClick={() => window.history.back()}
+          className="previous"
+          style={{
+            borderRadius: ".5vw",
+            boxShadow: ".3vw .3vw .5vw silver",
+            backgroundColor: "#0a5c5a",
+            marginBottom: "1vw",
+          }}
+        >
+          &laquo; Back
+        </Button>
         <div
           style={{
             width: "35vw",

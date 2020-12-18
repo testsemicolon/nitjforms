@@ -1,7 +1,7 @@
 import axios from "axios";
 import { tokenConfig } from "./Auth";
 import { createMessage } from "./Messages";
-import { GET_ACCEPTED } from "./types";
+import { GET_ACCEPTED, USER_LOADING, USER_LOADED } from "./types";
 
 export const addAccepted = (quest, title) => (dispatch, getState) => {
   title = title.replace(/[ ]/g, "_");

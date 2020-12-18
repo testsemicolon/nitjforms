@@ -25,15 +25,11 @@ export class AlbumUser extends Component {
       flag: false,
       object: {},
     };
-    console.log(this.props);
   }
   componentDidMount() {
-    console.log(this.props.FormStatus);
     {
       Object.entries(this.props.FormStatus).map(([key, value]) => {
-        console.log(key, value);
         if (this.props.username === key) {
-          console.log("helloo");
           this.props.getStatus(value, key);
         }
       });
@@ -51,12 +47,14 @@ export class AlbumUser extends Component {
   };
 
   viewTimeline = (obj) => {
-    this.setState({ flag: true, object: obj });
+    this.setState({ flag: true });
+    this.setState({ object: obj });
+    console.log("hellpo");
+    console.log(this.state.object);
   };
 
   render() {
-    const object = this.state.object;
-    if (this.state.flag) {
+    if (this.state.flag === true) {
       return <UserTimeLine object={this.state.object} />;
     }
     var msg = "";
@@ -256,6 +254,7 @@ export class AlbumUser extends Component {
                         msg = "Status Pending";
                       }
                     }
+
                     return (
                       <MDBNotification
                         iconClassName="text-primary"
@@ -264,22 +263,22 @@ export class AlbumUser extends Component {
                         title={obj.formName}
                         message={msg}
                         text={
-                          <Link to={"/timeline/"}>
-                            <Button
-                              onClick={this.viewTimeline(obj)}
-                              style={{
-                                padding: "0.1vw",
-                                fontSize: ".8vw",
-                                backgroundColor: "#009999",
-                                border: 0,
-                                paddingLeft: ".3vw",
-                                paddingRight: ".3vw",
-                                fontFamily: "Times New Roman",
-                              }}
-                            >
-                              View timeline
-                            </Button>
-                          </Link>
+                          <Button
+                            onClick={() => {
+                              this.viewTimeline(obj);
+                            }}
+                            style={{
+                              padding: "0.1vw",
+                              fontSize: ".8vw",
+                              backgroundColor: "#009999",
+                              border: 0,
+                              paddingLeft: ".3vw",
+                              paddingRight: ".3vw",
+                              fontFamily: "Times New Roman",
+                            }}
+                          >
+                            View timeline
+                          </Button>
                         }
                       />
                     );
