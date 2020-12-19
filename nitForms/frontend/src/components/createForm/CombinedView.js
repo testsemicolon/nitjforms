@@ -14,8 +14,44 @@ export class CombinedView extends Component {
   name = "";
   itr = 0;
   time = "";
+  arr2 = [];
+  state = {
+    arr: [],
+  };
   componentDidUpdate(prevProps) {
     var id = parseInt(this.props.id);
+    console.log(this.props.accepted);
+
+    // if (prevProps.accepted !== this.props.accepted) {
+    //   this.props.accepted.map((a) => {
+    //     Object.entries(a.notification).map(([key, value]) => {
+    //       this.arr.push(value[0]);
+    //     });
+    //   });
+
+    // this.props.accepted.map((a) => {
+    //   if (a.id === id) {
+    //     this.obj1 = a.comment;
+    //     this.notifyObj = a.notification;
+    //   }
+    // });
+    // if (this.notifyObj !== null) {
+    //   {
+    //     Object.entries(this.notifyObj).map(([key, value]) => {
+    //       this.arr.push(value);
+    //     });
+    //   }
+    // }
+
+    // if (this.obj1 !== null && this.obj1 !== {}) {
+    //   this.obj1.map((value) => {
+    //     this.arr1.push(value[1]);
+    //   });
+    // }
+    // this.arr = this.arr.reverse();
+    // // this.arr1 = this.arr1.reverse();
+    // this.setState({ arr: this.arr });
+
     if (prevProps.AcceptedResponse !== this.props.AcceptedResponse) {
       console.log(this.props.AcceptedResponse);
       this.props.AcceptedResponse.map((a) => {
@@ -40,6 +76,7 @@ export class CombinedView extends Component {
 
       this.arr = this.arr.reverse();
       this.arr1 = this.arr1.reverse();
+      this.setState({ arr: this.arr });
     }
   }
   render() {
@@ -74,7 +111,7 @@ export class CombinedView extends Component {
             backgroundColor="#eeeeee"
             style={{ minHeight: "1vw" }}
           >
-            {this.arr.map((value1) => {
+            {this.state.arr.map((value1) => {
               return (
                 <Fragment key={value1}>
                   <VerticalTimelineElement

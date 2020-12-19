@@ -158,18 +158,21 @@ export class AlbumAdminStaff extends Component {
                           zindex="9999"
                           style={{ marginBottom: 0 }}
                         />
+
                         <table style={{ width: "100%" }}>
                           <tr>
                             <td style={{ width: "50%" }}>
-                              <ButtonB
-                                style={{
-                                  // backgroundColor: "transparent",
-                                  width: "100%",
-                                  textAlign: "center",
-                                }}
-                              >
-                                View
-                              </ButtonB>
+                              <Link to={nfy.linkToPage}>
+                                <ButtonB
+                                  style={{
+                                    // backgroundColor: "transparent",
+                                    width: "100%",
+                                    textAlign: "center",
+                                  }}
+                                >
+                                  View
+                                </ButtonB>
+                              </Link>
                             </td>
 
                             <td style={{ width: "50%" }}>

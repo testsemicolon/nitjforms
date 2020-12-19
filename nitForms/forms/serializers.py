@@ -55,3 +55,41 @@ class EmailIndexSerializer(serializers.ModelSerializer):
         model = EmailIndex
         fields = '__all__'
 
+
+
+
+
+class test1Serializer(serializers.ModelSerializer):
+    class Meta:
+        model = test1
+        fields = '__all__'
+
+
+class test1AcceptedSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = test1Accepted
+        fields = '__all__'
+
+
+class test2Serializer(serializers.ModelSerializer):
+    class Meta:
+        model = test2
+        fields = '__all__'
+
+
+class test2AcceptedSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = test2Accepted
+        fields = '__all__'
+
+
+class test3Serializer(serializers.ModelSerializer):
+    class Meta:
+        model = test3
+        fields = '__all__'
+
+
+class test3AcceptedSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = test3Accepted
+        fields = '__all__'
