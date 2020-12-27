@@ -24,7 +24,8 @@ export class ViewResponseNoteGenerate extends Component {
     forwardTo: "",
     showresponse: true,
     linkednotings: false,
-    backtrack: false,
+    acceptreject: false,
+    amountcommit: false,
     forwardtoggle: false,
     accepted: [],
   };
@@ -33,6 +34,7 @@ export class ViewResponseNoteGenerate extends Component {
   time = "";
   obj = {};
   data = "";
+  lastsendernotification = "";
   allowAccessFlag = false;
   constructor(props) {
     super(props);
@@ -97,11 +99,17 @@ export class ViewResponseNoteGenerate extends Component {
     const name = { [this.props.username]: this.state.forwardTo };
     arr.push(name);
     quest["forwardTo"] = arr;
+
     var notify = quest["notification"];
     if (notify === null) {
       notify = [];
     }
+
     var date = new Date();
+    date = JSON.stringify(date);
+    date = date.split("T")[0];
+    date = date.split('"')[1];
+
     var notifyCmnt = `${this.props.username} FORWARD TO ${this.state.forwardTo}`;
     notify.push([notifyCmnt, date]);
     quest["notification"] = notify;
@@ -111,12 +119,12 @@ export class ViewResponseNoteGenerate extends Component {
       quest
     );
 
-    console.log(this.state.accepted);
     store.dispatch(
       createMessage({
-        forwardMessage: `${this.props.username} FORWARD NOTING TO ${this.state.forwardTo}`,
+        forwardMessage: `${this.props.username} FORWARD NOTING TO ${this.state.forwardTo}`, //message dispatched as an alert to user
       })
     );
+
     const questNotify = {};
     questNotify["sender"] = `${this.props.username}`;
     questNotify["reciever"] = `${this.state.forwardTo}`;
@@ -124,13 +132,95 @@ export class ViewResponseNoteGenerate extends Component {
     questNotify["linkToPage"] = `${this.props.location.pathname}`;
     this.props.postNotification(questNotify);
     this.setState({ accepted: quest });
-    console.log(this.state.accepted);
   };
 
   onChange = (e) => {
     this.setState({ [e.target.name]: e.target.value });
   };
 
+  onclickAcceptResponse = () => {
+    this.acceptrejectnotificationsender();
+    var quest = {};
+    quest = this.obj;
+
+    var notify = quest["notification"]; //checking if notification is null or not
+    if (notify === null) {
+      notify = [];
+    }
+
+    var date = new Date(); //assigning and calling date
+    date = JSON.stringify(date);
+    date = date.split("T")[0];
+    date = date.split('"')[1];
+
+    var notifyCmnt = `${this.props.username} accepted the response sent by ${this.lastsendernotification}`; //putting in notification object and sending for timeline
+    notify.push([notifyCmnt, date]);
+    quest["notification"] = notify;
+    this.props.putAccepted(
+      this.props.match.params.id,
+      this.props.match.params.title,
+      quest
+    );
+
+    console.log(this.lastsendernotification, "checking sender");
+    const questNotify = {};
+    var notifyCmnt = `${this.props.username} accepted  ${this.lastsendernotification}`;
+    questNotify["sender"] = `${this.props.username}`;
+    questNotify["reciever"] = `${this.lastsendernotification}`;
+    questNotify["notify"] = notifyCmnt;
+    questNotify["linkToPage"] = `${this.props.location.pathname}`;
+    this.props.postNotification(questNotify);
+  };
+
+  acceptrejectnotificationsender = (e) => {
+    //for sending notification to users
+    var forwardtotemp;
+    this.props.AcceptedResponse.map((a) => {
+      forwardtotemp = a.forwardTo;
+    });
+
+    Object.entries(forwardtotemp).map(([key, value]) => {
+      Object.entries(value).map(([key1, value1]) => {
+        if (value1 === this.props.username) {
+          this.lastsendernotification = key1;
+        }
+      });
+    });
+  };
+
+  onclickRejecttResponse = () => {
+    this.acceptrejectnotificationsender();
+    var quest = {};
+    quest = this.obj;
+
+    var notify = quest["notification"]; //checking if notification is null or not
+    if (notify === null) {
+      notify = [];
+    }
+
+    var date = new Date(); //assigning and calling date
+    date = JSON.stringify(date);
+    date = date.split("T")[0];
+    date = date.split('"')[1];
+
+    var notifyCmnt = `${this.props.username} rejected the response sent by ${this.lastsendernotification}`; //putting in notification object and sending for timeline
+    notify.push([notifyCmnt, date]);
+    quest["notification"] = notify;
+    this.props.putAccepted(
+      this.props.match.params.id,
+      this.props.match.params.title,
+      quest
+    );
+
+    console.log(this.lastsendernotification, "checking sender");
+    const questNotify = {};
+    var notifyCmnt = `${this.props.username} rejected  ${this.lastsendernotification}`;
+    questNotify["sender"] = `${this.props.username}`;
+    questNotify["reciever"] = `${this.lastsendernotification}`;
+    questNotify["notify"] = notifyCmnt;
+    questNotify["linkToPage"] = `${this.props.location.pathname}`;
+    this.props.postNotification(questNotify);
+  };
   // onClick = () => {
   //   let value1 = this.props.match.params.value;
   //   let title1 = this.props.match.params.title;
@@ -463,7 +553,54 @@ export class ViewResponseNoteGenerate extends Component {
                 <div></div>
               )}
 
-              {this.state.backtrack ? <div>backtracking</div> : <div></div>}
+              {this.state.acceptreject ? (
+                <div>
+                  Do you want to accept this form or Reject this response
+                  <br />
+                  <Button onClick={this.onclickAcceptResponse}>
+                    Accept Response{" "}
+                  </Button>
+                  <br />
+                  <Button onClick={this.onclickRejecttResponse}>
+                    Reject Response{" "}
+                  </Button>
+                </div>
+              ) : (
+                <div></div>
+              )}
+              {this.state.amountcommit ? (
+                <div>
+                  <div>
+                    Amount left in the budget that can be committed
+                    <h1>Budget value</h1>
+                  </div>
+
+                  <div>Enter the amount that needs to be committed</div>
+                  <div style={{ textAlign: "center" }}>
+                    <input
+                      name=""
+                      onChange={this.onChange}
+                      type="text"
+                      placeholder="Enter Username"
+                    />{" "}
+                    <Button
+                      style={{
+                        marginRight: "2vw",
+                        backgroundColor: "white",
+                        color: "#009999",
+                        border: " 0.06vw solid #009999",
+                        boxShadow: ".1vw .1vw .1vw .1vw lightgray",
+                        marginBottom: "1vw",
+                        fontFamily: "Times New Roman",
+                      }}
+                    >
+                      Commit Ammount
+                    </Button>
+                  </div>
+                </div>
+              ) : (
+                <div></div>
+              )}
             </div>
 
             <div
@@ -522,7 +659,8 @@ export class ViewResponseNoteGenerate extends Component {
                     this.setState({ showresponse: true });
                     this.setState({ linkednotings: false });
                     this.setState({ forwardtoggle: false });
-                    this.setState({ backtrack: false });
+                    this.setState({ acceptreject: false });
+                    this.setState({ amountcommit: false });
                   }}
                   style={{
                     backgroundColor: "white",
@@ -539,7 +677,8 @@ export class ViewResponseNoteGenerate extends Component {
                     this.setState({ showresponse: false });
                     this.setState({ linkednotings: true });
                     this.setState({ forwardtoggle: false });
-                    this.setState({ backtrack: false });
+                    this.setState({ acceptreject: false });
+                    this.setState({ amountcommit: false });
                   }}
                   style={{
                     backgroundColor: "white",
@@ -556,7 +695,8 @@ export class ViewResponseNoteGenerate extends Component {
                     this.setState({ showresponse: false });
                     this.setState({ linkednotings: false });
                     this.setState({ forwardtoggle: true });
-                    this.setState({ backtrack: false });
+                    this.setState({ acceptreject: false });
+                    this.setState({ amountcommit: false });
                   }}
                   style={{
                     backgroundColor: "white",
@@ -573,7 +713,8 @@ export class ViewResponseNoteGenerate extends Component {
                     this.setState({ showresponse: false });
                     this.setState({ linkednotings: false });
                     this.setState({ forwardtoggle: false });
-                    this.setState({ backtrack: true });
+                    this.setState({ acceptreject: true });
+                    this.setState({ amountcommit: false });
                   }}
                   style={{
                     backgroundColor: "white",
@@ -583,10 +724,28 @@ export class ViewResponseNoteGenerate extends Component {
                     fontFamily: "Times New Roman",
                   }}
                 >
-                  Backtrack Form
+                  Accept/Reject Form
+                </Button>
+                <Button
+                  onClick={() => {
+                    this.setState({ showresponse: false });
+                    this.setState({ linkednotings: false });
+                    this.setState({ forwardtoggle: false });
+                    this.setState({ acceptreject: false });
+                    this.setState({ amountcommit: true });
+                  }}
+                  style={{
+                    backgroundColor: "white",
+                    color: "#009999",
+                    borderWidth: 0,
+                    boxShadow: ".3VW .3VW .3VW lightgray",
+                    fontFamily: "Times New Roman",
+                  }}
+                >
+                  Ammount Commit
                 </Button>
               </div>
-              {console.log(this.state.accepted)}
+
               <CombinedView
                 id={this.props.match.params.id}
                 AcceptedResponse={this.props.AcceptedResponse}

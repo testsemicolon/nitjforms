@@ -10,6 +10,7 @@ admin.site.register(notingTemplate)
 admin.site.register(userNotifications)
 admin.site.register(formIndex)
 admin.site.register(EmailIndex)
+admin.site.register(DepartmentDetail)
 
 
 admin.site.register(test1)
@@ -19,6 +20,10 @@ admin.site.register(test1Accepted)
 admin.site.register(test2)
 
 admin.site.register(test2Accepted)
+
+admin.site.register(purchase_form)
+
+admin.site.register(purchase_formAccepted)
 
 admin.site.register(test3)
 

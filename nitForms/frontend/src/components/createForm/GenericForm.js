@@ -148,6 +148,7 @@ export class GenericForm extends Component {
 
     console.log(mail);
     quest["userMail"] = mail;
+    quest["userDept"] = this.props.userDept;
     this.props.formSubmit(quest, title, questFormIndex);
     {
       /* 
@@ -755,6 +756,7 @@ const mapStateToProps = (state) => ({
   FormName: state.FormName.FormName,
   FormStatus: state.FormStatus.FormStatus,
   email: state.Auth.user.email,
+  userDept: state.Auth.user.department,
 });
 
 export default withRouter(

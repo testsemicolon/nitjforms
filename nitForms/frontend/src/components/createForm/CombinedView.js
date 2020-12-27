@@ -18,9 +18,9 @@ export class CombinedView extends Component {
   state = {
     arr: [],
   };
-  componentDidUpdate(prevProps) {
+  componentDidMount() {
+    console.log(this.props, "checking props");
     var id = parseInt(this.props.id);
-    console.log(this.props.accepted);
 
     // if (prevProps.accepted !== this.props.accepted) {
     //   this.props.accepted.map((a) => {
@@ -52,32 +52,30 @@ export class CombinedView extends Component {
     // // this.arr1 = this.arr1.reverse();
     // this.setState({ arr: this.arr });
 
-    if (prevProps.AcceptedResponse !== this.props.AcceptedResponse) {
-      console.log(this.props.AcceptedResponse);
-      this.props.AcceptedResponse.map((a) => {
-        if (a.id === id) {
-          this.obj1 = a.comment;
-          this.notifyObj = a.notification;
-        }
-      });
-      if (this.notifyObj !== null) {
-        {
-          Object.entries(this.notifyObj).map(([key, value]) => {
-            this.arr.push(value);
-          });
-        }
+    console.log(this.props.AcceptedResponse);
+    this.props.AcceptedResponse.map((a) => {
+      if (a.id === id) {
+        this.obj1 = a.comment;
+        this.notifyObj = a.notification;
       }
-      console.log(this.obj1);
-      if (this.obj1 !== null && this.obj1 !== {}) {
-        this.obj1.map((value) => {
-          this.arr1.push(value[1]);
+    });
+    if (this.notifyObj !== null) {
+      {
+        Object.entries(this.notifyObj).map(([key, value]) => {
+          this.arr.push(value);
         });
       }
-
-      this.arr = this.arr.reverse();
-      this.arr1 = this.arr1.reverse();
-      this.setState({ arr: this.arr });
     }
+    console.log(this.obj1);
+    if (this.obj1 !== null && this.obj1 !== {}) {
+      this.obj1.map((value) => {
+        this.arr1.push(value[1]);
+      });
+    }
+
+    this.arr = this.arr.reverse();
+    this.arr1 = this.arr1.reverse();
+    this.setState({ arr: this.arr });
   }
   render() {
     return (

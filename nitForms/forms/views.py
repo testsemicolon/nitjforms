@@ -40,6 +40,9 @@ def post_views(request):
             "    userName = models.CharField(max_length=1000, blank=True)\n")
         f.write(
             "    userMail = models.EmailField(max_length=1000)\n")
+        f.write(
+           "     userDept = models.CharField(max_length=1000)\n"
+        )    
         f.close()
         data = CreateForms.objects.all()
         for i in data:
@@ -63,6 +66,9 @@ def post_views(request):
         )
         f.write(
             "    userName = models.CharField(max_length=1000, blank=True)\n"
+        )
+        f.write(
+           "     userDept = models.CharField(max_length=1000)\n"
         )
         f.close()
         data1 = CreateForms.objects.all()

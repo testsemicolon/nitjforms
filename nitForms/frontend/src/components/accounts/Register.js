@@ -224,6 +224,7 @@ export class Register extends Component {
                     <Dropdown.Item eventKey="Dept1">Dept 1</Dropdown.Item>
                     <Dropdown.Item eventKey="Dept2">Dept 2</Dropdown.Item>
                     <Dropdown.Item eventKey="Dept3">Dept 3</Dropdown.Item>
+                    <Dropdown.Item eventKey="Dept3">Purchase</Dropdown.Item>
                   </DropdownButton>
                 </td>
               </tr>

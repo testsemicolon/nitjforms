@@ -80,9 +80,14 @@ class EmailIndex(models.Model):
     content = models.CharField(max_length=1000)
     sentDate = models.DateTimeField(auto_now_add=True)
 
-
-
-
+class DepartmentDetail(models.Model):
+    deptname = models.CharField(max_length=1000)
+    committedamount = models.PositiveIntegerField()  
+    recommendedamount = models.PositiveIntegerField()
+    pipelinedamount = models.PositiveIntegerField()
+    availableamount = models.PositiveIntegerField()    
+    expenditureamount = models.PositiveIntegerField()
+    
 
 class test1(models.Model):
     responseID = models.UUIDField(default=uuid.uuid4, editable=False)
@@ -90,8 +95,8 @@ class test1(models.Model):
     responseStatus = models.BooleanField(default=False)
     userName = models.CharField(max_length=1000, blank=True)
     userMail = models.EmailField(max_length=1000)
-    jatin = models.CharField(max_length=1000)
-    name = models.CharField(max_length=1000)
+    sister_name = models.CharField(max_length=1000)
+    your_name = models.CharField(max_length=1000)
 
 
 class test1Accepted(models.Model):
@@ -102,8 +107,8 @@ class test1Accepted(models.Model):
     commentByAuthor = models.CharField(max_length = 10000, blank=True)
     notification = JSONField(null=True)
     userName = models.CharField(max_length=1000, blank=True)
-    jatin = models.CharField(max_length=1000)
-    name = models.CharField(max_length=1000)
+    sister_name = models.CharField(max_length=1000)
+    your_name = models.CharField(max_length=1000)
 
 
 class test2(models.Model):
@@ -112,8 +117,9 @@ class test2(models.Model):
     responseStatus = models.BooleanField(default=False)
     userName = models.CharField(max_length=1000, blank=True)
     userMail = models.EmailField(max_length=1000)
-    hajak = models.CharField(max_length=1000)
-    jhajan = models.CharField(max_length=1000)
+    sister_name = models.CharField(max_length=1000)
+    your_name = models.TextField()
+    what_is_your_mother_name = models.CharField(max_length=1000)
 
 
 class test2Accepted(models.Model):
@@ -124,9 +130,31 @@ class test2Accepted(models.Model):
     commentByAuthor = models.CharField(max_length = 10000, blank=True)
     notification = JSONField(null=True)
     userName = models.CharField(max_length=1000, blank=True)
-    hajak = models.CharField(max_length=1000)
-    jhajan = models.CharField(max_length=1000)
+    sister_name = models.CharField(max_length=1000)
+    your_name = models.TextField()
+    what_is_your_mother_name = models.CharField(max_length=1000)
 
+
+class purchase_form(models.Model):
+    responseID = models.UUIDField(default=uuid.uuid4, editable=False)
+    responseTime = models.DateTimeField(auto_now_add=True)
+    responseStatus = models.BooleanField(default=False)
+    userName = models.CharField(max_length=1000, blank=True)
+    userMail = models.EmailField(max_length=1000)
+    sister_name = models.CharField(max_length=1000)
+    userDept = models.CharField(max_length=1000,blank=True)
+
+
+class purchase_formAccepted(models.Model):
+    acceptedResponseID = models.CharField(max_length=1000)
+    responseTime = models.DateTimeField(auto_now_add=True)
+    comment = JSONField(null=True)
+    forwardTo = ArrayField(JSONField(null=True),blank=True, default=list)
+    commentByAuthor = models.CharField(max_length = 10000, blank=True)
+    notification = JSONField(null=True)
+    userName = models.CharField(max_length=1000, blank=True)
+    sister_name = models.CharField(max_length=1000)
+    userDept = models.CharField(max_length=1000,blank=True )
 
 class test3(models.Model):
     responseID = models.UUIDField(default=uuid.uuid4, editable=False)
@@ -134,8 +162,9 @@ class test3(models.Model):
     responseStatus = models.BooleanField(default=False)
     userName = models.CharField(max_length=1000, blank=True)
     userMail = models.EmailField(max_length=1000)
-    jhajakaaaa = models.CharField(max_length=1000)
-    kundraa = models.CharField(max_length=1000)
+    userDept = models.CharField(max_length=1000)
+    your_name = models.CharField(max_length=1000)
+    what_is_your_mother_name = models.CharField(max_length=1000)
 
 
 class test3Accepted(models.Model):
@@ -146,5 +175,6 @@ class test3Accepted(models.Model):
     commentByAuthor = models.CharField(max_length = 10000, blank=True)
     notification = JSONField(null=True)
     userName = models.CharField(max_length=1000, blank=True)
-    jhajakaaaa = models.CharField(max_length=1000)
-    kundraa = models.CharField(max_length=1000)
+    userDept = models.CharField(max_length=1000)
+    your_name = models.CharField(max_length=1000)
+    what_is_your_mother_name = models.CharField(max_length=1000)

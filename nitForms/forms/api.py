@@ -80,6 +80,11 @@ class EmailIndexViewSet(viewsets.ModelViewSet):
     serializer_class = EmailIndexSerializer
 
 
+class DepartmentDetailViewSet(viewsets.ModelViewSet):
+    queryset = DepartmentDetail.objects.all()
+    permission_class = [permissions.AllowAny]
+    serializer_class = DepartmentDetailSerializer
+
 
 
 class test1ViewSet(viewsets.ModelViewSet):
@@ -106,6 +111,19 @@ class test2AcceptedViewSet(viewsets.ModelViewSet):
     queryset = test2Accepted.objects.all()
     permission_class = [permissions.AllowAny]
     serializer_class = test2AcceptedSerializer
+
+
+class purchase_formViewSet(viewsets.ModelViewSet):
+    queryset = purchase_form.objects.all()
+    parser_class = (MultiPartParser, FormParser)
+    permission_class = [permissions.AllowAny]
+    serializer_class = purchase_formSerializer
+
+
+class purchase_formAcceptedViewSet(viewsets.ModelViewSet):
+    queryset = purchase_formAccepted.objects.all()
+    permission_class = [permissions.AllowAny]
+    serializer_class = purchase_formAcceptedSerializer
 
 
 class test3ViewSet(viewsets.ModelViewSet):

@@ -55,6 +55,10 @@ class EmailIndexSerializer(serializers.ModelSerializer):
         model = EmailIndex
         fields = '__all__'
 
+class DepartmentDetailSerializer(serializers.ModelSerializer):
+    class Meta:
+        model=DepartmentDetail
+        fields = '__all__'
 
 
 
@@ -80,6 +84,18 @@ class test2Serializer(serializers.ModelSerializer):
 class test2AcceptedSerializer(serializers.ModelSerializer):
     class Meta:
         model = test2Accepted
+        fields = '__all__'
+
+
+class purchase_formSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = purchase_form
+        fields = '__all__'
+
+
+class purchase_formAcceptedSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = purchase_formAccepted
         fields = '__all__'
 
 
