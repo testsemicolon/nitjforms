@@ -95,15 +95,15 @@ export class FundsAllot extends Component {
                   <p>
                     {dept.deptname}
                     {"    "}
-                    Committed amount{dept.committedamount}
+                    Committed amount{dept.committedAmount}
                     {"    "}
-                    Recommended amount{dept.recommendedamount}
+                    Recommended amount{dept.recommendedAmount}
                     {"    "}
-                    pipelined amount{dept.pipelinedamount}
+                    pipelined amount{dept.pipelinedAmount}
                     {"    "}
-                    avaialble amount {dept.availableamount}
+                    avaialble amount {dept.availableAmount}
                     {"    "}
-                    expenditure amount{dept.expenditureamount}
+                    expenditure amount{dept.expenditureAmount}
                   </p>
                 </div>
               );

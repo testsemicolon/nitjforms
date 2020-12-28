@@ -81,12 +81,12 @@ class EmailIndex(models.Model):
     sentDate = models.DateTimeField(auto_now_add=True)
 
 class DepartmentDetail(models.Model):
-    deptname = models.CharField(max_length=1000)
-    committedamount = models.PositiveIntegerField()  
-    recommendedamount = models.PositiveIntegerField()
-    pipelinedamount = models.PositiveIntegerField()
-    availableamount = models.PositiveIntegerField()    
-    expenditureamount = models.PositiveIntegerField()
+    deptName = models.CharField(max_length=1000)
+    committedAmount = models.PositiveIntegerField()  
+    recommendedAmount = models.PositiveIntegerField()
+    pipelinedAmount = models.PositiveIntegerField()
+    availableAmount = models.PositiveIntegerField()    
+    expenditureAmount = models.PositiveIntegerField()
 
 
 
@@ -109,10 +109,10 @@ class test2Accepted(models.Model):
     commentByAuthor = models.CharField(max_length = 10000, blank=True)
     notification = JSONField(null=True)
     userName = models.CharField(max_length=1000, blank=True)
-    committedamount = models.PositiveIntegerField(default=0, blank=True)
-    recommendedamount = models.PositiveIntegerField(default=0,blank=True)
-    pipelinedamount = models.PositiveIntegerField(default=0,blank=True)
-    expenditureamount = models.PositiveIntegerField(default=0,blank=True)
+    committedAmount = models.PositiveIntegerField(default=0, blank=True)
+    recommendedAmount = models.PositiveIntegerField(default=0,blank=True)
+    pipelinedAmount = models.PositiveIntegerField(default=0,blank=True)
+    expenditureAmount = models.PositiveIntegerField(default=0,blank=True)
     userDept = models.CharField(max_length=1000)
     dasfdsa = models.CharField(max_length=1000)
     gsdfgdf = models.CharField(max_length=1000)

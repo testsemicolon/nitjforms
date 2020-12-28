@@ -15,6 +15,10 @@ import store from "../../store";
 import { createMessage } from "../../actions/Messages";
 import { postNotification, getNotification } from "../../actions/Notification";
 import { getNotingTemplate } from "../../actions/NotingTemplate";
+import {
+  getDeptDetails,
+  putDeptDetails,
+} from "../../actions/DirectorDashboardActions";
 
 export class ViewResponseNoteGenerate extends Component {
   state = {
@@ -29,6 +33,7 @@ export class ViewResponseNoteGenerate extends Component {
     forwardtoggle: false,
     accepted: [],
     recommendAmount: 0,
+    availAmount: 0,
   };
   name = "";
   description = "";
@@ -39,6 +44,7 @@ export class ViewResponseNoteGenerate extends Component {
   allowAccessFlag = false;
   constructor(props) {
     super(props);
+    this.props.getDeptDetails();
     this.props.getAccepted(this.props.match.params.title);
     this.props.getNotification(this.props.username);
     this.props.getNotingTemplate();
@@ -58,6 +64,13 @@ export class ViewResponseNoteGenerate extends Component {
         if (this.props.username === a.created_by) {
           this.allowAccessFlag = true;
         }
+      }
+    });
+    console.log("hedf", this.props.DepartmentDetail);
+    this.props.DepartmentDetail.map((deta) => {
+      console.log(deta);
+      if (deta.deptName === this.props.department) {
+        this.setState({ availAmount: deta.availableAmount });
       }
     });
   }
@@ -88,9 +101,9 @@ export class ViewResponseNoteGenerate extends Component {
       this.setState({ accepted: this.props.AcceptedResponse });
     }
   }
+
   onclick2 = (e) => {
     e.preventDefault();
-
     this.setState({ toggleforward: !this.state.toggleforward });
   };
   onClickForward = () => {
@@ -140,7 +153,7 @@ export class ViewResponseNoteGenerate extends Component {
   };
 
   onclickAcceptResponse = () => {
-    this.acceptrejectnotificationsender();
+    this.acceptRejectNotificationSender();
     var quest = {};
     quest = this.obj;
 
@@ -173,7 +186,7 @@ export class ViewResponseNoteGenerate extends Component {
     this.props.postNotification(questNotify);
   };
 
-  acceptrejectnotificationsender = (e) => {
+  acceptRejectNotificationSender = (e) => {
     //for sending notification to users
     var forwardtotemp;
     this.props.AcceptedResponse.map((a) => {
@@ -190,7 +203,7 @@ export class ViewResponseNoteGenerate extends Component {
   };
 
   onclickRejecttResponse = () => {
-    this.acceptrejectnotificationsender();
+    this.acceptRejectNotificationSender();
     var quest = {};
     quest = this.obj;
 
@@ -247,12 +260,40 @@ export class ViewResponseNoteGenerate extends Component {
   onClickRecommend = () => {
     var quest = {};
     quest = this.obj;
-    quest["recommendedamount"] = this.state.recommendAmount;
-    this.props.putAccepted(
-      this.props.match.params.id,
-      this.props.match.params.title,
-      quest
-    );
+    var questDept = {};
+    var availaAmount = 0;
+    this.props.DepartmentDetail.map((deta) => {
+      if (deta.deptName === this.props.department) {
+        questDept = deta;
+        console.log(questDept);
+        availaAmount = deta.availableAmount;
+      }
+    });
+    console.log(this.state.recommendAmount, availaAmount, "hnnnnn");
+    if (this.state.recommendAmount <= availaAmount / 2) {
+      var intRecommendAmount = parseInt(this.state.recommendAmount);
+      quest["recommendedAmount"] = parseInt(intRecommendAmount);
+      this.props.putAccepted(
+        this.props.match.params.id,
+        this.props.match.params.title,
+        quest
+      );
+      questDept["recommendedAmount"] =
+        parseInt(questDept["recommendedAmount"]) +
+        parseInt(this.state.recommendAmount);
+      this.props.putDeptDetails(questDept);
+      store.dispatch(
+        createMessage({
+          recommendMessage: `The amount of Rs ${this.state.recommendAmount} is now recommended`, //message dispatched as an alert to user
+        })
+      );
+    } else {
+      store.dispatch(
+        createMessage({
+          notRecommendMessage: `The amount of Rs ${this.state.recommendAmount} is not availabel for recommendation`, //message dispatched as an alert to user
+        })
+      );
+    }
   };
 
   render() {
@@ -583,14 +624,15 @@ export class ViewResponseNoteGenerate extends Component {
               {this.state.amountcommit ? (
                 <div>
                   <div>
-                    Amount left in the budget that can be committed
+                    Amount left in the budget that can be committed{" "}
+                    {/* {this.state.availAmount} */}
                     <h1>Budget value</h1>
                   </div>
 
                   <div>Enter the amount that needs to be recomended</div>
                   <div style={{ textAlign: "center" }}>
                     <input
-                      name="recomendAmount"
+                      name="recommendAmount"
                       onChange={this.onChange}
                       type="text"
                       placeholder="Enter amount"
@@ -784,6 +826,8 @@ const mapStateToProps = (state) => ({
   AcceptedResponse: state.AcceptedResponse.AcceptedResponse,
   username: state.Auth.user.username,
   FormName: state.FormName.FormName,
+  department: state.Auth.user.department,
+  DepartmentDetail: state.DepartmentDetail.DepartmentDetail,
 });
 
 export default withRouter(
@@ -793,5 +837,7 @@ export default withRouter(
     getNotification,
     getAccepted,
     getNotingTemplate,
+    getDeptDetails,
+    putDeptDetails,
   })(ViewResponseNoteGenerate)
 );

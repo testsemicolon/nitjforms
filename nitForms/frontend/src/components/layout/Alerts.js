@@ -30,6 +30,8 @@ export class Alerts extends Component {
       if (message.ResponseRejected) alert.error(message.ResponseRejected);
       if (message.generateNoting) alert.success(message.generateNoting);
       if (message.forwardMessage) alert.success(message.forwardMessage);
+      if (message.recommendMessage) alert.success(message.recommendMessage);
+      if (message.notRecommendMessage) alert.error(message.notRecommendMessage);
     }
   }
 

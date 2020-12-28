@@ -68,16 +68,16 @@ def post_views(request):
             "    userName = models.CharField(max_length=1000, blank=True)\n"
         )
         f.write(
-            "    committedamount = models.PositiveIntegerField(default=0, blank=True)\n"
+            "    committedAmount = models.PositiveIntegerField(default=0, blank=True)\n"
         )
         f.write(
-            "    recommendedamount = models.PositiveIntegerField(default=0,blank=True)\n"
+            "    recommendedAmount = models.PositiveIntegerField(default=0,blank=True)\n"
         )
         f.write(
-            "    pipelinedamount = models.PositiveIntegerField(default=0,blank=True)\n"
+            "    pipelinedAmount = models.PositiveIntegerField(default=0,blank=True)\n"
         )
         f.write(
-            "    expenditureamount = models.PositiveIntegerField(default=0,blank=True)\n"
+            "    expenditureAmount = models.PositiveIntegerField(default=0,blank=True)\n"
         )
 
         f.write(

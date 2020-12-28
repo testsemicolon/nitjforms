@@ -88,8 +88,6 @@ class DepartmentDetailViewSet(viewsets.ModelViewSet):
 
 
 
-
-
 class test2ViewSet(viewsets.ModelViewSet):
     queryset = test2.objects.all()
     parser_class = (MultiPartParser, FormParser)
