@@ -87,17 +87,7 @@ class DepartmentDetailViewSet(viewsets.ModelViewSet):
 
 
 
-class test1ViewSet(viewsets.ModelViewSet):
-    queryset = test1.objects.all()
-    parser_class = (MultiPartParser, FormParser)
-    permission_class = [permissions.AllowAny]
-    serializer_class = test1Serializer
 
-
-class test1AcceptedViewSet(viewsets.ModelViewSet):
-    queryset = test1Accepted.objects.all()
-    permission_class = [permissions.AllowAny]
-    serializer_class = test1AcceptedSerializer
 
 
 class test2ViewSet(viewsets.ModelViewSet):
@@ -111,29 +101,3 @@ class test2AcceptedViewSet(viewsets.ModelViewSet):
     queryset = test2Accepted.objects.all()
     permission_class = [permissions.AllowAny]
     serializer_class = test2AcceptedSerializer
-
-
-class purchase_formViewSet(viewsets.ModelViewSet):
-    queryset = purchase_form.objects.all()
-    parser_class = (MultiPartParser, FormParser)
-    permission_class = [permissions.AllowAny]
-    serializer_class = purchase_formSerializer
-
-
-class purchase_formAcceptedViewSet(viewsets.ModelViewSet):
-    queryset = purchase_formAccepted.objects.all()
-    permission_class = [permissions.AllowAny]
-    serializer_class = purchase_formAcceptedSerializer
-
-
-class test3ViewSet(viewsets.ModelViewSet):
-    queryset = test3.objects.all()
-    parser_class = (MultiPartParser, FormParser)
-    permission_class = [permissions.AllowAny]
-    serializer_class = test3Serializer
-
-
-class test3AcceptedViewSet(viewsets.ModelViewSet):
-    queryset = test3Accepted.objects.all()
-    permission_class = [permissions.AllowAny]
-    serializer_class = test3AcceptedSerializer

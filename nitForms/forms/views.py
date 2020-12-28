@@ -41,7 +41,7 @@ def post_views(request):
         f.write(
             "    userMail = models.EmailField(max_length=1000)\n")
         f.write(
-           "     userDept = models.CharField(max_length=1000)\n"
+            "    userDept = models.CharField(max_length=1000)\n"
         )    
         f.close()
         data = CreateForms.objects.all()
@@ -68,7 +68,20 @@ def post_views(request):
             "    userName = models.CharField(max_length=1000, blank=True)\n"
         )
         f.write(
-           "     userDept = models.CharField(max_length=1000)\n"
+            "    committedamount = models.PositiveIntegerField(default=0, blank=True)\n"
+        )
+        f.write(
+            "    recommendedamount = models.PositiveIntegerField(default=0,blank=True)\n"
+        )
+        f.write(
+            "    pipelinedamount = models.PositiveIntegerField(default=0,blank=True)\n"
+        )
+        f.write(
+            "    expenditureamount = models.PositiveIntegerField(default=0,blank=True)\n"
+        )
+
+        f.write(
+            "    userDept = models.CharField(max_length=1000)\n"
         )
         f.close()
         data1 = CreateForms.objects.all()

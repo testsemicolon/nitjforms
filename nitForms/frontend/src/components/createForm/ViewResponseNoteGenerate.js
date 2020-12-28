@@ -28,6 +28,7 @@ export class ViewResponseNoteGenerate extends Component {
     amountcommit: false,
     forwardtoggle: false,
     accepted: [],
+    recommendAmount: 0,
   };
   name = "";
   description = "";
@@ -242,6 +243,17 @@ export class ViewResponseNoteGenerate extends Component {
   //   quest["comment"] = this.state.content;
   //   this.props.addAccepted(quest, title1);
   // };
+
+  onClickRecommend = () => {
+    var quest = {};
+    quest = this.obj;
+    quest["recommendedamount"] = this.state.recommendAmount;
+    this.props.putAccepted(
+      this.props.match.params.id,
+      this.props.match.params.title,
+      quest
+    );
+  };
 
   render() {
     let value1 = this.props.match.params.value;
@@ -575,13 +587,13 @@ export class ViewResponseNoteGenerate extends Component {
                     <h1>Budget value</h1>
                   </div>
 
-                  <div>Enter the amount that needs to be committed</div>
+                  <div>Enter the amount that needs to be recomended</div>
                   <div style={{ textAlign: "center" }}>
                     <input
-                      name=""
+                      name="recomendAmount"
                       onChange={this.onChange}
                       type="text"
-                      placeholder="Enter Username"
+                      placeholder="Enter amount"
                     />{" "}
                     <Button
                       style={{
@@ -593,6 +605,7 @@ export class ViewResponseNoteGenerate extends Component {
                         marginBottom: "1vw",
                         fontFamily: "Times New Roman",
                       }}
+                      onClick={this.onClickRecommend}
                     >
                       Commit Ammount
                     </Button>

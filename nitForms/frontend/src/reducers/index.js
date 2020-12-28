@@ -10,6 +10,7 @@ import NotingTemplate from "./NotingTemplate";
 import Notification from "./Notification";
 import FormStatus from "./FormStatus";
 import Status from "./Status";
+import DepartmentDetail from "./DirectorDashboardReducer";
 
 export default combineReducers({
   Forms: Forms,
@@ -23,4 +24,5 @@ export default combineReducers({
   Notification: Notification,
   FormStatus: FormStatus,
   Status: Status,
+  DepartmentDetail: DepartmentDetail,
 });

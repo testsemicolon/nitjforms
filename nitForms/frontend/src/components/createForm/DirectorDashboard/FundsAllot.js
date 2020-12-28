@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 import { DataGrid } from "@material-ui/data-grid";
 import { DropdownButton, Dropdown, Button } from "react-bootstrap";
+import { connect } from "react-redux";
+import { getDeptDetails } from "../../../actions/DirectorDashboardActions";
 
 var columns = [
   { field: "id", headerName: "ID", width: 70 },
@@ -20,20 +22,11 @@ var columns = [
   { field: "availableamount", headerName: "Available Amount Fund", width: 130 },
 ];
 
-var rows = [
-  {
-    id: 1,
-    department: "Computer Science",
-    fundsallocated: 12300,
-    balance: 10000,
-  },
-  { id: 2, department: "Electronics", fundsallocated: 12300, balance: 10000 },
-  { id: 3, department: "Mechanical", fundsallocated: 12300, balance: 10000 },
-  { id: 4, department: "Chemistry", fundsallocated: 12300, balance: 10000 },
-  { id: 5, department: "Civil", fundsallocated: 1240, balance: 10000 },
-];
-
-export default class FundsAllot extends Component {
+export class FundsAllot extends Component {
+  componentDidMount() {
+    this.props.getDeptDetails();
+    console.log(this.props.DepartmentDetail);
+  }
   onChangeType = (e) => {
     this.setState({ userType: e });
   };
@@ -96,10 +89,34 @@ export default class FundsAllot extends Component {
               </Button>
             </div>
             <h3>Currently Allocated Funds</h3>
-            <DataGrid rows={rows} columns={columns} />
+            {this.props.DepartmentDetail.map((dept) => {
+              return (
+                <div>
+                  <p>
+                    {dept.deptname}
+                    {"    "}
+                    Committed amount{dept.committedamount}
+                    {"    "}
+                    Recommended amount{dept.recommendedamount}
+                    {"    "}
+                    pipelined amount{dept.pipelinedamount}
+                    {"    "}
+                    avaialble amount {dept.availableamount}
+                    {"    "}
+                    expenditure amount{dept.expenditureamount}
+                  </p>
+                </div>
+              );
+            })}
           </div>
         </div>
       </div>
     );
   }
 }
+
+const mapStateToProps = (state) => ({
+  DepartmentDetail: state.DepartmentDetail.DepartmentDetail,
+});
+
+export default connect(mapStateToProps, { getDeptDetails })(FundsAllot);
