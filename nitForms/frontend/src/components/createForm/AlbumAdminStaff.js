@@ -12,6 +12,7 @@ import { getFormStatus } from "../../actions/FormStatus";
 import { getStatus } from "../../actions/Status";
 import { MDBContainer, MDBNotification } from "mdbreact";
 import { Link } from "react-router-dom";
+import { NavItem, NavLink, Badge, Collapse, DropdownItem } from "shards-react";
 
 export class AlbumAdminStaff extends Component {
   constructor(props) {
@@ -21,7 +22,14 @@ export class AlbumAdminStaff extends Component {
     this.state = {
       show: false,
       show2: false,
+      visible: false,
     };
+    this.toggleNotifications = this.toggleNotifications.bind(this);
+  }
+  toggleNotifications() {
+    this.setState({
+      visible: !this.state.visible,
+    });
   }
   state = { users: false, customers: false };
   onclick = (e) => {
@@ -37,15 +45,6 @@ export class AlbumAdminStaff extends Component {
   render() {
     return (
       <Fragment>
-        {/* <Header /> */}
-        {/* <SearchBar
-        onChange={() => console.log("onChange")}
-        onRequestSearch={() => console.log("onRequestSearch")}
-        style={{
-          margin: "0 auto",
-          maxWidth: 800,
-        }}
-      /> */}
         <div
           style={{
             // backgroundColor: "#ffb266",
@@ -64,24 +63,106 @@ export class AlbumAdminStaff extends Component {
               width: "5vw",
               float: "left",
               position: "relative",
-              marginRight: "4vw",
+              marginRight: "1vw",
               marginLeft: "2vw",
             }}
           >
-            <span style={{ fontSize: "5vw" }} class="material-icons">
-              account_circle
-            </span>
+            <table style={{ width: "25vw" }}>
+              <tr>
+                <td>
+                  <span style={{ fontSize: "5vw" }} class="material-icons">
+                    account_circle
+                  </span>
+                </td>
+                <td style={{ width: "25vw" }}>
+                  NAME:{this.props.username}
+                  <br />
+                  USERTYPE:ADMIN <br />
+                </td>
+                <td>
+                  <div className="dropdown">
+                    <NavLink
+                      className="nav-link-icon text-center"
+                      onClick={this.toggleNotifications}
+                    >
+                      <div>
+                        <i className="material-icons">&#xE7F4;</i>
+                        <Badge pill theme="success">
+                          2
+                        </Badge>
+                      </div>
+                    </NavLink>
+
+                    <Collapse
+                      open={this.state.visible}
+                      className="dropdown-menu dropdown-menu-small"
+                    >
+                      {" "}
+                      <div
+                        style={{
+                          minHeight: "0vw",
+                          maxHeight: "20vw",
+                          overflowY: "scroll",
+                          width: "25vw",
+                          overflowX: "inherit",
+                        }}
+                      >
+                        {this.props.Notification !== null ? (
+                          this.props.Notification.map((nfy) => {
+                            return (
+                              <div
+                                style={{
+                                  borderBottom: ".03vw solid lightgray",
+                                }}
+                              >
+                                <DropdownItem
+                                  style={{
+                                    overflowWrap: "break-word",
+                                    fontSize: "1vw",
+                                  }}
+                                >
+                                  <div
+                                    className="notification__content"
+                                    style={{ overflowWrap: "break-word" }}
+                                  >
+                                    <table>
+                                      <tr>
+                                        <td rowspan="2">
+                                          <span class="material-icons notification__icon notification__icon-wrapper">
+                                            sms
+                                          </span>
+                                        </td>
+                                        <td>
+                                          {" "}
+                                          <strong>{nfy.formName}</strong>
+                                        </td>
+                                      </tr>
+                                      <tr>
+                                        <td> {nfy.notify}</td>
+                                      </tr>
+                                    </table>
+                                  </div>
+                                </DropdownItem>
+                                {/* <hr /> */}
+                              </div>
+                            );
+                          })
+                        ) : (
+                          <div>no notification</div>
+                        )}
+                      </div>
+                    </Collapse>
+                  </div>
+                </td>
+              </tr>
+            </table>
           </div>
-          {/* <div
-          style={{ float: "right", position: "relative", marginLeft: "9vw" }}
-        ></div> */}
           <h4 style={{ float: "right", color: "black" }}>
             {" "}
             <Clock format={"dddd, MMMM Do, YYYY, h:mm:ss A"} ticking={true} />
           </h4>
-          NAME:{this.props.username}
           <br />
-          USERTYPE:ADMIN <br />
+          <br />
           <form style={{ float: "right" }}>
             <input
               type="text"

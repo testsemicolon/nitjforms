@@ -92,18 +92,19 @@ class DepartmentDetail(models.Model):
 
 
 
-class test2(models.Model):
+
+class test1(models.Model):
     responseID = models.UUIDField(default=uuid.uuid4, editable=False)
     responseTime = models.DateTimeField(auto_now_add=True)
     responseStatus = models.BooleanField(default=False)
     userName = models.CharField(max_length=1000, blank=True)
     userMail = models.EmailField(max_length=1000)
     userDept = models.CharField(max_length=1000)
-    dasfdsa = models.CharField(max_length=1000)
-    gsdfgdf = models.CharField(max_length=1000)
+    what_is_your_name = models.CharField(max_length=1000)
+    sasasa = models.CharField(max_length=1000)
 
 
-class test2Accepted(models.Model):
+class test1Accepted(models.Model):
     acceptedResponseID = models.CharField(max_length=1000)
     responseTime = models.DateTimeField(auto_now_add=True)
     comment = JSONField(null=True)
@@ -116,5 +117,5 @@ class test2Accepted(models.Model):
     pipelinedAmount = models.PositiveIntegerField(default=0,blank=True)
     expenditureAmount = models.PositiveIntegerField(default=0,blank=True)
     userDept = models.CharField(max_length=1000)
-    dasfdsa = models.CharField(max_length=1000)
-    gsdfgdf = models.CharField(max_length=1000)
+    what_is_your_name = models.CharField(max_length=1000)
+    sasasa = models.CharField(max_length=1000)

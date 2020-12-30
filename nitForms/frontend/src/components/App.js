@@ -15,7 +15,7 @@ import { Provider as AlertProvider } from "react-alert";
 
 import Dashboard from "./createForm/Dashboard";
 import FormName from "./createForm/FormName";
-import Album from "./createForm/Album";
+
 import Header from "./layout/Header";
 import Alerts from "./layout/Alerts";
 import Login from "./accounts/Login";

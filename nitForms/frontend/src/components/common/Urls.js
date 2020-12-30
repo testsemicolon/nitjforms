@@ -5,7 +5,6 @@ import { connect } from "react-redux";
 
 import Dashboard from "../createForm/Dashboard";
 import FormName from "../createForm/FormName";
-import Album from "../createForm/Album";
 
 import Login from "../accounts/Login";
 import Register from "../accounts/Register";
