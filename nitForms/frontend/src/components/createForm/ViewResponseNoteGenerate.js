@@ -113,7 +113,7 @@ export class ViewResponseNoteGenerate extends Component {
     const name = { [this.props.username]: this.state.forwardTo };
     arr.push(name);
     quest["forwardTo"] = arr;
-
+    var acceptedResponseID = quest["acceptedResponseID"];
     var notify = quest["notification"];
     if (notify === null) {
       notify = [];
@@ -144,6 +144,9 @@ export class ViewResponseNoteGenerate extends Component {
     questNotify["reciever"] = `${this.state.forwardTo}`;
     questNotify["notify"] = notifyCmnt;
     questNotify["linkToPage"] = `${this.props.location.pathname}`;
+    questNotify["acceptedResponseID"] = `${acceptedResponseID}`;
+    questNotify["formName"] = `${this.props.match.params.title}Accepted`;
+    console.log(questNotify);
     this.props.postNotification(questNotify);
     this.setState({ accepted: quest });
   };

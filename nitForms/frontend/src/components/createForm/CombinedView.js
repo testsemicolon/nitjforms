@@ -67,14 +67,14 @@ export class CombinedView extends Component {
       }
     }
     console.log(this.obj1);
-    if (this.obj1 !== null && this.obj1 !== {}) {
-      this.obj1.map((value) => {
-        this.arr1.push(value[1]);
-      });
-    }
+    // if (this.obj1 !== null && this.obj1 !== {}) {
+    //   this.obj1.map((value) => {
+    //     this.arr1.push(value[1]);
+    //   });
+    // }
 
     this.arr = this.arr.reverse();
-    this.arr1 = this.arr1.reverse();
+    // this.arr1 = this.arr1.reverse();
     this.setState({ arr: this.arr });
   }
   render() {
@@ -137,7 +137,7 @@ export class CombinedView extends Component {
                       {value1}
                       {value1[0].includes("commented ") ? (
                         <h6 style={{ color: "#009999" }}>
-                          {this.arr1[this.itr++]}
+                          {/* {this.arr1[this.itr++]} */}
                         </h6>
                       ) : (
                         <div></div>

@@ -1,4 +1,4 @@
-import { GET_NOTIFICATION } from "../actions/types";
+import { GET_NOTIFICATION, POST_NOTIFICATION } from "../actions/types";
 
 const initialState = {
   Notification: [],
@@ -12,6 +12,11 @@ export default function (state = initialState, action) {
         Notification: action.payload.filter(
           (notify) => notify.reciever === action.userName
         ),
+      };
+    case POST_NOTIFICATION:
+      return {
+        ...state,
+        Notification: action.payload,
       };
     default:
       return state;

@@ -41,7 +41,6 @@ export class FormItems extends Component {
   };
   onOpenModal = () => {
     this.setState({ open: true });
-    console.log("hogya");
   };
 
   onCloseModal = () => {

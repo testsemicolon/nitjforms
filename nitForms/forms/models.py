@@ -58,10 +58,12 @@ class notingTemplate(models.Model):
 
 
 class userNotifications(models.Model):
+    acceptedResponseID = models.CharField(max_length=1000)
     sender = models.CharField(max_length=1000)
     reciever = models.CharField(max_length=1000)
     notify = models.CharField(max_length=1000)
     linkToPage = models.CharField(max_length=1000, blank=True)
+    formName = models.CharField(max_length=1000)
     flag = models.BooleanField(default=True)
 
 

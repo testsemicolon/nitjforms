@@ -1,4 +1,4 @@
-import { GET_ACCEPTED } from "../actions/types";
+import { GET_ACCEPTED, PUT_ACCEPTED } from "../actions/types";
 
 const initialState = {
   AcceptedResponse: [],
@@ -10,6 +10,11 @@ export default function (state = initialState, action) {
       return {
         ...state,
         AcceptedResponse: action.payload,
+      };
+    case PUT_ACCEPTED:
+      return {
+        ...state,
+        AcceptedResponse: [...state.AcceptedResponse, action.payload],
       };
     default:
       return state;

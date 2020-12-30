@@ -9,6 +9,7 @@ import {
   LOGOUT_SUCCESS,
   LOGOUT_FAIL,
   REGISTER_SUCCESS,
+  REGISTER_FAIL,
 } from "./types";
 
 //CHECK AUTH TOKEN & LOAD USER
@@ -104,6 +105,7 @@ export const register = ({
     })
     .catch((err) => {
       dispatch(returnErrors(err.response.data, err.response.status));
+      console.log(err.response.data);
       dispatch({
         type: REGISTER_FAIL,
       });

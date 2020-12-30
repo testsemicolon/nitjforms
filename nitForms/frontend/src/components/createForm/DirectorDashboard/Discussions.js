@@ -1,5 +1,4 @@
-  
-import React from "react";
+import React, { Component } from "react";
 import PropTypes from "prop-types";
 import {
   Card,
@@ -9,137 +8,174 @@ import {
   ButtonGroup,
   Button,
   Row,
-  Col
+  Col,
 } from "shards-react";
+import { connect } from "react-redux";
 
-const Discussions = ({ title, discussions }) => (
-  <Card small className="blog-comments">
-    <CardHeader className="border-bottom">
-      <h6 className="m-0">{title}</h6>
-    </CardHeader>
+export class Discussions extends Component {
+  state = {
+    data: null,
+  };
+  componentDidMount() {}
+  render() {
+    this.props.Response.map((res) => {
+      console.log(res.acceptedResponseID);
+    });
 
-    <CardBody className="p-0">
-      {discussions.map((discussion, idx) => (
-        <div key={idx} className="blog-comments__item d-flex p-3">
-          {/* Avatar */}
-          <div className="blog-comments__avatar mr-3">
-            {/* <img src={discussion.author.image} alt={discussion.author.name} /> */}
-          </div>
-
-          {/* Content */}
-          <div className="blog-comments__content">
-            {/* Content :: Title */}
-            <div className="blog-comments__meta text-mutes">
-              <a className="text-secondary" href={discussion.author.url}>
-                {discussion.author.name}
-              </a>{" "}
-              on{" "}
-              <a className="text-secondary" href={discussion.post.url}>
-                {discussion.post.title}
-              </a>
-              <span className="text-mutes">- {discussion.date}</span>
+    return (
+      <div>
+        <h1>asdjk</h1>
+        {this.props.Response.map((res) => {
+          return (
+            <div key={res.acceptedResponseID}>
+              <h3>{res.acceptedResponseID}</h3>
+              <h3>{res.recommendedAmount}</h3>
+              <h3>{this.props.link}</h3>
             </div>
+          );
+        })}
+      </div>
+    );
+  }
+}
 
-            {/* Content :: Body */}
-            <p className="m-0 my-1 mb-2 text-muted">{discussion.body}</p>
+const mapStateToProps = (state) => ({
+  Response: state.Response.Response,
+  formName: state.Response.formName,
+  username: state.Auth.user.username,
+  link: state.Response.link,
+});
 
-            {/* Content :: Actions */}
-            <div className="blog-comments__actions">
-              <ButtonGroup size="sm">
-                <Button theme="white">
-                  <span className="text-success">
-                    <i className="material-icons">check</i>
-                  </span>{" "}
-                  Approve
-                </Button>
-                <Button theme="white">
-                  <span className="text-danger">
-                    <i className="material-icons">clear</i>
-                  </span>{" "}
-                  Reject
-                </Button>
-                <Button theme="white">
-                  <span className="text-light">
-                    <i className="material-icons">more_vert</i>
-                  </span>{" "}
-                  Edit
-                </Button>
-              </ButtonGroup>
-            </div>
-          </div>
-        </div>
-      ))}
-    </CardBody>
+export default connect(mapStateToProps, {})(Discussions);
 
-    <CardFooter className="border-top">
-      <Row>
-        <Col className="text-center view-report">
-          <Button theme="white" type="submit">
-            View All Comments
-          </Button>
-        </Col>
-      </Row>
-    </CardFooter>
-  </Card>
-);
+// const Discussions = ({ title, discussions }) => (
+//   <Card small className="blog-comments">
+//     <CardHeader className="border-bottom">
+//       <h6 className="m-0">{title}</h6>
+//     </CardHeader>
 
-Discussions.propTypes = {
-  /**
-   * The component's title.
-   */
-  title: PropTypes.string,
-  /**
-   * The discussions dataset.
-   */
-  discussions: PropTypes.array
-};
+//     <CardBody className="p-0">
+//       {discussions.map((discussion, idx) => (
+//         <div key={idx} className="blog-comments__item d-flex p-3">
+//           {/* Avatar */}
+//           <div className="blog-comments__avatar mr-3">
+//             {/* <img src={discussion.author.image} alt={discussion.author.name} /> */}
+//           </div>
 
-Discussions.defaultProps = {
-  title: "Form Approval Status",
-  discussions: [
-    {
-      id: 1,
-      date: "3 days ago",
-      author: {
-        // image: require("../../images/avatars/1.jpg"),
-        name: "John Doe",
-        url: "#"
-      },
-      post: {
-        title: "Hello World!",
-        url: "#"
-      },
-      body: "Well, the way they make shows is, they make one show ..."
-    },
-    {
-      id: 2,
-      date: "4 days ago",
-      author: {
-        // image: require("../../images/avatars/2.jpg"),
-        name: "John Doe",
-        url: "#"
-      },
-      post: {
-        title: "Hello World!",
-        url: "#"
-      },
-      body: "After the avalanche, it took us a week to climb out. Now..."
-    },
-    {
-      id: 3,
-      date: "5 days ago",
-      author: {
-        // image: require("../../images/avatars/3.jpg"),
-        name: "John Doe",
-        url: "#"
-      },
-      post: {
-        title: "Hello World!",
-        url: "#"
-      },
-      body: "My money's in that office, right? If she start giving me..."
-    }
-  ]
-};
+//           {/* Content */}
+//           <div className="blog-comments__content">
+//             {/* Content :: Title */}
+//             <div className="blog-comments__meta text-mutes">
+//               <a className="text-secondary" href={discussion.author.url}>
+//                 {discussion.author.name}
+//               </a>{" "}
+//               on{" "}
+//               <a className="text-secondary" href={discussion.post.url}>
+//                 {discussion.post.title}
+//               </a>
+//               <span className="text-mutes">- {discussion.date}</span>
+//             </div>
 
-export default Discussions;
+//             {/* Content :: Body */}
+//             <p className="m-0 my-1 mb-2 text-muted">{discussion.body}</p>
+
+//             {/* Content :: Actions */}
+//             <div className="blog-comments__actions">
+//               <ButtonGroup size="sm">
+//                 <Button theme="white">
+//                   <span className="text-success">
+//                     <i className="material-icons">check</i>
+//                   </span>{" "}
+//                   Approve
+//                 </Button>
+//                 <Button theme="white">
+//                   <span className="text-danger">
+//                     <i className="material-icons">clear</i>
+//                   </span>{" "}
+//                   Reject
+//                 </Button>
+//                 <Button theme="white">
+//                   <span className="text-light">
+//                     <i className="material-icons">more_vert</i>
+//                   </span>{" "}
+//                   Edit
+//                 </Button>
+//               </ButtonGroup>
+//             </div>
+//           </div>
+//         </div>
+//       ))}
+//     </CardBody>
+
+//     <CardFooter className="border-top">
+//       <Row>
+//         <Col className="text-center view-report">
+//           <Button theme="white" type="submit">
+//             View All Comments
+//           </Button>
+//         </Col>
+//       </Row>
+//     </CardFooter>
+//   </Card>
+// );
+
+// Discussions.propTypes = {
+//   /**
+//    * The component's title.
+//    */
+//   title: PropTypes.string,
+//   /**
+//    * The discussions dataset.
+//    */
+//   discussions: PropTypes.array
+// };
+
+// Discussions.defaultProps = {
+//   title: "Form Approval Status",
+//   discussions: [
+//     {
+//       id: 1,
+//       date: "3 days ago",
+//       author: {
+//         // image: require("../../images/avatars/1.jpg"),
+//         name: "John Doe",
+//         url: "#"
+//       },
+//       post: {
+//         title: "Hello World!",
+//         url: "#"
+//       },
+//       body: "Well, the way they make shows is, they make one show ..."
+//     },
+//     {
+//       id: 2,
+//       date: "4 days ago",
+//       author: {
+//         // image: require("../../images/avatars/2.jpg"),
+//         name: "John Doe",
+//         url: "#"
+//       },
+//       post: {
+//         title: "Hello World!",
+//         url: "#"
+//       },
+//       body: "After the avalanche, it took us a week to climb out. Now..."
+//     },
+//     {
+//       id: 3,
+//       date: "5 days ago",
+//       author: {
+//         // image: require("../../images/avatars/3.jpg"),
+//         name: "John Doe",
+//         url: "#"
+//       },
+//       post: {
+//         title: "Hello World!",
+//         url: "#"
+//       },
+//       body: "My money's in that office, right? If she start giving me..."
+//     }
+//   ]
+// };
+
+// export default Discussions;

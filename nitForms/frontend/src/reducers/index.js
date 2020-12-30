@@ -11,6 +11,7 @@ import Notification from "./Notification";
 import FormStatus from "./FormStatus";
 import Status from "./Status";
 import DepartmentDetail from "./DirectorDashboardReducer";
+import Response from "./Response";
 
 export default combineReducers({
   Forms: Forms,
@@ -25,4 +26,5 @@ export default combineReducers({
   FormStatus: FormStatus,
   Status: Status,
   DepartmentDetail: DepartmentDetail,
+  Response: Response,
 });

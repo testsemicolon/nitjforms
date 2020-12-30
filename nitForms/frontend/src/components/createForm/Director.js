@@ -17,15 +17,15 @@ import Clock from "react-live-clock";
 import CountUp from "react-countup";
 import $ from "jquery";
 import { DatePicker } from "rsuite";
-import { DateRangePicker } from 'rsuite';
+import { DateRangePicker } from "rsuite";
 import UsersOverview from "./DirectorDashboard/UsersOverview";
 import Discussions from "./DirectorDashboard/Discussions";
 import SmallStats from "./DirectorDashboard/SmallStats";
 import { Container, Row, Col } from "shards-react";
 import SmallCharts from "./DirectorDashboard/SmallCharts";
 import FundsAllot from "./DirectorDashboard/FundsAllot";
+import { getDirectorNotification } from "../../actions/Notification";
 // import 'rsuite/lib/styles/index.less';
-
 
 class Director extends Component {
   state = {
@@ -33,7 +33,10 @@ class Director extends Component {
     customers: false,
     open: false,
   };
-
+  constructor(props) {
+    super(props);
+    this.props.getDirectorNotification(this.props.username);
+  }
   onOpenModal = () => {
     this.setState({ open: true });
   };
@@ -43,12 +46,10 @@ class Director extends Component {
   };
 
   render() {
+    console.log(this.props.Notification);
     const { open } = this.state;
     return (
       <Fragment>
-      
-        
-       
         <div
           style={{
             // backgroundColor: "#ffb266",
@@ -81,7 +82,8 @@ class Director extends Component {
                 <td style={{ width: "25vw" }}>
                   NAME:{this.props.username}
                   <br />
-                  Director<br />
+                  Director
+                  <br />
                 </td>
               </tr>
             </table>
@@ -101,10 +103,9 @@ class Director extends Component {
             />
           </form>
         </div>
-        <div style={{marginTop:"2vw"}}>
-       <SmallCharts/>
+        <div style={{ marginTop: "2vw" }}>
+          <SmallCharts />
         </div>
-      
 
         <div
           style={{
@@ -246,7 +247,6 @@ class Director extends Component {
           </Button>
           <Button
             style={{
-        
               textAlign: "center",
               flexBasis: "19%",
               minHeight: "8vw",
@@ -269,10 +269,7 @@ class Director extends Component {
           >
             CREATE
             <br />
-
-      
           </Button>
-  
         </div>
 
         {this.state.users === true ? (
@@ -391,11 +388,9 @@ class Director extends Component {
 
                 padding: "1.5vw",
                 color: "grey",
-   
               }}
             >
-    
-           <UsersOverview />
+              <UsersOverview />
             </div>
             <div
               style={{
@@ -415,11 +410,9 @@ class Director extends Component {
                 backgroundColor: "white",
                 padding: "1.5vw",
                 color: "grey",
-                
               }}
             >
               <div>
-                
                 {/* <table
                   //rules="all"
                   style={{
@@ -477,7 +470,7 @@ class Director extends Component {
                     </tr>
                   </tbody>
                 </table> */}
-                <Discussions />
+                <Discussions notification={this.props.Notification} />
               </div>
             </div>
           </div>
@@ -495,7 +488,6 @@ class Director extends Component {
           >
             <div
               style={{
-     
                 textAlign: "center",
                 flexBasis: "32%",
                 minHeight: "18vw",
@@ -614,7 +606,6 @@ class Director extends Component {
             </div>
             <div
               style={{
-            
                 textAlign: "center",
                 boxShadow:
                   ".4vw .4vw .5vw lightgrey, 0 0 .1vw rgba(0, 0, 0, 0.1) inset",
@@ -673,7 +664,7 @@ class Director extends Component {
         ) : (
           <div></div>
         )}
-<FundsAllot />
+        <FundsAllot />
 
         {/* <OldForms /> */}
         <Features />
@@ -715,6 +706,9 @@ class Director extends Component {
 
 const mapStateToProps = (state) => ({
   username: state.Auth.user.username,
+  Notification: state.Notification.Notification,
 });
 
-export default connect(mapStateToProps, { getName })(Director);
+export default connect(mapStateToProps, { getName, getDirectorNotification })(
+  Director
+);

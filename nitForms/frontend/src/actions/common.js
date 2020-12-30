@@ -1,7 +1,7 @@
 import axios from "axios";
 import { tokenConfig } from "./Auth";
 import { GET_SHARED_USERS } from "./types";
-import { createMessage } from "./Messages";
+import { createMessage, returnErrors } from "./Messages";
 
 export const getSharedUser = () => (dispatch) => {
   axios
@@ -12,19 +12,25 @@ export const getSharedUser = () => (dispatch) => {
         payload: res.data,
       });
     })
-    .catch((err) => console.log(err));
+    .catch((err) =>
+      dispatch(returnErrors(err.response.data, err.response.status))
+    );
 };
 
 export const putSharedUser = (id, quest) => (dispatch) => {
   var msg = `Form ${quest.formName} has been shared with ${quest.userName} `;
   axios
-    .put(`/sharedUser/${id}/`, quest).then((res) => {
-    dispatch((res) => {
-      createMessage({
-        sharedUser: msg,
+    .put(`/sharedUser/${id}/`, quest)
+    .then((res) => {
+      dispatch((res) => {
+        createMessage({
+          sharedUser: msg,
+        });
       });
-    });
-  });
+    })
+    .catch((err) =>
+      dispatch(returnErrors(err.response.data, err.response.status))
+    );
 };
 export const postSharedUser = (quest) => (dispatch) => {
   var msg = `Form ${quest.formName} has been shared with ${quest.userName} `;
@@ -37,5 +43,7 @@ export const postSharedUser = (quest) => (dispatch) => {
         })
       );
     })
-    .catch((err) => console.log(err));
+    .catch((err) =>
+      dispatch(returnErrors(err.response.data, err.response.status))
+    );
 };
