@@ -13,6 +13,4 @@ admin.site.register(EmailIndex)
 admin.site.register(DepartmentDetail)
 
 
-admin.site.register(test1)
 
-admin.site.register(test1Accepted)
