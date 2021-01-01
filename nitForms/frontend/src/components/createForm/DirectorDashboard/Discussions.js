@@ -11,17 +11,43 @@ import {
   Col,
 } from "shards-react";
 import { connect } from "react-redux";
+import { Link } from "react-router-dom";
+import store from "../../../store";
+import { createMessage } from "../../../actions/Messages";
+import { putResponse } from "../../../actions/AcceptedResponse";
+import { putDeptDetailsCommit } from "../../../actions/DirectorDashboardActions";
 
 export class Discussions extends Component {
-  state = {
-    data: null,
+  onClickMessage = (responseType, response, formName) => {
+    if (responseType === "Accept") {
+      store.dispatch(
+        createMessage({
+          acceptCommitMessage: `You have committed the amount of Rs${response.recommendedAmount} from ${response.userDept}`,
+        })
+      );
+      response["committedAmount"] = parseInt(response["recommendedAmount"]);
+      response["recommendedAmount"] = 0;
+      console.log(response);
+      this.props.putResponse(response.id, formName, response);
+      this.props.putDeptDetailsCommit(
+        response.userDept,
+        response.committedAmount,
+        responseType
+      );
+    } else if (responseType === "Reject") {
+      store.dispatch(
+        createMessage({
+          rejectCommitMessage: `You have rejected the recomendation of Rs${response.recommendedAmount} `,
+        })
+      );
+      response["recommendedAmount"] = 0;
+      console.log(response);
+      // this.props.putResponse(response.id, formName, response);
+      // this.props.putDeptDetails(response.userDept, response.recommendedAmount);
+    }
   };
-  componentDidMount() {}
-  render() {
-    this.props.Response.map((res) => {
-      console.log(res.acceptedResponseID);
-    });
 
+  render() {
     return (
       <div>
         <h1>asdjk</h1>
@@ -30,7 +56,22 @@ export class Discussions extends Component {
             <div key={res.acceptedResponseID}>
               <h3>{res.acceptedResponseID}</h3>
               <h3>{res.recommendedAmount}</h3>
-              <h3>{this.props.link}</h3>
+              <Link to={this.props.link}>View Timeline</Link>
+              <button
+                onClick={() =>
+                  this.onClickMessage("Accept", res, this.props.formName)
+                }
+              >
+                Accept
+              </button>
+              {"  "}
+              <button
+                onClick={() =>
+                  this.onClickMessage("Reject", res, this.props.formName)
+                }
+              >
+                Reject
+              </button>
             </div>
           );
         })}
@@ -46,7 +87,9 @@ const mapStateToProps = (state) => ({
   link: state.Response.link,
 });
 
-export default connect(mapStateToProps, {})(Discussions);
+export default connect(mapStateToProps, { putResponse, putDeptDetailsCommit })(
+  Discussions
+);
 
 // const Discussions = ({ title, discussions }) => (
 //   <Card small className="blog-comments">

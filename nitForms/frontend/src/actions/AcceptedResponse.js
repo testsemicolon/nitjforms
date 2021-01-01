@@ -43,12 +43,15 @@ export const putAccepted = (id, title, quest) => (dispatch) => {
     );
 };
 
-export const putResponse = (id, title, quest) => () => {
+export const putResponse = (id, title, quest) => (dispatch) => {
   console.log(title);
   console.log(quest);
   axios
     .put(`${title}/${id}/`, quest)
-    .then((res) => console.log(res))
+    .then((res) => {
+      console.log(res);
+      dispatch({ type: PUT_RESPONSE, payload: res.data });
+    })
     .catch((err) =>
       dispatch(returnErrors(err.response.data, err.response.status))
     );

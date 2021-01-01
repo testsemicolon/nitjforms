@@ -40,7 +40,7 @@ export class ViewResponseNoteGenerate extends Component {
   time = "";
   obj = {};
   data = "";
-  lastsendernotification = "";
+  lastSenderNotification = "";
   allowAccessFlag = false;
   constructor(props) {
     super(props);
@@ -102,7 +102,7 @@ export class ViewResponseNoteGenerate extends Component {
     }
   }
 
-  onclick2 = (e) => {
+  onClick2 = (e) => {
     e.preventDefault();
     this.setState({ toggleforward: !this.state.toggleforward });
   };
@@ -124,7 +124,7 @@ export class ViewResponseNoteGenerate extends Component {
     date = date.split("T")[0];
     date = date.split('"')[1];
 
-    var notifyCmnt = `${this.props.username} FORWARD TO ${this.state.forwardTo}`;
+    var notifyCmnt = `${this.props.username} FORWARD TO ${this.state.forwardTo} `;
     notify.push([notifyCmnt, date]);
     quest["notification"] = notify;
     this.props.putAccepted(
@@ -135,7 +135,7 @@ export class ViewResponseNoteGenerate extends Component {
 
     store.dispatch(
       createMessage({
-        forwardMessage: `${this.props.username} FORWARD NOTING TO ${this.state.forwardTo}`, //message dispatched as an alert to user
+        forwardMessage: `${this.props.username} FORWARD NOTING TO ${this.state.forwardTo} `, //message dispatched as an alert to user
       })
     );
 
@@ -170,7 +170,7 @@ export class ViewResponseNoteGenerate extends Component {
     date = date.split("T")[0];
     date = date.split('"')[1];
 
-    var notifyCmnt = `${this.props.username} accepted the response sent by ${this.lastsendernotification}`; //putting in notification object and sending for timeline
+    var notifyCmnt = `${this.props.username} accepted the response sent by ${this.lastSenderNotification}`; //putting in notification object and sending for timeline
     notify.push([notifyCmnt, date]);
     quest["notification"] = notify;
     this.props.putAccepted(
@@ -178,34 +178,41 @@ export class ViewResponseNoteGenerate extends Component {
       this.props.match.params.title,
       quest
     );
-
-    console.log(this.lastsendernotification, "checking sender");
+    var acceptedResponseID = quest["acceptedResponseID"];
+    console.log(this.lastSenderNotification, "checking sender");
     const questNotify = {};
-    var notifyCmnt = `${this.props.username} accepted  ${this.lastsendernotification}`;
+    var notifyCmnt = `${this.props.username} accepted the response forwarded by you `;
     questNotify["sender"] = `${this.props.username}`;
-    questNotify["reciever"] = `${this.lastsendernotification}`;
+    questNotify["reciever"] = `${this.lastSenderNotification}`;
     questNotify["notify"] = notifyCmnt;
     questNotify["linkToPage"] = `${this.props.location.pathname}`;
+    questNotify["acceptedResponseID"] = `${acceptedResponseID}`;
+    questNotify["formName"] = `${this.props.match.params.title}Accepted`;
     this.props.postNotification(questNotify);
+    store.dispatch(
+      createMessage({
+        acceptMessage: `${this.props.username} accepted the response `,
+      })
+    );
   };
 
   acceptRejectNotificationSender = (e) => {
     //for sending notification to users
-    var forwardtotemp;
+    var forwardToTemp;
     this.props.AcceptedResponse.map((a) => {
-      forwardtotemp = a.forwardTo;
+      forwardToTemp = a.forwardTo;
     });
 
-    Object.entries(forwardtotemp).map(([key, value]) => {
+    Object.entries(forwardToTemp).map(([key, value]) => {
       Object.entries(value).map(([key1, value1]) => {
         if (value1 === this.props.username) {
-          this.lastsendernotification = key1;
+          this.lastSenderNotification = key1;
         }
       });
     });
   };
 
-  onclickRejecttResponse = () => {
+  onClickRejectResponse = () => {
     this.acceptRejectNotificationSender();
     var quest = {};
     quest = this.obj;
@@ -220,7 +227,7 @@ export class ViewResponseNoteGenerate extends Component {
     date = date.split("T")[0];
     date = date.split('"')[1];
 
-    var notifyCmnt = `${this.props.username} rejected the response sent by ${this.lastsendernotification}`; //putting in notification object and sending for timeline
+    var notifyCmnt = `${this.props.username} rejected the response sent by ${this.lastSenderNotification}`; //putting in notification object and sending for timeline
     notify.push([notifyCmnt, date]);
     quest["notification"] = notify;
     this.props.putAccepted(
@@ -228,15 +235,22 @@ export class ViewResponseNoteGenerate extends Component {
       this.props.match.params.title,
       quest
     );
-
-    console.log(this.lastsendernotification, "checking sender");
+    var acceptedResponseID = quest["acceptedResponseID"];
+    console.log(this.lastSenderNotification, "checking sender");
     const questNotify = {};
-    var notifyCmnt = `${this.props.username} rejected  ${this.lastsendernotification}`;
+    var notifyCmnt = `${this.props.username} rejected the response forwarded by you `;
     questNotify["sender"] = `${this.props.username}`;
-    questNotify["reciever"] = `${this.lastsendernotification}`;
+    questNotify["reciever"] = `${this.lastSenderNotification}`;
     questNotify["notify"] = notifyCmnt;
     questNotify["linkToPage"] = `${this.props.location.pathname}`;
+    questNotify["acceptedResponseID"] = `${acceptedResponseID}`;
+    questNotify["formName"] = `${this.props.match.params.title}Accepted`;
     this.props.postNotification(questNotify);
+    store.dispatch(
+      createMessage({
+        rejectMessage: `${this.props.username} rejected the response `,
+      })
+    );
   };
   // onClick = () => {
   //   let value1 = this.props.match.params.value;
@@ -617,7 +631,7 @@ export class ViewResponseNoteGenerate extends Component {
                     Accept Response{" "}
                   </Button>
                   <br />
-                  <Button onClick={this.onclickRejecttResponse}>
+                  <Button onClick={this.onClickRejectResponse}>
                     Reject Response{" "}
                   </Button>
                 </div>

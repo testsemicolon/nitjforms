@@ -100,8 +100,8 @@ class test1(models.Model):
     userName = models.CharField(max_length=1000, blank=True)
     userMail = models.EmailField(max_length=1000)
     userDept = models.CharField(max_length=1000)
-    what_is_your_name = models.CharField(max_length=1000)
-    sasasa = models.CharField(max_length=1000)
+    asdf = models.CharField(max_length=1000)
+    sda = models.CharField(max_length=1000)
 
 
 class test1Accepted(models.Model):
@@ -117,5 +117,5 @@ class test1Accepted(models.Model):
     pipelinedAmount = models.PositiveIntegerField(default=0,blank=True)
     expenditureAmount = models.PositiveIntegerField(default=0,blank=True)
     userDept = models.CharField(max_length=1000)
-    what_is_your_name = models.CharField(max_length=1000)
-    sasasa = models.CharField(max_length=1000)
+    asdf = models.CharField(max_length=1000)
+    sda = models.CharField(max_length=1000)

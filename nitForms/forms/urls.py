@@ -26,7 +26,6 @@ urlpatterns += [
 
 
 
-
 router.register('test1', test1ViewSet, 'test1')
 
 

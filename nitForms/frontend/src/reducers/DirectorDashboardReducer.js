@@ -2,6 +2,7 @@ import {
   GET_DEPT_DETAILS,
   POST_DEPT_DETAILS,
   PUT_DEPT_DETAILS,
+  PUT_DEPT_DETAILS_COMMIT,
 } from "../actions/types";
 
 const initialState = {
@@ -11,16 +12,9 @@ const initialState = {
 export default function (state = initialState, action) {
   switch (action.type) {
     case GET_DEPT_DETAILS:
-      return {
-        ...state,
-        DepartmentDetail: action.payload,
-      };
     case POST_DEPT_DETAILS:
-      return {
-        ...state,
-        DepartmentDetail: action.payload,
-      };
     case PUT_DEPT_DETAILS:
+    case PUT_DEPT_DETAILS_COMMIT:
       return {
         ...state,
         DepartmentDetail: action.payload,

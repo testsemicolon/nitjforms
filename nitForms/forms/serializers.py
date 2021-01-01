@@ -62,6 +62,7 @@ class DepartmentDetailSerializer(serializers.ModelSerializer):
 
 
 
+
 class test1Serializer(serializers.ModelSerializer):
     class Meta:
         model = test1

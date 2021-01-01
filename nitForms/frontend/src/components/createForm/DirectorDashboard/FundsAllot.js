@@ -89,9 +89,10 @@ export class FundsAllot extends Component {
               </Button>
             </div>
             <h3>Currently Allocated Funds</h3>
+            {console.log(this.props.DepartmentDetail)}
             {this.props.DepartmentDetail.map((dept) => {
               return (
-                <div>
+                <div key={dept.id}>
                   <p>
                     {dept.deptname}
                     {"    "}

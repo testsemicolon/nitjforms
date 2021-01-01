@@ -32,6 +32,12 @@ export class Alerts extends Component {
       if (message.forwardMessage) alert.success(message.forwardMessage);
       if (message.recommendMessage) alert.success(message.recommendMessage);
       if (message.notRecommendMessage) alert.error(message.notRecommendMessage);
+      if (message.acceptMessage) alert.success(message.acceptMessage);
+      if (message.rejectMessage) alert.error(message.rejectMessage);
+      if (message.rejectCommitMessage)
+        alert.success(message.rejectCommitMessage);
+      if (message.acceptCommitMessage)
+        alert.success(message.acceptCommitMessage);
     }
   }
 
