@@ -96,3 +96,31 @@ class DepartmentDetail(models.Model):
 
 
 
+
+
+class test1(models.Model):
+    responseID = models.UUIDField(default=uuid.uuid4, editable=False)
+    responseTime = models.DateTimeField(auto_now_add=True)
+    responseStatus = models.BooleanField(default=False)
+    userName = models.CharField(max_length=1000, blank=True)
+    userMail = models.EmailField(max_length=1000)
+    userDept = models.CharField(max_length=1000)
+    fsdag = models.CharField(max_length=1000)
+    fgagqrtrtret = models.CharField(max_length=1000)
+
+
+class test1Accepted(models.Model):
+    acceptedResponseID = models.CharField(max_length=1000)
+    responseTime = models.DateTimeField(auto_now_add=True)
+    comment = JSONField(null=True)
+    forwardTo = ArrayField(JSONField(null=True),blank=True, default=list)
+    commentByAuthor = models.CharField(max_length = 10000, blank=True)
+    notification = JSONField(null=True)
+    userName = models.CharField(max_length=1000, blank=True)
+    committedAmount = models.PositiveIntegerField(default=0, blank=True)
+    recommendedAmount = models.PositiveIntegerField(default=0,blank=True)
+    pipelinedAmount = models.PositiveIntegerField(default=0,blank=True)
+    expenditureAmount = models.PositiveIntegerField(default=0,blank=True)
+    userDept = models.CharField(max_length=1000)
+    fsdag = models.CharField(max_length=1000)
+    fgagqrtrtret = models.CharField(max_length=1000)

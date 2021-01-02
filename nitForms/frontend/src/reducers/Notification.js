@@ -1,4 +1,8 @@
-import { GET_NOTIFICATION, POST_NOTIFICATION } from "../actions/types";
+import {
+  GET_NOTIFICATION,
+  POST_NOTIFICATION,
+  CLEAR_RESPONSE,
+} from "../actions/types";
 
 const initialState = {
   Notification: [],

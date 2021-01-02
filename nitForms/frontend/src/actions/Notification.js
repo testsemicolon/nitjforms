@@ -1,7 +1,7 @@
 import axios from "axios";
 import { POST_NOTIFICATION, GET_NOTIFICATION } from "./types";
 import { createMessage, returnErrors } from "./Messages";
-import { getResponse } from "./Response";
+import { getResponse, clearResponse, getMultipleResponse } from "./Response";
 
 export const getNotification = (username) => (dispatch) => {
   axios
@@ -22,11 +22,11 @@ export const getDirectorNotification = (username) => (dispatch) => {
   axios
     .get("/userNotifications")
     .then((res) => {
-      console.log(res.data);
+      dispatch(clearResponse());
       res.data.map((notify) => {
         if (notify.reciever === username) {
           dispatch(
-            getResponse(
+            getMultipleResponse(
               notify.formName,
               notify.acceptedResponseID,
               notify.linkToPage

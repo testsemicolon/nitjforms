@@ -30,42 +30,47 @@ export const postDeptDetails = (questDept) => (dispatch) => {
 export const putDeptDetailsCommit = (deptName, amount, responseType) => (
   dispatch
 ) => {
+  var deptDetail;
   axios
     .get("/DepartmentDetail")
     .then((res) => {
-      var deptDetail;
       res.data.map((detail) => {
         if (detail.deptName === deptName) {
           deptDetail = detail;
         }
       });
       if (responseType === "Accept") {
-        console.log(responseType);
-        deptDetail["recommendedAmount"] =
-          parseInt(deptDetail["recommendedAmount"]) - parseInt(amount);
+        //isko then mai hi use krna hai, taki data aane k baad hi aage chle, vrna firse async chlega
         deptDetail["committedAmount"] =
           parseInt(deptDetail["committedAmount"]) + parseInt(amount);
-        console.log(deptDetail, amount);
+        deptDetail["recommendedAmount"] =
+          parseInt(deptDetail["recommendedAmount"]) - parseInt(amount);
       }
       console.log(deptDetail);
-      axios
-        .put(`/DepartmentDetail/${deptDetail.id}/`, deptDetail)
-        .then((res) => {
-          dispatch({
-            type: PUT_DEPT_DETAILS_COMMIT,
-            payload: res.data,
-          });
-        })
-        .catch((err) => console.log(err));
+      dispatch(putDeptDetails(deptDetail));
     })
     .catch((err) => console.log(err));
+
+  // axios
+  //   .put(`/DepartmentDetail/${deptDetail.id}/`, deptDetail)
+  //   .then((res) => {
+  //     dispatch({
+  //       type: PUT_DEPT_DETAILS_COMMIT,
+  //       payload: res.data,
+  //     });
+  //   })
+  //   .catch((err) => console.log(err));
 };
 
 export const putDeptDetails = (questDept) => (dispatch) => {
+  console.log("hello");
   axios
     .put(`/DepartmentDetail/${questDept.id}/`, questDept)
     .then((res) => {
-      dispatch({ typr: PUT_DEPT_DETAILS, payload: res.data });
+      // dispatch({
+      // type: PUT_DEPT_DETAILS,
+      // payload: res.data,
+      // });
     })
     .catch((err) => console.log(err));
 };

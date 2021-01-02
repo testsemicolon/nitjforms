@@ -1,7 +1,13 @@
 import axios from "axios";
 import { tokenConfig } from "./Auth";
 import { createMessage, returnErrors } from "./Messages";
-import { GET_ACCEPTED, USER_LOADING, USER_LOADED, PUT_ACCEPTED } from "./types";
+import {
+  GET_ACCEPTED,
+  USER_LOADING,
+  USER_LOADED,
+  PUT_ACCEPTED,
+  PUT_RESPONSE,
+} from "./types";
 
 export const addAccepted = (quest, title) => (dispatch, getState) => {
   title = title.replace(/[ ]/g, "_");
@@ -49,10 +55,8 @@ export const putResponse = (id, title, quest) => (dispatch) => {
   axios
     .put(`${title}/${id}/`, quest)
     .then((res) => {
-      console.log(res);
+      console.log(res.data);
       dispatch({ type: PUT_RESPONSE, payload: res.data });
     })
-    .catch((err) =>
-      dispatch(returnErrors(err.response.data, err.response.status))
-    );
+    .catch((err) => console.log(err));
 };

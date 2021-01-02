@@ -2,31 +2,8 @@ import React, { Component } from "react";
 import { DataGrid } from "@material-ui/data-grid";
 import { DropdownButton, Dropdown, Button } from "react-bootstrap";
 import { connect } from "react-redux";
-import { getDeptDetails } from "../../../actions/DirectorDashboardActions";
-
-var columns = [
-  { field: "id", headerName: "ID", width: 70 },
-  { field: "department", headerName: "Department", width: 170 },
-  { field: "fundsallocated", headerName: "Committed Amount Fund", width: 130 },
-  {
-    field: "expenditureamount",
-    headerName: " Expenditure Amount Fund",
-    width: 130,
-  },
-  {
-    field: "recommendedamount",
-    headerName: "Recommended Amount Fund",
-    width: 130,
-  },
-  { field: "pipelinedamount", headerName: "Pipelined Amount Fund", width: 130 },
-  { field: "availableamount", headerName: "Available Amount Fund", width: 130 },
-];
 
 export class FundsAllot extends Component {
-  componentDidMount() {
-    this.props.getDeptDetails();
-    console.log(this.props.DepartmentDetail);
-  }
   onChangeType = (e) => {
     this.setState({ userType: e });
   };
@@ -245,4 +222,4 @@ const mapStateToProps = (state) => ({
   DepartmentDetail: state.DepartmentDetail.DepartmentDetail,
 });
 
-export default connect(mapStateToProps, { getDeptDetails })(FundsAllot);
+export default connect(mapStateToProps, {})(FundsAllot);

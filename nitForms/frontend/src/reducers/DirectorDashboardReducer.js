@@ -20,8 +20,6 @@ export default function (state = initialState, action) {
         DepartmentDetail: action.payload,
       };
     default:
-      return {
-        ...state,
-      };
+      return state;
   }
 }

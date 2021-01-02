@@ -26,6 +26,7 @@ import SmallCharts from "./DirectorDashboard/SmallCharts";
 import FundsAllot from "./DirectorDashboard/FundsAllot";
 import { getDirectorNotification } from "../../actions/Notification";
 import CreateDepartment from "./DirectorDashboard/CreateDepartment";
+import { getDeptDetails } from "../../actions/DirectorDashboardActions";
 // import 'rsuite/lib/styles/index.less';
 
 class Director extends Component {
@@ -36,6 +37,7 @@ class Director extends Component {
   };
   constructor(props) {
     super(props);
+    this.props.getDeptDetails();
     this.props.getDirectorNotification(this.props.username);
   }
   onOpenModal = () => {
@@ -45,9 +47,11 @@ class Director extends Component {
   onCloseModal = () => {
     this.setState({ open: false });
   };
-
+  forceUpdateHandler = () => {
+    this.forceUpdate();
+    console.log("sadasd");
+  };
   render() {
-    console.log(this.props.Notification);
     const { open } = this.state;
     return (
       <Fragment>
@@ -471,7 +475,10 @@ class Director extends Component {
                     </tr>
                   </tbody>
                 </table> */}
-                <Discussions notification={this.props.Notification} />
+                <Discussions
+                  notification={this.props.Notification}
+                  forceUpdateHandler={this.forceUpdateHandler}
+                />
               </div>
             </div>
           </div>
@@ -710,6 +717,8 @@ const mapStateToProps = (state) => ({
   Notification: state.Notification.Notification,
 });
 
-export default connect(mapStateToProps, { getName, getDirectorNotification })(
-  Director
-);
+export default connect(mapStateToProps, {
+  getName,
+  getDirectorNotification,
+  getDeptDetails,
+})(Director);

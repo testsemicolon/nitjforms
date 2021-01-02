@@ -85,8 +85,6 @@ export class ViewIndividualResponse extends Component {
       });
     }
     responseObject["responseStatus"] = this.responseStatusCheckFlag;
-    console.log("id   ", id1);
-    console.log(title1);
     console.log(responseObject);
     this.props.putResponse(id1, title1, responseObject);
     questMail["senderEmail"] = this.props.email;
@@ -94,12 +92,12 @@ export class ViewIndividualResponse extends Component {
     questMail["content"] = "Your response has been accepted.";
     // console.log(this.state.content);
     // quest["commentAccepted"] = this.state.content;
-    console.log(acceptedResponseID);
+
     quest["acceptedResponseID"] = acceptedResponseID;
     quest["commentByAuthor"] = this.state.content;
-    console.log(quest);
+
     this.props.addAccepted(quest, title1);
-    console.log(questMail);
+
     this.props.sendMail(questMail);
     const questNotify = {};
     var notifyCmnt = "Your response has been accepted.";
@@ -146,13 +144,9 @@ export class ViewIndividualResponse extends Component {
     questNotify["sender"] = `${this.props.created_by1}`;
     questNotify["reciever"] = `${reciever}`;
     questNotify["notify"] = notifyCmnt;
-    console.log(questNotify);
     this.props.postNotification(questNotify);
     responseObject["responseStatus"] = this.responseStatusCheckFlag;
-    console.log(title1);
-    console.log(responseObject);
     this.props.putResponse(id, title1, responseObject);
-
     var indexResponse = this.indexResponse;
     indexResponse["commentByAuthor"] = this.state.content;
     indexResponse["responseAcceptedStatus"] = "Rejected";

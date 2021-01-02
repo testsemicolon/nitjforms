@@ -28,3 +28,10 @@ urlpatterns += [
 
 
 
+
+
+router.register('test1', test1ViewSet, 'test1')
+
+
+router.register('test1Accepted', test1AcceptedViewSet, 'test1Accepted')
+urlpatterns += router.urls
