@@ -25,6 +25,7 @@ import { Container, Row, Col } from "shards-react";
 import SmallCharts from "./DirectorDashboard/SmallCharts";
 import FundsAllot from "./DirectorDashboard/FundsAllot";
 import { getDirectorNotification } from "../../actions/Notification";
+import CreateDepartment from "./DirectorDashboard/CreateDepartment";
 // import 'rsuite/lib/styles/index.less';
 
 class Director extends Component {
@@ -665,7 +666,7 @@ class Director extends Component {
           <div></div>
         )}
         <FundsAllot />
-
+        <CreateDepartment />
         {/* <OldForms /> */}
         <Features />
         <footer

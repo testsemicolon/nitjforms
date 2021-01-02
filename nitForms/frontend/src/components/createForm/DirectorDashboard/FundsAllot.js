@@ -58,57 +58,182 @@ export class FundsAllot extends Component {
                 "0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) ",
             }}
           >
-            <div>
-              Choose the department to which you want to allocate fund?
-              <DropdownButton
-                variant="light"
-                style={{
-                  size: "2vw",
-                  fontSize: "1vw",
-                }}
-                id="dropdown-basic-button"
-              >
-                <Dropdown.Item>Computer Science</Dropdown.Item>
-                <Dropdown.Item>Electronics</Dropdown.Item>
-                <Dropdown.Item>Mechanical</Dropdown.Item>
-                <Dropdown.Item>Chemistry</Dropdown.Item>
-              </DropdownButton>
-              <input name="" type="text" placeholder="Enter Amount in Ruppes" />{" "}
-              <Button
-                style={{
-                  marginRight: "2vw",
-                  backgroundColor: "white",
-                  color: "#009999",
-                  border: " 0.06vw solid #009999",
-                  boxShadow: ".1vw .1vw .1vw .1vw lightgray",
-                  marginBottom: "1vw",
-                  fontFamily: "Times New Roman",
-                }}
-              >
-                Allocate Ammount
-              </Button>
+            <div style={{ marginTop: "1vw" }}>
+              <table style={{ margin: "auto" }}>
+                <tr>
+                  <td>
+                    <h4>
+                      Choose the department to which you want to allocate fund?
+                    </h4>
+                  </td>
+                  <td>
+                    <DropdownButton
+                      variant="light"
+                      style={{
+                        size: "2vw",
+                        fontSize: "1vw",
+                      }}
+                      id="dropdown-basic-button"
+                    >
+                      <Dropdown.Item>Computer Science</Dropdown.Item>
+                      <Dropdown.Item>Electronics</Dropdown.Item>
+                      <Dropdown.Item>Mechanical</Dropdown.Item>
+                      <Dropdown.Item>Chemistry</Dropdown.Item>
+                    </DropdownButton>
+                  </td>
+                  <td>
+                    <input
+                      name=""
+                      type="text"
+                      placeholder="Enter Amount in Ruppes"
+                      style={{
+                        borderRadius: ".5vw",
+                        border: " 0.1vw solid #009999",
+                        padding: ".3vw",
+                      }}
+                    />{" "}
+                    <Button
+                      style={{
+                        marginRight: "2vw",
+                        backgroundColor: "#009999",
+                        color: "white",
+
+                        boxShadow: ".1vw .1vw .1vw .1vw lightgray",
+                        // marginBottom: "1vw",
+                        fontFamily: "Times New Roman",
+                      }}
+                    >
+                      Allocate Ammount
+                    </Button>
+                  </td>
+                </tr>
+              </table>
             </div>
-            <h3>Currently Allocated Funds</h3>
+            <hr />
+            <h4 style={{ textAlign: "center" }}>Currently Allocated Funds</h4>
             {console.log(this.props.DepartmentDetail)}
-            {this.props.DepartmentDetail.map((dept) => {
-              return (
-                <div key={dept.id}>
-                  <p>
-                    {dept.deptname}
-                    {"    "}
-                    Committed amount{dept.committedAmount}
-                    {"    "}
-                    Recommended amount{dept.recommendedAmount}
-                    {"    "}
-                    pipelined amount{dept.pipelinedAmount}
-                    {"    "}
-                    avaialble amount {dept.availableAmount}
-                    {"    "}
-                    expenditure amount{dept.expenditureAmount}
-                  </p>
-                </div>
-              );
-            })}
+            <table
+              style={{
+                // border: ".1vw solid black",
+                alignContent: "center",
+                textAlign: "center",
+                fontSize: "1.2vw",
+              }}
+            >
+              <tr style={{ borderBottom: ".1vw solid black" }}>
+                <td style={{ padding: "1vw" }}>Department name</td>
+                <td style={{ padding: "1vw" }}>Committed amount</td>
+                <td style={{ padding: "1vw" }}>Recommended amount</td>
+                <td style={{ padding: "1vw" }}>Pipelined amount</td>
+                <td style={{ padding: "1vw" }}>Available amount</td>
+                <td style={{ padding: "1vw" }}>Expenditure amount</td>
+              </tr>
+              {this.props.DepartmentDetail.map((dept) => {
+                return (
+                  <tr
+                    key={dept.id}
+                    style={{ borderBottom: ".1vw solid black" }}
+                  >
+                    <td style={{ padding: "1vw" }}>
+                      <Button
+                        style={{
+                          border: ".1vw solid #E0777D",
+                          backgroundColor: "#FFF5F7",
+                          paddingLeft: "1vw",
+                          paddingRight: "1vw",
+                          paddingTop: ".1vw",
+                          paddingBottom: ".1vw",
+                          color: "black",
+                          fontSize: "1.2vw",
+                        }}
+                      >
+                        {dept.deptName}
+                      </Button>
+                    </td>
+                    <td style={{ padding: "1vw" }}>
+                      <Button
+                        style={{
+                          border: ".1vw solid #E0777D",
+                          backgroundColor: "#FFF5F7",
+                          paddingLeft: "1vw",
+                          paddingRight: "1vw",
+                          paddingTop: ".1vw",
+                          paddingBottom: ".1vw",
+                          color: "black",
+                          fontSize: "1.2vw",
+                        }}
+                      >
+                        {dept.committedAmount}
+                      </Button>
+                    </td>
+                    <td style={{ padding: "1vw" }}>
+                      <Button
+                        style={{
+                          border: ".1vw solid #E0777D",
+                          backgroundColor: "#FFF5F7",
+                          paddingLeft: "1vw",
+                          paddingRight: "1vw",
+                          paddingTop: ".1vw",
+                          paddingBottom: ".1vw",
+                          color: "black",
+                          fontSize: "1.2vw",
+                        }}
+                      >
+                        {dept.recommendedAmount}
+                      </Button>
+                    </td>
+                    <td style={{ padding: "1vw" }}>
+                      <Button
+                        style={{
+                          border: ".1vw solid #E0777D",
+                          backgroundColor: "#FFF5F7",
+                          paddingLeft: "1vw",
+                          paddingRight: "1vw",
+                          paddingTop: ".1vw",
+                          paddingBottom: ".1vw",
+                          color: "black",
+                          fontSize: "1.2vw",
+                        }}
+                      >
+                        {dept.pipelinedAmount}
+                      </Button>
+                    </td>
+                    <td style={{ padding: "1vw" }}>
+                      <Button
+                        style={{
+                          border: ".1vw solid #E0777D",
+                          backgroundColor: "#FFF5F7",
+                          paddingLeft: "1vw",
+                          paddingRight: "1vw",
+                          paddingTop: ".1vw",
+                          paddingBottom: ".1vw",
+                          color: "black",
+                          fontSize: "1.2vw",
+                        }}
+                      >
+                        {dept.availableAmount}
+                      </Button>
+                    </td>
+                    <td>
+                      <Button
+                        style={{
+                          border: ".1vw solid #E0777D",
+                          backgroundColor: "#FFF5F7",
+                          paddingLeft: "1vw",
+                          paddingRight: "1vw",
+                          paddingTop: ".1vw",
+                          paddingBottom: ".1vw",
+                          color: "black",
+                          fontSize: "1.2vw",
+                        }}
+                      >
+                        {dept.expenditureAmount}
+                      </Button>
+                    </td>
+                  </tr>
+                );
+              })}
+            </table>
           </div>
         </div>
       </div>
