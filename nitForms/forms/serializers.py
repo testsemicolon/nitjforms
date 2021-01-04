@@ -57,23 +57,36 @@ class EmailIndexSerializer(serializers.ModelSerializer):
 
 class DepartmentDetailSerializer(serializers.ModelSerializer):
     class Meta:
-        model=DepartmentDetail
+        model = DepartmentDetail
+        fields = '__all__'
+
+
+class ChatSystemSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = ChatSystem
         fields = '__all__'
 
 
 
-
-
-
-
-
-class test1Serializer(serializers.ModelSerializer):
+class test3Serializer(serializers.ModelSerializer):
     class Meta:
-        model = test1
+        model = test3
         fields = '__all__'
 
 
-class test1AcceptedSerializer(serializers.ModelSerializer):
+class test3AcceptedSerializer(serializers.ModelSerializer):
     class Meta:
-        model = test1Accepted
+        model = test3Accepted
+        fields = '__all__'
+
+
+class test4Serializer(serializers.ModelSerializer):
+    class Meta:
+        model = test4
+        fields = '__all__'
+
+
+class test4AcceptedSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = test4Accepted
         fields = '__all__'

@@ -12,6 +12,7 @@ import FormStatus from "./FormStatus";
 import Status from "./Status";
 import DepartmentDetail from "./DirectorDashboardReducer";
 import Response from "./Response";
+import Chats from "./ChatReducers";
 
 export default combineReducers({
   Forms: Forms,
@@ -27,4 +28,5 @@ export default combineReducers({
   Status: Status,
   DepartmentDetail: DepartmentDetail,
   Response: Response,
+  Chats: Chats,
 });

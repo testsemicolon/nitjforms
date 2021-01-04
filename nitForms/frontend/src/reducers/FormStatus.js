@@ -1,7 +1,12 @@
-import { GET_FORM_STATUS, FORM_STATUS } from "../actions/types";
+import {
+  GET_FORM_STATUS,
+  FORM_STATUS,
+  GET_USER_HISTORY,
+} from "../actions/types";
 
 const initialState = {
   FormStatus: [],
+  UserHistory: [],
 };
 
 export default function (state = initialState, action) {
@@ -10,6 +15,11 @@ export default function (state = initialState, action) {
       return {
         ...state,
         FormStatus: action.payload,
+      };
+    case GET_USER_HISTORY:
+      return {
+        ...state,
+        UserHistory: action.payload,
       };
     default:
       return state;

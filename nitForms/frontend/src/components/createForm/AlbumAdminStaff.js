@@ -26,6 +26,9 @@ export class AlbumAdminStaff extends Component {
     };
     this.toggleNotifications = this.toggleNotifications.bind(this);
   }
+  forceUpdateHandler() {
+    this.forceUpdate();
+  }
   toggleNotifications() {
     this.setState({
       visible: !this.state.visible,
@@ -107,49 +110,45 @@ export class AlbumAdminStaff extends Component {
                           overflowX: "inherit",
                         }}
                       >
-                        {this.props.Notification !== null ? (
-                          this.props.Notification.map((nfy) => {
-                            return (
-                              <div
+                        {this.props.Notification.map((nfy) => {
+                          return (
+                            <div
+                              style={{
+                                borderBottom: ".03vw solid lightgray",
+                              }}
+                            >
+                              <DropdownItem
                                 style={{
-                                  borderBottom: ".03vw solid lightgray",
+                                  overflowWrap: "break-word",
+                                  fontSize: "1vw",
                                 }}
                               >
-                                <DropdownItem
-                                  style={{
-                                    overflowWrap: "break-word",
-                                    fontSize: "1vw",
-                                  }}
+                                <div
+                                  className="notification__content"
+                                  style={{ overflowWrap: "break-word" }}
                                 >
-                                  <div
-                                    className="notification__content"
-                                    style={{ overflowWrap: "break-word" }}
-                                  >
-                                    <table>
-                                      <tr>
-                                        <td rowspan="2">
-                                          <span class="material-icons notification__icon notification__icon-wrapper">
-                                            sms
-                                          </span>
-                                        </td>
-                                        <td>
-                                          {" "}
-                                          <strong>{nfy.formName}</strong>
-                                        </td>
-                                      </tr>
-                                      <tr>
-                                        <td> {nfy.notify}</td>
-                                      </tr>
-                                    </table>
-                                  </div>
-                                </DropdownItem>
-                                {/* <hr /> */}
-                              </div>
-                            );
-                          })
-                        ) : (
-                          <div>no notification</div>
-                        )}
+                                  <table>
+                                    <tr>
+                                      <td rowspan="2">
+                                        <span class="material-icons notification__icon notification__icon-wrapper">
+                                          sms
+                                        </span>
+                                      </td>
+                                      <td>
+                                        {" "}
+                                        <strong>{nfy.formName}</strong>
+                                      </td>
+                                    </tr>
+                                    <tr>
+                                      <td> {nfy.notify}</td>
+                                    </tr>
+                                  </table>
+                                </div>
+                              </DropdownItem>
+                              {/* <hr /> */}
+                            </div>
+                          );
+                        })}
                       </div>
                     </Collapse>
                   </div>
@@ -218,63 +217,59 @@ export class AlbumAdminStaff extends Component {
                 }}
                 className="grey darken-3 p-3"
               >
-                {this.props.Notification !== null ? (
-                  this.props.Notification.map((nfy) => {
-                    return (
-                      <div
-                        style={{
-                          backgroundColor: "#e7e7de",
-                          marginBottom: "1vw",
-                          marginTop: 0,
-                          paddingTop: 0,
-                        }}
-                      >
-                        <MDBNotification
-                          iconClassName="text-primary"
-                          show
-                          fade
-                          title="Bootstrap"
-                          message={nfy.notify}
-                          text="11 mins ago"
-                          zindex="9999"
-                          style={{ marginBottom: 0 }}
-                        />
+                {this.props.Notification.map((nfy) => {
+                  return (
+                    <div
+                      style={{
+                        backgroundColor: "#e7e7de",
+                        marginBottom: "1vw",
+                        marginTop: 0,
+                        paddingTop: 0,
+                      }}
+                    >
+                      <MDBNotification
+                        iconClassName="text-primary"
+                        show
+                        fade
+                        title="Bootstrap"
+                        message={nfy.notify}
+                        text="11 mins ago"
+                        zindex="9999"
+                        style={{ marginBottom: 0 }}
+                      />
 
-                        <table style={{ width: "100%" }}>
-                          <tr>
-                            <td style={{ width: "50%" }}>
-                              <Link to={nfy.linkToPage}>
-                                <ButtonB
-                                  style={{
-                                    // backgroundColor: "transparent",
-                                    width: "100%",
-                                    textAlign: "center",
-                                  }}
-                                >
-                                  View
-                                </ButtonB>
-                              </Link>
-                            </td>
-
-                            <td style={{ width: "50%" }}>
+                      <table style={{ width: "100%" }}>
+                        <tr>
+                          <td style={{ width: "50%" }}>
+                            <Link to={nfy.linkToPage}>
                               <ButtonB
                                 style={{
-                                  //backgroundColor: "transparent",
+                                  // backgroundColor: "transparent",
                                   width: "100%",
                                   textAlign: "center",
                                 }}
                               >
-                                Mark as Read
+                                View
                               </ButtonB>
-                            </td>
-                          </tr>
-                        </table>
-                      </div>
-                    );
-                  })
-                ) : (
-                  <div></div>
-                )}
+                            </Link>
+                          </td>
+
+                          <td style={{ width: "50%" }}>
+                            <ButtonB
+                              style={{
+                                //backgroundColor: "transparent",
+                                width: "100%",
+                                textAlign: "center",
+                              }}
+                            >
+                              Mark as Read
+                            </ButtonB>
+                          </td>
+                        </tr>
+                      </table>
+                    </div>
+                  );
+                })}
               </MDBContainer>
             </div>
           ) : null}{" "}

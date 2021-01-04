@@ -7,10 +7,10 @@ export const getNotification = (username) => (dispatch) => {
   axios
     .get("/userNotifications")
     .then((res) => {
+      var response = res.data.filter((notify) => notify.reciever === username);
       dispatch({
         type: GET_NOTIFICATION,
-        payload: res.data,
-        userName: username,
+        payload: response,
       });
     })
     .catch((err) =>

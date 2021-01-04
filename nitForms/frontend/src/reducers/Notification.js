@@ -13,9 +13,7 @@ export default function (state = initialState, action) {
     case GET_NOTIFICATION:
       return {
         ...state,
-        Notification: action.payload.filter(
-          (notify) => notify.reciever === action.userName
-        ),
+        Notification: action.payload,
       };
     case POST_NOTIFICATION:
       return {

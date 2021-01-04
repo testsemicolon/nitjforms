@@ -104,6 +104,10 @@ export class ViewIndividualResponse extends Component {
     questNotify["sender"] = `${this.props.created_by1}`;
     questNotify["reciever"] = `${reciever}`;
     questNotify["notify"] = notifyCmnt;
+    questNotify["linkToPage"] = "";
+    questNotify["formName"] = title1;
+    questNotify["acceptedResponseID"] = acceptedResponseID;
+    console.log(questNotify);
     this.props.postNotification(questNotify);
     var indexResponse = this.indexResponse;
     indexResponse["commentByAuthor"] = this.state.content;
@@ -144,6 +148,9 @@ export class ViewIndividualResponse extends Component {
     questNotify["sender"] = `${this.props.created_by1}`;
     questNotify["reciever"] = `${reciever}`;
     questNotify["notify"] = notifyCmnt;
+    questNotify["linkToPage"] = "";
+    questNotify["formName"] = title1;
+    questNotify["acceptedResponseID"] = 0;
     this.props.postNotification(questNotify);
     responseObject["responseStatus"] = this.responseStatusCheckFlag;
     this.props.putResponse(id, title1, responseObject);

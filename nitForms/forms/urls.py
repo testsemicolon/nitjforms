@@ -16,22 +16,8 @@ router.register("userNotifications", userNotificationsViewSet,
 router.register("formIndex", formIndexViewSet, "formIndex")
 router.register("EmailIndex", EmailIndexViewSet, "EmailIndex")
 router.register("DepartmentDetail",DepartmentDetailViewSet,"DepartmentDetail")
+router.register("ChatSystem",ChatSystemViewSet,"ChatSystem")
 urlpatterns = router.urls
 urlpatterns += [
     path('posts/', api.PostView.as_view(), name='posts_list'),
 ]
-
-
-
-
-
-
-
-
-
-
-router.register('test1', test1ViewSet, 'test1')
-
-
-router.register('test1Accepted', test1AcceptedViewSet, 'test1Accepted')
-urlpatterns += router.urls

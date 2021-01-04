@@ -1,29 +1,49 @@
+import React, { Component } from "react";
 import {
   VerticalTimeline,
   VerticalTimelineElement,
 } from "react-vertical-timeline-component";
-import React, { Component } from "react";
 import { Button } from "react-bootstrap";
 import { connect } from "react-redux";
 
 export class UserTimeLine extends Component {
   msg = "";
   rejected = false;
-  constructor(props) {
-    super(props);
-    console.log(this.props.object);
+  state = {
+    sendChat: "",
+  };
+  onChange = (e) => {
+    this.setState({ [e.target.name]: e.target.value });
+  };
+
+  componentDidMount() {
+    console.log(this.props.username);
     if (this.props.object.responseAcceptedStatus === "Accepted") {
+      this.props.getMessage(this.props.object.responseID);
       this.msg = "Your response has been accepted";
     } else if (this.props.object.responseAcceptedStatus === "Rejected") {
+      this.props.getMessage(this.props.object.responseID);
       this.rejected = true;
       this.msg = "Your response has been rejected";
     } else {
       this.msg = "Status Pending";
     }
   }
+  // componentDidMount() {
+  //   this.props.getMessage();
+  // }
+  onClickSendMessage = () => {
+    console.log("jherw");
+    var quest = {};
+    quest["sender"] = this.props.username;
+    quest["reciever"];
+    quest["message"] = this.state.sendChat;
+    quest["acceptedResponseID"] = this.props.object.responseID;
+    console.log(quest);
+    this.props.postMessage(quest);
+  };
 
   render() {
-    console.log(this.msg);
     return (
       <div style={{ marginLeft: "auto", marginRight: "auto" }}>
         <div
@@ -136,6 +156,25 @@ export class UserTimeLine extends Component {
               )}
             </VerticalTimelineElement>
           </VerticalTimeline>
+
+          {this.props.Chats.map((chat) => {
+            return (
+              <div>
+                <h3>Sender: {chat.sender}</h3>
+                <h3>Message: {chat.message}</h3>
+              </div>
+            );
+          })}
+          <div>
+            <input
+              name="sendChat"
+              value={this.state.sendChat}
+              onChange={this.onChange}
+              type="text"
+              placeholder="Enter Message"
+            />
+            <button onClick={this.onClickSendMessage}>Send</button>
+          </div>
         </div>
       </div>
     );
@@ -147,30 +186,7 @@ const mapStateToProps = (state) => ({
   username: state.Auth.user.username,
   FormStatus: state.FormStatus.FormStatus,
   Status: state.Status.Status,
+  // Chats: state.Chats.Chats,
 });
 
 export default connect(mapStateToProps, {})(UserTimeLine);
-/**
-.custom-timeline {
-  margin-left: 20px;
-}
-
-.custom-timeline .rs-timeline-item-custom-dot .rs-icon {
-  position: absolute;
-  background: #fff;
-  top: 0;
-  left: -2px;
-  border: 2px solid #ddd;
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
-  font-size: 18px;
-  padding-top: 9px;
-  color: #999;
-  margin-left: -13px;
-}
-
-.custom-timeline .rs-timeline-item-content {
-  margin-left: 24px;
-}
-**/

@@ -13,6 +13,7 @@ import { getFormStatus } from "../../actions/FormStatus";
 import { getStatus } from "../../actions/Status";
 import { UserTimeLine } from "./UserTimeLine";
 import { NavItem, NavLink, Badge, Collapse, DropdownItem } from "shards-react";
+import { getMessage, postMessage } from "../../actions/ChatActions";
 
 export class AlbumUser extends Component {
   arr = [];
@@ -63,7 +64,15 @@ export class AlbumUser extends Component {
 
   render() {
     if (this.state.flag === true) {
-      return <UserTimeLine object={this.state.object} />;
+      return (
+        <UserTimeLine
+          object={this.state.object}
+          getMessage={this.props.getMessage}
+          Chats={this.props.Chats}
+          postMessage={this.props.postMessage}
+          username={this.props.username}
+        />
+      );
     }
     var msg = "";
     return (
@@ -131,49 +140,45 @@ export class AlbumUser extends Component {
                           overflowX: "inherit",
                         }}
                       >
-                        {this.props.Notification !== null ? (
-                          this.props.Notification.map((nfy) => {
-                            return (
-                              <div
+                        {this.props.Notification.map((nfy) => {
+                          return (
+                            <div
+                              style={{
+                                borderBottom: ".03vw solid lightgray",
+                              }}
+                            >
+                              <DropdownItem
                                 style={{
-                                  borderBottom: ".03vw solid lightgray",
+                                  overflowWrap: "break-word",
+                                  fontSize: "1vw",
                                 }}
                               >
-                                <DropdownItem
-                                  style={{
-                                    overflowWrap: "break-word",
-                                    fontSize: "1vw",
-                                  }}
+                                <div
+                                  className="notification__content"
+                                  style={{ overflowWrap: "break-word" }}
                                 >
-                                  <div
-                                    className="notification__content"
-                                    style={{ overflowWrap: "break-word" }}
-                                  >
-                                    <table>
-                                      <tr>
-                                        <td rowspan="2">
-                                          <span class="material-icons notification__icon notification__icon-wrapper">
-                                            sms
-                                          </span>
-                                        </td>
-                                        <td>
-                                          {" "}
-                                          <strong>{nfy.formName}</strong>
-                                        </td>
-                                      </tr>
-                                      <tr>
-                                        <td> {nfy.notify}</td>
-                                      </tr>
-                                    </table>
-                                  </div>
-                                </DropdownItem>
-                                {/* <hr /> */}
-                              </div>
-                            );
-                          })
-                        ) : (
-                          <div>no notification</div>
-                        )}
+                                  <table>
+                                    <tr>
+                                      <td rowspan="2">
+                                        <span class="material-icons notification__icon notification__icon-wrapper">
+                                          sms
+                                        </span>
+                                      </td>
+                                      <td>
+                                        {" "}
+                                        <strong>{nfy.formName}</strong>
+                                      </td>
+                                    </tr>
+                                    <tr>
+                                      <td> {nfy.notify}</td>
+                                    </tr>
+                                  </table>
+                                </div>
+                              </DropdownItem>
+                              {/* <hr /> */}
+                            </div>
+                          );
+                        })}
                       </div>
                     </Collapse>
                   </div>
@@ -424,10 +429,13 @@ const mapStateToProps = (state) => ({
   username: state.Auth.user.username,
   FormStatus: state.FormStatus.FormStatus,
   Status: state.Status.Status,
+  Chats: state.Chats.Chats,
 });
 
 export default connect(mapStateToProps, {
   getNotification,
   getFormStatus,
   getStatus,
+  getMessage,
+  postMessage,
 })(AlbumUser);

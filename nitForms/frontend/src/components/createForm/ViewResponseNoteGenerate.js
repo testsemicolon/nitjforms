@@ -15,6 +15,8 @@ import store from "../../store";
 import { createMessage } from "../../actions/Messages";
 import { postNotification, getNotification } from "../../actions/Notification";
 import { getNotingTemplate } from "../../actions/NotingTemplate";
+import { getUserHistory } from "../../actions/FormStatus";
+import { postMessage } from "../../actions/ChatActions";
 import {
   getDeptDetails,
   putDeptDetails,
@@ -34,6 +36,8 @@ export class ViewResponseNoteGenerate extends Component {
     accepted: [],
     recommendAmount: 0,
     availAmount: 0,
+    userHistory: false,
+    sendChatSystem: false,
   };
   name = "";
   description = "";
@@ -42,23 +46,27 @@ export class ViewResponseNoteGenerate extends Component {
   data = "";
   lastSenderNotification = "";
   allowAccessFlag = false;
+  id = "";
   constructor(props) {
     super(props);
     this.props.getDeptDetails();
     this.props.getAccepted(this.props.match.params.title);
     this.props.getNotification(this.props.username);
     this.props.getNotingTemplate();
+
     {
       Object.entries(this.props.AcceptedResponse).map(([key, value]) => {
         if (key === this.props.match.params.value) {
           this.obj = value;
           this.name = value.userName;
           this.time = value.responseTime;
+          this.id = value.acceptedResponseID;
           this.setState({ accepted: value });
         }
       });
     }
-
+    console.log(this.name);
+    // this.props.getUserHistory(this.name);
     this.props.FormName.map((a) => {
       if (a.title === this.props.match.params.title) {
         if (this.props.username === a.created_by) {
@@ -66,6 +74,16 @@ export class ViewResponseNoteGenerate extends Component {
         }
       }
     });
+    // {
+    //   Object.entries(this.obj.forwardTo).map(([key, value]) => {
+    //     Object.entries(value).map(([key1, value1]) => {
+    //       console.log(value1, this.props.username);
+    //       if (value1 === this.props.username) {
+    //         this.allowAccessFlag = true;
+    //       }
+    //     });
+    //   });
+    // }
     console.log("hedf", this.props.DepartmentDetail);
     this.props.DepartmentDetail.map((deta) => {
       console.log(deta);
@@ -81,6 +99,7 @@ export class ViewResponseNoteGenerate extends Component {
           this.obj = value;
           this.name = value.userName;
           this.time = value.responseTime;
+          this.id = value.acceptedResponseID;
           this.data = this.setState({ obj1: value });
         }
       });
@@ -92,6 +111,7 @@ export class ViewResponseNoteGenerate extends Component {
       {
         Object.entries(this.obj.forwardTo).map(([key, value]) => {
           Object.entries(value).map(([key1, value1]) => {
+            console.log(value1, this.props.username);
             if (value1 === this.props.username) {
               this.allowAccessFlag = true;
             }
@@ -188,6 +208,7 @@ export class ViewResponseNoteGenerate extends Component {
     questNotify["linkToPage"] = `${this.props.location.pathname}`;
     questNotify["acceptedResponseID"] = `${acceptedResponseID}`;
     questNotify["formName"] = `${this.props.match.params.title}Accepted`;
+    console.log(questNotify);
     this.props.postNotification(questNotify);
     store.dispatch(
       createMessage({
@@ -245,6 +266,7 @@ export class ViewResponseNoteGenerate extends Component {
     questNotify["linkToPage"] = `${this.props.location.pathname}`;
     questNotify["acceptedResponseID"] = `${acceptedResponseID}`;
     questNotify["formName"] = `${this.props.match.params.title}Accepted`;
+    console.log(questNotify);
     this.props.postNotification(questNotify);
     store.dispatch(
       createMessage({
@@ -311,6 +333,16 @@ export class ViewResponseNoteGenerate extends Component {
         })
       );
     }
+  };
+
+  onClickSendMessage = () => {
+    var quest = {};
+    quest["sender"] = this.props.username;
+    quest["reciever"] = this.name;
+    quest["message"] = this.state.sendChat;
+    quest["acceptedResponseID"] = this.id;
+    console.log(quest);
+    this.props.postMessage(quest);
   };
 
   render() {
@@ -673,6 +705,43 @@ export class ViewResponseNoteGenerate extends Component {
               ) : (
                 <div></div>
               )}
+              {this.state.userHistory ? (
+                <div>
+                  {this.props.UserHistory.map((outerLoop) => {
+                    return outerLoop.map((innerLoop) => {
+                      return (
+                        <div key={innerLoop.acceptedResponseID}>
+                          <h3>Form Name: {innerLoop.formName}</h3>
+                          <h3>
+                            Committed Amount : {innerLoop.committedAmount}
+                          </h3>
+                          <h3>
+                            Recommended Amount : {innerLoop.recommendedAmount}
+                          </h3>
+                          {/* <Link to={innerLoop.} */}
+                          <br />
+                        </div>
+                      );
+                    });
+                  })}
+                </div>
+              ) : (
+                <div></div>
+              )}
+              {this.state.sendChatSystem ? (
+                <div>
+                  <input
+                    name="sendChat"
+                    value={this.state.sendChat}
+                    onChange={this.onChange}
+                    type="text"
+                    placeholder="Enter Message"
+                  />
+                  <button onClick={this.onClickSendMessage}>Send</button>
+                </div>
+              ) : (
+                <div></div>
+              )}
             </div>
 
             <div
@@ -733,6 +802,8 @@ export class ViewResponseNoteGenerate extends Component {
                     this.setState({ forwardtoggle: false });
                     this.setState({ acceptreject: false });
                     this.setState({ amountcommit: false });
+                    this.setState({ userHistory: false });
+                    this.setState({ sendChatSystem: false });
                   }}
                   style={{
                     backgroundColor: "white",
@@ -751,6 +822,8 @@ export class ViewResponseNoteGenerate extends Component {
                     this.setState({ forwardtoggle: false });
                     this.setState({ acceptreject: false });
                     this.setState({ amountcommit: false });
+                    this.setState({ userHistory: false });
+                    this.setState({ sendChatSystem: false });
                   }}
                   style={{
                     backgroundColor: "white",
@@ -769,6 +842,8 @@ export class ViewResponseNoteGenerate extends Component {
                     this.setState({ forwardtoggle: true });
                     this.setState({ acceptreject: false });
                     this.setState({ amountcommit: false });
+                    this.setState({ userHistory: false });
+                    this.setState({ sendChatSystem: false });
                   }}
                   style={{
                     backgroundColor: "white",
@@ -787,6 +862,8 @@ export class ViewResponseNoteGenerate extends Component {
                     this.setState({ forwardtoggle: false });
                     this.setState({ acceptreject: true });
                     this.setState({ amountcommit: false });
+                    this.setState({ userHistory: false });
+                    this.setState({ sendChatSystem: false });
                   }}
                   style={{
                     backgroundColor: "white",
@@ -805,6 +882,8 @@ export class ViewResponseNoteGenerate extends Component {
                     this.setState({ forwardtoggle: false });
                     this.setState({ acceptreject: false });
                     this.setState({ amountcommit: true });
+                    this.setState({ userHistory: false });
+                    this.setState({ sendChatSystem: false });
                   }}
                   style={{
                     backgroundColor: "white",
@@ -814,7 +893,47 @@ export class ViewResponseNoteGenerate extends Component {
                     fontFamily: "Times New Roman",
                   }}
                 >
-                  Ammount Commit
+                  Amount Recommend
+                </Button>
+                <Button
+                  onClick={() => {
+                    this.setState({ showresponse: false });
+                    this.setState({ linkednotings: false });
+                    this.setState({ forwardtoggle: false });
+                    this.setState({ acceptreject: false });
+                    this.setState({ amountcommit: false });
+                    this.setState({ userHistory: true });
+                    this.setState({ sendChatSystem: false });
+                  }}
+                  style={{
+                    backgroundColor: "white",
+                    color: "#009999",
+                    borderWidth: 0,
+                    boxShadow: ".3VW .3VW .3VW lightgray",
+                    fontFamily: "Times New Roman",
+                  }}
+                >
+                  User History
+                </Button>
+                <Button
+                  onClick={() => {
+                    this.setState({ showresponse: false });
+                    this.setState({ linkednotings: false });
+                    this.setState({ forwardtoggle: false });
+                    this.setState({ acceptreject: false });
+                    this.setState({ amountcommit: false });
+                    this.setState({ userHistory: false });
+                    this.setState({ sendChatSystem: true });
+                  }}
+                  style={{
+                    backgroundColor: "white",
+                    color: "#009999",
+                    borderWidth: 0,
+                    boxShadow: ".3VW .3VW .3VW lightgray",
+                    fontFamily: "Times New Roman",
+                  }}
+                >
+                  Send Chat To User
                 </Button>
               </div>
 
@@ -845,6 +964,7 @@ const mapStateToProps = (state) => ({
   FormName: state.FormName.FormName,
   department: state.Auth.user.department,
   DepartmentDetail: state.DepartmentDetail.DepartmentDetail,
+  UserHistory: state.FormStatus.UserHistory,
 });
 
 export default withRouter(
@@ -856,5 +976,7 @@ export default withRouter(
     getNotingTemplate,
     getDeptDetails,
     putDeptDetails,
+    getUserHistory,
+    postMessage,
   })(ViewResponseNoteGenerate)
 );
