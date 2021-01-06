@@ -68,13 +68,4 @@ class ChatSystemSerializer(serializers.ModelSerializer):
 
 
 
-class test11Serializer(serializers.ModelSerializer):
-    class Meta:
-        model = test11
-        fields = '__all__'
 
-
-class test11AcceptedSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = test11Accepted
-        fields = '__all__'

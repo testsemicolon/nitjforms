@@ -80,7 +80,7 @@ export class CombinedView extends Component {
   render() {
     return (
       <div style={{ marginLeft: 0 }}>
-        <Button
+        {/* <Button
           onClick={() => window.history.back()}
           className="previous"
           style={{
@@ -91,16 +91,19 @@ export class CombinedView extends Component {
           }}
         >
           &laquo; Back
-        </Button>
+        </Button> */}
         <div
           style={{
             width: "35vw",
-            float: "left",
-            position: "relative",
+            //float: "left",
+            //position: "relative",
             backgroundColor: "#eeeeee",
             borderRadius: ".5vw",
             boxShadow: ".3vw .3vw .3vw silver",
-            marginLeft: "5vw",
+            //marginLeft: "5vw",
+            marginLeft: "auto",
+            marginRight: "auto",
+            marginBottom: "1.5vw",
           }}
         >
           <VerticalTimeline

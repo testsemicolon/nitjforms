@@ -358,438 +358,50 @@ export class ViewResponseNoteGenerate extends Component {
             <div
               style={{
                 // backgroundColor: "#ffb266",
-                backgroundColor: "rgba(0, 153, 153, 0.5)",
+                backgroundColor: "#E0777D",
                 marginTop: "1vw",
 
                 minHeight: "3vw",
                 borderRadius: ".3vw",
                 padding: "1vw",
                 color: "white",
-                marginLeft: "5vw",
-                marginRight: "5vw",
+                marginLeft: "auto",
+                marginRight: "auto",
                 fontSize: "1.2vw",
               }}
             >
-              <table style={{ paddingLeft: "2vw", paddingRight: "2vw" }}>
+              <table style={{ margin: "auto" }}>
                 <tr>
                   <td style={{ paddingLeft: "2vw", paddingRight: "2vw" }}>
-                    <font style={{ color: "black" }}>NAME:</font>
+                    NAME:
                     {this.name}{" "}
                   </td>
                   <td style={{ paddingLeft: "2vw", paddingRight: "2vw" }}>
-                    <font style={{ color: "black" }}>TITLE:</font>
+                    TITLE:
                     {this.props.match.params.title}
                   </td>
                   <td style={{ paddingLeft: "2vw", paddingRight: "2vw" }}>
-                    <font style={{ color: "black" }}>DESCRIPTION:</font>
-
+                    DESCRIPTION:
                     {this.description}
                   </td>
                   <td>
                     {" "}
-                    <font style={{ color: "black" }}>TIME:</font>
+                    TIME:
                     {this.time}
                   </td>
                 </tr>
               </table>
-            </div>
-            <div
-              style={{
-                position: "relative",
-                width: "36vw",
-                float: "right",
-                marginBottom: "1vw",
-                marginTop: "2vw",
-                marginRight: "7vw",
-              }}
-            >
-              {this.state.showresponse ? (
-                <div>
-                  <div
-                    style={{
-                      position: "relative",
-                      width: "36vw",
-                      float: "right",
-                      justifyContent: "center",
-                      textAlign: "center",
-                      paddingBottom: ".3vw",
-                      paddingTop: "1vw",
-                      marginBottom: "1.5vw",
-                      // backgroundColor: "#009999",
-                      // backgroundImage: "linear-gradient(to right,#009999,#00e7e7",
-                      // backgroundImage:
-                      //   "linear-gradient(to right,rgba(0, 153, 153, 0.5),rgba(0, 231, 231, 0.5)",
-                      backgroundColor: "rgba(0, 153, 153, 0.5)",
-                      boxShadow: ".3vw .3vw .3vw silver",
-                      borderRadius: ".3vw",
-                      paddingRight: "1vw",
-                    }}
-                  >
-                    <h4 style={{ color: "white" }}> Accepted Responses</h4>
-                  </div>
-                  <div
-                    style={{
-                      float: "right",
-                      postion: "relative",
-                      width: "36vw",
-                      paddingLeft: "2vw",
-                      paddingRight: "2vw",
-                      // display: "flex",
-                      // justifyContent: "center",
-                      paddingTop: "1vw",
-                      paddingBottom: "1vw",
-                      marginBottom: "4vw",
-                      backgroundColor: "#EEEEEE",
-                      boxShadow: ".3vw .3vw .3vw silver",
-                      borderRadius: ".3vw",
-                      //  border: ".2vw solid silver",
-                    }}
-                  >
-                    <Fragment>
-                      {Object.entries(this.obj).map(([question, answer]) => {
-                        if (
-                          (question !== "comment") &
-                          (question !== "forwardTo") &
-                          (question !== "responseTime") &
-                          (question !== "commentAccepted") &
-                          (question !== "notification")
-                        ) {
-                          return (
-                            <Fragment key={question}>
-                              <Card
-                                style={{
-                                  borderRadius: ".95vw",
-                                  borderWidth: 0,
-                                  // border: ".2vw solid #ed6a5a",
-                                  marginBottom: "2vw",
-                                  width: "25",
-                                  color: "#009999",
-
-                                  // height: "auto",
-                                  boxShadow: ".5vw .5vw .5vw  silver",
-                                }}
-                              >
-                                <div>
-                                  <Card.Header
-                                    style={{
-                                      backgroundColor: "white",
-                                      borderRadius: ".75vw .75vw 0 0",
-                                      // width: "25vw",
-                                      height: "2.5vw",
-                                      fontSize: "1vw",
-                                      color: "#009999",
-                                      margin: 0,
-                                      padding: "0.6vw",
-                                    }}
-                                  >
-                                    <strong> {question.toUpperCase()}</strong>
-                                  </Card.Header>
-                                  <Card.Body
-                                    style={{
-                                      backgroundColor: "white",
-                                      borderRadius: " 0 0 .75vw .75vw",
-                                      // width: "25vw",
-                                      fontSize: "0.93vw",
-                                      height: "auto",
-                                      padding: "0.6vw",
-                                      margin: 0,
-                                    }}
-                                  >
-                                    {/* <Card.Title
-                                  style={{
-                                    fontSize: ".93vw",
-                                    marginBottom: ".5vw",
-                                  }}
-                                >
-                                
-                                </Card.Title> */}
-                                    <Card.Text>
-                                      <TextareaAutosize
-                                        name={question}
-                                        value={answer}
-                                        style={{
-                                          width: "25vw",
-                                          borderColor: "white",
-                                          fontSize: "1vw",
-                                        }}
-                                      >
-                                        {answer}
-                                      </TextareaAutosize>
-                                    </Card.Text>
-                                  </Card.Body>
-                                </div>
-                              </Card>
-                            </Fragment>
-                          );
-                        }
-                      })}
-                    </Fragment>
-                  </div>
-                </div>
-              ) : (
-                <div></div>
-              )}
-
-              {this.state.linkednotings ? (
-                <div>
-                  <div
-                    style={{
-                      width: "34vw",
-
-                      justifyContent: "center",
-                      textAlign: "center",
-                      //backgroundImage: "linear-gradient(to right,#009999,#00e7e7",
-                      backgroundColor: "rgba(0, 153, 153, 0.5)",
-                      paddingTop: "1vw",
-                      marginBottom: "1.5vw",
-                      // backgroundColor: "#00a3a3",
-                      boxShadow: ".3vw .3vw .5vw silver",
-                      borderRadius: ".3vw",
-                      paddingBottom: ".3vw",
-                      paddingRight: "1vw",
-                    }}
-                  >
-                    <h4 style={{ color: "white" }}> Linked Notings</h4>
-                  </div>
-                  <div
-                    style={{
-                      float: "left",
-                      postion: "relative",
-                      width: "34vw",
-
-                      textAlign: "center",
-
-                      paddingLeft: "2vw",
-                      paddingRight: "2vw",
-                      // display: "flex",
-                      // justifyContent: "center",
-                      paddingTop: "1vw",
-                      paddingBottom: "1vw",
-                      marginBottom: "4vw",
-                      backgroundColor: "#EEEEEE",
-                      boxShadow: ".3vw .3vw .5vw silver",
-                      borderRadius: ".3vw",
-                    }}
-                  >
-                    <NotingIndivdiual
-                      title={this.props.match.params.title}
-                      value={this.props.match.params.value}
-                      id={this.props.match.params.id}
-                    />
-                    <br />
-                  </div>
-                </div>
-              ) : (
-                <div></div>
-              )}
-
-              {this.state.forwardtoggle ? (
-                <div>
-                  <div
-                    style={{
-                      width: "34vw",
-
-                      justifyContent: "center",
-                      textAlign: "center",
-                      //backgroundImage: "linear-gradient(to right,#009999,#00e7e7",
-                      backgroundColor: "rgba(0, 153, 153, 0.5)",
-                      paddingTop: "1vw",
-                      marginBottom: "1.5vw",
-                      // backgroundColor: "#00a3a3",
-                      boxShadow: ".3vw .3vw .5vw silver",
-                      borderRadius: ".3vw",
-                      color: "white",
-                      paddingBottom: ".3vw",
-                      paddingRight: "1vw",
-                      // paddingBottom: "1vw",
-                    }}
-                  >
-                    <h4 style={{ color: "white" }}> Enter UserName</h4>
-                  </div>
-
-                  <div
-                    style={{
-                      float: "left",
-                      postion: "relative",
-                      width: "34vw",
-
-                      textAlign: "center",
-
-                      paddingLeft: "2vw",
-                      paddingRight: "2vw",
-                      // display: "flex",
-                      // justifyContent: "center",
-                      paddingTop: "1vw",
-                      paddingBottom: "1vw",
-                      marginBottom: "4vw",
-                      backgroundColor: "#EEEEEE",
-                      boxShadow: ".3vw .3vw .5vw silver",
-                      borderRadius: ".3vw",
-                    }}
-                  >
-                    <div style={{ textAlign: "center" }}>
-                      <input
-                        name="forwardTo"
-                        value={this.state.forwardTo}
-                        onChange={this.onChange}
-                        type="text"
-                        placeholder="Enter Username"
-                      />{" "}
-                      <Button
-                        style={{
-                          marginRight: "2vw",
-                          backgroundColor: "white",
-                          color: "#009999",
-                          border: " 0.06vw solid #009999",
-                          boxShadow: ".1vw .1vw .1vw .1vw lightgray",
-                          marginBottom: "1vw",
-                          fontFamily: "Times New Roman",
-                        }}
-                        onClick={this.onClickForward}
-                      >
-                        Forward
-                      </Button>
-                    </div>
-                  </div>
-                </div>
-              ) : (
-                <div></div>
-              )}
-
-              {this.state.acceptreject ? (
-                <div>
-                  Do you want to accept this form or Reject this response
-                  <br />
-                  <Button onClick={this.onclickAcceptResponse}>
-                    Accept Response{" "}
-                  </Button>
-                  <br />
-                  <Button onClick={this.onClickRejectResponse}>
-                    Reject Response{" "}
-                  </Button>
-                </div>
-              ) : (
-                <div></div>
-              )}
-              {this.state.amountcommit ? (
-                <div>
-                  <div>
-                    Amount left in the budget that can be committed{" "}
-                    {/* {this.state.availAmount} */}
-                    <h1>Budget value</h1>
-                  </div>
-
-                  <div>Enter the amount that needs to be recomended</div>
-                  <div style={{ textAlign: "center" }}>
-                    <input
-                      name="recommendAmount"
-                      onChange={this.onChange}
-                      type="text"
-                      placeholder="Enter amount"
-                    />{" "}
-                    <Button
-                      style={{
-                        marginRight: "2vw",
-                        backgroundColor: "white",
-                        color: "#009999",
-                        border: " 0.06vw solid #009999",
-                        boxShadow: ".1vw .1vw .1vw .1vw lightgray",
-                        marginBottom: "1vw",
-                        fontFamily: "Times New Roman",
-                      }}
-                      onClick={this.onClickRecommend}
-                    >
-                      Commit Ammount
-                    </Button>
-                  </div>
-                </div>
-              ) : (
-                <div></div>
-              )}
-              {this.state.userHistory ? (
-                <div>
-                  {this.props.UserHistory.map((outerLoop) => {
-                    return outerLoop.map((innerLoop) => {
-                      return (
-                        <div key={innerLoop.acceptedResponseID}>
-                          <h3>Form Name: {innerLoop.formName}</h3>
-                          <h3>
-                            Committed Amount : {innerLoop.committedAmount}
-                          </h3>
-                          <h3>
-                            Recommended Amount : {innerLoop.recommendedAmount}
-                          </h3>
-                          {/* <Link to={innerLoop.} */}
-                          <br />
-                        </div>
-                      );
-                    });
-                  })}
-                </div>
-              ) : (
-                <div></div>
-              )}
-              {this.state.sendChatSystem ? (
-                <div>
-                  <MessageList messages={this.state.messages} />
-                  <SendMessage sendMessage={this.sendMessage} />
-                </div>
-              ) : (
-                <div></div>
-              )}
-            </div>
-
-            <div
-              style={{
-                position: "relative",
-                width: "30vw",
-                float: "left",
-                marginBottom: "1vw",
-                marginTop: "2vw",
-                marginLeft: "1vw",
-                marginRight: "7vw",
-              }}
-            >
               <div
                 style={{
-                  width: "35vw",
-
-                  justifyContent: "center",
-                  textAlign: "center",
-                  marginLeft: "5vw",
-                  paddingBottom: ".3vw",
-                  paddingTop: "1vw",
-                  marginBottom: "1.5vw",
-                  // backgroundColor: "#009999",
-                  // backgroundImage: "linear-gradient(to right,#009999,#00e7e7",
-                  // backgroundImage:
-                  //   "linear-gradient(to right,rgba(0, 153, 153, 0.5),rgba(0, 231, 231, 0.5)",
-                  backgroundColor: "rgba(0, 153, 153, 0.5)",
-                  boxShadow: ".3vw .3vw .5vw silver",
-                  borderRadius: ".3vw",
+                  marginTop: "1vw",
+                  marginLeft: "auto",
+                  marginRight: "auto",
+                  display: "flex",
+                  flexWrap: "wrap",
                 }}
               >
-                <h4 style={{ color: "white" }}>Timeline</h4>
-              </div>
-              <div
-                style={{
-                  width: "35vw",
-
-                  justifyContent: "center",
-                  textAlign: "center",
-                  marginLeft: "5vw",
-                  paddingBottom: "1vw",
-                  paddingTop: "1vw",
-                  marginBottom: "1.5vw",
-                  // backgroundColor: "#009999",
-                  // backgroundImage: "linear-gradient(to right,#009999,#00e7e7",
-                  // backgroundImage:
-                  //   "linear-gradient(to right,rgba(0, 153, 153, 0.5),rgba(0, 231, 231, 0.5)",
-                  backgroundColor: "rgba(0, 153, 153, 0.5)",
-                  boxShadow: ".3vw .3vw .5vw silver",
-                  borderRadius: ".3vw",
-                }}
-              >
+                {/* <tr>
+                  <td> */}
                 <Button
                   onClick={() => {
                     this.setState({ showresponse: true });
@@ -804,12 +416,18 @@ export class ViewResponseNoteGenerate extends Component {
                     backgroundColor: "white",
                     color: "#009999",
                     borderWidth: 0,
-                    boxShadow: ".3VW .3VW .3VW lightgray",
+                    boxShadow: ".2VW .2VW .2VW #282c35",
                     fontFamily: "Times New Roman",
+                    width: "10.5vw",
+                    fontSize: "1vw",
+                    paddingLeft: ".1vw",
+                    paddingRight: ".1vw",
                   }}
                 >
                   Show Response
                 </Button>
+                {/* </td>
+                  <td> */}
                 <Button
                   onClick={() => {
                     this.setState({ showresponse: false });
@@ -825,11 +443,17 @@ export class ViewResponseNoteGenerate extends Component {
                     color: "#009999",
                     borderWidth: 0,
                     fontFamily: "Times New Roman",
-                    boxShadow: ".3VW .3VW .3VW lightgray",
+                    boxShadow: ".2VW .2VW .2VW #282c35",
+                    width: "10.5vw",
+                    fontSize: "1vw",
+                    paddingLeft: ".1vw",
+                    paddingRight: ".1vw",
                   }}
                 >
                   Linked Notings
                 </Button>
+                {/* </td>
+                  <td> */}
                 <Button
                   onClick={() => {
                     this.setState({ showresponse: false });
@@ -844,12 +468,18 @@ export class ViewResponseNoteGenerate extends Component {
                     backgroundColor: "white",
                     color: "#009999",
                     borderWidth: 0,
-                    boxShadow: ".3VW .3VW .3VW lightgray",
+                    boxShadow: ".2VW .2VW .2VW #282c35",
                     fontFamily: "Times New Roman",
+                    width: "10.5vw",
+                    fontSize: "1vw",
+                    paddingLeft: ".1vw",
+                    paddingRight: ".1vw",
                   }}
                 >
                   Forward to
                 </Button>
+                {/* </td>
+                  <td> */}
                 <Button
                   onClick={() => {
                     this.setState({ showresponse: false });
@@ -864,12 +494,18 @@ export class ViewResponseNoteGenerate extends Component {
                     backgroundColor: "white",
                     color: "#009999",
                     borderWidth: 0,
-                    boxShadow: ".3VW .3VW .3VW lightgray",
+                    boxShadow: ".2VW .2VW .2VW #282c35",
                     fontFamily: "Times New Roman",
+                    width: "10.5vw",
+                    fontSize: "1vw",
+                    paddingLeft: ".1vw",
+                    paddingRight: ".1vw",
                   }}
                 >
                   Accept/Reject Form
                 </Button>
+                {/* </td>
+                  <td> */}
                 <Button
                   onClick={() => {
                     this.setState({ showresponse: false });
@@ -884,12 +520,18 @@ export class ViewResponseNoteGenerate extends Component {
                     backgroundColor: "white",
                     color: "#009999",
                     borderWidth: 0,
-                    boxShadow: ".3VW .3VW .3VW lightgray",
+                    boxShadow: ".2VW .2VW .2VW #282c35",
                     fontFamily: "Times New Roman",
+                    width: "10.5vw",
+                    fontSize: "1vw",
+                    paddingLeft: ".1vw",
+                    paddingRight: ".1vw",
                   }}
                 >
                   Amount Recommend
                 </Button>
+                {/* </td>
+                  <td> */}
                 <Button
                   onClick={() => {
                     this.setState({ showresponse: false });
@@ -904,12 +546,18 @@ export class ViewResponseNoteGenerate extends Component {
                     backgroundColor: "white",
                     color: "#009999",
                     borderWidth: 0,
-                    boxShadow: ".3VW .3VW .3VW lightgray",
+                    boxShadow: ".2VW .2VW .2VW #282c35",
                     fontFamily: "Times New Roman",
+                    width: "10.5vw",
+                    fontSize: "1vw",
+                    paddingLeft: ".1vw",
+                    paddingRight: ".1vw",
                   }}
                 >
                   User History
                 </Button>
+                {/* </td>
+                  <td> */}
                 <Button
                   onClick={() => {
                     this.setState({ showresponse: false });
@@ -924,12 +572,543 @@ export class ViewResponseNoteGenerate extends Component {
                     backgroundColor: "white",
                     color: "#009999",
                     borderWidth: 0,
-                    boxShadow: ".3VW .3VW .3VW lightgray",
+                    boxShadow: ".2VW .2VW .2VW #282c35",
                     fontFamily: "Times New Roman",
+
+                    width: "10.5vw",
+                    fontSize: "1vw",
+                    paddingLeft: ".1vw",
+                    paddingRight: ".1vw",
                   }}
                 >
                   Send Chat To User
                 </Button>
+                {/* </td>
+                </tr> */}
+              </div>
+            </div>
+            <div
+            //style={{ backgroundColor: "white", width: "38", margin: "auto" }}
+            >
+              <div
+                style={{
+                  width: "40vw",
+                  float: "right",
+                  marginBottom: "1vw",
+                  marginTop: "2vw",
+                  marginLeft: "auto",
+                  marginRight: "auto",
+                  backgroundColor: "white",
+                  boxShadow:
+                    "lightgrey 0.4vw 0.4vw 0.5vw, rgba(0, 0, 0, 0.1) 0px 0px 0.1vw inset",
+                  borderRadius: ".5vw",
+                }}
+              >
+                {this.state.showresponse ? (
+                  <div>
+                    <div style={{ backgroundColor: "white" }}>
+                      <div
+                        style={{
+                          width: "36vw",
+
+                          justifyContent: "center",
+                          textAlign: "center",
+                          paddingBottom: ".3vw",
+                          paddingTop: "1vw",
+                          marginTop: "1vw",
+                          marginBottom: "1.5vw",
+                          marginLeft: "auto",
+                          marginRight: "auto",
+
+                          backgroundColor: "#6B9997",
+                          boxShadow: ".3vw .3vw .3vw silver",
+                          borderRadius: ".3vw",
+                          paddingRight: "1vw",
+                        }}
+                      >
+                        <h4 style={{ color: "white" }}> Accepted Responses</h4>
+                      </div>
+                      <div
+                        style={{
+                          width: "36vw",
+                          paddingLeft: "2vw",
+                          paddingRight: "2vw",
+                          // display: "flex",
+                          // justifyContent: "center",
+                          paddingTop: "1vw",
+                          paddingBottom: "1vw",
+                          marginBottom: "4vw",
+                          backgroundColor: "#eeeeee",
+                          boxShadow: ".3vw .3vw .3vw silver",
+                          borderRadius: ".3vw",
+                          marginLeft: "auto",
+                          marginRight: "auto",
+                          //  border: ".2vw solid silver",
+                        }}
+                      >
+                        <Fragment>
+                          {Object.entries(this.obj).map(
+                            ([question, answer]) => {
+                              if (
+                                (question !== "comment") &
+                                (question !== "forwardTo") &
+                                (question !== "responseTime") &
+                                (question !== "commentAccepted") &
+                                (question !== "notification")
+                              ) {
+                                return (
+                                  <Fragment key={question}>
+                                    <Card
+                                      style={{
+                                        borderRadius: ".95vw",
+                                        borderWidth: 0,
+                                        // border: ".2vw solid #ed6a5a",
+                                        marginBottom: "2vw",
+                                        width: "25",
+                                        color: "#009999",
+
+                                        // height: "auto",
+                                        // boxShadow: ".5vw .5vw .5vw  silver",
+                                      }}
+                                    >
+                                      <div>
+                                        <Card.Header
+                                          style={{
+                                            backgroundColor: "white",
+                                            borderRadius: ".75vw .75vw 0 0",
+                                            // width: "25vw",
+                                            height: "2.5vw",
+                                            fontSize: "1vw",
+                                            color: "#009999",
+                                            margin: 0,
+                                            padding: "0.6vw",
+                                          }}
+                                        >
+                                          <strong>
+                                            {" "}
+                                            {question.toUpperCase()}
+                                          </strong>
+                                        </Card.Header>
+                                        <Card.Body
+                                          style={{
+                                            backgroundColor: "white",
+                                            borderRadius: " 0 0 .75vw .75vw",
+                                            // width: "25vw",
+                                            fontSize: "0.93vw",
+                                            height: "auto",
+                                            padding: "0.6vw",
+                                            margin: 0,
+                                          }}
+                                        >
+                                          {/* <Card.Title
+                                  style={{
+                                    fontSize: ".93vw",
+                                    marginBottom: ".5vw",
+                                  }}
+                                >
+                                
+                                </Card.Title> */}
+                                          <Card.Text>
+                                            <TextareaAutosize
+                                              name={question}
+                                              value={answer}
+                                              style={{
+                                                width: "25vw",
+                                                borderColor: "white",
+                                                fontSize: "1vw",
+                                              }}
+                                            >
+                                              {answer}
+                                            </TextareaAutosize>
+                                          </Card.Text>
+                                        </Card.Body>
+                                      </div>
+                                    </Card>
+                                  </Fragment>
+                                );
+                              }
+                            }
+                          )}
+                        </Fragment>
+                      </div>
+                    </div>
+                  </div>
+                ) : (
+                  <div></div>
+                )}
+
+                {this.state.linkednotings ? (
+                  <div>
+                    <div
+                      style={{
+                        width: "36vw",
+
+                        justifyContent: "center",
+                        textAlign: "center",
+                        //backgroundImage: "linear-gradient(to right,#009999,#00e7e7",
+                        backgroundColor: "#6B9997",
+                        paddingTop: "1vw",
+                        marginBottom: "1.5vw",
+                        // backgroundColor: "#00a3a3",
+                        marginTop: "1vw",
+                        marginLeft: "auto",
+                        marginRight: "auto",
+                        boxShadow: ".3vw .3vw .5vw silver",
+                        borderRadius: ".3vw",
+                        paddingBottom: ".3vw",
+                        paddingRight: "1vw",
+                      }}
+                    >
+                      <h4 style={{ color: "white" }}> Linked Notings</h4>
+                    </div>
+                    <div
+                      style={{
+                        marginLeft: "auto",
+                        marginRight: "auto",
+                        width: "36vw",
+
+                        textAlign: "center",
+
+                        paddingLeft: "2vw",
+                        paddingRight: "2vw",
+
+                        paddingTop: "1vw",
+                        paddingBottom: "1vw",
+                        marginBottom: "4vw",
+                        backgroundColor: "#EEEEEE",
+                        boxShadow: ".3vw .3vw .5vw silver",
+                        borderRadius: ".3vw",
+                      }}
+                    >
+                      <NotingIndivdiual
+                        title={this.props.match.params.title}
+                        value={this.props.match.params.value}
+                        id={this.props.match.params.id}
+                      />
+                      <br />
+                    </div>
+                  </div>
+                ) : (
+                  <div></div>
+                )}
+
+                {this.state.forwardtoggle ? (
+                  <div>
+                    <div
+                      style={{
+                        width: "36vw",
+
+                        justifyContent: "center",
+                        textAlign: "center",
+                        //backgroundImage: "linear-gradient(to right,#009999,#00e7e7",
+                        backgroundColor: "#6B9997",
+                        paddingTop: "1vw",
+                        marginBottom: "1.5vw",
+                        marginTop: "1vw",
+                        marginLeft: "auto",
+                        // backgroundCol,or: "#00a3a3",
+                        marginRight: "auto",
+                        boxShadow: ".3vw .3vw .5vw silver",
+                        borderRadius: ".3vw",
+                        color: "white",
+                        paddingBottom: ".3vw",
+                        paddingRight: "1vw",
+                        // paddingBottom: "1vw",
+                      }}
+                    >
+                      <h4 style={{ color: "white" }}> Enter UserName</h4>
+                    </div>
+
+                    <div
+                      style={{
+                        //float: "left",
+                        //postion: "relative",
+                        width: "36vw",
+
+                        textAlign: "center",
+
+                        paddingLeft: "2vw",
+                        paddingRight: "2vw",
+                        // display: "flex",
+                        // justifyContent: "center",
+                        paddingTop: "1vw",
+                        paddingBottom: "1vw",
+                        marginBottom: "4vw",
+                        marginLeft: "auto",
+                        marginRight: "auto",
+                        backgroundColor: "#EEEEEE",
+                        boxShadow: ".3vw .3vw .5vw silver",
+                        borderRadius: ".3vw",
+                      }}
+                    >
+                      <div style={{ textAlign: "center" }}>
+                        <input
+                          name="forwardTo"
+                          value={this.state.forwardTo}
+                          onChange={this.onChange}
+                          type="text"
+                          placeholder="Enter Username"
+                          style={{ borderRadius: ".5vw" }}
+                        />{" "}
+                        <Button
+                          style={{
+                            marginRight: "2vw",
+                            backgroundColor: "#E0777D",
+                            color: "white",
+                            border: " 0.06vw solid #E0777D",
+                            boxShadow: ".1vw .1vw .1vw .1vw lightgray",
+                            //marginBottom: "1vw",
+                            fontFamily: "Times New Roman",
+                            fontSize: "1.1vw",
+                            padding: ".3vw",
+                          }}
+                          onClick={this.onClickForward}
+                        >
+                          Forward
+                        </Button>
+                      </div>
+                    </div>
+                  </div>
+                ) : (
+                  <div></div>
+                )}
+
+                {this.state.acceptreject ? (
+                  <div>
+                    <div
+                      style={{
+                        width: "36vw",
+
+                        justifyContent: "center",
+                        textAlign: "center",
+                        //backgroundImage: "linear-gradient(to right,#009999,#00e7e7",
+                        backgroundColor: "#6B9997",
+                        paddingTop: "1vw",
+                        marginBottom: "1.5vw",
+                        marginTop: "1vw",
+                        marginLeft: "auto",
+                        // backgroundCol,or: "#00a3a3",
+                        marginRight: "auto",
+                        boxShadow: ".3vw .3vw .5vw silver",
+                        borderRadius: ".3vw",
+                        color: "white",
+                        paddingBottom: ".3vw",
+                        paddingRight: "1vw",
+                        // paddingBottom: "1vw",
+                      }}
+                    >
+                      <h4 style={{ color: "white" }}>Accept/Reject Form</h4>
+                    </div>
+                    <div
+                      style={{
+                        //float: "left",
+                        //postion: "relative",
+                        width: "36vw",
+
+                        textAlign: "center",
+
+                        paddingLeft: "2vw",
+                        paddingRight: "2vw",
+                        // display: "flex",
+                        // justifyContent: "center",
+                        paddingTop: "1vw",
+                        paddingBottom: "1vw",
+                        marginBottom: "2vw",
+                        marginLeft: "auto",
+                        marginRight: "auto",
+                        backgroundColor: "#EEEEEE",
+                        boxShadow: ".3vw .3vw .5vw silver",
+                        borderRadius: ".3vw",
+                      }}
+                    >
+                      <h4>
+                        Do you want to accept this form or Reject this response?
+                      </h4>
+                      <br />
+                      <Button
+                        onClick={this.onclickAcceptResponse}
+                        style={{
+                          //marginRight: "2vw",
+                          backgroundColor: "#E0777D",
+                          color: "white",
+                          border: " 0.06vw solid #E0777D",
+                          boxShadow: ".1vw .1vw .1vw .1vw lightgray",
+                          //marginBottom: "1vw",
+                          fontFamily: "Times New Roman",
+                          fontSize: "1.1vw",
+                          padding: ".3vw",
+                        }}
+                      >
+                        Accept Response{" "}
+                      </Button>
+                      <Button
+                        onClick={this.onClickRejectResponse}
+                        style={{
+                          marginRight: "2vw",
+                          backgroundColor: "white",
+                          color: "#E0777D",
+                          border: " 0.06vw solid #E0777D",
+                          boxShadow: ".1vw .1vw .1vw .1vw lightgray",
+                          //marginBottom: "1vw",
+                          fontFamily: "Times New Roman",
+                          fontSize: "1.1vw",
+                          padding: ".3vw",
+                        }}
+                      >
+                        Reject Response{" "}
+                      </Button>
+                    </div>
+                  </div>
+                ) : (
+                  <div></div>
+                )}
+
+                {this.state.amountcommit ? (
+                  <div>
+                    <div
+                      style={{
+                        width: "36vw",
+
+                        justifyContent: "center",
+                        textAlign: "center",
+                        //backgroundImage: "linear-gradient(to right,#009999,#00e7e7",
+                        backgroundColor: "#6B9997",
+                        paddingTop: "1vw",
+                        marginBottom: "1.5vw",
+                        marginTop: "1vw",
+                        marginLeft: "auto",
+                        // backgroundCol,or: "#00a3a3",
+                        marginRight: "auto",
+                        boxShadow: ".3vw .3vw .5vw silver",
+                        borderRadius: ".3vw",
+                        color: "white",
+                        paddingBottom: ".3vw",
+                        paddingRight: "1vw",
+                        // paddingBottom: "1vw",
+                      }}
+                    >
+                      <h4 style={{ color: "white" }}> Amount Recommended</h4>
+                    </div>
+                    <div
+                      style={{
+                        //float: "left",
+                        //postion: "relative",
+                        width: "36vw",
+
+                        textAlign: "center",
+
+                        paddingLeft: "2vw",
+                        paddingRight: "2vw",
+                        // display: "flex",
+                        // justifyContent: "center",
+                        paddingTop: "1vw",
+                        paddingBottom: "1vw",
+                        marginBottom: "4vw",
+                        marginLeft: "auto",
+                        marginRight: "auto",
+                        backgroundColor: "#EEEEEE",
+                        boxShadow: ".3vw .3vw .5vw silver",
+                        borderRadius: ".3vw",
+                      }}
+                    >
+                      <h4>Amount left in the budget that can be committed </h4>
+                      {/* {this.state.availAmount} */}
+                      <h3>Budget value</h3>
+                      <h4>Enter the amount that needs to be recomended</h4>
+                      <div style={{ textAlign: "center" }}>
+                        <input
+                          name="recommendAmount"
+                          onChange={this.onChange}
+                          type="text"
+                          placeholder="Enter amount"
+                        />{" "}
+                        <Button
+                          style={{
+                            marginRight: "2vw",
+                            backgroundColor: "#e0777d",
+                            color: "white",
+                            border: " 0.06vw solid #e0777d",
+                            boxShadow: ".1vw .1vw .1vw .1vw lightgray",
+                            //  marginBottom: "1vw",
+                            fontFamily: "Times New Roman",
+                          }}
+                          onClick={this.onClickRecommend}
+                        >
+                          Commit Ammount
+                        </Button>
+                      </div>
+                    </div>
+                  </div>
+                ) : (
+                  <div></div>
+                )}
+                {this.state.userHistory ? (
+                  <div>
+                    {this.props.UserHistory.map((outerLoop) => {
+                      return outerLoop.map((innerLoop) => {
+                        return (
+                          <div key={innerLoop.acceptedResponseID}>
+                            <h3>Form Name: {innerLoop.formName}</h3>
+                            <h3>
+                              Committed Amount : {innerLoop.committedAmount}
+                            </h3>
+                            <h3>
+                              Recommended Amount : {innerLoop.recommendedAmount}
+                            </h3>
+                            {/* <Link to={innerLoop.} */}
+                            <br />
+                          </div>
+                        );
+                      });
+                    })}
+                  </div>
+                ) : (
+                  <div></div>
+                )}
+                {this.state.sendChatSystem ? (
+                  <div>
+                    <MessageList messages={this.state.messages} />
+                    <SendMessage sendMessage={this.sendMessage} />
+                  </div>
+                ) : (
+                  <div></div>
+                )}
+              </div>
+            </div>
+            <div
+              style={{
+                width: "40vw",
+                float: "left",
+                marginBottom: "1vw",
+                marginTop: "2vw",
+                marginLeft: "auto",
+                marginRight: "auto",
+                backgroundColor: "white",
+                boxShadow:
+                  "lightgrey 0.4vw 0.4vw 0.5vw, rgba(0, 0, 0, 0.1) 0px 0px 0.1vw inset",
+                borderRadius: ".5vw",
+              }}
+            >
+              <div
+                style={{
+                  width: "36vw",
+
+                  justifyContent: "center",
+                  textAlign: "center",
+                  //marginLeft: "5vw",
+                  paddingBottom: ".3vw",
+                  paddingTop: "1vw",
+                  marginBottom: "1.5vw",
+                  marginTop: "1vw",
+                  marginLeft: "auto",
+                  marginRight: "auto",
+                  // backgroundColor: "rgba(0, 153, 153, 0.5)",
+                  backgroundColor: "#6B9997",
+                  boxShadow: ".3vw .3vw .5vw silver",
+                  borderRadius: ".3vw",
+                }}
+              >
+                <h4 style={{ color: "white" }}>Timeline</h4>
               </div>
 
               <CombinedView

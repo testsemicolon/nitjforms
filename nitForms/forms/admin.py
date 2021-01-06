@@ -12,7 +12,3 @@ admin.site.register(formIndex)
 admin.site.register(EmailIndex)
 admin.site.register(DepartmentDetail)
 admin.site.register(ChatSystem)
-
-admin.site.register(test11)
-
-admin.site.register(test11Accepted)
