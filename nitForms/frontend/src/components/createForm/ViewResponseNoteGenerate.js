@@ -16,29 +16,16 @@ import { createMessage } from "../../actions/Messages";
 import { postNotification, getNotification } from "../../actions/Notification";
 import { getNotingTemplate } from "../../actions/NotingTemplate";
 import { getUserHistory } from "../../actions/FormStatus";
-import { postMessage } from "../../actions/ChatActions";
+import { postMessage, getMessage } from "../../actions/ChatActions";
+import MessageList from "./ChatSystem/MessageList";
+import SendMessage from "./ChatSystem/SendMessage";
+import axios from "axios";
 import {
   getDeptDetails,
   putDeptDetails,
 } from "../../actions/DirectorDashboardActions";
 
 export class ViewResponseNoteGenerate extends Component {
-  state = {
-    obj1: {},
-    content: "",
-    toggleforward: false,
-    forwardTo: "",
-    showresponse: true,
-    linkednotings: false,
-    acceptreject: false,
-    amountcommit: false,
-    forwardtoggle: false,
-    accepted: [],
-    recommendAmount: 0,
-    availAmount: 0,
-    userHistory: false,
-    sendChatSystem: false,
-  };
   name = "";
   description = "";
   time = "";
@@ -47,8 +34,27 @@ export class ViewResponseNoteGenerate extends Component {
   lastSenderNotification = "";
   allowAccessFlag = false;
   id = "";
+  messageList = [];
+
   constructor(props) {
     super(props);
+    this.state = {
+      obj1: {},
+      content: "",
+      toggleforward: false,
+      forwardTo: "",
+      showresponse: true,
+      linkednotings: false,
+      acceptreject: false,
+      amountcommit: false,
+      forwardtoggle: false,
+      accepted: [],
+      recommendAmount: 0,
+      availAmount: 0,
+      userHistory: false,
+      sendChatSystem: false,
+      // messages: this.props.Chats,
+    };
     this.props.getDeptDetails();
     this.props.getAccepted(this.props.match.params.title);
     this.props.getNotification(this.props.username);
@@ -65,8 +71,10 @@ export class ViewResponseNoteGenerate extends Component {
         }
       });
     }
-    console.log(this.name);
-    // this.props.getUserHistory(this.name);
+    getMessage(this.id).then((res) => this.setState({ messages: res }));
+    // console.log("mai yha hu ", response);
+    // this.props.getMessage(this.id);
+    this.props.getUserHistory(this.name);
     this.props.FormName.map((a) => {
       if (a.title === this.props.match.params.title) {
         if (this.props.username === a.created_by) {
@@ -84,14 +92,14 @@ export class ViewResponseNoteGenerate extends Component {
     //     });
     //   });
     // }
-    console.log("hedf", this.props.DepartmentDetail);
+
     this.props.DepartmentDetail.map((deta) => {
-      console.log(deta);
       if (deta.deptName === this.props.department) {
         this.setState({ availAmount: deta.availableAmount });
       }
     });
   }
+
   componentDidUpdate(prevProps) {
     if (prevProps.AcceptedResponse !== this.props.AcceptedResponse) {
       Object.entries(this.props.AcceptedResponse).map(([key, value]) => {
@@ -111,7 +119,6 @@ export class ViewResponseNoteGenerate extends Component {
       {
         Object.entries(this.obj.forwardTo).map(([key, value]) => {
           Object.entries(value).map(([key1, value1]) => {
-            console.log(value1, this.props.username);
             if (value1 === this.props.username) {
               this.allowAccessFlag = true;
             }
@@ -166,7 +173,6 @@ export class ViewResponseNoteGenerate extends Component {
     questNotify["linkToPage"] = `${this.props.location.pathname}`;
     questNotify["acceptedResponseID"] = `${acceptedResponseID}`;
     questNotify["formName"] = `${this.props.match.params.title}Accepted`;
-    console.log(questNotify);
     this.props.postNotification(questNotify);
     this.setState({ accepted: quest });
   };
@@ -199,7 +205,6 @@ export class ViewResponseNoteGenerate extends Component {
       quest
     );
     var acceptedResponseID = quest["acceptedResponseID"];
-    console.log(this.lastSenderNotification, "checking sender");
     const questNotify = {};
     var notifyCmnt = `${this.props.username} accepted the response forwarded by you `;
     questNotify["sender"] = `${this.props.username}`;
@@ -208,7 +213,6 @@ export class ViewResponseNoteGenerate extends Component {
     questNotify["linkToPage"] = `${this.props.location.pathname}`;
     questNotify["acceptedResponseID"] = `${acceptedResponseID}`;
     questNotify["formName"] = `${this.props.match.params.title}Accepted`;
-    console.log(questNotify);
     this.props.postNotification(questNotify);
     store.dispatch(
       createMessage({
@@ -257,7 +261,6 @@ export class ViewResponseNoteGenerate extends Component {
       quest
     );
     var acceptedResponseID = quest["acceptedResponseID"];
-    console.log(this.lastSenderNotification, "checking sender");
     const questNotify = {};
     var notifyCmnt = `${this.props.username} rejected the response forwarded by you `;
     questNotify["sender"] = `${this.props.username}`;
@@ -266,7 +269,6 @@ export class ViewResponseNoteGenerate extends Component {
     questNotify["linkToPage"] = `${this.props.location.pathname}`;
     questNotify["acceptedResponseID"] = `${acceptedResponseID}`;
     questNotify["formName"] = `${this.props.match.params.title}Accepted`;
-    console.log(questNotify);
     this.props.postNotification(questNotify);
     store.dispatch(
       createMessage({
@@ -308,7 +310,6 @@ export class ViewResponseNoteGenerate extends Component {
         availaAmount = deta.availableAmount;
       }
     });
-    console.log(this.state.recommendAmount, availaAmount, "hnnnnn");
     if (this.state.recommendAmount <= availaAmount / 2) {
       var intRecommendAmount = parseInt(this.state.recommendAmount);
       quest["recommendedAmount"] = parseInt(intRecommendAmount);
@@ -335,13 +336,13 @@ export class ViewResponseNoteGenerate extends Component {
     }
   };
 
-  onClickSendMessage = () => {
+  sendMessage = (text) => {
     var quest = {};
     quest["sender"] = this.props.username;
     quest["reciever"] = this.name;
-    quest["message"] = this.state.sendChat;
+    quest["message"] = text;
     quest["acceptedResponseID"] = this.id;
-    console.log(quest);
+    this.setState({ messages: [...this.state.messages, quest] });
     this.props.postMessage(quest);
   };
 
@@ -730,14 +731,8 @@ export class ViewResponseNoteGenerate extends Component {
               )}
               {this.state.sendChatSystem ? (
                 <div>
-                  <input
-                    name="sendChat"
-                    value={this.state.sendChat}
-                    onChange={this.onChange}
-                    type="text"
-                    placeholder="Enter Message"
-                  />
-                  <button onClick={this.onClickSendMessage}>Send</button>
+                  <MessageList messages={this.state.messages} />
+                  <SendMessage sendMessage={this.sendMessage} />
                 </div>
               ) : (
                 <div></div>
@@ -965,6 +960,7 @@ const mapStateToProps = (state) => ({
   department: state.Auth.user.department,
   DepartmentDetail: state.DepartmentDetail.DepartmentDetail,
   UserHistory: state.FormStatus.UserHistory,
+  Chats: state.Chats.Chats,
 });
 
 export default withRouter(
@@ -977,6 +973,7 @@ export default withRouter(
     getDeptDetails,
     putDeptDetails,
     getUserHistory,
+    getMessage,
     postMessage,
   })(ViewResponseNoteGenerate)
 );

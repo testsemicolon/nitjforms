@@ -4,7 +4,8 @@ import {
   VerticalTimelineElement,
 } from "react-vertical-timeline-component";
 import { Button } from "react-bootstrap";
-import { connect } from "react-redux";
+import MessageList from "./ChatSystem/MessageList";
+import SendMessage from "./ChatSystem/SendMessage";
 
 export class UserTimeLine extends Component {
   msg = "";
@@ -19,10 +20,10 @@ export class UserTimeLine extends Component {
   componentDidMount() {
     console.log(this.props.username);
     if (this.props.object.responseAcceptedStatus === "Accepted") {
-      this.props.getMessage(this.props.object.responseID);
+      // this.props.getMessage(this.props.object.responseID);
       this.msg = "Your response has been accepted";
     } else if (this.props.object.responseAcceptedStatus === "Rejected") {
-      this.props.getMessage(this.props.object.responseID);
+      // this.props.getMessage(this.props.object.responseID);
       this.rejected = true;
       this.msg = "Your response has been rejected";
     } else {
@@ -157,36 +158,12 @@ export class UserTimeLine extends Component {
             </VerticalTimelineElement>
           </VerticalTimeline>
 
-          {this.props.Chats.map((chat) => {
-            return (
-              <div>
-                <h3>Sender: {chat.sender}</h3>
-                <h3>Message: {chat.message}</h3>
-              </div>
-            );
-          })}
-          <div>
-            <input
-              name="sendChat"
-              value={this.state.sendChat}
-              onChange={this.onChange}
-              type="text"
-              placeholder="Enter Message"
-            />
-            <button onClick={this.onClickSendMessage}>Send</button>
-          </div>
+          <MessageList messages={this.props.messages} />
+          <SendMessage sendMessage={this.props.sendMessage} />
         </div>
       </div>
     );
   }
 }
 
-const mapStateToProps = (state) => ({
-  Notification: state.Notification.Notification,
-  username: state.Auth.user.username,
-  FormStatus: state.FormStatus.FormStatus,
-  Status: state.Status.Status,
-  // Chats: state.Chats.Chats,
-});
-
-export default connect(mapStateToProps, {})(UserTimeLine);
+export default UserTimeLine;

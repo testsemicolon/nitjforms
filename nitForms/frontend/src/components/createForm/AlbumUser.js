@@ -16,18 +16,20 @@ import { NavItem, NavLink, Badge, Collapse, DropdownItem } from "shards-react";
 import { getMessage, postMessage } from "../../actions/ChatActions";
 
 export class AlbumUser extends Component {
-  arr = [];
+  state = {
+    show: false,
+    show2: false,
+    flag: false,
+    visible: false,
+    object: {},
+    messages: null,
+    id: 0,
+  };
   constructor(props) {
     super(props);
     this.props.getNotification(this.props.username);
     this.props.getFormStatus();
-    this.state = {
-      show: false,
-      show2: false,
-      flag: false,
-      visible: false,
-      object: {},
-    };
+
     this.toggleNotifications = this.toggleNotifications.bind(this);
   }
   toggleNotifications() {
@@ -57,20 +59,66 @@ export class AlbumUser extends Component {
 
   viewTimeline = (obj) => {
     this.setState({ flag: true });
-    this.setState({ object: obj });
-    console.log("hellpo");
-    console.log(this.state.object);
+    this.setState({ object: obj, id: obj.responseID, formName: obj.formName });
+    getMessage(obj.responseID).then((res) => this.setState({ messages: res }));
   };
+
+  sendMessage = (text) => {
+    var messages = this.state.messages;
+    var userResponse = null;
+    if (messages !== null) {
+      messages.map((mes) => {
+        if (mes.acceptedResponseID === this.state.id) {
+          userResponse = mes;
+        }
+      });
+    }
+    if (userResponse === null) {
+      userResponse = {};
+      userResponse["chatRoom"] = [];
+    }
+    var date = new Date();
+    var arr = userResponse["chatRoom"];
+    if (arr === null) {
+      arr = [];
+    }
+    arr.push([this.props.username, text, date]);
+    userResponse["chatRoom"] = arr;
+    userResponse["formName"] = this.state.formName;
+    userResponse["acceptedResponseID"] = this.state.id;
+    var setMessages = userResponse["chatRoom"];
+    console.log(setMessages);
+
+    console.log(userResponse);
+    this.changeState(setMessages);
+    console.log(this.state.messages);
+
+    // messages[`${this.props.username}`] = quest;
+    // var quest = {};
+    // quest["sender"] = this.props.username;
+    // quest["reciever"] = this.name;
+    // quest["message"] = text;
+    // quest["acceptedResponseID"] = this.id;
+
+    // var obj = {};
+
+    // obj["chatRoom"] = this.state.messages;
+    // console.log(obj);
+    // this.props.postMessage(quest);
+  };
+  changeState(setMessages) {
+    this.setState({ messages: setMessages });
+    console.log(this.state);
+  }
 
   render() {
     if (this.state.flag === true) {
       return (
         <UserTimeLine
           object={this.state.object}
-          getMessage={this.props.getMessage}
-          Chats={this.props.Chats}
-          postMessage={this.props.postMessage}
           username={this.props.username}
+          messages={this.state.messages}
+          sendMessage={this.sendMessage}
         />
       );
     }
