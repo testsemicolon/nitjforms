@@ -17,7 +17,7 @@ export class MessageList extends Component {
   render() {
     // console.log(this.props.messages);
     return (
-      <ul className="message-list">
+      <div className="message-list">
         {this.state.flag ? (
           this.state.messages.map((message) => {
             return (
@@ -39,9 +39,70 @@ export class MessageList extends Component {
             );
           })
         ) : (
-          <div>Start Chat</div>
+          <div>
+            <div
+              style={{
+                backgroundColor: "#B6CECE",
+                padding: ".3vw",
+                margin: ".3vw",
+                borderRadius: "4vw",
+              }}
+            >
+              SuperAdmin[12.1.2021 10:41PM]::hello hello hello how are you?
+            </div>
+            <div
+              style={{
+                backgroundColor: "#E7B3B6",
+                padding: ".3vw",
+                margin: ".3vw",
+                borderRadius: "4vw",
+              }}
+            >
+              SuperAdmin[12.1.2021 10:41PM]::hello hello hello how are you?
+            </div>
+            <div
+              style={{
+                backgroundColor: "#B6CECE",
+                padding: ".3vw",
+                margin: ".3vw",
+                borderRadius: "4vw",
+              }}
+            >
+              SuperAdmin[12.1.2021 10:41PM]::hello hello hello how are you?
+            </div>
+            <div
+              style={{
+                backgroundColor: "#E7B3B6",
+                padding: ".3vw",
+                margin: ".3vw",
+                borderRadius: "4vw",
+              }}
+            >
+              SuperAdmin[12.1.2021 10:41PM]::hello hello hello how are you?
+            </div>
+            <div
+              style={{
+                backgroundColor: "#B6CECE",
+                padding: ".3vw",
+                margin: ".3vw",
+                borderRadius: "4vw",
+              }}
+            >
+              SuperAdmin[12.1.2021 10:41PM]::hello hello hello how are you?
+            </div>
+            <div
+              style={{
+                backgroundColor: "#E7B3B6",
+                padding: ".3vw",
+                margin: ".3vw",
+                borderRadius: "4vw",
+              }}
+            >
+              SuperAdmin[12.1.2021 10:41PM]::hello hello hello how are you?
+            </div>
+          </div>
         )}
-      </ul>
+      </div>
     );
   }
 }

@@ -936,7 +936,7 @@ export class ViewResponseNoteGenerate extends Component {
                           //marginBottom: "1vw",
                           fontFamily: "Times New Roman",
                           fontSize: "1.1vw",
-                          padding: ".3vw",
+                          padding: ".75vw",
                         }}
                       >
                         Accept Response{" "}
@@ -952,7 +952,7 @@ export class ViewResponseNoteGenerate extends Component {
                           //marginBottom: "1vw",
                           fontFamily: "Times New Roman",
                           fontSize: "1.1vw",
-                          padding: ".3vw",
+                          padding: ".75vw",
                         }}
                       >
                         Reject Response{" "}
@@ -1044,31 +1044,144 @@ export class ViewResponseNoteGenerate extends Component {
                 )}
                 {this.state.userHistory ? (
                   <div>
-                    {this.props.UserHistory.map((outerLoop) => {
-                      return outerLoop.map((innerLoop) => {
-                        return (
-                          <div key={innerLoop.acceptedResponseID}>
-                            <h3>Form Name: {innerLoop.formName}</h3>
-                            <h3>
-                              Committed Amount : {innerLoop.committedAmount}
-                            </h3>
-                            <h3>
-                              Recommended Amount : {innerLoop.recommendedAmount}
-                            </h3>
-                            {/* <Link to={innerLoop.} */}
-                            <br />
-                          </div>
-                        );
-                      });
-                    })}
+                    <div
+                      style={{
+                        width: "36vw",
+
+                        justifyContent: "center",
+                        textAlign: "center",
+                        //backgroundImage: "linear-gradient(to right,#009999,#00e7e7",
+                        backgroundColor: "#6B9997",
+                        paddingTop: "1vw",
+                        marginBottom: "1.5vw",
+                        marginTop: "1vw",
+                        marginLeft: "auto",
+                        // backgroundCol,or: "#00a3a3",
+                        marginRight: "auto",
+                        boxShadow: ".3vw .3vw .5vw silver",
+                        borderRadius: ".3vw",
+                        color: "white",
+                        paddingBottom: ".3vw",
+                        paddingRight: "1vw",
+                        // paddingBottom: "1vw",
+                      }}
+                    >
+                      <h4 style={{ color: "white" }}>User History</h4>
+                    </div>
+                    <div>
+                      {this.props.UserHistory.map((outerLoop) => {
+                        return outerLoop.map((innerLoop) => {
+                          return (
+                            <div
+                              key={innerLoop.acceptedResponseID}
+                              style={{
+                                width: "36vw",
+                                textAlign: "center",
+                                paddingLeft: "2vw",
+                                paddingRight: "2vw",
+                                paddingTop: "1vw",
+                                paddingBottom: "1vw",
+                                marginBottom: "1vw",
+                                marginLeft: "auto",
+                                marginRight: "auto",
+                                backgroundColor: "#EEEEEE",
+                                boxShadow: ".3vw .3vw .5vw silver",
+                                borderRadius: ".3vw",
+                              }}
+                            >
+                              <table
+                                style={{
+                                  marginLeft: "auto",
+                                  marginRight: "auto",
+                                }}
+                              >
+                                <tr>
+                                  <td>Form Name:</td>
+                                  <td>{innerLoop.formName}</td>
+                                </tr>
+                                <tr>
+                                  <td>Committed Amount : </td>
+                                  <td> {innerLoop.committedAmount}</td>
+                                </tr>
+                                <tr>
+                                  <td>Recommended Amount :</td>
+                                  <td>{innerLoop.recommendedAmount}</td>
+                                </tr>
+                              </table>
+
+                              {/* <Link to={innerLoop.} */}
+                            </div>
+                          );
+                        });
+                      })}
+                    </div>
                   </div>
                 ) : (
                   <div></div>
                 )}
                 {this.state.sendChatSystem ? (
                   <div>
-                    <MessageList messages={this.state.messages} />
-                    <SendMessage sendMessage={this.sendMessage} />
+                    <div
+                      style={{
+                        width: "36vw",
+
+                        justifyContent: "center",
+                        textAlign: "center",
+                        //backgroundImage: "linear-gradient(to right,#009999,#00e7e7",
+                        backgroundColor: "#6B9997",
+                        paddingTop: "1vw",
+                        marginBottom: "1.5vw",
+                        marginTop: "1vw",
+                        marginLeft: "auto",
+                        // backgroundCol,or: "#00a3a3",
+                        marginRight: "auto",
+                        boxShadow: ".3vw .3vw .5vw silver",
+                        borderRadius: ".3vw",
+                        color: "white",
+                        paddingBottom: ".3vw",
+                        paddingRight: "1vw",
+                        // paddingBottom: "1vw",
+                      }}
+                    >
+                      <h4 style={{ color: "white" }}>Chat with {this.name}</h4>
+                    </div>
+                    <div
+                      style={{
+                        width: "36vw",
+                        textAlign: "center",
+                        paddingLeft: "2vw",
+                        paddingRight: "2vw",
+                        paddingTop: "1vw",
+                        paddingBottom: "1vw",
+                        marginBottom: "1vw",
+
+                        marginLeft: "auto",
+                        marginRight: "auto",
+                        backgroundColor: "#EEEEEE",
+                        boxShadow: ".3vw .3vw .5vw silver",
+                        borderRadius: ".3vw",
+                      }}
+                    >
+                      <div
+                        style={{
+                          backgroundColor: "white",
+                          borderWidth: ".2vw .2vw 0 .2vw ",
+
+                          borderStyle: "solid",
+                          borderColor: "#0A5C5A",
+                          borderRadius: ".7vw .7vw 0 0",
+                          paddingBottom: "1.5vw",
+                          overflowY: "scroll",
+
+                          maxHeight: "18vw",
+                        }}
+                      >
+                        <MessageList messages={this.state.messages} />
+                      </div>
+                      <div>
+                        <SendMessage sendMessage={this.sendMessage} />
+                      </div>
+                    </div>
                   </div>
                 ) : (
                   <div></div>

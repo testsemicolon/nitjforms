@@ -12,3 +12,11 @@ admin.site.register(formIndex)
 admin.site.register(EmailIndex)
 admin.site.register(DepartmentDetail)
 admin.site.register(ChatSystem)
+
+admin.site.register(test1)
+
+admin.site.register(test1Accepted)
+
+admin.site.register(testt1011)
+
+admin.site.register(testt1011Accepted)

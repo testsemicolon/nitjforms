@@ -26,14 +26,37 @@ export class SendMessage extends Component {
 
   render() {
     return (
-      <form onSubmit={this.handleSubmit} className="send-message-form">
-        <input
-          onChange={this.handleChange}
-          value={this.state.message}
-          placeholder="Type your message and hit ENTER"
-          type="text"
-        />
-      </form>
+      <div
+        style={{
+          width: "32vw",
+          borderWidth: "0 .2vw .2vw .2vw",
+          borderRadius: "0 0 .7vw .7vw",
+        }}
+      >
+        <form onSubmit={this.handleSubmit} className="send-message-form">
+          <input
+            onChange={this.handleChange}
+            value={this.state.message}
+            placeholder="Type your message and hit ENTER"
+            type="text"
+            style={{
+              width: "32vw",
+              borderWidth: "0 .2vw .2vw .2vw",
+              borderRadius: "0 0 .7vw .7vw",
+              //borderRadius: "2vw",
+              borderStyle: "solid",
+              borderColor: "#0A5C5A",
+              boxShadow: "none",
+              outline: "none",
+              MozUserFocus: "none",
+              backgroundColor: "lightgray",
+              //opacity: ".5",
+              flexWrap: "wrap",
+              height: "4vw",
+            }}
+          />
+        </form>
+      </div>
     );
   }
 }
