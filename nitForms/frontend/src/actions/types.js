@@ -39,3 +39,4 @@ export const CLEAR_RESPONSE = "CLEAR_RESPONSE";
 export const GET_USER_HISTORY = "GET_USER_HISTORY";
 export const GET_MESSAGE = "GET_MESSAGE";
 export const POST_MESSAGE = "POST_MESSAGE";
+export const PUT_MESSAGE = "PUT_MESSAGE";

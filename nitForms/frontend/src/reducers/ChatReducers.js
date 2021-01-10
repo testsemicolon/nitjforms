@@ -1,4 +1,4 @@
-import { GET_MESSAGE, POST_MESSAGE } from "../actions/types";
+import { GET_MESSAGE, POST_MESSAGE, PUT_MESSAGE } from "../actions/types";
 
 const initialState = {
   Chats: [],
@@ -7,9 +7,10 @@ const initialState = {
 export default function (state = initialState, action) {
   switch (action.type) {
     case GET_MESSAGE:
-      return { ...state, Chats: action.payload };
+      return { ...state, Chats: action.payload.chatRoom };
     case POST_MESSAGE:
-      return { ...state, Chats: action.payload };
+    case PUT_MESSAGE:
+      return { ...state, Chats: action.payload.chatRoom };
     default:
       return state;
   }

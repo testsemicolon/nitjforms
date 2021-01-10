@@ -53,7 +53,7 @@ export class ViewResponseNoteGenerate extends Component {
       availAmount: 0,
       userHistory: false,
       sendChatSystem: false,
-      // messages: this.props.Chats,
+      messages: null,
     };
     this.props.getDeptDetails();
     this.props.getAccepted(this.props.match.params.title);
@@ -71,7 +71,17 @@ export class ViewResponseNoteGenerate extends Component {
         }
       });
     }
-    getMessage(this.id).then((res) => this.setState({ messages: res }));
+    getMessage(this.id).then((res) => {
+      console.log(res);
+      res.map((ress) => {
+        if (ress.acceptedResponseID === this.id) {
+          this.setState({ messages: ress.chatRoom }, () => {
+            console.log(this.state.messages);
+            this.render();
+          });
+        }
+      });
+    });
     // console.log("mai yha hu ", response);
     // this.props.getMessage(this.id);
     this.props.getUserHistory(this.name);
@@ -337,13 +347,54 @@ export class ViewResponseNoteGenerate extends Component {
   };
 
   sendMessage = (text) => {
-    var quest = {};
-    quest["sender"] = this.props.username;
-    quest["reciever"] = this.name;
-    quest["message"] = text;
-    quest["acceptedResponseID"] = this.id;
-    this.setState({ messages: [...this.state.messages, quest] });
-    this.props.postMessage(quest);
+    var messages = this.state.messages;
+    var userResponse = null;
+    if (messages !== null) {
+      messages.map((mes) => {
+        if (mes.acceptedResponseID === this.id) {
+          userResponse = mes;
+        }
+      });
+    }
+    if (userResponse === null) {
+      userResponse = {};
+      userResponse["chatRoom"] = [];
+    }
+    var date = new Date();
+    date = JSON.stringify(date);
+    var arr = userResponse["chatRoom"];
+    if (arr === null) {
+      arr = [];
+    }
+    arr.push([this.props.username, text, date]);
+
+    console.log(userResponse, this.state.messages);
+    if (this.state.messages === null) {
+      console.log("if");
+      var arrr = [arr];
+      this.setState({ messages: arrr }, () => {
+        console.log(this.state.messages, "dealersOverallTotal1");
+        var quest = {};
+        quest["chatRoom"] = this.state.messages;
+        quest["formName"] = this.name;
+        quest["acceptedResponseID"] = this.id;
+        console.log(quest);
+        this.props.postMessage(quest);
+        this.render();
+      });
+    } else {
+      console.log("else");
+      this.setState({ messages: [...this.state.messages, arr] }, () => {
+        console.log(this.state.messages, "dealersOverallTotal1");
+        var quest = {};
+        quest["chatRoom"] = this.state.messages;
+        quest["formName"] = this.name;
+        quest["acceptedResponseID"] = this.id;
+        console.log(quest);
+        this.props.postMessage(quest);
+        this.render();
+      });
+    }
   };
 
   render() {

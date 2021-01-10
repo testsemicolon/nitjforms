@@ -58,11 +58,20 @@ export class AlbumUser extends Component {
   };
 
   viewTimeline = (obj) => {
+    console.log(obj);
     this.setState({ flag: true });
     this.setState({ object: obj, id: obj.responseID, formName: obj.formName });
-    getMessage(obj.responseID).then((res) => this.setState({ messages: res }));
+    getMessage(obj.responseID).then((res) => {
+      res.map((ress) => {
+        if (ress.acceptedResponseID === obj.responseID) {
+          this.setState({ messages: ress.chatRoom }, () => {
+            console.log(this.state.messages);
+            this.render();
+          });
+        }
+      });
+    });
   };
-
   sendMessage = (text) => {
     var messages = this.state.messages;
     var userResponse = null;
@@ -78,46 +87,59 @@ export class AlbumUser extends Component {
       userResponse["chatRoom"] = [];
     }
     var date = new Date();
+    date = JSON.stringify(date);
     var arr = userResponse["chatRoom"];
     if (arr === null) {
       arr = [];
     }
     arr.push([this.props.username, text, date]);
-    userResponse["chatRoom"] = arr;
-    userResponse["formName"] = this.state.formName;
-    userResponse["acceptedResponseID"] = this.state.id;
-    var setMessages = userResponse["chatRoom"];
-    console.log(setMessages);
+    // userResponse["chatRoom"] = arr;
+    // userResponse["formName"] = this.state.formName;
+    // userResponse["acceptedResponseID"] = this.state.id;
+    // var setMessages = userResponse["chatRoom"];
+    // console.log(setMessages);
 
-    console.log(userResponse);
-    this.changeState(setMessages);
-    console.log(this.state.messages);
-
-    // messages[`${this.props.username}`] = quest;
-    // var quest = {};
-    // quest["sender"] = this.props.username;
-    // quest["reciever"] = this.name;
-    // quest["message"] = text;
-    // quest["acceptedResponseID"] = this.id;
-
-    // var obj = {};
-
-    // obj["chatRoom"] = this.state.messages;
-    // console.log(obj);
-    // this.props.postMessage(quest);
+    console.log(userResponse, this.state.messages);
+    if (this.state.messages === null) {
+      console.log("if");
+      var arrr = [arr];
+      this.setState({ messages: arrr }, () => {
+        console.log(this.state.messages, "dealersOverallTotal1");
+        var quest = {};
+        quest["chatRoom"] = this.state.messages;
+        quest["formName"] = this.state.formName;
+        quest["acceptedResponseID"] = this.state.id;
+        console.log(quest);
+        this.props.postMessage(quest);
+        this.render();
+      });
+    } else {
+      console.log("else");
+      this.setState({ messages: [...this.state.messages, arr] }, () => {
+        console.log(this.state.messages, "dealersOverallTotal1");
+        var quest = {};
+        quest["chatRoom"] = this.state.messages;
+        quest["formName"] = this.state.formName;
+        quest["acceptedResponseID"] = this.state.id;
+        console.log(quest);
+        this.props.postMessage(quest);
+        this.render();
+      });
+    }
   };
-  changeState(setMessages) {
-    this.setState({ messages: setMessages });
-    console.log(this.state);
-  }
 
   render() {
     if (this.state.flag === true) {
+      var mes = this.state.messages;
+      if (!this.state.messages) {
+        mes = null;
+      }
+
       return (
         <UserTimeLine
           object={this.state.object}
           username={this.props.username}
-          messages={this.state.messages}
+          messages={mes}
           sendMessage={this.sendMessage}
         />
       );

@@ -1,5 +1,5 @@
 import axios from "axios";
-import { GET_MESSAGE, POST_MESSAGE } from "./types";
+import { GET_MESSAGE, POST_MESSAGE, PUT_MESSAGE } from "./types";
 import store from "../store";
 
 // export const getMessage = async (id) => (dispatch) => {
@@ -35,10 +35,23 @@ export const getMessage = async (id) => {
 };
 
 export const postMessage = (quest) => (dispatch) => {
-  axios
-    .post("/ChatSystem/", quest)
-    .then((res) => {
-      dispatch({ type: POST_MESSAGE, payload: res.data });
-    })
-    .catch((err) => console.log(err));
+  var foundFlag = false;
+  var foundId;
+  axios.get("/ChatSystem").then((res) => {
+    res.data.map((resi) => {
+      if (resi.acceptedResponseID === quest.acceptedResponseID) {
+        foundFlag = true;
+        foundId = resi.id;
+      }
+    });
+    if (foundFlag) {
+      axios.put(`/ChatSystem/${foundId}/`, quest).then((resPut) => {
+        dispatch({ type: PUT_MESSAGE, payload: resPut.data });
+      });
+    } else {
+      axios.post("/ChatSystem/", quest).then((resPost) => {
+        dispatch({ typ: POST_MESSAGE, payload: resPost.data });
+      });
+    }
+  });
 };
