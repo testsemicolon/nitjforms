@@ -48,7 +48,7 @@ def post_views(request):
         for i in data:
             question1 = str(i.question)
             question1 = question1.replace(" ", "_")
-            modelFunc(modelPath, question1, i.inputType)
+            modelFunc(modelPath, question1, i.inputType, i.questionFields, title)
 
         f = open(modelPath, 'a')
         f.write("\n\nclass " + title + "Accepted(models.Model):\n")
@@ -88,7 +88,7 @@ def post_views(request):
         for i in data1:
             question1 = str(i.question)
             question1 = question1.replace(" ", "_")
-            modelFunc(modelPath, question1, i.inputType)
+            modelFunc(modelPath, question1, i.inputType, i.questionFields, title)
 
         CreateForms.objects.all().delete()
 
@@ -148,7 +148,7 @@ def post_views(request):
         os.startfile("migrate.bat")
 
 
-def modelFunc(modelPath, question1, inputType):
+def modelFunc(modelPath, question1, inputType, questionFields, title):
     f = open(modelPath, 'a')
     if (inputType == "Short Answer"):
         f.write("    " + question1 + " = models.CharField(max_length=1000)\n")
@@ -160,6 +160,26 @@ def modelFunc(modelPath, question1, inputType):
         f.write("    " + question1 + " = models.CharField(max_length=1000)\n")
     elif (inputType == "Date"):
         f.write("    " + question1 + " = models.DateField()\n")
+    elif(inputType == "Multiple Choice"):
+        print(questionFields)
+        f.write("    " + title+question1+"choices = (\n")
+        for i in questionFields:
+            f.write("        ('" + i + "' , '" + i + "'),\n")    
+        f.write("    )\n")        
+        f.write("    " + question1 + " = models.CharField(max_length=1000, choices= "+title+question1+"choices)\n")
+    elif(inputType == "Dropdown"):
+        print(questionFields)
+        f.write("    " + title+question1+"choices = (\n")
+        for i in questionFields:
+            f.write("        ('" + i + "' , '" + i + "'),\n")    
+        f.write("    )\n")        
+        f.write("    " + question1 + " = models.CharField(max_length=1000, choices= "+title+question1+"choices)\n")
+    elif(inputType == "Checkboxes"):
+        f.write("    " + title+question1+"choices = (\n")
+        for i in questionFields:
+            f.write("        ('" + i + "' , '" + i + "'),\n")    
+        f.write("    )\n")        
+        f.write("    " + question1 + " = ArrayField(models.CharField(max_length=1000, choices= "+title+question1+"choices), default=list, blank=True)\n")
     else:
         pass
     f.close()

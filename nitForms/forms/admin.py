@@ -13,4 +13,3 @@ admin.site.register(EmailIndex)
 admin.site.register(DepartmentDetail)
 admin.site.register(ChatSystem)
 
-

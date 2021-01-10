@@ -7,6 +7,7 @@ import uuid
 class CreateForms(models.Model):
     question = models.CharField(max_length=100, blank=False)
     inputType = models.CharField(max_length=50, blank=False)
+    questionFields = ArrayField(models.CharField(max_length=1000, blank=True), blank=True, default=list, null=True)
     owner = models.ForeignKey(User,
                               related_name="createForm",
                               on_delete=models.CASCADE,
@@ -36,6 +37,7 @@ class GeneralForms(models.Model):
     formName = models.CharField(max_length=100, blank=False)
     question = models.CharField(max_length=100, blank=False)
     inputType = models.CharField(max_length=50, blank=False)
+    questionFields = ArrayField(models.CharField(max_length=1000, blank=True), blank=True, default=list, null=True)
 
     def __str__(self):
         return self.formName

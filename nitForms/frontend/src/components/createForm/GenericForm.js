@@ -49,6 +49,7 @@ export class GenericForm extends Component {
   flag = false;
   status = false;
   toggleshare = true;
+  questionq = "";
   constructor(props) {
     super(props);
     this.state = {
@@ -85,6 +86,7 @@ export class GenericForm extends Component {
 
   onChange = (e) => {
     this.setState({ [e.target.name]: e.target.value });
+    console.log(this.state);
   };
 
   onChange1 = (name) => {
@@ -99,6 +101,14 @@ export class GenericForm extends Component {
     console.log(e.target.value);
     this.toShareWith = e.target.value;
     this.setState({ value: e.target.value });
+  };
+
+  onChangeDropDown = (question, value) => {
+    this.setState({ [question]: value });
+  };
+
+  onChangeCheckBox = (question, value) => {
+    this.setState({ [question]: value });
   };
 
   onSubmitSharedUser = () => {
@@ -146,9 +156,10 @@ export class GenericForm extends Component {
     questFormIndex["formName"] = title;
     quest["userName"] = this.props.username;
 
-    console.log(mail);
+    console.log(quest);
     quest["userMail"] = mail;
     quest["userDept"] = this.props.userDept;
+
     this.props.formSubmit(quest, title, questFormIndex);
     {
       /* 
@@ -385,7 +396,7 @@ export class GenericForm extends Component {
                           name={this.toShareWith}
                           onChange={this.onChangeUser}
                           keepSelectedInList={this.state.keepSelectedInList}
-                          // onChange={(values) => this.setValues(values)}
+                          onChange={(values) => this.setValues(values)}
                         /> */}
                       </div>
                     ) : (
@@ -692,6 +703,72 @@ export class GenericForm extends Component {
                             </Card.Body>
                           </div>
                         </Card>
+                      </div>
+                    );
+                  }
+                  if (form.inputType === "Multiple Choice") {
+                    return (
+                      <div>
+                        <h5>{form.question}</h5>
+                        {form.questionFields.map((f1) => {
+                          return (
+                            <div>
+                              <input
+                                type="radio"
+                                name={form.question}
+                                value={f1}
+                                onChange={this.onChange}
+                              />
+                              {f1}
+                            </div>
+                          );
+                        })}
+                      </div>
+                    );
+                  }
+                  if (form.inputType === "Dropdown") {
+                    return (
+                      <div>
+                        <h5>{form.question}</h5>
+                        <select
+                          value={this.questionq}
+                          onChange={(e) => {
+                            this.questionq = e.target.value;
+                            this.onChangeDropDown(
+                              form.question,
+                              e.target.value
+                            );
+                          }}
+                        >
+                          {form.questionFields.map((f1) => {
+                            return <option value={f1}>{f1}</option>;
+                          })}
+                        </select>
+                      </div>
+                    );
+                  }
+                  if (form.inputType === "Checkboxes") {
+                    return (
+                      <div>
+                        <h5>{form.question}</h5>
+                        {form.questionFields.map((f1) => {
+                          return (
+                            <div>
+                              <input
+                                type="checkbox"
+                                // defaultChecked={false}
+                                value={f1}
+                                onClick={(e) => {
+                                  this.onChangeCheckBox(
+                                    form.question,
+                                    e.target.value
+                                  );
+                                }}
+                              />
+                              {f1}
+                            </div>
+                          );
+                        })}
                       </div>
                     );
                   }

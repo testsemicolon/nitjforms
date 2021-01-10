@@ -84,9 +84,14 @@ export const getFormView = (title) => (dispatch, getState) => {
     .catch((err) => console.log(err));
 };
 
-export const addGeneric = (formName, question, inputType) => (dispatch) => {
-  const quest1 = { formName, question, inputType };
-  axios.post("/generic/", quest1).catch((err) => console.log(err));
+export const addGeneric = (formName, question, inputType, questionFields) => (
+  dispatch
+) => {
+  const quest1 = { formName, question, inputType, questionFields };
+  axios
+    .post("/generic/", quest1)
+    .then((res) => console.log(res))
+    .catch((err) => console.log(err));
 };
 
 export const getGeneric = (title) => (dispatch) => {

@@ -90,6 +90,3 @@ class ChatSystemViewSet(viewsets.ModelViewSet):
     queryset = ChatSystem.objects.all()
     permission_class = [permissions.AllowAny]
     serializer_class = ChatSystemSerializer
-
-
-

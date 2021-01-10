@@ -7,6 +7,7 @@ export class AddField extends Component {
   state = {
     question: "",
     inputType: "Short Answer",
+    questionFields: "",
   };
   // ftitle = this.props.title;
 
@@ -20,15 +21,16 @@ export class AddField extends Component {
 
   onSubmit = (e) => {
     e.preventDefault();
-    const { question, inputType } = this.state;
-    const quest = { question, inputType };
-
+    var { question, inputType, questionFields } = this.state;
+    questionFields = questionFields.split(",");
+    const quest = { question, inputType, questionFields };
+    console.log(quest);
     this.props.addField(quest);
-    this.setState({ question: "" });
+    this.setState({ question: "", questionFields: "" });
   };
 
   render() {
-    const { question, inputType } = this.state;
+    const { question, inputType, questionFields } = this.state;
     return (
       <div style={{ border: ".1vw solid lightgrey", padding: "2vw" }}>
         <h3>Add Form Field</h3>
@@ -54,6 +56,14 @@ export class AddField extends Component {
             <option value="File Upload">File Upload</option>
             <option value="Date">Date</option>
           </select>{" "}
+          <input
+            type="text"
+            name="questionFields"
+            placeholder="Enter fields"
+            style={{ flex: "7", padding: "5px", marginRight: ".5vw" }}
+            value={questionFields}
+            onChange={this.onChange}
+          />
           <input type="submit" value="Add Field" style={btnStyle} />
         </form>
       </div>

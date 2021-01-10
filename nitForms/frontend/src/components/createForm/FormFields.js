@@ -33,7 +33,12 @@ export class FormItems extends Component {
     var title = this.props.title;
     {
       this.props.Forms.map((form) =>
-        this.props.addGeneric(title, form.question, form.inputType)
+        this.props.addGeneric(
+          title,
+          form.question,
+          form.inputType,
+          form.questionFields
+        )
       );
     }
     this.props.submitForm();
