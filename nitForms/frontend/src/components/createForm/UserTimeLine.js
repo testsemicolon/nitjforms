@@ -46,120 +46,185 @@ export class UserTimeLine extends Component {
 
   render() {
     return (
-      <div style={{ marginLeft: "auto", marginRight: "auto" }}>
-        <div
-          style={{
-            width: "50vw",
-            marginTop: "2vw",
-            //border: "0.07vw solid #0A5C5A",
-            padding: "1vw",
-            textAlign: "center",
-            borderRadius: ".5vw",
-            marginRight: "auto",
-            marginLeft: "auto",
-            backgroundColor: "#E0777D",
-            boxShadow: ".3vw .3vw .3vw lightgray",
-          }}
-        >
-          <Button
+      <div>
+        <div style={{ float: "left", width: "40vw" }}>
+          <div
             style={{
-              backgroundColor: "white",
-              color: "#E0777D",
-              border: 0,
-              fontSize: "1.2VW",
-              fontFamily: "Times New Roman",
+              marginTop: "2vw",
+
+              padding: "1vw",
+              textAlign: "center",
+              borderRadius: ".5vw",
+              marginRight: "auto",
+              marginLeft: "auto",
+              backgroundColor: "#E0777D",
+              boxShadow: ".3vw .3vw .3vw lightgray",
             }}
-            onClick={this.onclick2}
           >
-            Form Status ({this.props.object.formName})
-          </Button>
+            <Button
+              style={{
+                backgroundColor: "white",
+                color: "#E0777D",
+                border: 0,
+                fontSize: "1.2VW",
+                fontFamily: "Times New Roman",
+                boxShadow: ".2VW .2VW .2VW #282c35",
+              }}
+              onClick={this.onclick2}
+            >
+              Form Status ({this.props.object.formName})
+            </Button>
+          </div>
+          <div
+            style={{
+              width: "40vw",
+              // float: "left",
+              position: "relative",
+              backgroundColor: "#EEEEEE",
+              borderRadius: ".5vw",
+              borderWidth: 0,
+              boxShadow: ".3vw .3vw .3vw LIGHTGRAY",
+              marginLeft: "auto",
+              marginRight: "auto",
+              marginTop: "1vw",
+            }}
+          >
+            <VerticalTimeline
+              layout={"1-column"}
+              position={"right"}
+              backgroundColor="#EEEEEE"
+            >
+              <VerticalTimelineElement
+                // className="vertical-timeline-element--work"
+                contentStyle={{
+                  border: ".2vw solid #0A5C5A",
+                  borderRadius: "1vw",
+                  background: "white",
+
+                  padding: ".5vw",
+                  boxShadow: ".3vw .3vw .3vw silver",
+                  marginBottom: 0,
+                  paddingBottom: 0,
+                  wordWrap: "break-word",
+                }}
+                iconStyle={{
+                  background: "#0A5C5A",
+                  width: "2vw",
+                  height: "2vw",
+                  margin: ".5vw",
+                  color: "#fff",
+                  marginTop: "2vw",
+                }}
+              >
+                <h5 style={{ color: "black" }}>admin </h5>
+                <h6
+                  style={{ color: "darkgrey" }}
+                  className="vertical-timeline-element-subtitle"
+                ></h6>
+                <p style={{ color: "#0A5C5A" }}>form has been submitted</p>
+              </VerticalTimelineElement>
+              <VerticalTimelineElement
+                // className="vertical-timeline-element--work"
+                contentStyle={{
+                  border: ".2vw solid #0A5C5A",
+                  borderRadius: "1vw",
+                  background: "white",
+
+                  padding: ".5vw",
+                  boxShadow: ".3vw .3vw .3vw silver",
+                  marginBottom: 0,
+                  paddingBottom: 0,
+                  wordWrap: "break-word",
+                }}
+                iconStyle={{
+                  background: "#0A5C5A",
+                  width: "2vw",
+                  height: "2vw",
+                  margin: ".5vw",
+                  color: "#fff",
+                  marginTop: "2vw",
+                }}
+              >
+                <h5 style={{ color: "black" }}>admin </h5>
+                <h6
+                  style={{ color: "darkgrey" }}
+                  className="vertical-timeline-element-subtitle"
+                ></h6>
+                <p style={{ color: "#0A5C5A" }}>{this.msg}</p>
+                {this.rejected ? (
+                  <div>{this.props.object.commentByAuthor}</div>
+                ) : (
+                  <div></div>
+                )}
+              </VerticalTimelineElement>
+            </VerticalTimeline>
+          </div>
         </div>
-        <div
-          style={{
-            width: "50vw",
-            // float: "left",
-            position: "relative",
-            backgroundColor: "#EEEEEE",
-            borderRadius: ".5vw",
-            borderWidth: 0,
-            boxShadow: ".3vw .3vw .3vw LIGHTGRAY",
-            marginLeft: "auto",
-            marginRight: "auto",
-            marginTop: "1vw",
-          }}
-        >
-          <VerticalTimeline
-            layout={"1-column"}
-            position={"right"}
-            backgroundColor="#EEEEEE"
+        <div style={{ float: "right" }}>
+          <div
+            style={{
+              marginTop: "2vw",
+              //border: "0.07vw solid #0A5C5A",
+              padding: "1vw",
+              textAlign: "center",
+              borderRadius: ".5vw",
+              marginRight: "auto",
+              marginLeft: "auto",
+              backgroundColor: "#E0777D",
+              boxShadow: ".3vw .3vw .3vw lightgray",
+            }}
           >
-            <VerticalTimelineElement
-              // className="vertical-timeline-element--work"
-              contentStyle={{
-                border: ".2vw solid #0A5C5A",
-                borderRadius: "1vw",
-                background: "white",
-
-                padding: ".5vw",
-                boxShadow: ".3vw .3vw .3vw silver",
-                marginBottom: 0,
-                paddingBottom: 0,
-                wordWrap: "break-word",
-              }}
-              iconStyle={{
-                background: "#0A5C5A",
-                width: "2vw",
-                height: "2vw",
-                margin: ".5vw",
-                color: "#fff",
-                marginTop: "2vw",
+            <Button
+              style={{
+                backgroundColor: "white",
+                color: "#E0777D",
+                border: 0,
+                fontSize: "1.2VW",
+                fontFamily: "Times New Roman",
+                boxShadow: ".2VW .2VW .2VW #282c35",
               }}
             >
-              <h5 style={{ color: "black" }}>admin </h5>
-              <h6
-                style={{ color: "darkgrey" }}
-                className="vertical-timeline-element-subtitle"
-              ></h6>
-              <p style={{ color: "#0A5C5A" }}>form has been submitted</p>
-            </VerticalTimelineElement>
-            <VerticalTimelineElement
-              // className="vertical-timeline-element--work"
-              contentStyle={{
-                border: ".2vw solid #0A5C5A",
-                borderRadius: "1vw",
-                background: "white",
+              Chat
+            </Button>
+          </div>
+          <div
+            style={{
+              width: "36vw",
+              textAlign: "center",
+              paddingLeft: "2vw",
+              paddingRight: "2vw",
+              paddingTop: "1vw",
+              paddingBottom: "1vw",
+              marginTop: "1vw",
+              marginBottom: "1vw",
 
-                padding: ".5vw",
-                boxShadow: ".3vw .3vw .3vw silver",
-                marginBottom: 0,
-                paddingBottom: 0,
-                wordWrap: "break-word",
-              }}
-              iconStyle={{
-                background: "#0A5C5A",
-                width: "2vw",
-                height: "2vw",
-                margin: ".5vw",
-                color: "#fff",
-                marginTop: "2vw",
+              // marginLeft: "auto",
+              // marginRight: "auto",
+              backgroundColor: "#EEEEEE",
+              boxShadow: ".3vw .3vw .3vw silver",
+              borderRadius: ".3vw",
+            }}
+          >
+            <div
+              style={{
+                backgroundColor: "white",
+                borderWidth: ".2vw .2vw 0 .2vw ",
+
+                borderStyle: "solid",
+                borderColor: "#0A5C5A",
+                borderRadius: ".7vw .7vw 0 0",
+                paddingBottom: "1.5vw",
+                overflowY: "scroll",
+
+                maxHeight: "18vw",
               }}
             >
-              <h5 style={{ color: "black" }}>admin </h5>
-              <h6
-                style={{ color: "darkgrey" }}
-                className="vertical-timeline-element-subtitle"
-              ></h6>
-              <p style={{ color: "#0A5C5A" }}>{this.msg}</p>
-              {this.rejected ? (
-                <div>{this.props.object.commentByAuthor}</div>
-              ) : (
-                <div></div>
-              )}
-            </VerticalTimelineElement>
-          </VerticalTimeline>
-
-          <MessageList messages={this.props.messages} />
-          <SendMessage sendMessage={this.props.sendMessage} />
+              <MessageList messages={this.props.messages} />
+            </div>
+            <div>
+              <SendMessage sendMessage={this.props.sendMessage} />
+            </div>
+          </div>
         </div>
       </div>
     );

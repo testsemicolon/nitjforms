@@ -708,67 +708,245 @@ export class GenericForm extends Component {
                   }
                   if (form.inputType === "Multiple Choice") {
                     return (
-                      <div>
-                        <h5>{form.question}</h5>
-                        {form.questionFields.map((f1) => {
-                          return (
-                            <div>
-                              <input
-                                type="radio"
-                                name={form.question}
-                                value={f1}
-                                onChange={this.onChange}
-                              />
-                              {f1}
-                            </div>
-                          );
-                        })}
+                      <div
+                        key={form.id}
+                        style={{
+                          borderRadius: "5rem",
+                          borderWidth: ".5rem",
+                          borderColor: "grey",
+
+                          marginTop: "2rem",
+                        }}
+                      >
+                        <Card
+                          style={{
+                            borderRadius: ".95vw",
+                            borderWidth: 0,
+                            // border: ".2vw solid #ed6a5a",
+                            marginTop: "2vw",
+                            width: "40.33vw",
+                            //color: "#009999",
+                            marginLeft: "auto",
+                            marginRight: "auto",
+                            height: "auto",
+                            boxShadow: ".3vw .3vw .3vw  silver",
+                          }}
+                        >
+                          <div>
+                            <Card.Header
+                              style={{
+                                backgroundColor: "white",
+                                borderRadius: ".75vw .75vw 0 0",
+                                width: "40vw",
+                                height: "2.5vw",
+                                fontSize: "1.2vw",
+                                color: "#009999",
+                                margin: 0,
+                                padding: "0.6vw",
+                              }}
+                            >
+                              <strong>{form.question}</strong>
+                            </Card.Header>
+                            <Card.Body
+                              style={{
+                                backgroundColor: "white",
+                                borderRadius: " 0 0 .75vw .75vw",
+                                width: "40vw",
+                                fontSize: "0.93vw",
+                                height: "auto",
+                                padding: "0.6vw",
+                                margin: 0,
+                              }}
+                            >
+                              <Card.Text>
+                                {form.questionFields.map((f1) => {
+                                  return (
+                                    <div
+                                      style={{
+                                        fontSize: "1vw",
+                                        color: "black",
+                                      }}
+                                    >
+                                      <input
+                                        type="radio"
+                                        name={form.question}
+                                        value={f1}
+                                        onChange={this.onChange}
+                                        style={{ height: ".7vw" }}
+                                      />{" "}
+                                      {f1}
+                                    </div>
+                                  );
+                                })}
+                              </Card.Text>
+                            </Card.Body>
+                          </div>
+                        </Card>
                       </div>
                     );
                   }
                   if (form.inputType === "Dropdown") {
                     return (
-                      <div>
-                        <h5>{form.question}</h5>
-                        <select
-                          value={this.questionq}
-                          onChange={(e) => {
-                            this.questionq = e.target.value;
-                            this.onChangeDropDown(
-                              form.question,
-                              e.target.value
-                            );
+                      <div
+                        key={form.id}
+                        style={{
+                          borderRadius: "5rem",
+                          borderWidth: ".5rem",
+                          borderColor: "grey",
+                          marginTop: "2rem",
+                        }}
+                      >
+                        <Card
+                          style={{
+                            borderRadius: ".95vw",
+                            borderWidth: 0,
+                            // border: ".2vw solid #ed6a5a",
+                            marginTop: "2vw",
+                            width: "40.33vw",
+                            color: "#009999",
+                            marginLeft: "auto",
+                            marginRight: "auto",
+                            height: "auto",
+                            boxShadow: ".3vw .3vw .3vw  silver",
                           }}
                         >
-                          {form.questionFields.map((f1) => {
-                            return <option value={f1}>{f1}</option>;
-                          })}
-                        </select>
+                          <div>
+                            <Card.Header
+                              style={{
+                                backgroundColor: "white",
+                                borderRadius: ".75vw .75vw 0 0",
+                                width: "40vw",
+                                height: "2.5vw",
+                                fontSize: "1.2vw",
+                                color: "#009999",
+                                margin: 0,
+                                padding: "0.6vw",
+                              }}
+                            >
+                              <strong>{form.question}</strong>
+                            </Card.Header>
+                            <Card.Body
+                              style={{
+                                backgroundColor: "white",
+                                borderRadius: " 0 0 .75vw .75vw",
+                                width: "40vw",
+                                fontSize: "0.93vw",
+                                height: "auto",
+                                padding: "0.6vw",
+                                margin: 0,
+                              }}
+                            >
+                              <Card.Text>
+                                <select
+                                  value={this.questionq}
+                                  onChange={(e) => {
+                                    this.questionq = e.target.value;
+                                    this.onChangeDropDown(
+                                      form.question,
+                                      e.target.value
+                                    );
+                                  }}
+                                  style={{
+                                    width: "39vw",
+                                    borderRadius: ".3vw",
+                                    borderWidth: ".1vw",
+                                  }}
+                                >
+                                  {form.questionFields.map((f1) => {
+                                    return <option value={f1}>{f1}</option>;
+                                  })}
+                                </select>
+                              </Card.Text>
+                            </Card.Body>
+                          </div>
+                        </Card>
                       </div>
                     );
                   }
                   if (form.inputType === "Checkboxes") {
                     return (
-                      <div>
-                        <h5>{form.question}</h5>
-                        {form.questionFields.map((f1) => {
-                          return (
-                            <div>
-                              <input
-                                type="checkbox"
-                                // defaultChecked={false}
-                                value={f1}
-                                onClick={(e) => {
-                                  this.onChangeCheckBox(
-                                    form.question,
-                                    e.target.value
+                      <div
+                        key={form.id}
+                        style={{
+                          borderRadius: "5rem",
+                          borderWidth: ".5rem",
+                          borderColor: "grey",
+                          marginTop: "2rem",
+                        }}
+                      >
+                        <Card
+                          style={{
+                            borderRadius: ".95vw",
+                            borderWidth: 0,
+                            // border: ".2vw solid #ed6a5a",
+                            marginTop: "2vw",
+                            width: "40.33vw",
+                            color: "#009999",
+                            marginLeft: "auto",
+                            marginRight: "auto",
+                            height: "auto",
+                            boxShadow: ".3vw .3vw .3vw  silver",
+                          }}
+                        >
+                          <div>
+                            <Card.Header
+                              style={{
+                                backgroundColor: "white",
+                                borderRadius: ".75vw .75vw 0 0",
+                                width: "40vw",
+                                height: "2.5vw",
+                                fontSize: "1.2vw",
+                                color: "#009999",
+                                margin: 0,
+                                padding: "0.6vw",
+                              }}
+                            >
+                              <strong>{form.question}</strong>
+                            </Card.Header>
+                            <Card.Body
+                              style={{
+                                backgroundColor: "white",
+                                borderRadius: " 0 0 .75vw .75vw",
+                                width: "40vw",
+                                fontSize: "0.93vw",
+                                height: "auto",
+                                padding: "0.6vw",
+                                margin: 0,
+                              }}
+                            >
+                              <Card.Text>
+                                {" "}
+                                {form.questionFields.map((f1) => {
+                                  return (
+                                    <div
+                                      style={{
+                                        color: "black",
+                                        fontSize: "1vw",
+                                      }}
+                                    >
+                                      <input
+                                        type="checkbox"
+                                        // defaultChecked={false}
+                                        value={f1}
+                                        onClick={(e) => {
+                                          this.onChangeCheckBox(
+                                            form.question,
+                                            e.target.value
+                                          );
+                                        }}
+                                        style={{
+                                          height: ".7vw",
+                                          fontSize: "1vw",
+                                        }}
+                                      />{" "}
+                                      {f1}
+                                    </div>
                                   );
-                                }}
-                              />
-                              {f1}
-                            </div>
-                          );
-                        })}
+                                })}
+                              </Card.Text>
+                            </Card.Body>
+                          </div>
+                        </Card>
                       </div>
                     );
                   }
@@ -784,6 +962,7 @@ export class GenericForm extends Component {
                       borderRadius: ".3rem",
                       borderColor: "black",
                       borderWidth: "0rem",
+                      fontSize: "1.3vw",
                       width: "12rem",
                       marginBottom: "2vw",
                       boxShadow: ".3vw .3vw .3vw lightgray",

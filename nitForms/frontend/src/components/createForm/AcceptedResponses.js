@@ -61,7 +61,7 @@ export class AcceptedResponses extends Component {
 
               marginLeft: "auto",
               marginRight: "auto",
-              width: "50vw",
+              width: "80vw",
             }}
           >
             <h3 style={{ textAlign: "center" }}>Accepted Responses</h3>

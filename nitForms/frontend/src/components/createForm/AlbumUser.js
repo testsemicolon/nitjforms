@@ -279,7 +279,7 @@ export class AlbumUser extends Component {
         <div
           style={{ marginLeft: " auto", marginRight: "auto", display: "table" }}
         >
-          <Button
+          {/* <Button
             style={{
               backgroundColor: "white",
               color: "#e0777d",
@@ -374,7 +374,7 @@ export class AlbumUser extends Component {
                 )}
               </MDBContainer>
             </div>
-          ) : null}
+          ) : null} */}
           <Button
             style={{
               backgroundColor: "#e0777d",

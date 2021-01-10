@@ -66,3 +66,43 @@ class ChatSystemSerializer(serializers.ModelSerializer):
         model = ChatSystem
         fields = '__all__'
 
+
+
+
+
+class teest5Serializer(serializers.ModelSerializer):
+    class Meta:
+        model = teest5
+        fields = '__all__'
+
+
+class teest5AcceptedSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = teest5Accepted
+        fields = '__all__'
+
+
+
+
+class chahatSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = chahat
+        fields = '__all__'
+
+
+class chahatAcceptedSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = chahatAccepted
+        fields = '__all__'
+
+
+class test4Serializer(serializers.ModelSerializer):
+    class Meta:
+        model = test4
+        fields = '__all__'
+
+
+class test4AcceptedSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = test4Accepted
+        fields = '__all__'

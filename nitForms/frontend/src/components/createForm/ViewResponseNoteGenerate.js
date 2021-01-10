@@ -473,6 +473,7 @@ export class ViewResponseNoteGenerate extends Component {
                     fontSize: "1vw",
                     paddingLeft: ".1vw",
                     paddingRight: ".1vw",
+                    marginTop: "1vw",
                   }}
                 >
                   Show Response
@@ -499,6 +500,7 @@ export class ViewResponseNoteGenerate extends Component {
                     fontSize: "1vw",
                     paddingLeft: ".1vw",
                     paddingRight: ".1vw",
+                    marginTop: "1vw",
                   }}
                 >
                   Linked Notings
@@ -525,6 +527,7 @@ export class ViewResponseNoteGenerate extends Component {
                     fontSize: "1vw",
                     paddingLeft: ".1vw",
                     paddingRight: ".1vw",
+                    marginTop: "1vw",
                   }}
                 >
                   Forward to
@@ -545,6 +548,7 @@ export class ViewResponseNoteGenerate extends Component {
                     backgroundColor: "white",
                     color: "#009999",
                     borderWidth: 0,
+                    marginTop: "1vw",
                     boxShadow: ".2VW .2VW .2VW #282c35",
                     fontFamily: "Times New Roman",
                     width: "10.5vw",
@@ -577,6 +581,7 @@ export class ViewResponseNoteGenerate extends Component {
                     fontSize: "1vw",
                     paddingLeft: ".1vw",
                     paddingRight: ".1vw",
+                    marginTop: "1vw",
                   }}
                 >
                   Amount Recommend
@@ -603,6 +608,7 @@ export class ViewResponseNoteGenerate extends Component {
                     fontSize: "1vw",
                     paddingLeft: ".1vw",
                     paddingRight: ".1vw",
+                    marginTop: "1vw",
                   }}
                 >
                   User History
@@ -630,6 +636,7 @@ export class ViewResponseNoteGenerate extends Component {
                     fontSize: "1vw",
                     paddingLeft: ".1vw",
                     paddingRight: ".1vw",
+                    marginTop: "1vw",
                   }}
                 >
                   Send Chat To User
@@ -1206,8 +1213,8 @@ export class ViewResponseNoteGenerate extends Component {
                         paddingBottom: "1vw",
                         marginBottom: "1vw",
 
-                        marginLeft: "auto",
-                        marginRight: "auto",
+                        // marginLeft: "auto",
+                        // marginRight: "auto",
                         backgroundColor: "#EEEEEE",
                         boxShadow: ".3vw .3vw .5vw silver",
                         borderRadius: ".3vw",
@@ -1227,7 +1234,10 @@ export class ViewResponseNoteGenerate extends Component {
                           maxHeight: "18vw",
                         }}
                       >
-                        <MessageList messages={this.state.messages} />
+                        <MessageList
+                          messages={this.state.messages}
+                          loggedInUser={this.props.username}
+                        />
                       </div>
                       <div>
                         <SendMessage sendMessage={this.sendMessage} />

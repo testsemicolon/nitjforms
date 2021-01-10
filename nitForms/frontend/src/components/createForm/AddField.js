@@ -50,7 +50,7 @@ export class AddField extends Component {
           >
             <option value="Short Answer">Short Answer</option>
             <option value="Paragraph">Paragraph</option>
-            <option value="Multiple Choice">Multiple Choice</option>
+            <option value="Multiple Choice">Radio</option>
             <option value="Checkboxes">Checkboxes</option>
             <option value="Dropdown">Dropdown</option>
             <option value="File Upload">File Upload</option>

@@ -31,16 +31,6 @@ export class MessageList extends Component {
               >
                 SuperAdmin[12.1.2021 10:41PM]::hello hello hello how are you?
               </div>
-              <div
-                style={{
-                  backgroundColor: "#E7B3B6",
-                  padding: ".3vw",
-                  margin: ".3vw",
-                  borderRadius: "4vw",
-                }}
-              >
-                SuperAdmin[12.1.2021 10:41PM]::hello hello hello how are you?
-              </div>
             </div>
           ) : (
             <div>
@@ -49,10 +39,44 @@ export class MessageList extends Component {
                 return mess.map((mes) => {
                   return (
                     <div>
-                      <h5>
+                      {this.props.loggedInUser === mes[0] ? (
+                        <div
+                          style={{
+                            backgroundColor: "#E7B3B6",
+                            padding: ".3vw",
+                            margin: ".3vw",
+                            borderRadius: "4vw",
+                            float: "right",
+                            // marginRight: 0,
+                            // marginLeft: "2vw",
+                          }}
+                        >
+                          <strong> {mes[0]}</strong>
+                          <font style={{ fontSize: ".7vw" }}>[{mes[2]}]</font>
+                          <strong>::{mes[1]}</strong>
+                        </div>
+                      ) : (
+                        <div
+                          style={{
+                            backgroundColor: "#B6CECE",
+                            padding: ".3vw",
+                            margin: ".3vw",
+                            borderRadius: "4vw",
+                            float: "left",
+                            // marginLeft: 0,
+                            // marginRight: "2vw",
+                          }}
+                        >
+                          <strong> {mes[0]}</strong>
+                          <font style={{ fontSize: ".7vw" }}>[{mes[2]}]</font>
+                          <strong>::{mes[1]}</strong>
+                        </div>
+                      )}
+
+                      {/* <h5>
                         {mes[0]} {mes[1]}
                       </h5>
-                      <p>{mes[2]}</p>
+                      <p>{mes[2]}</p> */}
                     </div>
                   );
                 });
@@ -61,16 +85,6 @@ export class MessageList extends Component {
           )
         ) : (
           <div>
-            <div
-              style={{
-                backgroundColor: "#B6CECE",
-                padding: ".3vw",
-                margin: ".3vw",
-                borderRadius: "4vw",
-              }}
-            >
-              SuperAdmin[12.1.2021 10:41PM]::hello hello hello how are you?
-            </div>
             <div
               style={{
                 backgroundColor: "#E7B3B6",

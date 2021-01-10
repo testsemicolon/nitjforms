@@ -118,34 +118,36 @@ export class AlbumAdminStaff extends Component {
                                   borderBottom: ".03vw solid lightgray",
                                 }}
                               >
-                                <DropdownItem
-                                  style={{
-                                    overflowWrap: "break-word",
-                                    fontSize: "1vw",
-                                  }}
-                                >
-                                  <div
-                                    className="notification__content"
-                                    style={{ overflowWrap: "break-word" }}
+                                <Link to={nfy.linkToPage}>
+                                  <DropdownItem
+                                    style={{
+                                      overflowWrap: "break-word",
+                                      fontSize: "1vw",
+                                    }}
                                   >
-                                    <table>
-                                      <tr>
-                                        <td rowspan="2">
-                                          <span class="material-icons notification__icon notification__icon-wrapper">
-                                            sms
-                                          </span>
-                                        </td>
-                                        <td>
-                                          {" "}
-                                          <strong>{nfy.formName}</strong>
-                                        </td>
-                                      </tr>
-                                      <tr>
-                                        <td> {nfy.notify}</td>
-                                      </tr>
-                                    </table>
-                                  </div>
-                                </DropdownItem>
+                                    <div
+                                      className="notification__content"
+                                      style={{ overflowWrap: "break-word" }}
+                                    >
+                                      <table>
+                                        <tr>
+                                          <td rowspan="2">
+                                            <span class="material-icons notification__icon notification__icon-wrapper">
+                                              sms
+                                            </span>
+                                          </td>
+                                          <td>
+                                            {" "}
+                                            <strong>{nfy.formName}</strong>
+                                          </td>
+                                        </tr>
+                                        <tr>
+                                          <td> {nfy.notify}</td>
+                                        </tr>
+                                      </table>
+                                    </div>
+                                  </DropdownItem>
+                                </Link>
                                 {/* <hr /> */}
                               </div>
                             );
@@ -181,7 +183,7 @@ export class AlbumAdminStaff extends Component {
             marginTop: "1vw",
           }}
         >
-          <ButtonB
+          {/* <ButtonB
             style={{
               backgroundColor: "white",
               color: "#e0777d",
@@ -194,8 +196,8 @@ export class AlbumAdminStaff extends Component {
               border: ".01vw solid #e0777d",
             }}
             onClick={this.onclick}
-          >
-            {this.state.show ? "Hide " : "Show "}
+          > */}
+          {/* {this.state.show ? "Hide " : "Show "}
             Notifications
           </ButtonB>
           {this.state.show ? (
@@ -274,7 +276,7 @@ export class AlbumAdminStaff extends Component {
                 })}
               </MDBContainer>
             </div>
-          ) : null}{" "}
+          ) : null}{" "} */}
           <ButtonB
             style={{
               backgroundColor: "#e0777d",
