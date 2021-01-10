@@ -110,45 +110,47 @@ export class AlbumAdminStaff extends Component {
                           overflowX: "inherit",
                         }}
                       >
-                        {this.props.Notification.map((nfy) => {
-                          return (
-                            <div
-                              style={{
-                                borderBottom: ".03vw solid lightgray",
-                              }}
-                            >
-                              <DropdownItem
+                        {Object.entries(this.props.Notification).map(
+                          ([key, nfy]) => {
+                            return (
+                              <div
                                 style={{
-                                  overflowWrap: "break-word",
-                                  fontSize: "1vw",
+                                  borderBottom: ".03vw solid lightgray",
                                 }}
                               >
-                                <div
-                                  className="notification__content"
-                                  style={{ overflowWrap: "break-word" }}
+                                <DropdownItem
+                                  style={{
+                                    overflowWrap: "break-word",
+                                    fontSize: "1vw",
+                                  }}
                                 >
-                                  <table>
-                                    <tr>
-                                      <td rowspan="2">
-                                        <span class="material-icons notification__icon notification__icon-wrapper">
-                                          sms
-                                        </span>
-                                      </td>
-                                      <td>
-                                        {" "}
-                                        <strong>{nfy.formName}</strong>
-                                      </td>
-                                    </tr>
-                                    <tr>
-                                      <td> {nfy.notify}</td>
-                                    </tr>
-                                  </table>
-                                </div>
-                              </DropdownItem>
-                              {/* <hr /> */}
-                            </div>
-                          );
-                        })}
+                                  <div
+                                    className="notification__content"
+                                    style={{ overflowWrap: "break-word" }}
+                                  >
+                                    <table>
+                                      <tr>
+                                        <td rowspan="2">
+                                          <span class="material-icons notification__icon notification__icon-wrapper">
+                                            sms
+                                          </span>
+                                        </td>
+                                        <td>
+                                          {" "}
+                                          <strong>{nfy.formName}</strong>
+                                        </td>
+                                      </tr>
+                                      <tr>
+                                        <td> {nfy.notify}</td>
+                                      </tr>
+                                    </table>
+                                  </div>
+                                </DropdownItem>
+                                {/* <hr /> */}
+                              </div>
+                            );
+                          }
+                        )}
                       </div>
                     </Collapse>
                   </div>
@@ -217,7 +219,7 @@ export class AlbumAdminStaff extends Component {
                 }}
                 className="grey darken-3 p-3"
               >
-                {this.props.Notification.map((nfy) => {
+                {Object.entries(this.props.Notification).map(([key, nfy]) => {
                   return (
                     <div
                       style={{

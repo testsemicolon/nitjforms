@@ -65,3 +65,4 @@ class ChatSystemSerializer(serializers.ModelSerializer):
     class Meta:
         model = ChatSystem
         fields = '__all__'
+

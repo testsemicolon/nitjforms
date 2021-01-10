@@ -15,7 +15,10 @@ import { Link } from "react-router-dom";
 import store from "../../../store";
 import { createMessage } from "../../../actions/Messages";
 import { putResponse } from "../../../actions/AcceptedResponse";
-import { putDeptDetailsCommit } from "../../../actions/DirectorDashboardActions";
+import {
+  putDeptDetailsCommit,
+  getDeptDetails,
+} from "../../../actions/DirectorDashboardActions";
 
 export class Discussions extends Component {
   onClickMessage = (responseType, response, formName) => {
@@ -36,6 +39,7 @@ export class Discussions extends Component {
         response.committedAmount,
         responseType
       ); // this function is for change in department details
+      // this.props.getDeptDetails();
       console.log(this.props);
       this.forceUpdate();
       console.log("update");
@@ -159,6 +163,8 @@ const mapStateToProps = (state) => ({
   username: state.Auth.user.username,
 });
 
-export default connect(mapStateToProps, { putResponse, putDeptDetailsCommit })(
-  Discussions
-);
+export default connect(mapStateToProps, {
+  putResponse,
+  putDeptDetailsCommit,
+  getDeptDetails,
+})(Discussions);

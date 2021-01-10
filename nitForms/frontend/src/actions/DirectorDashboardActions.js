@@ -67,10 +67,10 @@ export const putDeptDetails = (questDept) => (dispatch) => {
   axios
     .put(`/DepartmentDetail/${questDept.id}/`, questDept)
     .then((res) => {
-      // dispatch({
-      // type: PUT_DEPT_DETAILS,
-      // payload: res.data,
-      // });
+      dispatch({
+        type: PUT_DEPT_DETAILS,
+        payload: res.data,
+      });
     })
     .catch((err) => console.log(err));
 };

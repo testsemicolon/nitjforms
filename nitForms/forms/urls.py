@@ -21,5 +21,3 @@ urlpatterns = router.urls
 urlpatterns += [
     path('posts/', api.PostView.as_view(), name='posts_list'),
 ]
-
-
