@@ -4,7 +4,8 @@ from django.views.decorators.csrf import csrf_exempt
 from .models import *
 import smtplib
 import os
-import subprocess
+import subprocess, sys
+
 
 
 @csrf_exempt
@@ -14,17 +15,16 @@ def post_views(request):
         path = os.getcwd()
 
         # Setting up paths
-        modelPath = path + "\\forms\\models.py"
-        adminPath = path + "\\forms\\admin.py"
-        serializerPath = path + "\\forms\\serializers.py"
-        apiPath = path + "\\forms\\api.py"
-        urlPath = path + "\\forms\\urls.py"
-        migratePath = path + "\\Server\\"
+        modelPath = path + "/forms/models.py"
+        adminPath = path + "/forms/admin.py"
+        serializerPath = path + "/forms/serializers.py"
+        apiPath = path + "/forms/api.py"
+        urlPath = path + "/forms/urls.py"
+        migratePath = path + "/Server/"
 
-        # Migrate Database
 
-        os.chdir(migratePath)
-        os.startfile("migrate.bat")
+        # process = subprocess.Popen(['/home/ubuntu/Documents/nitjforms/nitjforms/nitForms/Server/migrate.sh'])
+        # process.wait()
 
         # Accessing Database
         title = FormName.objects.all().order_by('-created_at')[0].title
@@ -144,8 +144,8 @@ def post_views(request):
         f.close()
 
         # Calling Migrations to database
-        os.chdir(migratePath)
-        os.startfile("migrate.bat")
+        process = subprocess.Popen(['/home/ubuntu/Documents/nitjforms/nitjforms/nitForms/Server/migrate.sh'])
+        process.wait()
 
 
 def modelFunc(modelPath, question1, inputType, questionFields, title):

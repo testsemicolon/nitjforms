@@ -22,26 +22,3 @@ urlpatterns += [
     path('posts/', api.PostView.as_view(), name='posts_list'),
 ]
 
-
-
-router.register('teest5', teest5ViewSet, 'teest5')
-
-
-router.register('teest5Accepted', teest5AcceptedViewSet, 'teest5Accepted')
-urlpatterns += router.urls
-
-
-
-
-router.register('chahat', chahatViewSet, 'chahat')
-
-
-router.register('chahatAccepted', chahatAcceptedViewSet, 'chahatAccepted')
-urlpatterns += router.urls
-
-
-router.register('test4', test4ViewSet, 'test4')
-
-
-router.register('test4Accepted', test4AcceptedViewSet, 'test4Accepted')
-urlpatterns += router.urls
